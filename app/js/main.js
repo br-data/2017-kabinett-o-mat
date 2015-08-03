@@ -1,32 +1,47 @@
-function getURLParameter(name) {
+var myTeam = (function() {
 
-    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    'use strict';
+    
+    function init() {
+        showLineup(convertLineup(getURLParameter('aufstellung')));
+    }
+   
 
-    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)'),
-        results = regex.exec(location.search);
+    function getURLParameter(name) {
 
-    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-}
+        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
 
-function convertLineup(str) {
+        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)'),
+            results = regex.exec(location.search);
 
-    var arr = str.split('x');
-
-    for (var i = 0;  i < arr.length; i++) {
-        arr[i] = arr[i].match(/.{1,2}/g);
+        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
     }
 
-    return arr;
-}
+    function convertLineup(str) {
 
-function showLineup(arr) {
+        var arr = str.split('x');
 
-    var lineupEl = document.getElementById('lineup');
+        for (var i = 0;  i < arr.length; i++) {
 
-    for (var i = 0;  i < arr.length; i++) {
+            arr[i] = arr[i].match(/.{1,2}/g);
+        }
 
-        lineupEl.innerHTML += '<p>' + arr[i].join('\t') + '</p>';
+        return arr;
     }
-}
 
-showLineup(convertLineup(getURLParameter('aufstellung')));
+    function showLineup(arr) {
+
+        var lineupEl = document.getElementById('lineup');
+
+        for (var i = 0;  i < arr.length; i++) {
+
+            lineupEl.innerHTML += '<p>' + arr[i].join('\t') + '</p>';
+        }
+    }
+
+    return {
+        init: init
+    };
+})();
+
+myTeam.init();
