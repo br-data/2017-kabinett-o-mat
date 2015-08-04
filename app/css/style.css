@@ -1,1 +1,8 @@
+.player {
+	display: inline;
+	margin: 0 .5em;
+}
 
+.row {
+	margin: 1em 0;
+}

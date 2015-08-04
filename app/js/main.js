@@ -66,12 +66,24 @@ var myTeam = (function() {
 
         var lineupEl = document.getElementById('lineup');
 
-        //Clear element
-        lineupEl.innerHTML = '';
+        for (var row in arr) {
 
-        for (var i = 0;  i < arr.length; i++) {
+            var section = document.createElement('section');
+            section.className = 'row';
 
-            lineupEl.innerHTML += '<p>' + arr[i].join('\t') + '</p>';
+            for (var player in arr[row]) {
+
+                var div = document.createElement('div');
+                div.className = 'player';
+
+                var text = document.createTextNode(arr[row][player]);
+                text.className = 'player-name';                
+
+                div.appendChild(text);
+                section.appendChild(div);
+            }
+
+            lineupEl.appendChild(section);  
         }
     }
 
@@ -91,7 +103,7 @@ var myTeam = (function() {
         //Clear current team;
         currentTeam = [];
 
-        for (var i = 0;  i < formation.length - 1; i++) {
+        for (var i = 0;  i < formation.length; i++) {
 
             currentTeam.push(flatTeam.splice(0, +formation[i]));
         }
