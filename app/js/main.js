@@ -66,6 +66,13 @@ var myTeam = (function() {
 
         var lineupEl = document.getElementById('lineup');
 
+        //Clear current lineup
+        //http://jsperf.com/innerhtml-vs-removechild/47
+        while (lineupEl.firstChild) {
+
+            lineupEl.removeChild(lineupEl.firstChild);
+        }
+
         for (var row in arr) {
 
             var section = document.createElement('section');
