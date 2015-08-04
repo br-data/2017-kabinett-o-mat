@@ -27,8 +27,26 @@ var helpers = (function() {
         httpRequest.send(); 
     }
 
+    function fuzzySearch(substr, str) {
+
+        var result = str.toLowerCase(), i = 0, n = -1, l;
+
+        substr = substr.toLowerCase();
+
+        for (; l = substr[i++] ;) {
+
+            if (!~(n = result.indexOf(l, n + 1))) {
+
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     return {
 
-        getJSON: getJSON
+        getJSON: getJSON,
+        fuzzySearch: fuzzySearch
     };
 })();

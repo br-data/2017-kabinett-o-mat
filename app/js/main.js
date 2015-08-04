@@ -171,7 +171,7 @@ var myTeam = (function (helpers) {
 
             var text = playerList[i].innerText || playerList[i].textContent;
 
-            if (text.toUpperCase().indexOf(filter) === 0) {
+            if (helpers.fuzzySearch(filter, text.toUpperCase())) {
 
                 playerList[i].style.display = 'list-item';
             } else {
