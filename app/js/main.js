@@ -11,9 +11,11 @@ var myTeam = (function (helpers) {
     var currentTeam = [];
     var currentPlayers = {};
 
+    // @TODO Use more semantic name
     var formationSelect = document.getElementById('formation');
     var playerSelect = document.getElementById('players');
     var lineupSelect = document.getElementById('lineup');
+    var playerFilter = document.getElementById('search-player');
 
     function init() {
 
@@ -26,14 +28,13 @@ var myTeam = (function (helpers) {
 
                 currentTeam = config.defaultTeam;
             }
-
-            console.log(players);
            
             getFormation(currentTeam);
             showLineup(currentTeam);
             showPlayers(players);
 
             formationSelect.addEventListener('change', handleFormationChange);
+            playerFilter.addEventListener('keyup', handlePlayerSearch);
         });   
     }
    
@@ -159,6 +160,25 @@ var myTeam = (function (helpers) {
         }
 
         playerSelect.appendChild(list);
+    }
+
+    function handlePlayerSearch() {
+
+        var playerList = playerSelect.getElementsByTagName("li");
+        var filter = playerFilter.value.toUpperCase();
+
+        for (var i = 0; i < playerList.length; i++) {
+
+            var text = playerList[i].innerText || playerList[i].textContent;
+
+            if (text.toUpperCase().indexOf(filter) === 0) {
+
+                playerList[i].style.display = 'list-item';
+            } else {
+
+                playerList[i].style.display = 'none';
+            }
+        }
     }
 
     return {
