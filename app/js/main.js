@@ -34,7 +34,9 @@ var myTeam = (function (helpers) {
             showPlayers(players);
 
             formationSelect.addEventListener('change', handleFormationChange);
+            playerFilter.addEventListener('keydown', preventEnter);
             playerFilter.addEventListener('keyup', handlePlayerSearch);
+            playerFilter.addEventListener('search', handlePlayerSearch);
         });   
     }
    
@@ -162,22 +164,39 @@ var myTeam = (function (helpers) {
         playerSelect.appendChild(list);
     }
 
-    function handlePlayerSearch() {
+    function handlePlayerSearch(e) {
 
         var playerList = playerSelect.getElementsByTagName("li");
         var filter = playerFilter.value.toUpperCase();
 
         for (var i = 0; i < playerList.length; i++) {
 
-            var text = playerList[i].innerText || playerList[i].textContent;
-
-            if (helpers.fuzzySearch(filter, text.toUpperCase())) {
+            if(filter === '') {
 
                 playerList[i].style.display = 'list-item';
             } else {
 
-                playerList[i].style.display = 'none';
+                var text = playerList[i].innerText || playerList[i].textContent;
+
+                if (helpers.fuzzySearch(filter, text.toUpperCase())) {
+
+                    playerList[i].style.display = 'list-item';
+                } else {
+
+                    playerList[i].style.display = 'none';
+                }
             }
+        }
+    }
+
+    function preventEnter(e) {
+
+        e = e || window.event;
+
+        if (event.keyCode == 13) {
+
+            e.preventDefault();
+            return false;
         }
     }
 
