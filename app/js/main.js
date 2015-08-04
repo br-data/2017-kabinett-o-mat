@@ -3,7 +3,7 @@ var config = {
     defaultTeam: [["00"],["00","00","00","00"],["00","00","00","00"],["00","00"]]
 };
 
-var myTeam = (function() {
+var myTeam = (function (helpers) {
 
     'use strict';
 
@@ -13,18 +13,21 @@ var myTeam = (function() {
 
     function init() {
 
-        if(location.hash) {
+        helpers.getJSON('data/players.json', function (data) {
 
-            currentTeam = convertLineup(location.hash.replace('#',''));
-        } else {
+            if(location.hash) {
 
-            currentTeam = config.defaultTeam;
-        }
-       
-        getFormation(currentTeam);
-        showLineup(currentTeam);
+                currentTeam = convertLineup(location.hash.replace('#',''));
+            } else {
 
-        formationSelect.addEventListener('change', handleFormationChange);
+                currentTeam = config.defaultTeam;
+            }
+           
+            getFormation(currentTeam);
+            showLineup(currentTeam);
+
+            formationSelect.addEventListener('change', handleFormationChange);
+        });   
     }
    
     function getURLParameter(name) {
@@ -135,6 +138,6 @@ var myTeam = (function() {
 
         init: init
     };
-})();
+})(helpers);
 
 myTeam.init();
