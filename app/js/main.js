@@ -8,7 +8,7 @@ var myTeam = (function() {
 
     function init() {
 
-        currentTeam = convertLineup(getURLParameter('aufstellung'));
+        currentTeam = convertLineup(location.hash.replace('#',''));
         getFormation(currentTeam);
         showLineup(currentTeam);
 
@@ -18,7 +18,6 @@ var myTeam = (function() {
     function getURLParameter(name) {
 
         name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-
         var regex = new RegExp('[\\?&]' + name + '=([^&#]*)'),
             results = regex.exec(location.search);
 
@@ -80,12 +79,25 @@ var myTeam = (function() {
         //Clear current team;
         currentTeam = [];
 
-        for (var i = 0;  i < formation.length; i++) {
+        for (var i = 0;  i < formation.length - 1; i++) {
 
             currentTeam.push(flatTeam.splice(0, +formation[i]));
         }
 
         showLineup(currentTeam);
+        location.hash = teamToString(currentTeam);
+    }
+
+    function teamToString(arr) {
+
+        var result = [];
+
+        for (var i = 0;  i < arr.length; i++) {
+            
+            result.push(arr[i].join(''));
+        }
+
+        return result.join('x');
     }
 
     return {
