@@ -94,7 +94,7 @@ var myTeam = (function (helpers) {
 
                 var div = document.createElement('div');
                 div.className = 'player';
-                div.setAttribute("data-player", arr[row][player]);
+                div.setAttribute('data-player', arr[row][player]);
                 div.addEventListener('click', handlePlayerSelect);
 
                 var text = document.createTextNode(arr[row][player]);
@@ -159,6 +159,7 @@ var myTeam = (function (helpers) {
 
             var listElement = document.createElement('li');
             listElement.setAttribute("data-player", player);
+            listElement.addEventListener('click', handlePlayerChange);
             var text = document.createTextNode(obj[player].name);
             
             listElement.appendChild(text);
@@ -175,6 +176,12 @@ var myTeam = (function (helpers) {
         if (currentPlayer) currentPlayer.className = 'player';
         currentPlayer = e.target;
     } 
+
+    function handlePlayerChange(e) {
+        var newPlayerId = e.target.getAttribute('data-player');
+        currentPlayer.setAttribute('data-player', newPlayerId);
+        currentPlayer.innerText = newPlayerId;
+    }
 
     function handlePlayerSearch(e) {
 
