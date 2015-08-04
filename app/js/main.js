@@ -3,12 +3,15 @@ var myTeam = (function() {
     'use strict';
 
     var currentTeam = [];
+    var currentFormation = [];
+    var formationSelect = document.getElementById('formation');
 
     function init() {
-        
-        showLineup(convertLineup(getURLParameter('aufstellung')));
 
-        var formationSelect = document.getElementById('formation');
+        currentTeam = convertLineup(getURLParameter('aufstellung'));
+        getFormation(currentTeam);
+        showLineup(currentTeam);
+
         formationSelect.addEventListener('change', handleFormationChange);
     }
    
@@ -31,8 +34,21 @@ var myTeam = (function() {
             arr[i] = arr[i].match(/.{1,2}/g);
         }
 
-        currentTeam = arr; 
         return arr;
+    }
+
+    function getFormation(arr) {
+
+        var result = [];
+        
+        for (var i = 0;  i < arr.length; i++) {
+
+            result.push(arr[i].length);
+        }
+
+        currentFormation = result;
+        result.shift();
+        formationSelect.value = result.join('-');
     }
 
     function showLineup(arr) {
@@ -51,14 +67,14 @@ var myTeam = (function() {
     function handleFormationChange() {
 
         //Get the current formation
-        var formationSelect = document.getElementById('formation');
         var formation = formationSelect.value.split('-');
+        var flatTeam = [];
 
         //Add the goalkeeper
         formation.unshift(1);
+        currentFormation = formation;
 
         //Flatten array 
-        var flatTeam = [];
         flatTeam = flatTeam.concat.apply(flatTeam, currentTeam);
 
         //Clear current team;
@@ -69,11 +85,7 @@ var myTeam = (function() {
             currentTeam.push(flatTeam.splice(0, +formation[i]));
         }
 
-        showLineup(currentTeam);  
-    }
-
-    function flattenArray(arr) {
-
+        showLineup(currentTeam);
     }
 
     return {
