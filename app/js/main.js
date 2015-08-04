@@ -1,3 +1,8 @@
+var config = {
+
+    defaultTeam: [["00"],["00","00","00","00"],["00","00","00","00"],["00","00"]]
+};
+
 var myTeam = (function() {
 
     'use strict';
@@ -8,7 +13,14 @@ var myTeam = (function() {
 
     function init() {
 
-        currentTeam = convertLineup(location.hash.replace('#',''));
+        if(location.hash) {
+
+            currentTeam = convertLineup(location.hash.replace('#',''));
+        } else {
+
+            currentTeam = config.defaultTeam;
+        }
+       
         getFormation(currentTeam);
         showLineup(currentTeam);
 
