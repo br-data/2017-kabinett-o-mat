@@ -16,6 +16,7 @@ var myTeam = (function (helpers) {
     var playerSelect = document.getElementById('players');
     var lineupSelect = document.getElementById('lineup');
     var playerFilter = document.getElementById('search-player');
+    var currentPlayer = null;
 
     function init() {
 
@@ -93,6 +94,8 @@ var myTeam = (function (helpers) {
 
                 var div = document.createElement('div');
                 div.className = 'player';
+                div.setAttribute("data-player", arr[row][player]);
+                div.addEventListener('click', handlePlayerSelect);
 
                 var text = document.createTextNode(arr[row][player]);
                 text.className = 'player-name';                
@@ -155,7 +158,8 @@ var myTeam = (function (helpers) {
         for (var player in obj) {
 
             var listElement = document.createElement('li');
-            var text = document.createTextNode(obj[player].name + ' (' + player + ')');
+            listElement.setAttribute("data-player", player);
+            var text = document.createTextNode(obj[player].name);
             
             listElement.appendChild(text);
             list.appendChild(listElement);
@@ -163,6 +167,14 @@ var myTeam = (function (helpers) {
 
         playerSelect.appendChild(list);
     }
+
+    function handlePlayerSelect(e) {
+
+        e.target.className = 'player active';
+        console.log(currentPlayer);
+        if (currentPlayer) currentPlayer.className = 'player';
+        currentPlayer = e.target;
+    } 
 
     function handlePlayerSearch(e) {
 

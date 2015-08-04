@@ -10,6 +10,7 @@ html, body {
 	height: 100%;
 	margin: 0;
 	padding: 0;
+	overflow: hidden;
 }
 
 #field {
@@ -33,11 +34,20 @@ html, body {
 	list-style-type: none; 
 }
 
+#sidebar li {
+	cursor: pointer;
+}
+
 #search-player {
 	width: 100%;
 }
 
+#players {
+	overflow: auto;
+}
+
 .player {
+	cursor: pointer;
 	display: inline;
 	margin: 0 .5em;
 }
@@ -45,3 +55,8 @@ html, body {
 .row {
 	margin: 1em 0;
 }
+
+.active {
+	background-color: #ccc;
+}
+
