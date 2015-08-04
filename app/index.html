@@ -13,16 +13,30 @@
 
   <body>
 
-    <form>
-      <select id="formation">
-        <option>4-4-2</option>
-        <option>4-2-3-1</option>
-        <option>4-3-3</option>
-      </select>
-    </form>
+    <section id="field">
 
-    <div id="lineup"></div>
-  
+       <form>
+        <select id="formation">
+          <option>4-4-2</option>
+          <option>4-2-3-1</option>
+          <option>4-3-3</option>
+        </select>
+      </form>
+
+      <div id="lineup"></div>
+      
+    </section>
+
+    <aside id="sidebar">
+
+      <form>
+        <input type="search" id="search-player" name="search-player" value="">
+      </form>
+
+      <section id="players"></section>
+
+    </aside>
+
     <script type="text/javascript" src="js/helpers.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
    

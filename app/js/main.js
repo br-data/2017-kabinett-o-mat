@@ -7,13 +7,17 @@ var myTeam = (function (helpers) {
 
     'use strict';
 
-    var currentTeam = [];
     var currentFormation = [];
+    var currentTeam = [];
+    var currentPlayers = {};
+
     var formationSelect = document.getElementById('formation');
+    var playerSelect = document.getElementById('players');
+    var lineupSelect = document.getElementById('lineup');
 
     function init() {
 
-        helpers.getJSON('data/players.json', function (data) {
+        helpers.getJSON('data/players.json', function (players) {
 
             if(location.hash) {
 
@@ -22,9 +26,12 @@ var myTeam = (function (helpers) {
 
                 currentTeam = config.defaultTeam;
             }
+
+            console.log(players);
            
             getFormation(currentTeam);
             showLineup(currentTeam);
+            showPlayers(players);
 
             formationSelect.addEventListener('change', handleFormationChange);
         });   
@@ -67,13 +74,11 @@ var myTeam = (function (helpers) {
 
     function showLineup(arr) {
 
-        var lineupEl = document.getElementById('lineup');
-
         //Clear current team element
         //http://jsperf.com/innerhtml-vs-removechild/47
-        while (lineupEl.firstChild) {
+        while (lineupSelect.firstChild) {
 
-            lineupEl.removeChild(lineupEl.firstChild);
+            lineupSelect.removeChild(lineupSelect.firstChild);
         }
 
         for (var row in arr) {
@@ -93,7 +98,7 @@ var myTeam = (function (helpers) {
                 section.appendChild(div);
             }
 
-            lineupEl.appendChild(section);  
+            lineupSelect.appendChild(section);  
         }
     }
 
@@ -132,6 +137,28 @@ var myTeam = (function (helpers) {
         }
 
         return result.join('x');
+    }
+
+    // The input object is structured like a dictionary
+    function showPlayers(obj) {
+
+        while (playerSelect.firstChild) {
+
+            playerSelect.removeChild(playerSelect.firstChild);
+        }
+
+        var list = document.createElement('ul');
+
+        for (var player in obj) {
+
+            var listElement = document.createElement('li');
+            var text = document.createTextNode(obj[player].name + ' (' + player + ')');
+            
+            listElement.appendChild(text);
+            list.appendChild(listElement);
+        }
+
+        playerSelect.appendChild(list);
     }
 
     return {
