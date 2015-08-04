@@ -172,15 +172,28 @@ var myTeam = (function (helpers) {
     function handlePlayerSelect(e) {
 
         e.target.className = 'player active';
-        console.log(currentPlayer);
         if (currentPlayer) currentPlayer.className = 'player';
         currentPlayer = e.target;
     } 
 
     function handlePlayerChange(e) {
+        var oldPlayerId = currentPlayer.getAttribute('data-player');
         var newPlayerId = e.target.getAttribute('data-player');
+
         currentPlayer.setAttribute('data-player', newPlayerId);
         currentPlayer.innerText = newPlayerId;
+
+        for (var row in currentTeam) {
+
+            var index = currentTeam[row].indexOf(oldPlayerId);
+
+            if (index > -1) {
+
+                currentTeam[row][index] = newPlayerId;
+            }
+        }
+
+        handleFormationChange();
     }
 
     function handlePlayerSearch(e) {
