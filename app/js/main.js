@@ -66,7 +66,7 @@ var myTeam = (function() {
 
         var lineupEl = document.getElementById('lineup');
 
-        //Clear current lineup
+        //Clear current team element
         //http://jsperf.com/innerhtml-vs-removechild/47
         while (lineupEl.firstChild) {
 
@@ -107,7 +107,7 @@ var myTeam = (function() {
         //Flatten array 
         flatTeam = flatTeam.concat.apply(flatTeam, currentTeam);
 
-        //Clear current team;
+        //Clear current team model;
         currentTeam = [];
 
         for (var i = 0;  i < formation.length; i++) {
