@@ -1,6 +1,6 @@
 var config = {
 
-    defaultTeam: [["00"],["00","00","00","00"],["00","00","00","00"],["00","00"]]
+    defaultTeam: [["jj","kk"],["ff","gg","hh","ii"],["bb","cc","dd","ee"],["aa"]]
 };
 
 var myTeam = (function (helpers) {
@@ -30,10 +30,12 @@ var myTeam = (function (helpers) {
                 currentTeam = config.defaultTeam;
             }
            
+            // Inital drawing
             getFormation(currentTeam);
             showLineup(currentTeam);
             showPlayers(data);
 
+            // Register the event handlers
             formationSelect.addEventListener('change', handleFormationChange);
             playerFilter.addEventListener('keydown', preventEnter);
             playerFilter.addEventListener('keyup', handlePlayerSearch);
@@ -169,12 +171,10 @@ var myTeam = (function (helpers) {
     // Check if a player is already part of the team
     function wasPicked(playerId) {
 
-        console.log(currentTeam, playerId);
-
         for (var i = 0; i < currentTeam.length; i++) {
 
             if (currentTeam[i].indexOf(playerId) > -1) {
-                console.log(currentTeam[i]);
+
                 return true;
             }
         }
@@ -183,15 +183,19 @@ var myTeam = (function (helpers) {
     function setLocationHash() {
 
         // Get the current formation
-        var formation = formationSelect.value.split('-');
+        var formation = formationSelect.value.split('-').reverse();
         var flatTeam = [];
 
         // Add the goalkeeper
-        formation.unshift("1");
+        formation.push("1");
         currentFormation = formation;
+
+        console.log(formation);
 
         // Flatten array 
         flatTeam = flatTeam.concat.apply(flatTeam, currentTeam);
+
+        console.log(currentTeam);
 
         // Clear current team model;
         currentTeam = [];
@@ -226,8 +230,8 @@ var myTeam = (function (helpers) {
         }
 
         currentFormation = result;
-        result.shift();
-        formationSelect.value = result.join('-');
+        result.pop();
+        formationSelect.value = result.reverse().join('-');
     }
 
     function teamToString(arr) {
