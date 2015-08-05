@@ -110,7 +110,7 @@ var myTeam = (function (helpers) {
 
         var newPlayerId = e.target.getAttribute('data-player');
 
-        if (wasPicked(newPlayerId)) {
+        if (!wasPicked(newPlayerId)) {
 
 
             var oldPlayerId = currentPlayer.getAttribute('data-player');
@@ -169,14 +169,12 @@ var myTeam = (function (helpers) {
     // Check if a player is already part of the team
     function wasPicked(playerId) {
 
-        console.log(currentTeam);
+        console.log(currentTeam, playerId);
 
         for (var i = 0; i < currentTeam.length; i++) {
 
-            console.log(currentTeam[i]);
-
-            if (currentTeam[i].indexOf(playerId)) {
-
+            if (currentTeam[i].indexOf(playerId) > -1) {
+                console.log(currentTeam[i]);
                 return true;
             }
         }
