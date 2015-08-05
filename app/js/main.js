@@ -10,14 +10,14 @@ var myTeam = (function (helpers) {
     var currentFormation = [];
     var currentTeam = [];
     var currentPlayers = {};
+    var currentPlayer = {};
 
     // @TODO Use more semantic name
     var formationSelect = document.getElementById('formation');
     var playerSelect = document.getElementById('players');
     var lineupSelect = document.getElementById('lineup');
-    var playerFilter = document.getElementById('search-player');
-    var currentPlayer;
-
+    var playerFilter = document.getElementById('player-filter');
+    
     function init() {
 
         helpers.getJSON('data/players.json', function (data) {
@@ -102,7 +102,7 @@ var myTeam = (function (helpers) {
 
     function handlePlayerChange(e) {
 
-        //If no player is selected, select the first one
+        // If no player is selected, select the first one
         if (!currentPlayer) {
 
             currentPlayer = document.getElementsByClassName('player')[0];
@@ -110,45 +110,45 @@ var myTeam = (function (helpers) {
 
         var newPlayerId = e.target.getAttribute('data-player');
 
-        currentPlayer.setAttribute('data-player', newPlayerId);
-        currentPlayer.innerHTML = newPlayerId;
+        if (wasPicked(newPlayerId)) {
 
-        //handleFormationChange();
+
+            var oldPlayerId = currentPlayer.getAttribute('data-player');
+
+            currentPlayer.setAttribute('data-player', newPlayerId);
+            currentPlayer.innerHTML = newPlayerId;
+
+            // Update the player in the current team model
+            for (var i = 0; i < currentTeam.length; i++) {
+
+                var j = currentTeam[i].indexOf(oldPlayerId);
+
+                if (j > -1) {
+
+                    currentTeam[i][j] = newPlayerId;
+                }
+            }
+
+            setLocationHash();
+        }
     }
 
     function handleFormationChange() {
 
-        //Get the current formation
-        var formation = formationSelect.value.split('-');
-        var flatTeam = [];
-
-        //Add the goalkeeper
-        formation.unshift("1");
-        currentFormation = formation;
-
-        //Flatten array 
-        flatTeam = flatTeam.concat.apply(flatTeam, currentTeam);
-
-        //Clear current team model;
-        currentTeam = [];
-
-        for (var i = 0;  i < formation.length; i++) {
-
-            currentTeam.push(flatTeam.splice(0, +formation[i]));
-        }
-
-        showLineup(currentTeam);
-        location.hash = teamToString(currentTeam);
+        setLocationHash();
+        showLineup(currentTeam);        
     }
 
     function handlePlayerSearch(e) {
 
+        // Get a list of all players
         var playerList = playerSelect.getElementsByTagName("li");
         var filter = playerFilter.value.toUpperCase();
 
+        // Search for current query and hide mismatches
         for (var i = 0; i < playerList.length; i++) {
 
-            if(filter === '') {
+            if (filter === '') {
 
                 playerList[i].style.display = 'list-item';
             } else {
@@ -164,6 +164,46 @@ var myTeam = (function (helpers) {
                 }
             }
         }
+    }
+
+    // Check if a player is already part of the team
+    function wasPicked(playerId) {
+
+        console.log(currentTeam);
+
+        for (var i = 0; i < currentTeam.length; i++) {
+
+            console.log(currentTeam[i]);
+
+            if (currentTeam[i].indexOf(playerId)) {
+
+                return true;
+            }
+        }
+    }
+
+    function setLocationHash() {
+
+        // Get the current formation
+        var formation = formationSelect.value.split('-');
+        var flatTeam = [];
+
+        // Add the goalkeeper
+        formation.unshift("1");
+        currentFormation = formation;
+
+        // Flatten array 
+        flatTeam = flatTeam.concat.apply(flatTeam, currentTeam);
+
+        // Clear current team model;
+        currentTeam = [];
+
+        for (var i = 0;  i < formation.length; i++) {
+
+            currentTeam.push(flatTeam.splice(0, +formation[i]));
+        }
+
+        location.hash = teamToString(currentTeam);
     }
 
     function convertLineup(str) {
