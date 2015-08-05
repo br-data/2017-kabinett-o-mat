@@ -16,11 +16,11 @@ var myTeam = (function (helpers) {
     var playerSelect = document.getElementById('players');
     var lineupSelect = document.getElementById('lineup');
     var playerFilter = document.getElementById('search-player');
-    var currentPlayer = null;
+    var currentPlayer;
 
     function init() {
 
-        helpers.getJSON('data/players.json', function (players) {
+        helpers.getJSON('data/players.json', function (data) {
 
             if(location.hash) {
 
@@ -32,48 +32,13 @@ var myTeam = (function (helpers) {
            
             getFormation(currentTeam);
             showLineup(currentTeam);
-            showPlayers(players);
+            showPlayers(data);
 
             formationSelect.addEventListener('change', handleFormationChange);
             playerFilter.addEventListener('keydown', preventEnter);
             playerFilter.addEventListener('keyup', handlePlayerSearch);
             playerFilter.addEventListener('search', handlePlayerSearch);
         });   
-    }
-   
-    function getURLParameter(name) {
-
-        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)'),
-            results = regex.exec(location.search);
-
-        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-    }
-
-    function convertLineup(str) {
-
-        var arr = str.split('x');
-
-        for (var i = 0;  i < arr.length; i++) {
-
-            arr[i] = arr[i].match(/.{1,2}/g);
-        }
-
-        return arr;
-    }
-
-    function getFormation(arr) {
-
-        var result = [];
-        
-        for (var i = 0;  i < arr.length; i++) {
-
-            result.push(arr[i].length);
-        }
-
-        currentFormation = result;
-        result.shift();
-        formationSelect.value = result.join('-');
     }
 
     function showLineup(arr) {
@@ -108,50 +73,8 @@ var myTeam = (function (helpers) {
         }
     }
 
-    function handleFormationChange() {
-
-        //Get the current formation
-        var formation = formationSelect.value.split('-');
-        var flatTeam = [];
-
-        //Add the goalkeeper
-        formation.unshift(1);
-        currentFormation = formation;
-
-        //Flatten array 
-        flatTeam = flatTeam.concat.apply(flatTeam, currentTeam);
-
-        //Clear current team model;
-        currentTeam = [];
-
-        for (var i = 0;  i < formation.length; i++) {
-
-            currentTeam.push(flatTeam.splice(0, +formation[i]));
-        }
-
-        showLineup(currentTeam);
-        location.hash = teamToString(currentTeam);
-    }
-
-    function teamToString(arr) {
-
-        var result = [];
-
-        for (var i = 0;  i < arr.length; i++) {
-            
-            result.push(arr[i].join(''));
-        }
-
-        return result.join('x');
-    }
-
     // The input object is structured like a dictionary
     function showPlayers(obj) {
-
-        while (playerSelect.firstChild) {
-
-            playerSelect.removeChild(playerSelect.firstChild);
-        }
 
         var list = document.createElement('ul');
 
@@ -173,27 +96,49 @@ var myTeam = (function (helpers) {
 
         e.target.className = 'player active';
         if (currentPlayer) currentPlayer.className = 'player';
+        
         currentPlayer = e.target;
     } 
 
     function handlePlayerChange(e) {
-        var oldPlayerId = currentPlayer.getAttribute('data-player');
+
+        //If no player is selected, select the first one
+        if (!currentPlayer) {
+
+            currentPlayer = document.getElementsByClassName('player')[0];
+        }
+
         var newPlayerId = e.target.getAttribute('data-player');
 
         currentPlayer.setAttribute('data-player', newPlayerId);
-        currentPlayer.innerText = newPlayerId;
+        currentPlayer.innerHTML = newPlayerId;
 
-        for (var row in currentTeam) {
+        //handleFormationChange();
+    }
 
-            var index = currentTeam[row].indexOf(oldPlayerId);
+    function handleFormationChange() {
 
-            if (index > -1) {
+        //Get the current formation
+        var formation = formationSelect.value.split('-');
+        var flatTeam = [];
 
-                currentTeam[row][index] = newPlayerId;
-            }
+        //Add the goalkeeper
+        formation.unshift("1");
+        currentFormation = formation;
+
+        //Flatten array 
+        flatTeam = flatTeam.concat.apply(flatTeam, currentTeam);
+
+        //Clear current team model;
+        currentTeam = [];
+
+        for (var i = 0;  i < formation.length; i++) {
+
+            currentTeam.push(flatTeam.splice(0, +formation[i]));
         }
 
-        handleFormationChange();
+        showLineup(currentTeam);
+        location.hash = teamToString(currentTeam);
     }
 
     function handlePlayerSearch(e) {
@@ -219,6 +164,44 @@ var myTeam = (function (helpers) {
                 }
             }
         }
+    }
+
+    function convertLineup(str) {
+
+        var arr = str.split('x');
+
+        for (var i = 0;  i < arr.length; i++) {
+
+            arr[i] = arr[i].match(/.{1,2}/g);
+        }
+
+        return arr;
+    }
+
+    function getFormation(arr) {
+
+        var result = [];
+        
+        for (var i = 0;  i < arr.length; i++) {
+
+            result.push(arr[i].length);
+        }
+
+        currentFormation = result;
+        result.shift();
+        formationSelect.value = result.join('-');
+    }
+
+    function teamToString(arr) {
+
+        var result = [];
+
+        for (var i = 0;  i < arr.length; i++) {
+   
+            result.push(arr[i].join(''));
+        }
+
+        return result.join('x');
     }
 
     function preventEnter(e) {
