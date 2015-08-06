@@ -34,8 +34,9 @@ var myTeam = (function (helpers) {
            
             // Inital drawing
             getFormation(currentTeam);
+            setFormation();
             showLineup(currentTeam);
-            showPlayers(data);
+            showList(data);
 
             // Register the event handlers
             formationSelect.addEventListener('change', handleFormationChange);
@@ -71,7 +72,7 @@ var myTeam = (function (helpers) {
                 var playerIcon = document.createElement('div');
                 playerIcon.className = 'icon';
 
-                var playerName = document.createElement('span');
+                var playerName = document.createElement('p');
                 playerName.className = 'text';
 
                 var playerNameText = document.createTextNode(playerInfo.name);             
@@ -87,7 +88,7 @@ var myTeam = (function (helpers) {
     }
 
     // The input object is structured like a dictionary
-    function showPlayers(obj) {
+    function showList(obj) {
 
         var list = document.createElement('ul');
 
@@ -129,7 +130,7 @@ var myTeam = (function (helpers) {
             var playerInfo = getPlayer(newPlayerId);
 
             currentPlayer.setAttribute('data-player', newPlayerId);
-            currentPlayer.getElementsByTagName('span')[0].textContent = playerInfo.name;
+            currentPlayer.getElementsByTagName('p')[0].textContent = playerInfo.name;
 
             // Update the player in the current team model
             for (var i = 0; i < currentTeam.length; i++) {
@@ -142,13 +143,13 @@ var myTeam = (function (helpers) {
                 }
             }
 
-            setLocationHash();
+            setFormation();
         }
     }
 
     function handleFormationChange() {
 
-        setLocationHash();
+        setFormation();
         showLineup(currentTeam);        
     }
 
@@ -191,7 +192,7 @@ var myTeam = (function (helpers) {
         }
     }
 
-    function setLocationHash() {
+    function setFormation() {
 
         // Get the current formation
         var formation = formationSelect.value.split('-').reverse();
@@ -200,6 +201,9 @@ var myTeam = (function (helpers) {
         // Add the goalkeeper
         formation.push("1");
         currentFormation = formation;
+
+        // Write class
+        lineup.className = 'rows-' + currentFormation.length;
 
         // Flatten array 
         flatTeam = flatTeam.concat.apply(flatTeam, currentTeam);
@@ -228,8 +232,6 @@ var myTeam = (function (helpers) {
     }
 
     function getPlayer(playerId) {
-
-        console.log(currentPlayers);
 
         if (isNaN(parseInt(playerId))) {
             playerId = '00';
