@@ -71,6 +71,8 @@ var myTeam = (function (helpers) {
 
                 var playerIcon = document.createElement('div');
                 playerIcon.className = 'icon';
+                playerIcon.style['background'] = 'url(img/00.png) center no-repeat';
+                playerIcon.style['background-size'] = 'contain';
 
                 var playerName = document.createElement('p');
                 playerName.className = 'text';
@@ -130,9 +132,13 @@ var myTeam = (function (helpers) {
 
             var oldPlayerId = currentPlayer.getAttribute('data-player');
             var playerInfo = getPlayer(newPlayerId);
+            var playerIcon = currentPlayer.getElementsByTagName('div')[0];
 
             currentPlayer.setAttribute('data-player', newPlayerId);
             currentPlayer.getElementsByTagName('p')[0].textContent = playerInfo.name;
+
+            playerIcon.style['background'] = 'url(img/01.png) center no-repeat';
+            playerIcon.style['background-size'] = 'contain';
 
             // Update the player in the current team model
             for (var i = 0; i < currentTeam.length; i++) {
