@@ -67,9 +67,12 @@ var myTeam = (function (helpers) {
                 var playerIcon = document.createElement('div');
                 playerIcon.className = 'icon';
 
-                var playerName = document.createTextNode(arr[row][player]);
-                playerName.className = 'player-name';                
+                var playerName = document.createElement('span');
+                playerName.className = 'text';
 
+                var playerNameText = document.createTextNode(arr[row][player]);             
+
+                playerName.appendChild(playerNameText);
                 playerWrapper.appendChild(playerIcon);
                 playerWrapper.appendChild(playerName);
                 section.appendChild(playerWrapper);
@@ -118,11 +121,10 @@ var myTeam = (function (helpers) {
 
         if (!wasPicked(newPlayerId)) {
 
-
             var oldPlayerId = currentPlayer.getAttribute('data-player');
 
             currentPlayer.setAttribute('data-player', newPlayerId);
-            currentPlayer.innerHTML = newPlayerId;
+            currentPlayer.getElementsByTagName('span')[0].textContent = newPlayerId;
 
             // Update the player in the current team model
             for (var i = 0; i < currentTeam.length; i++) {
@@ -159,7 +161,7 @@ var myTeam = (function (helpers) {
                 playerList[i].style.display = 'list-item';
             } else {
 
-                var text = playerList[i].innerText || playerList[i].textContent;
+                var text = playerList[i].textContent;
 
                 if (helpers.fuzzySearch(filter, text.toUpperCase())) {
 
