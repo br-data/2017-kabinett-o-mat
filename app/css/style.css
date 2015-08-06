@@ -1,125 +1,153 @@
 html {
-	box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 *, *:before, *:after {
-	box-sizing: inherit;
+    box-sizing: inherit;
 }
 
 html, body {
-	height: 100%;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-	font-family: "Open Sans", "Arial", sans-serif;
-	font-size: .9em;
-	color: #333;
-	background: #fff;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: "Open Sans", "Arial", sans-serif;
+    font-size: .9em;
+    color: #333;
+    background: #fff;
 }
 
-input {
-   font-family: inherit;
-   font-size: inherit;
+input, select {
+    font-family: inherit;
+    font-size: inherit;
+    height: 30px;
+    font-size: inherit;
+    border: 2px solid DarkSeaGreen;
+    border-radius: 0;
+    outline: none;
+    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
 
 #field {
-	background: DarkSeaGreen;
-	padding: 1em;
-	display: inline-block;
-	float: left;
-	width: 70%;
-	text-align: center;
-	height: 100%;
+    background: DarkSeaGreen;
+    padding: 1em;
+    display: inline-block;
+    float: left;
+    width: 70%;
+    text-align: center;
+    height: 100%;
 }
 
 #field form {
-	padding-bottom: 2em;
-	border-bottom: 4px solid #fff;
+    padding-bottom: 2em;
+}
+
+#field label {
+    display: inline-block;
+    vertical-align: top;
+    background-color: #fff;
+    line-height: 30px;
+    padding: 0 .7em 0 .5em;
+}
+
+
+#field select {
+    background: #fff url(../img/arrow.png) no-repeat right 3px center;
+    background-size: 20px 13px;
+    border: none;
+    padding: 4px 46px 4px 8px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: '';
+    cursor: pointer;
 }
 
 #sidebar {
-	padding: 1em 1em 0;
-	display: inline-block;
-	height: 100%;
-	width: 30%;
-	border-left: 1px solid #ccc;
-	position: relative;
+    padding: 1em 1em 0;
+    display: inline-block;
+    height: 100%;
+    width: 30%;
+    position: relative;
 }
 
 #sidebar .content {
-	height: 100%;
-	overflow: auto;
+    height: 100%;
+    overflow: auto;
 }
 
 #sidebar form {
-	padding: 1em;
-	position: absolute;
-	top: 0;
-	right: 0;
-	left: 0;
-	background: #fff;
+    padding: 1em;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    background: #fff;
 }
 
 #sidebar input {
-	width: 100%;
+    width: 100%;
+    border-radius: 0;
+    outline: none;
+    padding: 4px 8px;
 }
 
 #sidebar ul {
-	padding: 0;
-	margin: 1em 0;
-	list-style-type: none; 
+    padding: 2.5em 0 0 1em;;
+    list-style-type: none; 
 }
 
 #sidebar li {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 #lineup {
-	background-image: url('../img/goal.png');
-	background-repeat: no-repeat;
-	background-position: bottom;
-	background-size: 100% auto;
-	color: #fff;
-	height: 100%;
-	padding: 3em 2em 1em;
+    background-image: url('../img/goal.png');
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100% auto;
+    color: #fff;
+    height: 100%;
+    padding: 3em 2em 1em;
 }
 
 #lineup .player {
-	cursor: pointer;
-	display: inline-block;
-	width: 25%;
-	vertical-align: top;
+    cursor: pointer;
+    display: inline-block;
+    width: 25%;
+    vertical-align: top;
 }
 
 #lineup .player .icon {
-	pointer-events: none;
-	width: 4em;
-	height: 4em;
-	margin: 0 auto .5em;
-	border-radius: 50%;
-	background-color: #ececec;
+    pointer-events: none;
+    width: 4em;
+    height: 4em;
+    margin: 0 auto .5em;
+    border-radius: 50%;
+    background-color: #ececec;
 }
 
 #lineup .player .text {
-	margin: 0 0 .5em;
-	line-height: 1.2em;
+    margin: 0 0 .5em;
+    line-height: 1.2em;
 }
 
 #lineup .player.active .icon {
-	box-shadow: 0 0 0 3px indianred;
+    box-shadow: 0 0 0 3px indianred;
 }
 
 #lineup.rows-4 .row {
-	height: 25%;
+    height: 25%;
 }
 
 #lineup.rows-5 .row {
-	height: 20%;
+    height: 20%;
 }
 
 .gradient {
-	pointer-events: none;
-	opacity: .9;
+    pointer-events: none;
+    opacity: .9;
     height: 60px;
     position: absolute;
     bottom: 0;
