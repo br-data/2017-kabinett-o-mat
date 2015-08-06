@@ -45,8 +45,8 @@ var myTeam = (function (helpers) {
 
     function showLineup(arr) {
 
-        //Clear current team element
-        //http://jsperf.com/innerhtml-vs-removechild/47
+        // Clear current team element
+        // http://jsperf.com/innerhtml-vs-removechild/47
         while (lineupSelect.firstChild) {
 
             lineupSelect.removeChild(lineupSelect.firstChild);
@@ -59,16 +59,20 @@ var myTeam = (function (helpers) {
 
             for (var player in arr[row]) {
 
-                var div = document.createElement('div');
-                div.className = 'player';
-                div.setAttribute('data-player', arr[row][player]);
-                div.addEventListener('click', handlePlayerSelect);
+                var playerWrapper = document.createElement('div');
+                playerWrapper.className = 'player';
+                playerWrapper.setAttribute('data-player', arr[row][player]);
+                playerWrapper.addEventListener('click', handlePlayerSelect);
 
-                var text = document.createTextNode(arr[row][player]);
-                text.className = 'player-name';                
+                var playerIcon = document.createElement('div');
+                playerIcon.className = 'icon';
 
-                div.appendChild(text);
-                section.appendChild(div);
+                var playerName = document.createTextNode(arr[row][player]);
+                playerName.className = 'player-name';                
+
+                playerWrapper.appendChild(playerIcon);
+                playerWrapper.appendChild(playerName);
+                section.appendChild(playerWrapper);
             }
 
             lineupSelect.appendChild(section);  
@@ -190,12 +194,8 @@ var myTeam = (function (helpers) {
         formation.push("1");
         currentFormation = formation;
 
-        console.log(formation);
-
         // Flatten array 
         flatTeam = flatTeam.concat.apply(flatTeam, currentTeam);
-
-        console.log(currentTeam);
 
         // Clear current team model;
         currentTeam = [];

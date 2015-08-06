@@ -1,9 +1,9 @@
 html {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 *, *:before, *:after {
-  box-sizing: inherit;
+	box-sizing: inherit;
 }
 
 html, body {
@@ -14,10 +14,13 @@ html, body {
 }
 
 #field {
+	background: DarkSeaGreen;
 	padding: 1em;
 	display: inline-block;
 	float: left;
 	width: 70%;
+	text-align: center;
+	height: 100%;
 }
 
 #sidebar {
@@ -46,17 +49,30 @@ html, body {
 	overflow: auto;
 }
 
-.player {
+#lineup {
+	color: #fff;
+	height: 100%;
+	padding: 2em;
+}
+
+#lineup .player {
 	cursor: pointer;
-	display: inline;
-	margin: 0 .5em;
+	display: inline-block;
+	width: 25%;
 }
 
-.row {
-	margin: 1em 0;
+#lineup .player .icon {
+	width: 3em;
+	height: 3em;
+	margin: 0 auto 1em;
+	border-radius: 50%;
+	background-color: #fff;
 }
 
-.active {
+#lineup .row {
+	height: 20%;
+}
+
+#lineup .active {
 	background-color: #ccc;
 }
-
