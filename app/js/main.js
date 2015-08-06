@@ -7,10 +7,10 @@ var myTeam = (function (helpers) {
 
     'use strict';
 
-    var currentFormation = [];
-    var currentTeam = [];
-    var currentPlayers = {};
-    var currentPlayer = {};
+    var currentFormation;
+    var currentTeam;
+    var currentPlayers;
+    var currentPlayer;
 
     // @TODO Use more semantic name
     var formationSelect = document.getElementById('formation');
@@ -108,6 +108,7 @@ var myTeam = (function (helpers) {
 
     function handlePlayerSelect(e) {
 
+        console.log(e.target);
         e.target.className = 'player active';
         if (currentPlayer) currentPlayer.className = 'player';
         
@@ -120,6 +121,7 @@ var myTeam = (function (helpers) {
         if (!currentPlayer) {
 
             currentPlayer = document.getElementsByClassName('player')[0];
+            handlePlayerSelect({target:currentPlayer});
         }
 
         var newPlayerId = e.target.getAttribute('data-player');

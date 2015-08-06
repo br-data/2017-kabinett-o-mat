@@ -32,6 +32,11 @@ input {
 	height: 100%;
 }
 
+#field form {
+	padding-bottom: 2em;
+	border-bottom: 4px solid #fff;
+}
+
 #sidebar {
 	padding: 1em 1em 0;
 	display: inline-block;
@@ -70,9 +75,13 @@ input {
 }
 
 #lineup {
+	background-image: url('../img/goal.png');
+	background-repeat: no-repeat;
+	background-position: bottom;
+	background-size: 100% auto;
 	color: #fff;
 	height: 100%;
-	padding: 2em;
+	padding: 3em 2em 1em;
 }
 
 #lineup .player {
@@ -88,7 +97,7 @@ input {
 	height: 3em;
 	margin: 0 auto .5em;
 	border-radius: 50%;
-	background-color: #ececec;
+	background-color: indianred;
 }
 
 #lineup .player .text {
@@ -109,6 +118,7 @@ input {
 }
 
 .gradient {
+	pointer-events: none;
 	opacity: .9;
     height: 60px;
     position: absolute;
