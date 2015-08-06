@@ -16,11 +16,13 @@ var myTeam = (function (helpers) {
     var formationSelect = document.getElementById('formation');
     var playerSelect = document.getElementById('players');
     var lineupSelect = document.getElementById('lineup');
-    var playerFilter = document.getElementById('player-filter');
+    var playerFilter = document.getElementById('filter');
     
     function init() {
 
         helpers.getJSON('data/players.json', function (data) {
+
+            currentPlayers = data;
 
             if(location.hash) {
 
@@ -59,6 +61,8 @@ var myTeam = (function (helpers) {
 
             for (var player in arr[row]) {
 
+                var playerInfo = getPlayer(arr[row][player]);
+
                 var playerWrapper = document.createElement('div');
                 playerWrapper.className = 'player';
                 playerWrapper.setAttribute('data-player', arr[row][player]);
@@ -70,7 +74,7 @@ var myTeam = (function (helpers) {
                 var playerName = document.createElement('span');
                 playerName.className = 'text';
 
-                var playerNameText = document.createTextNode(arr[row][player]);             
+                var playerNameText = document.createTextNode(playerInfo.name);             
 
                 playerName.appendChild(playerNameText);
                 playerWrapper.appendChild(playerIcon);
@@ -122,9 +126,10 @@ var myTeam = (function (helpers) {
         if (!wasPicked(newPlayerId)) {
 
             var oldPlayerId = currentPlayer.getAttribute('data-player');
+            var playerInfo = getPlayer(newPlayerId);
 
             currentPlayer.setAttribute('data-player', newPlayerId);
-            currentPlayer.getElementsByTagName('span')[0].textContent = newPlayerId;
+            currentPlayer.getElementsByTagName('span')[0].textContent = playerInfo.name;
 
             // Update the player in the current team model
             for (var i = 0; i < currentTeam.length; i++) {
@@ -220,6 +225,17 @@ var myTeam = (function (helpers) {
         }
 
         return arr;
+    }
+
+    function getPlayer(playerId) {
+
+        console.log(currentPlayers);
+
+        if (isNaN(parseInt(playerId))) {
+            playerId = '00';
+        }
+
+        return currentPlayers[playerId];
     }
 
     function getFormation(arr) {
