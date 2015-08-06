@@ -92,20 +92,46 @@ var myTeam = (function (helpers) {
     // The input object is structured like a dictionary
     function showList(obj) {
 
-        var list = document.createElement('ul');
+        var positions = [];
 
         for (var player in obj) {
 
-            var listElement = document.createElement('li');
-            listElement.setAttribute("data-player", player);
-            listElement.addEventListener('click', handlePlayerChange);
-            var text = document.createTextNode(obj[player].name);
-            
-            listElement.appendChild(text);
-            list.appendChild(listElement);
+            if (obj[player].pos === 'keine') { break; }
+
+            var position;
+            var index = positions.indexOf(obj[player].pos);
+
+            var text = document.createTextNode(obj[player].name + ' (' + obj[player].pos + ')');
+            var playerElement = document.createElement('li');
+
+            playerElement.setAttribute("data-player", player);
+            playerElement.addEventListener('click', handlePlayerChange);
+
+            playerElement.appendChild(text);
+
+            if (obj[player].pos)
+
+            if (index > -1) {
+
+                position = positions[index + 1];
+
+                position.appendChild(playerElement);
+            } else {
+
+                position = document.createElement('ul');
+                position.className = obj[player].pos.toLowerCase();
+
+                positions.push(obj[player].pos);
+                positions.push(position);
+
+                position.appendChild(playerElement);
+            }
         }
 
-        playerSelect.appendChild(list);
+        for (var i = 1; i < positions.length; i = i + 2) {
+
+            playerSelect.appendChild(positions[i]);
+        }
     }
 
     function handlePlayerSelect(e) {

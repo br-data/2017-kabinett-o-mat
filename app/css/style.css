@@ -51,7 +51,6 @@ input, select {
     padding: 0 .7em 0 .5em;
 }
 
-
 #field select {
     background: #fff url(../img/arrow.png) no-repeat right 3px center;
     background-size: 20px 13px;
@@ -61,44 +60,6 @@ input, select {
     -moz-appearance: none;
     text-indent: 0.01px;
     text-overflow: '';
-    cursor: pointer;
-}
-
-#sidebar {
-    padding: 1em 1em 0;
-    display: inline-block;
-    height: 100%;
-    width: 30%;
-    position: relative;
-}
-
-#sidebar .content {
-    height: 100%;
-    overflow: auto;
-}
-
-#sidebar form {
-    padding: 1em;
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    background: #fff;
-}
-
-#sidebar input {
-    width: 100%;
-    border-radius: 0;
-    outline: none;
-    padding: 4px 8px;
-}
-
-#sidebar ul {
-    padding: 2.5em 0 0 1em;;
-    list-style-type: none; 
-}
-
-#sidebar li {
     cursor: pointer;
 }
 
@@ -144,6 +105,95 @@ input, select {
 
 #lineup.rows-5 .row {
     height: 20%;
+}
+
+#sidebar {
+    display: inline-block;
+    height: 100%;
+    width: 30%;
+    position: relative;
+}
+
+#sidebar .content {
+    height: 100%;
+    overflow: auto;
+}
+
+#sidebar form {
+    padding: 1em;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    background: #fff;
+}
+
+#sidebar input {
+    width: 100%;
+    border-radius: 0;
+    outline: none;
+    padding: 4px 8px;
+}
+
+#players {
+    padding-top: 4em;
+}
+
+#players ul {
+    margin: 0;
+    padding: 1em 2em;
+    list-style-type: none; 
+}
+
+#players li {
+    line-height: 1.8em;
+    cursor: pointer;
+}
+
+#players .sturm {
+    background-color: #fbfbf1;
+}
+
+#players .sturm:before {
+    content: "Sturm";
+    font-weight: bold;
+    line-height: 2.2em;
+}
+
+#players .mittelfeld {
+    background-color: #fbf1f1;
+}
+
+#players .mittelfeld:before {
+    content: "Mittelfeld";
+    font-weight: bold;
+    line-height: 2.2em;
+}
+
+#players .abwehr {
+    background-color: #f1fbfb;
+}
+
+#players .abwehr:before {
+    content: "Abwehr";
+    font-weight: bold;
+    line-height: 2.2em;
+}
+
+#players .tor {
+    background-color: #f1f1fb;
+}
+
+#players .tor:before {
+    content: "Tor";
+    font-weight: bold;
+    line-height: 2.2em;
+}
+
+#players ul:last-child:after {
+    content:"\a";
+    white-space: pre;
+    line-height: 3em;
 }
 
 .gradient {
