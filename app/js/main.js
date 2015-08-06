@@ -14,7 +14,7 @@ var myTeam = (function (helpers) {
 
     // @TODO Use more semantic name
     var formationSelect = document.getElementById('formation');
-    var playerSelect = document.getElementById('players');
+    var listSelect = document.getElementById('list');
     var lineupSelect = document.getElementById('lineup');
     var playerFilter = document.getElementById('filter');
     
@@ -130,7 +130,7 @@ var myTeam = (function (helpers) {
 
         for (var i = 1; i < positions.length; i = i + 2) {
 
-            playerSelect.appendChild(positions[i]);
+            listSelect.appendChild(positions[i]);
         }
     }
 
@@ -190,7 +190,7 @@ var myTeam = (function (helpers) {
     function handlePlayerSearch(e) {
 
         // Get a list of all players
-        var playerList = playerSelect.getElementsByTagName("li");
+        var playerList = listSelect.getElementsByTagName("li");
         var filter = playerFilter.value.toUpperCase();
 
         // Search for current query and hide mismatches
