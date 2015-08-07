@@ -9,17 +9,20 @@ var myTeam = (function (helpers) {
 
     'use strict';
 
+    var $ = helpers.$;
+    var $$ = helpers.$$;
+
     var currentFormation;
     var currentTeam;
     var currentPlayers;
     var currentPlayer;
 
     // @TODO Use more semantic name
-    var formationSelect = document.getElementById('formation');
-    var listSelect = document.getElementById('list');
-    var lineupSelect = document.getElementById('lineup');
-    var playerFilter = document.getElementById('filter');
-    var infoBox = document.getElementById('info');
+    var formationSelect = $('formation');
+    var listSelect = $('list');
+    var lineupSelect = $('lineup');
+    var playerFilter = $('filter');
+    var infoBox = $('info');
     
     function init() {
 
@@ -151,7 +154,7 @@ var myTeam = (function (helpers) {
     function handlePlayerSelect(e) {
 
         // If no player is selected, select the first one
-        var target = e.target || document.getElementsByClassName('player')[0];
+        var target = e.target || $$('player')[0];
 
         target.className = 'player active';
         if (currentPlayer) currentPlayer.className = 'player';

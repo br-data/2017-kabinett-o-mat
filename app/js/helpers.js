@@ -2,8 +2,45 @@ var helpers = (function() {
 
     'use strict';
 
+    function $(elementOrId) {
+
+        var result = false;
+
+        if (elementOrId !== null) {
+
+            if (typeof elementOrId === "string") {
+
+                result = document.getElementById(elementOrId);
+                return $(result);
+            } else {
+
+                result = elementOrId;
+            }
+        }
+
+        return result;
+    }
+
+    function $$(elementOrClass) {
+
+        var result = false;
+
+        if (elementOrClass !== null) {
+
+            if (typeof elementOrClass === "string") {
+
+                result = document.querySelectorAll(elementOrClass);
+                return $$(result);
+            } else {
+
+                result = elementOrClass;
+            }
+        }
+
+        return result;
+    }
+
     function getJSON(path, callback) {
-        'use strict';
 
         var httpRequest = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
 
@@ -45,7 +82,8 @@ var helpers = (function() {
     }
 
     return {
-
+        $: $,
+        $$: $$,
         getJSON: getJSON,
         fuzzySearch: fuzzySearch
     };
