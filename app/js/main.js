@@ -17,6 +17,7 @@ var myTeam = (function (helpers) {
     var listSelect = document.getElementById('list');
     var lineupSelect = document.getElementById('lineup');
     var playerFilter = document.getElementById('filter');
+    var infoBox = document.getElementById('info');
     
     function init() {
 
@@ -101,7 +102,7 @@ var myTeam = (function (helpers) {
             var position;
             var index = positions.indexOf(obj[player].pos);
 
-            var text = document.createTextNode(obj[player].name + ' (' + obj[player].pos + ')');
+            var text = document.createTextNode(obj[player].name);
             var playerElement = document.createElement('li');
 
             playerElement.setAttribute("data-player", player);
@@ -136,7 +137,6 @@ var myTeam = (function (helpers) {
 
     function handlePlayerSelect(e) {
 
-        console.log(e.target);
         e.target.className = 'player active';
         if (currentPlayer) currentPlayer.className = 'player';
         
@@ -177,6 +177,7 @@ var myTeam = (function (helpers) {
                 }
             }
 
+            setInfo(playerInfo);
             setFormation();
         }
     }
@@ -253,16 +254,33 @@ var myTeam = (function (helpers) {
         location.hash = teamToString(currentTeam);
     }
 
-    function convertLineup(str) {
+    function setInfo(player) {
 
-        var arr = str.split('x');
+        while (infoBox.firstChild) {
 
-        for (var i = 0;  i < arr.length; i++) {
-
-            arr[i] = arr[i].match(/.{1,2}/g);
+            infoBox.removeChild(infoBox.firstChild);
         }
 
-        return arr;
+        var nameText = document.createTextNode(player.name);
+        var name = document.createElement('h3');
+        name.appendChild(nameText);
+
+        var teamText = document.createTextNode(player.team);
+        var team = document.createElement('p');
+        team.appendChild(teamText);
+
+        var personalText = document.createTextNode('TT.MM.JJJJ in ' + player.geb_ort + ', ' + player.reg_bezirk);
+        var personal = document.createElement('p');
+        personal.appendChild(personalText);
+
+        var teamIcon = document.createElement('img');
+        teamIcon.src = 'img/vfb.png';
+        teamIcon.alt = 'player.team';
+        
+        infoBox.appendChild(name);
+        infoBox.appendChild(teamIcon);
+        infoBox.appendChild(team);
+        infoBox.appendChild(personal);
     }
 
     function getPlayer(playerId) {
@@ -286,6 +304,18 @@ var myTeam = (function (helpers) {
         currentFormation = result;
         result.pop();
         formationSelect.value = result.reverse().join('-');
+    }
+
+    function convertLineup(str) {
+
+        var arr = str.split('x');
+
+        for (var i = 0;  i < arr.length; i++) {
+
+            arr[i] = arr[i].match(/.{1,2}/g);
+        }
+
+        return arr;
     }
 
     function teamToString(arr) {
