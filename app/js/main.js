@@ -1,6 +1,7 @@
 var config = {
 
-    defaultTeam: [["jj","kk"],["ff","gg","hh","ii"],["bb","cc","dd","ee"],["aa"]]
+    defaultTeam: [["jj","kk"],["ff","gg","hh","ii"],["bb","cc","dd","ee"],["aa"]],
+    positionOrder: ['tor', 'abwehr', 'mittelfeld', 'sturm']
 };
 
 var myTeam = (function (helpers) {
@@ -94,12 +95,12 @@ var myTeam = (function (helpers) {
     function showList(obj) {
 
         var positions = [];
+        var elements = [];
 
         for (var player in obj) {
 
             if (obj[player].pos === 'keine') { break; }
 
-            var position;
             var index = positions.indexOf(obj[player].pos);
 
             var text = document.createTextNode(obj[player].name);
@@ -110,28 +111,29 @@ var myTeam = (function (helpers) {
 
             playerElement.appendChild(text);
 
-            if (obj[player].pos)
-
             if (index > -1) {
 
-                position = positions[index + 1];
-
-                position.appendChild(playerElement);
+                elements[index].appendChild(playerElement);
             } else {
 
-                position = document.createElement('ul');
-                position.className = obj[player].pos.toLowerCase();
+                elements[index] = document.createElement('ul');
+                elements[index].className = obj[player].pos.toLowerCase();
 
                 positions.push(obj[player].pos);
-                positions.push(position);
+                elements.push(elements[index]);
 
-                position.appendChild(playerElement);
+                elements[index].appendChild(playerElement);
             }
         }
 
-        for (var i = 1; i < positions.length; i = i + 2) {
+        elements.sort(function (a, b) {
 
-            listSelect.appendChild(positions[i]);
+            return config.positionOrder.indexOf(a.className) - config.positionOrder.indexOf(b.className);
+        });
+
+        for (var i = 0; i < elements.length; i++) {
+
+            listSelect.appendChild(elements[i]);
         }
     }
 
