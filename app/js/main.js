@@ -1,6 +1,7 @@
 var config = {
 
-    defaultTeam: [["jj","kk"],["ff","gg","hh","ii"],["bb","cc","dd","ee"],["aa"]],
+    defaultTeam: [['jj', 'kk'], ['ff', 'gg', 'hh', 'ii'], ['bb', 'cc', 'dd', 'ee'], ['aa']],
+    defaultHash: ['jjkk', 'ffgghhii', 'bbccddee', 'aa'],
     positionOrder: ['tor', 'abwehr', 'mittelfeld', 'sturm']
 };
 
@@ -26,6 +27,7 @@ var myTeam = (function (helpers) {
 
             currentPlayers = data;
 
+            // Check if a linup is predefined in the URL hash, eg #1112x
             if(location.hash) {
 
                 currentTeam = convertLineup(location.hash.replace('#',''));
@@ -62,6 +64,7 @@ var myTeam = (function (helpers) {
             var section = document.createElement('section');
             section.className = 'row';
 
+            // Add players, line by line
             for (var player in arr[row]) {
 
                 var playerInfo = getPlayer(arr[row][player]);
@@ -101,6 +104,7 @@ var myTeam = (function (helpers) {
 
             if (obj[player].pos === 'keine') { break; }
 
+            // Check if the position wrapper already exists
             var index = positions.indexOf(obj[player].pos);
 
             var text = document.createTextNode(obj[player].name);
@@ -111,21 +115,28 @@ var myTeam = (function (helpers) {
 
             playerElement.appendChild(text);
 
+            // If the position already exists, add the player ...
             if (index > -1) {
 
                 elements[index].appendChild(playerElement);
+
+            // ... else create a new position and add the player 
             } else {
 
                 elements[index] = document.createElement('ul');
                 elements[index].className = obj[player].pos.toLowerCase();
 
+                // Add the position name to array
                 positions.push(obj[player].pos);
+
+                // Add the position wrapper element to array 
                 elements.push(elements[index]);
 
                 elements[index].appendChild(playerElement);
             }
         }
 
+        // Sort the position by the order defined in the config
         elements.sort(function (a, b) {
 
             return config.positionOrder.indexOf(a.className) - config.positionOrder.indexOf(b.className);
@@ -139,19 +150,21 @@ var myTeam = (function (helpers) {
 
     function handlePlayerSelect(e) {
 
-        e.target.className = 'player active';
+        // If no player is selected, select the first one
+        var target = e.target || document.getElementsByClassName('player')[0];
+
+        target.className = 'player active';
         if (currentPlayer) currentPlayer.className = 'player';
         
-        currentPlayer = e.target;
+        currentPlayer = target;
     } 
 
     function handlePlayerChange(e) {
 
-        // If no player is selected, select the first one
+        // Check if a player is selected;
         if (!currentPlayer) {
 
-            currentPlayer = document.getElementsByClassName('player')[0];
-            handlePlayerSelect({target:currentPlayer});
+            handlePlayerSelect();
         }
 
         var newPlayerId = e.target.getAttribute('data-player');
@@ -253,7 +266,7 @@ var myTeam = (function (helpers) {
             currentTeam.push(flatTeam.splice(0, +formation[i]));
         }
 
-        location.hash = teamToString(currentTeam);
+        location.hash = teamToHash(currentTeam);
     }
 
     function setInfo(player) {
@@ -310,8 +323,17 @@ var myTeam = (function (helpers) {
 
     function convertLineup(str) {
 
+        // Hash string to array
         var arr = str.split('x');
 
+        // If the array is malformed, fall back to default
+        if (arr.length < config.defaultTeam.length) {
+
+            arr = config.defaultHash;
+        }
+
+        // Split the position arrays into arrays with individual players
+        // Ex. [111213] becomes [11,12,13] 
         for (var i = 0;  i < arr.length; i++) {
 
             arr[i] = arr[i].match(/.{1,2}/g);
@@ -320,7 +342,8 @@ var myTeam = (function (helpers) {
         return arr;
     }
 
-    function teamToString(arr) {
+    // Converts an location hash string, ex. 1011x2021...
+    function teamToHash(arr) {
 
         var result = [];
 
