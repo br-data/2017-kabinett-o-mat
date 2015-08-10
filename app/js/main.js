@@ -80,7 +80,7 @@ var myTeam = (function (config, utils) {
                 playerWrapper.addEventListener('click', handlePositionSelect);
 
                 playerIcon = createElement('div', null, ['className', 'icon']);
-                playerIcon.style.background = 'url(img/00.png) center no-repeat';
+                playerIcon.style.background = 'url(img/' + pad(arr[row][player]) + '.jpg) center no-repeat';
                 playerIcon.style['background-size'] = 'contain';
 
                 playerName = createElement('p', null, ['className', 'text'], ['textContent', playerInfo.name]);       
@@ -343,7 +343,7 @@ var myTeam = (function (config, utils) {
         position.setAttribute('data-player', newPlayerId);
         position.getElementsByTagName('p')[0].textContent = player.name;
 
-        playerIcon.style.background = 'url(img/01.png) center no-repeat';
+        playerIcon.style.background = 'url(img/' + pad(newPlayerId) + '.jpg) center no-repeat';
         playerIcon.style['background-size'] = 'contain';
     }
 
@@ -416,6 +416,19 @@ var myTeam = (function (config, utils) {
         }
 
         return result.join('x');
+    }
+
+    function pad(num) {
+
+        if (isNaN(parseInt(num))) {
+
+            num = 0;
+        }
+
+        var str = num + '';
+        while (str.length < 2) str = '0' + str;
+
+        return str;
     }
 
     return {
