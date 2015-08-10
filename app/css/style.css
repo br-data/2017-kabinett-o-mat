@@ -153,6 +153,11 @@ input, select {
     color: #8fbc8f;
 }
 
+#list li.picked {
+    color: #aaa;
+    pointer-events: none;
+}
+
 #list .sturm:before {
     content: "Sturm";
     font-weight: bold;

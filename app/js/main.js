@@ -5,7 +5,7 @@ var config = {
     positionOrder: ['tor', 'abwehr', 'mittelfeld', 'sturm']
 };
 
-var myTeam = (function (utils) {
+var myTeam = (function (config, utils) {
 
     'use strict';
 
@@ -14,9 +14,10 @@ var myTeam = (function (utils) {
     var createElement = utils.createElement;
 
     var currentFormation;
-    var currentTeam;
+    var currentLineup;
+    var currentList;
     var currentPlayers;
-    var currentPlayer;
+    var currentPosition;
 
     // @TODO Use more semantic name
     var formationSelect = $('formation');
@@ -34,17 +35,18 @@ var myTeam = (function (utils) {
             // Check if a linup is predefined in the URL hash, eg #1112x
             if(location.hash) {
 
-                currentTeam = convertLineup(location.hash.replace('#',''));
+                currentLineup = convertLineup(location.hash.replace('#',''));
             } else {
 
-                currentTeam = config.defaultTeam;
+                currentLineup = config.defaultTeam;
             }
            
             // Inital drawing
-            getFormation(currentTeam);
-            setFormation();
-            showLineup(currentTeam);
+            getFormation(currentLineup);
+            updateFormation();
+            showLineup(currentLineup);
             showList(data);
+            updateList();
 
             // Register the event handlers
             formationSelect.addEventListener('change', handleFormationChange);
@@ -75,7 +77,7 @@ var myTeam = (function (utils) {
 
                 playerWrapper = createElement('div', null, ['className', 'player']);
                 playerWrapper.setAttribute('data-player', arr[row][player]);
-                playerWrapper.addEventListener('click', handlePlayerSelect);
+                playerWrapper.addEventListener('click', handlePositionSelect);
 
                 playerIcon = createElement('div', null, ['className', 'icon']);
                 playerIcon.style.background = 'url(img/00.png) center no-repeat';
@@ -137,67 +139,85 @@ var myTeam = (function (utils) {
             return config.positionOrder.indexOf(a.className) - config.positionOrder.indexOf(b.className);
         });
 
-
         // Add all positions and players to the list
         for (var i = 0; i < elements.length; i++) {
 
             listSelect.appendChild(elements[i]);
         }
+
+        currentList = listSelect.querySelectorAll('[data-player]');
     }
 
-    function handlePlayerSelect(e) {
+    function handlePositionSelect(e) {
 
-        // If no player is selected, select the first one
-        var target = e.target || $$('player')[0];
+        var target;
+
+        if (e && e.target) {
+
+            target = e.target;
+        } else {
+
+            // If no player is selected, select the first one
+            target = $$('.player')[0];
+        }
 
         target.className = 'player active';
-        if (currentPlayer) currentPlayer.className = 'player';
+        if (currentPosition) currentPosition.className = 'player';
         
-        currentPlayer = target;
+        currentPosition = target;
     } 
 
     function handlePlayerChange(e) {
 
         // Check if a player is selected;
-        if (!currentPlayer) {
+        if (!currentPosition) {
 
-            handlePlayerSelect();
+            handlePositionSelect();
         }
 
         var newPlayerId = e.target.getAttribute('data-player');
 
         if (!wasPicked(newPlayerId)) {
 
-            var oldPlayerId = currentPlayer.getAttribute('data-player');
+            // Update player position
+            // @TODO Move to updatePosition()
+            var oldPlayerId = currentPosition.getAttribute('data-player');
             var playerInfo = getPlayer(newPlayerId);
-            var playerIcon = currentPlayer.getElementsByTagName('div')[0];
+            var playerIcon = currentPosition.getElementsByTagName('div')[0];
 
-            currentPlayer.setAttribute('data-player', newPlayerId);
-            currentPlayer.getElementsByTagName('p')[0].textContent = playerInfo.name;
+            currentPosition.setAttribute('data-player', newPlayerId);
+            currentPosition.getElementsByTagName('p')[0].textContent = playerInfo.name;
 
             playerIcon.style.background = 'url(img/01.png) center no-repeat';
             playerIcon.style['background-size'] = 'contain';
 
             // Update the player in the current team model
-            for (var i = 0; i < currentTeam.length; i++) {
+            // @TODO Move to updateModel()
+            for (var i = 0; i < currentLineup.length; i++) {
 
-                var j = currentTeam[i].indexOf(oldPlayerId);
+                var j = currentLineup[i].indexOf(oldPlayerId);
 
                 if (j > -1) {
 
-                    currentTeam[i][j] = newPlayerId;
+                    currentLineup[i][j] = newPlayerId;
                 }
             }
 
-            setInfo(playerInfo);
-            setFormation();
+            // Update player in list
+            // @TODO Move to updateList()
+            e.target.className = 'picked';
+            updateList(newPlayerId, oldPlayerId);
+           
+
+            updateInfo(playerInfo);
+            updateFormation();
         }
     }
 
     function handleFormationChange() {
 
-        setFormation();
-        showLineup(currentTeam);        
+        updateFormation();
+        showLineup(currentLineup);        
     }
 
     function handlePlayerSearch(e) {
@@ -230,16 +250,47 @@ var myTeam = (function (utils) {
     // Check if a player is already part of the team
     function wasPicked(playerId) {
 
-        for (var i = 0; i < currentTeam.length; i++) {
+        for (var i = 0; i < currentLineup.length; i++) {
 
-            if (currentTeam[i].indexOf(playerId) > -1) {
+            if (currentLineup[i].indexOf(playerId) > -1) {
 
                 return true;
             }
         }
     }
 
-    function setFormation() {
+    function updateList(newPlayerId, oldPlayerId) {
+        
+        for (var k = 0; k < currentList.length; k++) {
+
+            if (oldPlayerId && newPlayerId) {
+
+                if (currentList[k].getAttribute('data-player') === newPlayerId) {
+
+                    currentList[k].className = 'picked';
+                }
+
+                if (currentList[k].getAttribute('data-player') === oldPlayerId) {
+
+                    currentList[k].className = '';
+                }
+            } else {
+
+                for (var l = 0; l < currentLineup.length; l++) {
+
+                    if (currentLineup[l].indexOf(currentList[k].getAttribute('data-player')) > -1) {
+
+                        currentList[k].className = 'picked';
+                    } else {
+
+                        currentList[k].className = '';
+                    }
+                }
+            }
+        }
+    }
+
+    function updateFormation() {
 
         // Get the current formation
         var formation = formationSelect.value.split('-').reverse();
@@ -253,20 +304,20 @@ var myTeam = (function (utils) {
         lineup.className = 'rows-' + currentFormation.length;
 
         // Flatten array 
-        flatTeam = flatTeam.concat.apply(flatTeam, currentTeam);
+        flatTeam = flatTeam.concat.apply(flatTeam, currentLineup);
 
         // Clear current team model;
-        currentTeam = [];
+        currentLineup = [];
 
         for (var i = 0;  i < formation.length; i++) {
 
-            currentTeam.push(flatTeam.splice(0, +formation[i]));
+            currentLineup.push(flatTeam.splice(0, +formation[i]));
         }
 
-        location.hash = teamToHash(currentTeam);
+        location.hash = teamToHash(currentLineup);
     }
 
-    function setInfo(player) {
+    function updateInfo(player) {
 
         while (infoBox.firstChild) {
 
@@ -340,6 +391,6 @@ var myTeam = (function (utils) {
 
         init: init
     };
-})(utils);
+})(config, utils);
 
 myTeam.init();
