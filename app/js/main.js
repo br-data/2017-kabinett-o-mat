@@ -46,7 +46,7 @@ var myTeam = (function (config, utils) {
             updateFormation();
             showLineup(currentTeamModel);
             showList(data);
-            updateList();
+            // updateList(); Deselects the all current players
 
             // Register the event handlers
             formationSelect.addEventListener('change', handleFormationChange);
@@ -73,7 +73,7 @@ var myTeam = (function (config, utils) {
             for (var player in arr[row]) {
 
                 var playerWrapper, playerIcon, playerName;
-                var playerInfo = getPlayer(arr[row][player]);
+                var playerInfo = getPlayerData(arr[row][player]);
 
                 playerWrapper = createElement('div', null, ['className', 'player']);
                 playerWrapper.setAttribute('data-player', arr[row][player]);
@@ -176,14 +176,22 @@ var myTeam = (function (config, utils) {
         }
 
         var newPlayerId = e.target.getAttribute('data-player');
+        var oldPlayerId = currentPosition.getAttribute('data-player');
 
         if (!wasPicked(newPlayerId)) {
 
-            var oldPlayerId = currentPosition.getAttribute('data-player');
-
             updatePosition(newPlayerId, oldPlayerId);
             updateTeamModel(newPlayerId, oldPlayerId);
-            updateList(newPlayerId, oldPlayerId);
+            // Deselects the all current players
+            // updateList(newPlayerId, oldPlayerId);
+            updateInfo(newPlayerId);
+            updateFormation();
+        } else {
+
+            updatePosition('00', newPlayerId);
+            updatePosition(newPlayerId, oldPlayerId);
+            updateTeamModel('00', newPlayerId);
+            updateTeamModel(newPlayerId, oldPlayerId);
             updateInfo(newPlayerId);
             updateFormation();
         }
@@ -262,6 +270,7 @@ var myTeam = (function (config, utils) {
         }
     }
 
+    // @TODO Split or rename
     function updateFormation() {
 
         // Get the current formation
@@ -291,7 +300,7 @@ var myTeam = (function (config, utils) {
 
     function updateInfo(playerId) {
 
-        var player = getPlayer(playerId);
+        var player = getPlayerData(playerId);
 
         while (infoBox.firstChild) {
 
@@ -319,23 +328,47 @@ var myTeam = (function (config, utils) {
 
     function updatePosition(newPlayerId, oldPlayerId) {
 
-        var player = getPlayer(newPlayerId);
-        var playerIcon = currentPosition.getElementsByTagName('div')[0];
+        var position;
 
-        currentPosition.setAttribute('data-player', newPlayerId);
-        currentPosition.getElementsByTagName('p')[0].textContent = player.name;
+        if (newPlayerId === '00') {
+
+            position = getPlayerElement(oldPlayerId);
+        } else {
+
+            position = currentPosition;
+        }
+
+        var player = getPlayerData(newPlayerId);
+        var playerIcon = position.getElementsByTagName('div')[0];
+
+        position.setAttribute('data-player', newPlayerId);
+        position.getElementsByTagName('p')[0].textContent = player.name;
 
         playerIcon.style.background = 'url(img/01.png) center no-repeat';
         playerIcon.style['background-size'] = 'contain';
     }
 
-    function getPlayer(playerId) {
+    function getPlayerData(playerId) {
 
         if (isNaN(parseInt(playerId))) {
+
             playerId = '00';
         }
 
         return currentPlayers[playerId];
+    }
+
+    function getPlayerElement(playerId) {
+
+        var players = lineupSelect.querySelectorAll('[data-player]');
+
+        for (var i = 0; i < players.length; i++) {
+
+            if (players[i].getAttribute('data-player') === playerId) {
+
+                return players[i];
+            }
+        }
     }
 
     function getFormation(arr) {
