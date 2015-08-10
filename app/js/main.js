@@ -80,10 +80,12 @@ var myTeam = (function (config, utils) {
                 playerWrapper.addEventListener('click', handlePositionSelect);
 
                 playerIcon = createElement('div', null, ['className', 'icon']);
-                playerIcon.style.background = 'url(img/' + pad(arr[row][player]) + '.jpg) center no-repeat';
+                playerIcon.style.background = 'url(img/players/' +
+                    pad(arr[row][player]) + '.jpg) center no-repeat';
                 playerIcon.style['background-size'] = 'contain';
 
-                playerName = createElement('p', null, ['className', 'text'], ['textContent', playerInfo.name]);       
+                playerName = createElement('p', null,
+                    ['className', 'text'], ['textContent', playerInfo.name]);       
 
                 playerWrapper.appendChild(playerIcon);
                 playerWrapper.appendChild(playerName);
@@ -122,7 +124,8 @@ var myTeam = (function (config, utils) {
             // ... else create a new position and add the player 
             } else {
 
-                elements[index] = createElement('ul', null, ['className', obj[player].pos.toLowerCase()]);
+                elements[index] = createElement('ul', null,
+                    ['className',obj[player].pos.toLowerCase()]);
                 elements[index].appendChild(playerElement);
 
                 // Add the position name to array
@@ -136,7 +139,8 @@ var myTeam = (function (config, utils) {
         // Sort the position by the order defined in the config
         elements.sort(function (a, b) {
 
-            return config.positionOrder.indexOf(a.className) - config.positionOrder.indexOf(b.className);
+            return config.positionOrder.indexOf(a.className) -
+                config.positionOrder.indexOf(b.className);
         });
 
         // Add all positions and players to the list
@@ -260,7 +264,8 @@ var myTeam = (function (config, utils) {
 
                 for (var l = 0; l < currentTeamModel.length; l++) {
 
-                    if (currentTeamModel[l].indexOf(currentList[k].getAttribute('data-player')) > -1) {
+                    if (currentTeamModel[l].indexOf(
+                        currentList[k].getAttribute('data-player')) > -1) {
 
                         currentList[k].className = 'picked';
                     }
@@ -307,9 +312,11 @@ var myTeam = (function (config, utils) {
         }
 
         createElement('h3', infoBox, ['textContent', player.name]);
-        createElement('img', infoBox, ['src', 'img/vfb.png'], ['alt', player.team]);
+        createElement('img', infoBox, ['src', 'img/logos/' +
+            player.team_short + '.png'], ['alt', player.team]);
         createElement('p', infoBox, ['textContent', player.team]);
-        createElement('p', infoBox, ['textContent', 'TT.MM.JJJJ in ' + player.geb_ort + ', ' + player.reg_bezirk, infoBox]);
+        createElement('p', infoBox, ['textContent', 'TT.MM.JJJJ in ' +
+            player.geb_ort + ', ' + player.reg_bezirk, infoBox]);
     }
 
     function updateTeamModel(newPlayerId, oldPlayerId) {
@@ -343,7 +350,8 @@ var myTeam = (function (config, utils) {
         position.setAttribute('data-player', newPlayerId);
         position.getElementsByTagName('p')[0].textContent = player.name;
 
-        playerIcon.style.background = 'url(img/' + pad(newPlayerId) + '.jpg) center no-repeat';
+        playerIcon.style.background = 'url(img/players/' +
+            pad(newPlayerId) + '.jpg) center no-repeat';
         playerIcon.style['background-size'] = 'contain';
     }
 

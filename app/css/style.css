@@ -188,11 +188,11 @@ input, select {
 #list ul:last-child:after {
     content:"\a";
     white-space: pre;
-    line-height: 3em;
+    line-height: 12em;
 }
 
 #info {
-    padding: 1em 2em;
+    padding: 1em 1em 1em 2em;
     height: 120px;
     position: absolute;
     bottom: 0;
@@ -216,6 +216,7 @@ input, select {
 #info img {
     float: right;
     width: 50px;
+    margin-left: 1em;
 }
 
 .gradient {
