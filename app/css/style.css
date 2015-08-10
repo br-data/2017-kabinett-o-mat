@@ -154,8 +154,7 @@ input, select {
 }
 
 #list li.picked {
-    color: #aaa;
-    pointer-events: none;
+    color: #999;
 }
 
 #list .sturm:before {

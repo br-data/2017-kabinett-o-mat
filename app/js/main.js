@@ -46,7 +46,7 @@ var myTeam = (function (config, utils) {
             updateFormation();
             showLineup(currentTeamModel);
             showList(data);
-            // updateList(); Deselects the all current players
+            updateList();
 
             // Register the event handlers
             formationSelect.addEventListener('change', handleFormationChange);
@@ -182,8 +182,7 @@ var myTeam = (function (config, utils) {
 
             updatePosition(newPlayerId, oldPlayerId);
             updateTeamModel(newPlayerId, oldPlayerId);
-            // Deselects the all current players
-            // updateList(newPlayerId, oldPlayerId);
+            updateList(newPlayerId, oldPlayerId);
             updateInfo(newPlayerId);
             updateFormation();
         } else {
