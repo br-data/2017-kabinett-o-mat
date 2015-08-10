@@ -5,12 +5,13 @@ var config = {
     positionOrder: ['tor', 'abwehr', 'mittelfeld', 'sturm']
 };
 
-var myTeam = (function (helpers) {
+var myTeam = (function (utils) {
 
     'use strict';
 
-    var $ = helpers.$;
-    var $$ = helpers.$$;
+    var $ = utils.$;
+    var $$ = utils.$$;
+    var createElement = utils.createElement;
 
     var currentFormation;
     var currentTeam;
@@ -26,7 +27,7 @@ var myTeam = (function (helpers) {
     
     function init() {
 
-        helpers.getJSON('data/players.json', function (data) {
+        utils.getJSON('data/players.json', function (data) {
 
             currentPlayers = data;
 
@@ -47,7 +48,7 @@ var myTeam = (function (helpers) {
 
             // Register the event handlers
             formationSelect.addEventListener('change', handleFormationChange);
-            playerFilter.addEventListener('keydown', preventEnter);
+            playerFilter.addEventListener('keydown', utils.preventEnter);
             playerFilter.addEventListener('keyup', handlePlayerSearch);
             playerFilter.addEventListener('search', handlePlayerSearch);
         });   
@@ -64,30 +65,24 @@ var myTeam = (function (helpers) {
 
         for (var row in arr) {
 
-            var section = document.createElement('section');
-            section.className = 'row';
+            var section = createElement('section', null, ['className', 'row']);
 
             // Add players, line by line
             for (var player in arr[row]) {
 
+                var playerWrapper, playerIcon, playerName;
                 var playerInfo = getPlayer(arr[row][player]);
 
-                var playerWrapper = document.createElement('div');
-                playerWrapper.className = 'player';
+                playerWrapper = createElement('div', null, ['className', 'player']);
                 playerWrapper.setAttribute('data-player', arr[row][player]);
                 playerWrapper.addEventListener('click', handlePlayerSelect);
 
-                var playerIcon = document.createElement('div');
-                playerIcon.className = 'icon';
-                playerIcon.style['background'] = 'url(img/00.png) center no-repeat';
+                playerIcon = createElement('div', null, ['className', 'icon']);
+                playerIcon.style.background = 'url(img/00.png) center no-repeat';
                 playerIcon.style['background-size'] = 'contain';
 
-                var playerName = document.createElement('p');
-                playerName.className = 'text';
+                playerName = createElement('p', null, ['className', 'text'], ['textContent', playerInfo.name]);       
 
-                var playerNameText = document.createTextNode(playerInfo.name);             
-
-                playerName.appendChild(playerNameText);
                 playerWrapper.appendChild(playerIcon);
                 playerWrapper.appendChild(playerName);
                 section.appendChild(playerWrapper);
@@ -105,18 +100,17 @@ var myTeam = (function (helpers) {
 
         for (var player in obj) {
 
+            var index, text, playerElement;
+            
+            // Players without position shouldn't appear in the list
             if (obj[player].pos === 'keine') { break; }
 
             // Check if the position wrapper already exists
-            var index = positions.indexOf(obj[player].pos);
+            index = positions.indexOf(obj[player].pos);
 
-            var text = document.createTextNode(obj[player].name);
-            var playerElement = document.createElement('li');
-
+            playerElement = createElement('li', null, ['textContent', obj[player].name]);
             playerElement.setAttribute("data-player", player);
             playerElement.addEventListener('click', handlePlayerChange);
-
-            playerElement.appendChild(text);
 
             // If the position already exists, add the player ...
             if (index > -1) {
@@ -126,16 +120,14 @@ var myTeam = (function (helpers) {
             // ... else create a new position and add the player 
             } else {
 
-                elements[index] = document.createElement('ul');
-                elements[index].className = obj[player].pos.toLowerCase();
+                elements[index] = createElement('ul', null, ['className', obj[player].pos.toLowerCase()]);
+                elements[index].appendChild(playerElement);
 
                 // Add the position name to array
                 positions.push(obj[player].pos);
 
                 // Add the position wrapper element to array 
                 elements.push(elements[index]);
-
-                elements[index].appendChild(playerElement);
             }
         }
 
@@ -145,6 +137,8 @@ var myTeam = (function (helpers) {
             return config.positionOrder.indexOf(a.className) - config.positionOrder.indexOf(b.className);
         });
 
+
+        // Add all positions and players to the list
         for (var i = 0; i < elements.length; i++) {
 
             listSelect.appendChild(elements[i]);
@@ -181,7 +175,7 @@ var myTeam = (function (helpers) {
             currentPlayer.setAttribute('data-player', newPlayerId);
             currentPlayer.getElementsByTagName('p')[0].textContent = playerInfo.name;
 
-            playerIcon.style['background'] = 'url(img/01.png) center no-repeat';
+            playerIcon.style.background = 'url(img/01.png) center no-repeat';
             playerIcon.style['background-size'] = 'contain';
 
             // Update the player in the current team model
@@ -222,7 +216,7 @@ var myTeam = (function (helpers) {
 
                 var text = playerList[i].textContent;
 
-                if (helpers.fuzzySearch(filter, text.toUpperCase())) {
+                if (utils.fuzzySearch(filter, text.toUpperCase())) {
 
                     playerList[i].style.display = 'list-item';
                 } else {
@@ -279,26 +273,10 @@ var myTeam = (function (helpers) {
             infoBox.removeChild(infoBox.firstChild);
         }
 
-        var nameText = document.createTextNode(player.name);
-        var name = document.createElement('h3');
-        name.appendChild(nameText);
-
-        var teamText = document.createTextNode(player.team);
-        var team = document.createElement('p');
-        team.appendChild(teamText);
-
-        var personalText = document.createTextNode('TT.MM.JJJJ in ' + player.geb_ort + ', ' + player.reg_bezirk);
-        var personal = document.createElement('p');
-        personal.appendChild(personalText);
-
-        var teamIcon = document.createElement('img');
-        teamIcon.src = 'img/vfb.png';
-        teamIcon.alt = 'player.team';
-        
-        infoBox.appendChild(name);
-        infoBox.appendChild(teamIcon);
-        infoBox.appendChild(team);
-        infoBox.appendChild(personal);
+        createElement('h3', infoBox, ['textContent', player.name]);
+        createElement('img', infoBox, ['src', 'img/vfb.png'], ['alt', player.team]);
+        createElement('p', infoBox, ['textContent', player.team]);
+        createElement('p', infoBox, ['textContent', 'TT.MM.JJJJ in ' + player.geb_ort + ', ' + player.reg_bezirk, infoBox]);
     }
 
     function getPlayer(playerId) {
@@ -358,21 +336,10 @@ var myTeam = (function (helpers) {
         return result.join('x');
     }
 
-    function preventEnter(e) {
-
-        e = e || window.event;
-
-        if (event.keyCode == 13) {
-
-            e.preventDefault();
-            return false;
-        }
-    }
-
     return {
 
         init: init
     };
-})(helpers);
+})(utils);
 
 myTeam.init();

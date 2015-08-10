@@ -1,4 +1,4 @@
-var helpers = (function() {
+var utils = (function() {
 
     'use strict';
 
@@ -38,6 +38,48 @@ var helpers = (function() {
         }
 
         return result;
+    }
+
+    //Returns true if it is a DOM node
+    function isNode(o){
+
+        return (
+
+            typeof Node === "object" ? o instanceof Node : 
+            o && typeof o === "object" && typeof o.nodeType === "number" && typeof o.nodeName==="string"
+        );
+    }
+
+    //Returns true if it is a DOM element    
+    function isElement(o){
+
+        return (
+
+            typeof HTMLElement === "object" ? o instanceof HTMLElement : 
+            o && typeof o === "object" && o !== null && o.nodeType === 1 && typeof o.nodeName==="string"
+        );
+    }
+
+    function createElement(type, parent) {
+
+        var element = document.createElement(type);
+       
+        for (var i = 2; i < arguments.length; i++) {
+
+            // Check if object is an array
+            if (Object.prototype.toString.call(arguments[i]) === '[object Array]') {
+
+                element[arguments[i][0]] = arguments[i][1];
+            }
+        }
+
+        if (parent && utils.isElement(parent)) {
+
+            parent.appendChild(element);
+        } else {
+
+            return element;
+        }
     }
 
     function getJSON(path, callback) {
@@ -81,10 +123,25 @@ var helpers = (function() {
         return true;
     }
 
+    function preventEnter(e) {
+
+        e = e || window.event;
+
+        if (event.keyCode == 13) {
+
+            e.preventDefault();
+            return false;
+        }
+    }
+
     return {
         $: $,
         $$: $$,
+        isNode: isNode,
+        isElement: isElement,
+        createElement: createElement,
         getJSON: getJSON,
-        fuzzySearch: fuzzySearch
+        fuzzySearch: fuzzySearch,
+        preventEnter: preventEnter
     };
 })();
