@@ -14,7 +14,7 @@ var myTeam = (function (config, utils) {
     var createElement = utils.createElement;
 
     var currentFormation;
-    var currentLineup;
+    var currentTeamModel;
     var currentList;
     var currentPlayers;
     var currentPosition;
@@ -35,16 +35,16 @@ var myTeam = (function (config, utils) {
             // Check if a linup is predefined in the URL hash, eg #1112x
             if(location.hash) {
 
-                currentLineup = convertLineup(location.hash.replace('#',''));
+                currentTeamModel = convertLineup(location.hash.replace('#',''));
             } else {
 
-                currentLineup = config.defaultTeam;
+                currentTeamModel = config.defaultTeam;
             }
            
             // Inital drawing
-            getFormation(currentLineup);
+            getFormation(currentTeamModel);
             updateFormation();
-            showLineup(currentLineup);
+            showLineup(currentTeamModel);
             showList(data);
             updateList();
 
@@ -179,37 +179,12 @@ var myTeam = (function (config, utils) {
 
         if (!wasPicked(newPlayerId)) {
 
-            // Update player position
-            // @TODO Move to updatePosition()
             var oldPlayerId = currentPosition.getAttribute('data-player');
-            var playerInfo = getPlayer(newPlayerId);
-            var playerIcon = currentPosition.getElementsByTagName('div')[0];
 
-            currentPosition.setAttribute('data-player', newPlayerId);
-            currentPosition.getElementsByTagName('p')[0].textContent = playerInfo.name;
-
-            playerIcon.style.background = 'url(img/01.png) center no-repeat';
-            playerIcon.style['background-size'] = 'contain';
-
-            // Update the player in the current team model
-            // @TODO Move to updateModel()
-            for (var i = 0; i < currentLineup.length; i++) {
-
-                var j = currentLineup[i].indexOf(oldPlayerId);
-
-                if (j > -1) {
-
-                    currentLineup[i][j] = newPlayerId;
-                }
-            }
-
-            // Update player in list
-            // @TODO Move to updateList()
-            e.target.className = 'picked';
+            updatePosition(newPlayerId, oldPlayerId);
+            updateTeamModel(newPlayerId, oldPlayerId);
             updateList(newPlayerId, oldPlayerId);
-           
-
-            updateInfo(playerInfo);
+            updateInfo(newPlayerId);
             updateFormation();
         }
     }
@@ -217,7 +192,7 @@ var myTeam = (function (config, utils) {
     function handleFormationChange() {
 
         updateFormation();
-        showLineup(currentLineup);        
+        showLineup(currentTeamModel);        
     }
 
     function handlePlayerSearch(e) {
@@ -250,9 +225,9 @@ var myTeam = (function (config, utils) {
     // Check if a player is already part of the team
     function wasPicked(playerId) {
 
-        for (var i = 0; i < currentLineup.length; i++) {
+        for (var i = 0; i < currentTeamModel.length; i++) {
 
-            if (currentLineup[i].indexOf(playerId) > -1) {
+            if (currentTeamModel[i].indexOf(playerId) > -1) {
 
                 return true;
             }
@@ -260,7 +235,7 @@ var myTeam = (function (config, utils) {
     }
 
     function updateList(newPlayerId, oldPlayerId) {
-        
+
         for (var k = 0; k < currentList.length; k++) {
 
             if (oldPlayerId && newPlayerId) {
@@ -276,14 +251,11 @@ var myTeam = (function (config, utils) {
                 }
             } else {
 
-                for (var l = 0; l < currentLineup.length; l++) {
+                for (var l = 0; l < currentTeamModel.length; l++) {
 
-                    if (currentLineup[l].indexOf(currentList[k].getAttribute('data-player')) > -1) {
+                    if (currentTeamModel[l].indexOf(currentList[k].getAttribute('data-player')) > -1) {
 
                         currentList[k].className = 'picked';
-                    } else {
-
-                        currentList[k].className = '';
                     }
                 }
             }
@@ -304,20 +276,22 @@ var myTeam = (function (config, utils) {
         lineup.className = 'rows-' + currentFormation.length;
 
         // Flatten array 
-        flatTeam = flatTeam.concat.apply(flatTeam, currentLineup);
+        flatTeam = flatTeam.concat.apply(flatTeam, currentTeamModel);
 
         // Clear current team model;
-        currentLineup = [];
+        currentTeamModel = [];
 
         for (var i = 0;  i < formation.length; i++) {
 
-            currentLineup.push(flatTeam.splice(0, +formation[i]));
+            currentTeamModel.push(flatTeam.splice(0, +formation[i]));
         }
 
-        location.hash = teamToHash(currentLineup);
+        location.hash = teamToHash(currentTeamModel);
     }
 
-    function updateInfo(player) {
+    function updateInfo(playerId) {
+
+        var player = getPlayer(playerId);
 
         while (infoBox.firstChild) {
 
@@ -328,6 +302,31 @@ var myTeam = (function (config, utils) {
         createElement('img', infoBox, ['src', 'img/vfb.png'], ['alt', player.team]);
         createElement('p', infoBox, ['textContent', player.team]);
         createElement('p', infoBox, ['textContent', 'TT.MM.JJJJ in ' + player.geb_ort + ', ' + player.reg_bezirk, infoBox]);
+    }
+
+    function updateTeamModel(newPlayerId, oldPlayerId) {
+        
+        for (var i = 0; i < currentTeamModel.length; i++) {
+
+            var j = currentTeamModel[i].indexOf(oldPlayerId);
+
+            if (j > -1) {
+
+                currentTeamModel[i][j] = newPlayerId;
+            }
+        }
+    }
+
+    function updatePosition(newPlayerId, oldPlayerId) {
+
+        var player = getPlayer(newPlayerId);
+        var playerIcon = currentPosition.getElementsByTagName('div')[0];
+
+        currentPosition.setAttribute('data-player', newPlayerId);
+        currentPosition.getElementsByTagName('p')[0].textContent = player.name;
+
+        playerIcon.style.background = 'url(img/01.png) center no-repeat';
+        playerIcon.style['background-size'] = 'contain';
     }
 
     function getPlayer(playerId) {
