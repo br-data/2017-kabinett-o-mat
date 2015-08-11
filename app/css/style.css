@@ -210,12 +210,12 @@ input, select {
     right: 0;
     border-top: 2px solid #8fbc8f;
     width: 100%;
-    background-color: #fff;
+    color: #fff;
+    background-color: #778899;
 }
 
 #info h3 {
     font-size: 1em;
-    color: #8fbc8f;
     margin: 0 0 .5em;
 }
 
