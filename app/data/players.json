@@ -1,5 +1,5 @@
 {
-  "00": { "team":"zu besetzen", "name":"Unbekannt", "pos":"keine", "geb_ort":"Unbekannt", "reg_bezirk":"Unbekannt"},
+  "00": { "team":"Unbekannt", "name":"zu besetzen", "pos":"keine", "geb_ort":"Unbekannt", "reg_bezirk":"Unbekannt"},
   "01": { "team":"FC Bayern München", "team_short":"FCB", "name":"Holger Badstuber", "rnr":28, "pos_id":"02-abw", "pos":"Abwehr", "geb_tag":"13.03.1989", "geb_ort":"Memmingen", "reg_bezirk":"Schwaben"},
   "02": { "team":"FC Bayern München", "team_short":"FCB", "name":"Mario Götze", "rnr":19, "pos_id":"03-mit", "pos":"Mittelfeld", "geb_tag":"03.06.1992", "geb_ort":"Memmingen", "reg_bezirk":"Schwaben"},
   "03": { "team":"FC Bayern München", "team_short":"FCB", "name":"Philipp Lahm", "rnr":21, "pos_id":"02-abw", "pos":"Abwehr", "geb_tag":"11.11.1983", "geb_ort":"München", "reg_bezirk":"Oberbayern"},

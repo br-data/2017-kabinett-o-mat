@@ -326,19 +326,22 @@ var myTeam = (function (config, utils) {
 
     function updateInfo(playerId) {
 
-        var player = getPlayerData(playerId);
+        if (playerId !== '00') {
 
-        while (infoBox.firstChild) {
+            var player = getPlayerData(playerId);
 
-            infoBox.removeChild(infoBox.firstChild);
+            while (infoBox.firstChild) {
+
+                infoBox.removeChild(infoBox.firstChild);
+            }
+
+            createElement('img', infoBox, ['src', 'img/logos/' +
+                player.team_short + '.png'], ['alt', player.team]);
+            createElement('h3', infoBox, ['textContent', player.name]);
+            createElement('p', infoBox, ['textContent', player.team]);
+            createElement('p', infoBox, ['textContent', player.geb_tag + ' in ' +
+                player.geb_ort + ', ' + player.reg_bezirk, infoBox]);
         }
-
-        createElement('img', infoBox, ['src', 'img/logos/' +
-            player.team_short + '.png'], ['alt', player.team]);
-        createElement('h3', infoBox, ['textContent', player.name]);
-        createElement('p', infoBox, ['textContent', player.team]);
-        createElement('p', infoBox, ['textContent', player.geb_tag + ' in ' +
-            player.geb_ort + ', ' + player.reg_bezirk, infoBox]);
     }
 
     function updateTeamModel(newPlayerId, oldPlayerId) {
