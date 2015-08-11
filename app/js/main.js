@@ -1,7 +1,7 @@
 var config = {
 
-    defaultTeam: [['jj', 'kk'], ['ff', 'gg', 'hh', 'ii'], ['bb', 'cc', 'dd', 'ee'], ['aa']],
-    defaultHash: ['jjkk', 'ffgghhii', 'bbccddee', 'aa'],
+    defaultTeam: [['41', '42'], ['31', '32', '33', '34'], ['21', '22', '23', '24'], ['11']],
+    defaultHash: ['4142', '31323334', '21222324', '11'],
     positionOrder: ['tor', 'abwehr', 'mittelfeld', 'sturm']
 };
 
@@ -66,7 +66,6 @@ var myTeam = (function (config, utils) {
             lineupSelect.removeChild(lineupSelect.firstChild);
         }
 
-
         // @TODO Use a regular for loop
         for (var i = 0; i < arr.length; i++) {
 
@@ -86,7 +85,7 @@ var myTeam = (function (config, utils) {
 
                 playerIcon = createElement('div', null, ['className', 'icon']);
                 playerIcon.style.background = 'url(img/players/' +
-                    pad(arr[i][j]) + '.jpg) center no-repeat';
+                    player + '.jpg) center no-repeat';
                 playerIcon.style['background-size'] = 'contain';
 
                 playerName = createElement('p', null,
@@ -114,7 +113,7 @@ var myTeam = (function (config, utils) {
                 var index, playerElement;
                 
                 // Players without position shouldn't appear in the list
-                if (obj[player].pos === 'keine') { break; }
+                if (obj[player].pos === null) { break; }
 
                 // Check if the position wrapper already exists
                 index = positions.indexOf(obj[player].pos);
@@ -212,15 +211,15 @@ var myTeam = (function (config, utils) {
 
             // Remove the player from the current position,
             // and assign the position to unknown
-            updatePosition('00', newPlayerId);
+            updatePosition('zz', newPlayerId);
 
             // Assign the player to the new position
             updatePosition(newPlayerId, oldPlayerId);
 
             // Update model, list, info and formation
-            updateTeamModel('00', newPlayerId);
+            updateTeamModel('zz', newPlayerId);
             updateTeamModel(newPlayerId, oldPlayerId);
-            updateList('00', newPlayerId);
+            updateList('zz', newPlayerId);
             updateList(newPlayerId, oldPlayerId);
             updateInfo(newPlayerId);
             updateFormation();
@@ -332,7 +331,7 @@ var myTeam = (function (config, utils) {
 
     function updateInfo(playerId) {
 
-        if (playerId !== '00') {
+        if (playerId !== 'zz') {
 
             var player = getPlayerData(playerId);
 
@@ -371,7 +370,7 @@ var myTeam = (function (config, utils) {
 
         var position;
 
-        if (newPlayerId === '00') {
+        if (newPlayerId === 'zz') {
 
             position = getPlayerElement(oldPlayerId);
         } else {
@@ -386,15 +385,15 @@ var myTeam = (function (config, utils) {
         position.getElementsByTagName('p')[0].textContent = player.name;
 
         playerIcon.style.background = 'url(img/players/' +
-            pad(newPlayerId) + '.jpg) center no-repeat';
+            newPlayerId + '.jpg) center no-repeat';
         playerIcon.style['background-size'] = 'contain';
     }
 
     function getPlayerData(playerId) {
 
-        if (isNaN(parseInt(playerId))) {
+        if (!isNaN(parseInt(playerId))) {
 
-            playerId = '00';
+            playerId = 'zz';
         }
 
         return currentPlayers[playerId];
@@ -430,7 +429,7 @@ var myTeam = (function (config, utils) {
     function convertLineup(str) {
 
         // Hash string to array
-        var arr = str.split('x');
+        var arr = str.split('-');
 
         // If the array is malformed, fall back to default
         if (arr.length < config.defaultTeam.length) {
@@ -458,7 +457,7 @@ var myTeam = (function (config, utils) {
             result.push(arr[i].join(''));
         }
 
-        return result.join('x');
+        return result.join('-');
     }
 
     return {

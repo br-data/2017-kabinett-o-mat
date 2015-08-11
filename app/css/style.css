@@ -207,12 +207,11 @@ input, select {
 
 #info {
     padding: 1em 1em 1em 2em;
-    height: 120px;
+    height: 130px;
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    border-top: 2px solid #8fbc8f;
     width: 100%;
     color: #fff;
     background-color: #778899;
@@ -237,7 +236,7 @@ input, select {
     pointer-events: none;
     height: 40px;
     position: absolute;
-    bottom: 120px;
+    bottom: 130px;
     left: 0;
     right: 0;
     width: 100%;
