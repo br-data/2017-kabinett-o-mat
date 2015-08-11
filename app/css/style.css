@@ -92,6 +92,7 @@ input, select {
 #lineup .player .text {
     line-height: 1.2em;
     text-shadow: 1px 1px 1px #333, 1px -1px 1px #333, -1px 1px 1px #333, -1px -1px 1px #333;
+    pointer-events: none;
 }
 
 #lineup .player.active .icon {
@@ -104,6 +105,15 @@ input, select {
 
 #lineup.rows-5 .row {
     height: 20%;
+}
+
+#lineup .row {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 #sidebar {

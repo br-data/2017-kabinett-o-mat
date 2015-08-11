@@ -67,7 +67,8 @@ var myTeam = (function (config, utils) {
 
         for (var row in arr) {
 
-            var section = createElement('section', null, ['className', 'row']);
+            var section = createElement('section', null,
+                ['className', 'row']);
 
             // Add players, line by line
             for (var player in arr[row]) {
