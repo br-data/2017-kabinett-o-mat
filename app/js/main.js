@@ -72,22 +72,22 @@ var myTeam = (function (config, utils) {
                 ['className', 'row']);
 
             // Add players, line by line
-            for (var player in arr[row]) {
+            for (var position in arr[row]) {
 
                 var playerWrapper, playerIcon, playerName;
-                var playerInfo = getPlayerData(arr[row][player]);
+                var player = getPlayerData(arr[row][position]);
 
                 playerWrapper = createElement('div', null,['className', 'player']);
-                playerWrapper.setAttribute('data-player', arr[row][player]);
+                playerWrapper.setAttribute('data-player', arr[row][position]);
                 playerWrapper.addEventListener('click', handlePositionSelect);
 
                 playerIcon = createElement('div', null, ['className', 'icon']);
                 playerIcon.style.background = 'url(img/players/' +
-                    pad(arr[row][player]) + '.jpg) center no-repeat';
+                    pad(arr[row][position]) + '.jpg) center no-repeat';
                 playerIcon.style['background-size'] = 'contain';
 
                 playerName = createElement('p', null,
-                    ['className', 'text'], ['textContent', playerInfo.name]);       
+                    ['className', 'text'], ['textContent', player.name]);       
 
                 playerWrapper.appendChild(playerIcon);
                 playerWrapper.appendChild(playerName);
@@ -114,7 +114,8 @@ var myTeam = (function (config, utils) {
             // Check if the position wrapper already exists
             index = positions.indexOf(obj[player].pos);
 
-            playerElement = createElement('li', null, ['textContent', obj[player].name]);
+            //playerElement = createElement('li', null, ['textContent', obj[player].name]);
+            playerElement = createElement('li', null, ['textContent', obj[player].name + ' (' + player + ')']);
             playerElement.setAttribute("data-player", player);
             playerElement.addEventListener('click', handlePlayerChange);
 
@@ -172,6 +173,8 @@ var myTeam = (function (config, utils) {
 
             target.className = 'player active';
             if (currentPosition) { currentPosition.className = 'player'; }
+
+            updateInfo(target.getAttribute('data-player'));
         }
 
         currentPosition = target;
@@ -211,6 +214,8 @@ var myTeam = (function (config, utils) {
             // Update model, list, info and formation
             updateTeamModel('00', newPlayerId);
             updateTeamModel(newPlayerId, oldPlayerId);
+            updateList('00', newPlayerId);
+            updateList(newPlayerId, oldPlayerId);
             updateInfo(newPlayerId);
             updateFormation();
         }
@@ -328,11 +333,11 @@ var myTeam = (function (config, utils) {
             infoBox.removeChild(infoBox.firstChild);
         }
 
-        createElement('h3', infoBox, ['textContent', player.name]);
         createElement('img', infoBox, ['src', 'img/logos/' +
             player.team_short + '.png'], ['alt', player.team]);
+        createElement('h3', infoBox, ['textContent', player.name]);
         createElement('p', infoBox, ['textContent', player.team]);
-        createElement('p', infoBox, ['textContent', 'TT.MM.JJJJ in ' +
+        createElement('p', infoBox, ['textContent', player.geb_tag + ' in ' +
             player.geb_ort + ', ' + player.reg_bezirk, infoBox]);
     }
 
@@ -347,8 +352,6 @@ var myTeam = (function (config, utils) {
                 currentTeamModel[i][j] = newPlayerId;
             }
         }
-
-        console.log(currentTeamModel);
     }
 
     function updatePosition(newPlayerId, oldPlayerId) {
