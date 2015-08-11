@@ -66,24 +66,27 @@ var myTeam = (function (config, utils) {
             lineupSelect.removeChild(lineupSelect.firstChild);
         }
 
-        for (var row in arr) {
+
+        // @TODO Use a regular for loop
+        for (var i = 0; i < arr.length; i++) {
 
             var section = createElement('section', null,
                 ['className', 'row']);
 
             // Add players, line by line
-            for (var position in arr[row]) {
+            // @TODO Use a regular for loop
+            for (var j = 0; j < arr[i].length; j++) {
 
                 var playerWrapper, playerIcon, playerName;
-                var player = getPlayerData(arr[row][position]);
+                var player = getPlayerData(arr[i][j]);
 
                 playerWrapper = createElement('div', null,['className', 'player']);
-                playerWrapper.setAttribute('data-player', arr[row][position]);
+                playerWrapper.setAttribute('data-player', arr[i][j]);
                 playerWrapper.addEventListener('click', handlePositionSelect);
 
                 playerIcon = createElement('div', null, ['className', 'icon']);
                 playerIcon.style.background = 'url(img/players/' +
-                    pad(arr[row][position]) + '.jpg) center no-repeat';
+                    pad(arr[i][j]) + '.jpg) center no-repeat';
                 playerIcon.style['background-size'] = 'contain';
 
                 playerName = createElement('p', null,
@@ -106,36 +109,39 @@ var myTeam = (function (config, utils) {
 
         for (var player in obj) {
 
-            var index, text, playerElement;
-            
-            // Players without position shouldn't appear in the list
-            if (obj[player].pos === 'keine') { break; }
+            if (obj.hasOwnProperty(player)) {
 
-            // Check if the position wrapper already exists
-            index = positions.indexOf(obj[player].pos);
+                var index, playerElement;
+                
+                // Players without position shouldn't appear in the list
+                if (obj[player].pos === 'keine') { break; }
 
-            //playerElement = createElement('li', null, ['textContent', obj[player].name]);
-            playerElement = createElement('li', null, ['textContent', obj[player].name + ' (' + player + ')']);
-            playerElement.setAttribute("data-player", player);
-            playerElement.addEventListener('click', handlePlayerChange);
+                // Check if the position wrapper already exists
+                index = positions.indexOf(obj[player].pos);
 
-            // If the position already exists, add the player ...
-            if (index > -1) {
+                //playerElement = createElement('li', null, ['textContent', obj[player].name]);
+                playerElement = createElement('li', null, ['textContent', obj[player].name + ' (' + player + ')']);
+                playerElement.setAttribute('data-player', player);
+                playerElement.addEventListener('click', handlePlayerChange);
 
-                elements[index].appendChild(playerElement);
+                // If the position already exists, add the player ...
+                if (index > -1) {
 
-            // ... else create a new position and add the player 
-            } else {
+                    elements[index].appendChild(playerElement);
 
-                elements[index] = createElement('ul', null,
-                    ['className',obj[player].pos.toLowerCase()]);
-                elements[index].appendChild(playerElement);
+                // ... else create a new position and add the player 
+                } else {
 
-                // Add the position name to array
-                positions.push(obj[player].pos);
+                    elements[index] = createElement('ul', null,
+                        ['className',obj[player].pos.toLowerCase()]);
+                    elements[index].appendChild(playerElement);
 
-                // Add the position wrapper element to array 
-                elements.push(elements[index]);
+                    // Add the position name to array
+                    positions.push(obj[player].pos);
+
+                    // Add the position wrapper element to array 
+                    elements.push(elements[index]);
+                }
             }
         }
 
@@ -230,7 +236,7 @@ var myTeam = (function (config, utils) {
     function handlePlayerSearch(e) {
 
         // Get a list of all players
-        var playerList = listSelect.getElementsByTagName("li");
+        var playerList = listSelect.getElementsByTagName('li');
         var filter = playerFilter.value.toUpperCase();
 
         // Search for current query and hide mismatches
@@ -269,27 +275,27 @@ var myTeam = (function (config, utils) {
     // Blank out the currently selected players 
     function updateList(newPlayerId, oldPlayerId) {
 
-        for (var k = 0; k < currentList.length; k++) {
+        for (var i = 0; i < currentList.length; i++) {
 
             if (oldPlayerId && newPlayerId) {
 
-                if (currentList[k].getAttribute('data-player') === newPlayerId) {
+                if (currentList[i].getAttribute('data-player') === newPlayerId) {
 
-                    currentList[k].className = 'picked';
+                    currentList[i].className = 'picked';
                 }
 
-                if (currentList[k].getAttribute('data-player') === oldPlayerId) {
+                if (currentList[i].getAttribute('data-player') === oldPlayerId) {
 
-                    currentList[k].className = '';
+                    currentList[i].className = '';
                 }
             } else {
 
-                for (var l = 0; l < currentTeamModel.length; l++) {
+                for (var j = 0; j < currentTeamModel.length; j++) {
 
-                    if (currentTeamModel[l].indexOf(
-                        currentList[k].getAttribute('data-player')) > -1) {
+                    if (currentTeamModel[j]
+                        .indexOf(currentList[i].getAttribute('data-player')) > -1) {
 
-                        currentList[k].className = 'picked';
+                        currentList[i].className = 'picked';
                     }
                 }
             }
@@ -304,11 +310,11 @@ var myTeam = (function (config, utils) {
         var flatTeam = [];
 
         // Add the goalkeeper
-        formation.push("1");
+        formation.push('1');
         currentFormation = formation;
 
         // Write class
-        lineup.className = 'rows-' + currentFormation.length;
+        lineupSelect.className = 'rows-' + currentFormation.length;
 
         // Flatten array 
         flatTeam = flatTeam.concat.apply(flatTeam, currentTeamModel);
@@ -348,11 +354,15 @@ var myTeam = (function (config, utils) {
         
         for (var i = 0; i < currentTeamModel.length; i++) {
 
+            
             var j = currentTeamModel[i].indexOf(oldPlayerId);
 
             if (j > -1) {
 
                 currentTeamModel[i][j] = newPlayerId;
+                
+                // @TODO Make sure only one player is replaced
+                break;
             }
         }
     }

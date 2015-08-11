@@ -100,11 +100,11 @@ input, select {
 }
 
 #lineup.rows-4 .row {
-    height: 25%;
+    height: 24%;
 }
 
 #lineup.rows-5 .row {
-    height: 20%;
+    height: 19%;
 }
 
 #lineup .row {
@@ -171,24 +171,28 @@ input, select {
     content: "Sturm";
     font-weight: bold;
     line-height: 2.2em;
+    vertical-align: top;
 }
 
 #list .mittelfeld:before {
     content: "Mittelfeld";
     font-weight: bold;
     line-height: 2.2em;
+    vertical-align: top;
 }
 
 #list .abwehr:before {
     content: "Abwehr";
     font-weight: bold;
     line-height: 2.2em;
+    vertical-align: top;
 }
 
 #list .tor:before {
     content: "Tor";
     font-weight: bold;
     line-height: 2.2em;
+    vertical-align: top;
 }
 
 #list ul:nth-child(odd) {
