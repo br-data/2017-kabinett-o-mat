@@ -123,6 +123,18 @@ var utils = (function() {
         return true;
     }
 
+    function pad(num, len) {
+
+        if (isNaN(parseInt(num))) { num = 0; }
+
+        if (!len) { len = 2; }
+
+        var str = num + '';
+        while (str.length < len) str = '0' + str;
+
+        return str;
+    }
+
     function preventEnter(e) {
 
         e = e || window.event;
@@ -142,6 +154,7 @@ var utils = (function() {
         createElement: createElement,
         getJSON: getJSON,
         fuzzySearch: fuzzySearch,
+        pad: pad,
         preventEnter: preventEnter
     };
 })();

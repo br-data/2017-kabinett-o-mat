@@ -11,6 +11,7 @@ var myTeam = (function (config, utils) {
 
     var $ = utils.$;
     var $$ = utils.$$;
+    var pad = utils.pad;
     var createElement = utils.createElement;
 
     var currentFormation;
@@ -19,7 +20,7 @@ var myTeam = (function (config, utils) {
     var currentPlayers;
     var currentPosition;
 
-    // @TODO Use more semantic name
+    // @TODO Use more semantic naming
     var formationSelect = $('formation');
     var listSelect = $('list');
     var lineupSelect = $('lineup');
@@ -76,7 +77,7 @@ var myTeam = (function (config, utils) {
                 var playerWrapper, playerIcon, playerName;
                 var playerInfo = getPlayerData(arr[row][player]);
 
-                playerWrapper = createElement('div', null, ['className', 'player']);
+                playerWrapper = createElement('div', null,['className', 'player']);
                 playerWrapper.setAttribute('data-player', arr[row][player]);
                 playerWrapper.addEventListener('click', handlePositionSelect);
 
@@ -166,9 +167,13 @@ var myTeam = (function (config, utils) {
             target = $$('.player')[0];
         }
 
-        target.className = 'player active';
-        if (currentPosition) currentPosition.className = 'player';
-        
+        // If position gets clicked again, do nothing;
+        if (currentPosition !== target) {
+
+            target.className = 'player active';
+            if (currentPosition) { currentPosition.className = 'player'; }
+        }
+
         currentPosition = target;
     } 
 
@@ -183,17 +188,27 @@ var myTeam = (function (config, utils) {
         var newPlayerId = e.target.getAttribute('data-player');
         var oldPlayerId = currentPosition.getAttribute('data-player');
 
+        // Player is not in the current team
         if (!wasPicked(newPlayerId)) {
 
+            // Assign the player to the new position and update 
             updatePosition(newPlayerId, oldPlayerId);
             updateTeamModel(newPlayerId, oldPlayerId);
             updateList(newPlayerId, oldPlayerId);
             updateInfo(newPlayerId);
             updateFormation();
+
+        // Player is in the current team
         } else {
 
+            // Remove the player from the current position,
+            // and assign the position to unknown
             updatePosition('00', newPlayerId);
+
+            // Assign the player to the new position
             updatePosition(newPlayerId, oldPlayerId);
+
+            // Update model, list, info and formation
             updateTeamModel('00', newPlayerId);
             updateTeamModel(newPlayerId, oldPlayerId);
             updateInfo(newPlayerId);
@@ -246,6 +261,7 @@ var myTeam = (function (config, utils) {
         }
     }
 
+    // Blank out the currently selected players 
     function updateList(newPlayerId, oldPlayerId) {
 
         for (var k = 0; k < currentList.length; k++) {
@@ -331,6 +347,8 @@ var myTeam = (function (config, utils) {
                 currentTeamModel[i][j] = newPlayerId;
             }
         }
+
+        console.log(currentTeamModel);
     }
 
     function updatePosition(newPlayerId, oldPlayerId) {
@@ -425,19 +443,6 @@ var myTeam = (function (config, utils) {
         }
 
         return result.join('x');
-    }
-
-    function pad(num) {
-
-        if (isNaN(parseInt(num))) {
-
-            num = 0;
-        }
-
-        var str = num + '';
-        while (str.length < 2) str = '0' + str;
-
-        return str;
     }
 
     return {
