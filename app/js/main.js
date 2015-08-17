@@ -329,7 +329,7 @@ var myTeam = (function (config, utils) {
 
     function updateInfo(playerId) {
 
-        if (playerId !== 'zz') {
+        if (isNaN(parseInt(playerId)) && playerId !== 'zz') {
 
             var player = getPlayerData(playerId);
 
