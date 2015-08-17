@@ -11,7 +11,6 @@ var myTeam = (function (config, utils) {
 
     var $ = utils.$;
     var $$ = utils.$$;
-    var pad = utils.pad;
     var createElement = utils.createElement;
 
     var currentFormation;
@@ -77,7 +76,7 @@ var myTeam = (function (config, utils) {
             for (var j = 0; j < arr[i].length; j++) {
 
                 var playerWrapper, playerIcon, playerName;
-                var player = getPlayerData(arr[i][j]);
+                var player = getPlayerData(arr[i][j]) || getPlayerData('zz');
 
                 playerWrapper = createElement('div', null,['className', 'player']);
                 playerWrapper.setAttribute('data-player', arr[i][j]);
@@ -85,7 +84,8 @@ var myTeam = (function (config, utils) {
 
                 playerIcon = createElement('div', null, ['className', 'icon']);
                 playerIcon.style.background = 'url(img/players/' +
-                    player + '.jpg) center no-repeat';
+                    (isNaN(parseInt(arr[i][j])) ? arr[i][j] : 'zz') +
+                    '.jpg) center no-repeat';
                 playerIcon.style['background-size'] = 'contain';
 
                 playerName = createElement('p', null,
@@ -108,12 +108,10 @@ var myTeam = (function (config, utils) {
 
         for (var player in obj) {
 
-            if (obj.hasOwnProperty(player)) {
+            // Players without position shouldn't appear in the list
+            if (obj[player].pos && obj.hasOwnProperty(player)) {
 
                 var index, playerElement;
-                
-                // Players without position shouldn't appear in the list
-                if (obj[player].pos === null) { break; }
 
                 // Check if the position wrapper already exists
                 index = positions.indexOf(obj[player].pos);
@@ -132,7 +130,7 @@ var myTeam = (function (config, utils) {
                 } else {
 
                     elements[index] = createElement('ul', null,
-                        ['className',obj[player].pos.toLowerCase()]);
+                        ['className', obj[player].pos.toLowerCase()]);
                     elements[index].appendChild(playerElement);
 
                     // Add the position name to array
@@ -391,12 +389,7 @@ var myTeam = (function (config, utils) {
 
     function getPlayerData(playerId) {
 
-        if (!isNaN(parseInt(playerId))) {
-
-            playerId = 'zz';
-        }
-
-        return currentPlayers[playerId];
+        return currentPlayers[playerId] || false;
     }
 
     function getPlayerElement(playerId) {
