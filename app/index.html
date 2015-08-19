@@ -17,12 +17,39 @@
     <section id="field">
 
       <section id="modal">
-        <div class="wrapper">
           <div id="close">×</div>
-        </div>
+
+          <h1>Vielen Dank für Ihre Stimme</h1>
+
+          <p>Die Auswertung der Einsendungen werden wir bis zum XX.XX.XX auswerten. Den Beitrag können Sie dann auf BR1 hören.</p>
+          
+
+          <h1>Teilen Sie Ihre Mannschaft mit Ihren Freunden:</h1>
+
+          <p>Wenn Sie Ihre Mannschaft teilen, können andere Ihre Aufstellung sehen.</p>
+
+          <div class="icons">
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{config.SHARING.url}}" target="_blank">
+                <img src="img/facebook.png">
+            </a>
+
+            <a href="https://twitter.com/intent/tweet?url={{config.SHARING.url}}&text={{encodeURIComponent config.SHARING.twitter.text}}&hashtags={{config.SHARING.twitter.hashtags}}&via={{config.SHARING.twitter.via}}&related={{config.SHARING.twitter.related}}" target="_blank">
+                <img src="img/twitter.png">
+            </a>
+
+            <a href="https://plus.google.com/share?url={{config.SHARING.url}}" target="_blank">
+                <img src="img/gplus.png">
+            </a>
+
+            <a href="https://plus.google.com/share?url={{config.SHARING.url}}" target="_blank">
+                <img src="img/email.png">
+            </a>
+          </div>
+
+          <p>Unsere Datenschutzerklärung finden Sie hier.</p>
       </section>
 
-      <button id="home">Zum Artikel</button>
+      <button id="home"><span>Zum Artikel</span></button>
 
       <form>
         <label for="formation">Aufstellung auswählen:</label>
@@ -33,7 +60,7 @@
         </select>
       </form>
 
-      <button id="share">Speichern & Teilen</button>
+      <button id="share"><span>Abstimmen</span></button>
 
       <div id="lineup" class="noselect"></div>
 

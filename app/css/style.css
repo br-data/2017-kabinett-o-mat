@@ -182,11 +182,11 @@ button:hover {
 }
 
 #list li:hover {
-  color: #8fbc8f;
+  color: #999;
 }
 
 #list li.picked {
-  color: #999;
+  color: #8fbc8f;
 }
 
 #list .sturm:before {
@@ -275,17 +275,20 @@ button:hover {
   float: left;
 }
 
-#home:before {
+button:before {
   content:'';
   display: inline-block;
   opacity: .5;
   vertical-align: middle;
-  background-image: url('../img/back.png');
   background-position: 0px 2px;
   background-size: 24px 24px;
   background-repeat: no-repeat;
   width: 30px; 
   height: 30px;
+}
+
+#home:before {
+  background-image: url('../img/back.png');
 }
 
 #share {
@@ -293,31 +296,19 @@ button:hover {
 }
 
 #share:before {
-  content:'';
-  display: inline-block;
-  opacity: .5;
-  vertical-align: middle;
   background-image: url('../img/share.png');
-  background-position: 0px 2px;
-  background-size: 24px 24px;
-  background-repeat: no-repeat;
-  width: 30px; 
-  height: 30px;
 }
 
 #modal {
   display: none;
   position: absolute;
-  top: 5em;
-  left: 2em;
-  right: 2em;
-  bottom: 2em;
+  padding: 3em;
+  top: 10%;
+  left: 5%;
+  right: 5%;
+  bottom: 5%;
   background: #fff;
   z-index: 100;
-}
-
-#modal .wrapper {
-  position: relative;
 }
 
 #close {
@@ -330,3 +321,39 @@ button:hover {
   text-decoration: none;
   cursor: pointer;
 }
+
+.icons {
+  display: block;
+}
+
+.icons a {
+  text-decoration: none;
+  margin: 0 1em;
+}
+
+@media (max-width: 780px) {
+
+  button span {
+    display: none;
+  }
+  button:before {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 540px) {
+
+  button {
+    display: none
+  }
+  #field {
+    width: 100%;
+  }
+  #sidebar {
+    display: none
+  }
+  #lineup {
+    margin: 0;
+  }
+}
+
