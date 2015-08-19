@@ -1,11 +1,4 @@
-var config = {
-
-    defaultTeam: [['41', '42'], ['31', '32', '33', '34'], ['21', '22', '23', '24'], ['11']],
-    defaultHash: ['4142', '31323334', '21222324', '11'],
-    positionOrder: ['tor', 'abwehr', 'mittelfeld', 'sturm']
-};
-
-var myTeam = (function (config, utils) {
+var app = (function (config, utils) {
 
     'use strict';
 
@@ -457,6 +450,6 @@ var myTeam = (function (config, utils) {
 
         init: init
     };
-})(config, utils);
+})(config, utils, tracking, sharing);
 
-myTeam.init();
+app.init();

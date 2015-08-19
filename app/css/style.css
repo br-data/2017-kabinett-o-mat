@@ -84,7 +84,7 @@ button:hover {
   background-size: 100% auto;
   color: #fff;
   height: 100%;
-  padding: 1em 2em;
+  margin: 2em 1em;
 }
 
 #lineup .player {
@@ -135,6 +135,7 @@ button:hover {
   height: 100%;
   width: 25%;
   position: relative;
+  background: #fff;
 }
 
 #sidebar .content {

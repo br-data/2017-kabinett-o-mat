@@ -1,0 +1,39 @@
+var tracking = (function (config) {
+
+	'use strict';
+
+	var request;
+    var button = document.getElementById('button');
+    var str = "Lineup=acab-axavasat-amanafbn-ba";
+
+	function init() {
+
+		if (request) {
+
+	    	request.abort();
+	    }
+
+	    button.onclick = function () {
+
+			request = new XMLHttpRequest();
+
+			request.onreadystatechange=function() {
+
+				if (request.readyState === 4 && request.status === 200) {
+
+					console.log('Request successfull');
+				}
+			};
+
+			request.open('POST','https://script.google.com/macros/s/AKfycbzvz2UDsyp6Iy7YMMVbbnUSKwfCsmrabnVBPlGscrz1STIfGEgE/exec', true);
+			request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+			request.send(str);
+	    };
+	}
+
+	return {
+
+        init: init
+    };
+
+}(config));
