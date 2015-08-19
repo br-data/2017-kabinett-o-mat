@@ -42,6 +42,10 @@ button:hover {
   color: #fff;
 }
 
+nav {
+  height: 10%;
+}
+
 #field {
   z-index: 0;
   background: #8fbc8f;
@@ -85,7 +89,7 @@ button:hover {
   background-position: bottom;
   background-size: 100% auto;
   color: #fff;
-  height: 100%;
+  height: 90%;
   margin: 2em 1em;
 }
 
