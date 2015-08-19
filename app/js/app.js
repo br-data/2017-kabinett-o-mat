@@ -1,4 +1,4 @@
-var app = (function (config, utils) {
+var app = (function (config, utils, tracking, sharing) {
 
     'use strict';
 
@@ -18,6 +18,9 @@ var app = (function (config, utils) {
     var lineupSelect = $('lineup');
     var playerFilter = $('filter');
     var infoBox = $('info');
+    var shareButton = $('share');
+    var modal = $('modal');
+    var closeButton = $('close');
     
     function init() {
 
@@ -46,6 +49,9 @@ var app = (function (config, utils) {
             playerFilter.addEventListener('keydown', utils.preventEnter);
             playerFilter.addEventListener('keyup', handlePlayerSearch);
             playerFilter.addEventListener('search', handlePlayerSearch);
+
+            shareButton.addEventListener('click', handleShare);
+            closeButton.addEventListener('click', handleClose);
         });   
     }
 
@@ -444,6 +450,20 @@ var app = (function (config, utils) {
         }
 
         return result.join('-');
+    }
+
+    function handleShare() {
+
+        var str = 'Lineup=' + teamToHash(currentTeamModel);
+
+        tracking.send(str);
+
+        modal.style.display = 'block';
+    }
+
+    function handleClose() {
+
+        modal.style.display = 'none';
     }
 
     return {
