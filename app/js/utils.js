@@ -8,7 +8,7 @@ var utils = (function() {
 
         if (elementOrId !== null) {
 
-            if (typeof elementOrId === "string") {
+            if (typeof elementOrId === 'string') {
 
                 result = document.getElementById(elementOrId);
                 return $(result);
@@ -27,7 +27,7 @@ var utils = (function() {
 
         if (elementOrClass !== null) {
 
-            if (typeof elementOrClass === "string") {
+            if (typeof elementOrClass === 'string') {
 
                 result = document.querySelectorAll(elementOrClass);
                 return $$(result);
@@ -45,8 +45,8 @@ var utils = (function() {
 
         return (
 
-            typeof Node === "object" ? o instanceof Node : 
-            o && typeof o === "object" && typeof o.nodeType === "number" && typeof o.nodeName==="string"
+            typeof Node === 'object' ? o instanceof Node : 
+            o && typeof o === 'object' && typeof o.nodeType === 'number' && typeof o.nodeName==='string'
         );
     }
 
@@ -55,8 +55,8 @@ var utils = (function() {
 
         return (
 
-            typeof HTMLElement === "object" ? o instanceof HTMLElement : 
-            o && typeof o === "object" && o !== null && o.nodeType === 1 && typeof o.nodeName==="string"
+            typeof HTMLElement === 'object' ? o instanceof HTMLElement : 
+            o && typeof o === 'object' && o !== null && o.nodeType === 1 && typeof o.nodeName==='string'
         );
     }
 
