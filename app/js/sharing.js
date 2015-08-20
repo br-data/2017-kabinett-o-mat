@@ -1,17 +1,36 @@
-var sharing = (function (config) {
+var sharing = (function (config, utils) {
 
     'use strict';
 
+    var $ = utils.$;
+    var $$ = utils.$$;
+
     function init() {
 
-        // Select all sharing buttons with the class '.tracking'
-        var links = window.$$('.sharing > a');
+        // Select all sharing links
+        var links = $$('.icons > a');
 
         // Iteratively replace URLs and bind events
         for (var a = 0; a < links.length; a++) {
+
+            replaceUrl(links[a]);
             links[a].onclick = openPopup;
         }
 
+    }
+
+    // Replace all %PLACEHOLDERS%
+    function replaceUrl(el) {
+
+        var url = config.sharing.url;
+        var oldUrl = el.href;
+        var newUrl = oldUrl
+            .replace('%URL%', url)
+            .replace('%TEXT%', config.sharing.text.split(' ').join('+'))
+            .replace('%HASHTAGS%', config.sharing.hashtags)
+            .replace('%AUTHOR%', config.sharing.author)
+            .replace('%RELATED%', config.sharing.related);
+        el.href = encodeURI(newUrl);
     }
 
     function openPopup(e) {
@@ -29,8 +48,8 @@ var sharing = (function (config) {
             py = Math.floor(((screen.availHeight || 700) - config.Height) / 2);
 
         // Open popup
-        var popup = window.open(t.href, 'social', 'width=' + config.SHARING.width +
-            ',height=' + config.SHARING.height + ',left=' + px + ',top=' + py +
+        var popup = window.open(t.href, 'social', 'width=' + config.sharing.width +
+            ',height=' + config.sharing.height + ',left=' + px + ',top=' + py +
             ',location=0,menubar=0,toolbar=0,status=0,scrollbars=1,resizable=1');
 
         if (popup) {
@@ -55,4 +74,4 @@ var sharing = (function (config) {
         init: init
     };
 
-}(config));
+}(config, utils));

@@ -29,20 +29,20 @@
           <p>Wenn Sie Ihre Mannschaft teilen, können andere Ihre Aufstellung sehen.</p>
 
           <div class="icons">
-            <a href="https://www.facebook.com/sharer/sharer.php?u={{config.SHARING.url}}" target="_blank">
-                <img src="img/facebook.png">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=%URL%" class="share facebook" target="_blank">
+              <img src="img/facebook.png">
             </a>
 
-            <a href="https://twitter.com/intent/tweet?url={{config.SHARING.url}}&text={{encodeURIComponent config.SHARING.twitter.text}}&hashtags={{config.SHARING.twitter.hashtags}}&via={{config.SHARING.twitter.via}}&related={{config.SHARING.twitter.related}}" target="_blank">
-                <img src="img/twitter.png">
+            <a href="https://twitter.com/intent/tweet?url=%URL%&amp;text=%TEXT%&amp;via=%AUTHOR%&amp;hashtags=%HASHTAGS%&amp;related=%RELATED%" class="share twitter" target="_blank">
+              <img src="img/twitter.png">
             </a>
 
-            <a href="https://plus.google.com/share?url={{config.SHARING.url}}" target="_blank">
-                <img src="img/gplus.png">
+            <a href="https://plus.google.com/share?url=%URL%" class="share google" target="_blank">
+              <img src="img/gplus.png">
             </a>
 
-            <a href="https://plus.google.com/share?url={{config.SHARING.url}}" target="_blank">
-                <img src="img/email.png">
+            <a href="" target="_blank">
+              <img src="img/email.png">
             </a>
           </div>
 
