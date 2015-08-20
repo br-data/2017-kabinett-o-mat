@@ -30,11 +30,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
  
-.icon-twitter-squared:before { content: '\e800'; }
+.icon-facebook-squared:before { content: '\e802'; color: #3b5998;}
+.icon-twitter-squared:before { content: '\e800'; color: #00aced; }
+.icon-gplus-squared:before { content: '\e804'; color: #d34836;}
+.icon-mail-squared:before { content: '\e809'; }
 .icon-reply:before { content: '\e801'; }
-.icon-facebook-squared:before { content: '\e802'; }
 .icon-paper-plane:before { content: '\e803'; }
-.icon-gplus-squared:before { content: '\e804'; }
 .icon-info:before { content: '\e805'; }
 .icon-share:before { content: '\e807'; }
-.icon-mail-squared:before { content: '\e809'; }

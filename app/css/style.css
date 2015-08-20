@@ -349,6 +349,14 @@ button:before, .button:before {
   width: 50px;
 }
 
+.icons .big {
+  font-size: 50px;
+}
+
+.icons .big:hover {
+  opacity: .7;
+}
+
 @media (max-width: 780px) {
 
   button span, .button span {
