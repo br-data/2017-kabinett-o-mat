@@ -302,6 +302,7 @@ nav {
   left: 10%;
   background: #fff;
   z-index: 100;
+  overflow: auto;
 }
 
 #modal p {
