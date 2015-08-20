@@ -21,22 +21,22 @@ input, select, button, .button {
   font-family: inherit;
   font-size: inherit;
   height: 30px;
+
   background-color: #fff;
   border-radius: 0;
   outline: none;
+  border: none;
+  text-decoration: none;
   -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
 
 button, .button {
-  border: none;
   color: #333;
   cursor: pointer;
   font-weight: bold;
-  font-size: 1em;
   padding: .1em .7em .1em .5em;
-  height: 30px;
-  text-decoration: none;
+  line-height: 30px;
 }
 
 button:hover, .button:hover {
@@ -281,28 +281,15 @@ nav {
   float: left;
 }
 
-button:before, .button:before {
-  content:'';
-  display: inline-block;
-  opacity: .5;
-  vertical-align: middle;
-  background-position: 0px 2px;
-  background-size: 24px 24px;
-  background-repeat: no-repeat;
-  width: 30px; 
-  height: 30px;
-}
-
-#home:before {
-  background-image: url('../img/back.png');
-}
-
 #share {
   float: right;
 }
 
-#share:before {
-  background-image: url('../img/share.png');
+.small {
+  font-size: 17px;
+  opacity: .7;
+  vertical-align: top;
+  margin: 0 .1em;
 }
 
 #modal {
