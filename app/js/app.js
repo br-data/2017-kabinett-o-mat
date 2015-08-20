@@ -21,6 +21,7 @@ var app = (function (config, utils, tracking, sharing) {
     var shareButton = $('share');
     var modal = $('modal');
     var closeButton = $('close');
+    var directLink = $('direct');
     
     function init() {
 
@@ -454,8 +455,11 @@ var app = (function (config, utils, tracking, sharing) {
 
     function handleShare() {
 
-        //tracking.send('Lineup=' + teamToHash(currentTeamModel));
+        tracking.send('Lineup=' + teamToHash(currentTeamModel));
         sharing.init();
+
+        directLink.src = location.href;
+        directLink.textContent = location.href;
 
         modal.style.display = 'block';
     }

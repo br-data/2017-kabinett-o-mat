@@ -309,12 +309,20 @@ button:before, .button:before {
   display: none;
   position: absolute;
   padding: 3em;
-  top: 10%;
-  left: 5%;
-  right: 5%;
-  bottom: 5%;
+  top: 15%;
+  right: 10%;
+  bottom: 15%;
+  left: 10%;
   background: #fff;
   z-index: 100;
+}
+
+#modal p {
+  margin: .2em 0 1em; 
+}
+
+#modal h1 {
+  margin: 2em 0 .5em;
 }
 
 #close {
@@ -330,26 +338,30 @@ button:before, .button:before {
 
 .icons {
   display: block;
+  margin: 2em 0;
 }
 
 .icons a {
+  color: #333;
   text-decoration: none;
   margin: 0 1em;
+  display: inline-block;
+  width: 50px;
 }
 
 @media (max-width: 780px) {
 
-  button span {
+  button span, .button span {
     display: none;
   }
-  button:before {
+  button:before, .button:before {
     opacity: 1;
   }
 }
 
 @media (max-width: 540px) {
 
-  button {
+  button, .button {
     display: none
   }
   #field {
