@@ -22,10 +22,12 @@ var sharing = (function (config, utils) {
     // Replace all %PLACEHOLDERS%
     function replaceUrl(el) {
 
-        var url = config.sharing.url;
+        var url = location.href;
+        url = url.replace('#','%23');
+
         var oldUrl = el.href;
         var newUrl = oldUrl
-            .replace('%URL%', url)
+            .replace('%URL%', url || config.sharing.url)
             .replace('%TEXT%', config.sharing.text.split(' ').join('+'))
             .replace('%HASHTAGS%', config.sharing.hashtags)
             .replace('%AUTHOR%', config.sharing.author)

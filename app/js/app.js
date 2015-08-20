@@ -454,7 +454,7 @@ var app = (function (config, utils, tracking, sharing) {
 
     function handleShare() {
 
-        tracking.send('Lineup=' + teamToHash(currentTeamModel));
+        //tracking.send('Lineup=' + teamToHash(currentTeamModel));
         sharing.init();
 
         modal.style.display = 'block';
