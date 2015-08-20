@@ -17,7 +17,7 @@ html, body {
   background: #fff;
 }
 
-input, select, button {
+input, select, button, .button {
   font-family: inherit;
   font-size: inherit;
   height: 30px;
@@ -28,16 +28,18 @@ input, select, button {
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
 
-button {
+button, .button {
   border: none;
+  color: #333;
   cursor: pointer;
   font-weight: bold;
   font-size: 1em;
   padding: .1em .7em .1em .5em;
   height: 30px;
+  text-decoration: none;
 }
 
-button:hover {
+button:hover, .button:hover {
   background: #778899;
   color: #fff;
 }
@@ -279,7 +281,7 @@ nav {
   float: left;
 }
 
-button:before {
+button:before, .button:before {
   content:'';
   display: inline-block;
   opacity: .5;
