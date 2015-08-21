@@ -1,40 +1,23 @@
 @font-face {
-  font-family: 'icons';
-  src: url('../font/icons.eot?71462735');
-  src: url('../font/icons.eot?71462735#iefix') format('embedded-opentype'),
-       url('../font/icons.woff?71462735') format('woff'),
-       url('../font/icons.ttf?71462735') format('truetype'),
-       url('../font/icons.svg?71462735#icons') format('svg');
+  font-family: 'Open Sans';
+  src: url("../font/OpenSans-Regular.eot?v=1.1.0");
+  src: url("../font/OpenSans-Regular.eot?#iefix&v=1.1.0") format("embedded-opentype"),
+       url("../font/OpenSans-Regular.woff2?v=1.1.0") format("woff2"),
+       url("../font/OpenSans-Regular.woff?v=1.1.0") format("woff"),
+       url("../font/OpenSans-Regular.ttf?v=1.1.0") format("truetype"),
+       url("../font/OpenSans-Regular.svg?v=1.1.0#Regular") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
-[class^="icon-"]:before, [class*=" icon-"]:before {
-  font-family: "icons";
+@font-face {
+  font-family: 'Open Sans';
+  src: url("../font/OpenSans-Bold.eot?v=1.1.0");
+  src: url("../font/OpenSans-Bold.eot?#iefix&v=1.1.0") format("embedded-opentype"),
+       url("../font/OpenSans-Bold.woff2?v=1.1.0") format("woff2"),
+       url("../font/OpenSans-Bold.woff?v=1.1.0") format("woff"),
+       url("../font/OpenSans-Bold.ttf?v=1.1.0") format("truetype"),
+       url("../font/OpenSans-Bold.svg?v=1.1.0#Bold") format("svg");
+  font-weight: bold;
   font-style: normal;
-  font-weight: normal;
-  speak: none;
- 
-  display: inline-block;
-  text-decoration: inherit;
-  width: 1em;
-  margin-right: .2em;
-  text-align: center;
-
-  font-variant: normal;
-  text-transform: none;
- 
-  line-height: 1em;
- 
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
- 
-.icon-facebook-squared:before { content: '\e802'; color: #3b5998;}
-.icon-twitter-squared:before { content: '\e800'; color: #00aced; }
-.icon-gplus-squared:before { content: '\e804'; color: #d34836;}
-.icon-mail-squared:before { content: '\e809'; }
-.icon-reply:before { content: '\e801'; }
-.icon-paper-plane:before { content: '\e803'; }
-.icon-info:before { content: '\e805'; }
-.icon-share:before { content: '\e807'; }
