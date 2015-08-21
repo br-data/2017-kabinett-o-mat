@@ -29,13 +29,32 @@ module.exports = function (grunt) {
         },
 
         sass: {
+
             build: {
+
                 options: {
+
                     style: 'expanded'
                 },
-                    files: {
+                files: {
+
                     'app/css/main.css': 'app/scss/main.scss'
                 }
+            }
+        },
+
+        postcss: {
+
+            options: {
+
+                map: true,
+                processors: [
+                    require('autoprefixer-core')({ browsers: 'last 2 versions' })
+                ]},
+
+            build: {
+
+                src: 'app/css/*.css'
             }
         },
 
@@ -76,9 +95,10 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-postcss');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-usemin');
 
-    grunt.registerTask('build', ['clean:build', 'useminPrepare', 'uglify:build', 'sass:build', 'cssmin:build', 'copy:build', 'usemin']);
+    grunt.registerTask('build', ['clean:build', 'useminPrepare', 'uglify:build', 'sass:build', 'postcss:build', 'cssmin:build', 'copy:build', 'usemin']);
 };

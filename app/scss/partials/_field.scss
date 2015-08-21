@@ -34,7 +34,7 @@ nav {
   padding: 4px 46px 4px 8px;
   -webkit-appearance: none;
   -moz-appearance: none;
-  text-indent: 0.01px;
+  text-indent: .01px;
   text-overflow: '';
   cursor: pointer;
 }
@@ -84,10 +84,5 @@ nav {
 }
 
 #lineup .row {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }

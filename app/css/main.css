@@ -107,7 +107,7 @@ nav {
   padding: 4px 46px 4px 8px;
   -webkit-appearance: none;
   -moz-appearance: none;
-  text-indent: 0.01px;
+  text-indent: .01px;
   text-overflow: '';
   cursor: pointer;
 }
@@ -157,12 +157,10 @@ nav {
 }
 
 #lineup .row {
-  -webkit-touch-callout: none;
   -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 #sidebar {
@@ -295,13 +293,21 @@ nav {
   left: 0;
   right: 0;
   width: 100%;
-  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.01) 1%, white 75%, white 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(1%, rgba(255, 255, 255, 0.01)), color-stop(75%, white), color-stop(100%, white));
-  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.01) 1%, white 75%, white 100%);
-  background: -o-linear-gradient(top, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.01) 1%, white 75%, white 100%);
-  background: -ms-linear-gradient(top, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.01) 1%, white 75%, white 100%);
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.01) 1%, white 75%, white 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#ffffff', GradientType=0);
+}
+
+button, .button {
+  color: #333;
+  cursor: pointer;
+  font-weight: bold;
+  padding: .1em .7em .1em .5em;
+  line-height: 30px;
+}
+
+button:hover, .button:hover {
+  background: #778899;
+  color: #fff;
 }
 
 #home {
@@ -408,41 +414,31 @@ html {
   box-sizing: inherit;
 }
 
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
+html,
+body {
+  background: #fff;
+  color: #333;
   font-family: "Open Sans", "Arial", sans-serif;
   font-size: .9em;
-  color: #333;
-  background: #fff;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
 }
 
-input, select, button, .button {
+input,
+select,
+button,
+.button {
+  background-color: #fff;
+  border: none;
+  border-radius: 0;
   font-family: inherit;
   font-size: inherit;
   height: 30px;
-  background-color: #fff;
-  border-radius: 0;
   outline: none;
-  border: none;
   text-decoration: none;
-  -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-}
-
-button, .button {
-  color: #333;
-  cursor: pointer;
-  font-weight: bold;
-  padding: .1em .7em .1em .5em;
-  line-height: 30px;
-}
-
-button:hover, .button:hover {
-  background: #778899;
-  color: #fff;
 }
 
 /*# sourceMappingURL=main.css.map */
