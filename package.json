@@ -1,12 +1,21 @@
 {
   "name": "soccer-team-lineup",
+  "description": "Choose your own soccer lineup and share it",
+  "author": "Steffen Kühne",
   "version": "1.0.0",
+  "license": "properietary",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://stekhn@bitbucket.org/team_aquarium/soccer-team-lineup.git"
+  },
   "devDependencies": {
-    "grunt": "*",
-    "grunt-contrib-clean": "^0.6.0",
-    "grunt-contrib-copy": "^0.8.1",
-    "grunt-contrib-cssmin": "^0.13.0",
-    "grunt-contrib-uglify": "*",
-    "grunt-usemin": "^3.1.0"
+    "bower": "~1.4.1",
+    "grunt": "~0.4.5",
+    "grunt-contrib-clean": "~0.6.0",
+    "grunt-contrib-copy": "~0.8.1",
+    "grunt-contrib-cssmin": "~0.13.0",
+    "grunt-contrib-uglify": "~0.9.1",
+    "grunt-usemin": "~3.1.0"
   }
 }
