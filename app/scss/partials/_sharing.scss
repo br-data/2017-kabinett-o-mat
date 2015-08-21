@@ -1,0 +1,107 @@
+button, .button {
+  color: #333;
+  cursor: pointer;
+  font-weight: bold;
+  padding: .1em .7em .1em .5em;
+  line-height: 30px;
+}
+
+button:hover, .button:hover {
+  background: #778899;
+  color: #fff;
+}
+
+
+#home {
+  float: left;
+}
+
+#share {
+  float: right;
+}
+
+.small {
+  font-size: 17px;
+  opacity: .7;
+  vertical-align: top;
+  margin: 0 .1em;
+}
+
+#modal {
+  display: none;
+  position: absolute;
+  padding: 3em;
+  top: 15%;
+  right: 10%;
+  bottom: 15%;
+  left: 10%;
+  background: #fff;
+  z-index: 100;
+  overflow: auto;
+}
+
+#modal p {
+  margin: .2em 0 1em; 
+}
+
+#modal h1 {
+  margin: 2em 0 .5em;
+}
+
+#close {
+  position: absolute;
+  top: .5em;
+  right: 1em;
+  color: #333;
+  font-size: 2em;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.icons {
+  display: block;
+  margin: 2em 0;
+}
+
+.icons a {
+  color: #333;
+  text-decoration: none;
+  margin: 0 1em;
+  display: inline-block;
+  width: 50px;
+}
+
+.icons .big {
+  font-size: 50px;
+}
+
+.icons .big:hover {
+  opacity: .7;
+}
+
+@media (max-width: 780px) {
+
+  button span, .button span {
+    display: none;
+  }
+  button:before, .button:before {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 540px) {
+
+  button, .button {
+    display: none
+  }
+  #field {
+    width: 100%;
+  }
+  #sidebar {
+    display: none
+  }
+  #lineup {
+    margin: 0;
+  }
+}

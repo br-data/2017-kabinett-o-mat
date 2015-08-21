@@ -17,7 +17,7 @@ module.exports = function (grunt) {
 
                 files: {
                     
-                    'dist/js/main.min.js': [
+                    'dist/js/app.min.js': [
                         'app/js/config.js',
                         'app/js/utils.js',
                         'app/js/tracking.js',
@@ -28,12 +28,23 @@ module.exports = function (grunt) {
             }
         },
 
+        sass: {
+            build: {
+                options: {
+                    style: 'expanded'
+                },
+                    files: {
+                    'app/css/main.css': 'app/scss/main.scss'
+                }
+            }
+        },
+
         cssmin: {
 
             build: {
 
                 src: 'app/css/*',
-                dest: 'dist/css/style.min.css'
+                dest: 'dist/css/main.min.css'
             }
         },
 
@@ -64,9 +75,10 @@ module.exports = function (grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-usemin');
 
-    grunt.registerTask('build', ['clean:build', 'useminPrepare', 'uglify:build', 'cssmin:build', 'copy:build', 'usemin']);
+    grunt.registerTask('build', ['clean:build', 'useminPrepare', 'uglify:build', 'sass:build', 'cssmin:build', 'copy:build', 'usemin']);
 };

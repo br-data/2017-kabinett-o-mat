@@ -1,0 +1,46 @@
+$lightgrey: #ececec;
+$black: #333;
+
+@import 'partials/font';
+@import 'partials/icons';
+@import 'partials/field';
+@import 'partials/list';
+@import 'partials/sharing';
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  background: #fff;
+  color: #333;
+  font-family: "Open Sans", "Arial", sans-serif;
+  font-size: .9em;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+input,
+select,
+button,
+.button {
+  background-color: #fff;
+  border: none;
+  border-radius: 0;
+  font-family: inherit;
+  font-size: inherit;
+  height: 30px;
+  outline: none;
+  text-decoration: none;
+  -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
