@@ -3,86 +3,85 @@ nav {
 }
 
 #field {
-  z-index: 0;
   background: #8fbc8f;
-  padding: 1em;
   display: inline-block;
   float: left;
-  width: 75%;
-  text-align: center;
   height: 100%;
-  position: relative; 
-}
+  padding: 1em;
+  position: relative;
+  text-align: center;
+  width: 75%;
+  z-index: 0;
 
-#field form {
-  display: inline-block;
-  padding-bottom: 2em;
-}
+  form {
+    display: inline-block;
+    padding-bottom: 2em;
+  }
 
-#field label {
-  display: inline-block;
-  background: #fff;
-  vertical-align: top;
-  line-height: 30px;
-  padding: 0 .7em 0 .5em;
-}
+  label {
+    background: #fff;
+    display: inline-block;
+    line-height: 30px;
+    padding: 0 .7em 0 .5em;
+    vertical-align: top;
+  }
 
-#field select {
-  background: #fff url(../img/arrow.png) no-repeat right 3px center;
-  background-size: 20px 13px;
-  border: none;
-  padding: 4px 46px 4px 8px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  text-indent: .01px;
-  text-overflow: '';
-  cursor: pointer;
+  select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background: #fff url(../img/arrow.png) no-repeat right 3px center;
+    background-size: 20px 13px;
+    border: 0;
+    cursor: pointer;
+    padding: 4px 46px 4px 8px;
+    text-indent: .01px;
+    text-overflow: '';
+  }
 }
 
 #lineup {
   background-image: url('../img/goal.png');
-  background-repeat: no-repeat;
   background-position: bottom;
+  background-repeat: no-repeat;
   background-size: 100% auto;
   color: #fff;
   height: 90%;
   margin: 2em 1em;
-}
 
-#lineup .player {
-  cursor: pointer;
-  display: inline-block;
-  width: 25%;
-  vertical-align: top;
-}
+  &.rows-4 .row {
+    height: 24%;
+  }
 
-#lineup .player .icon {
-  pointer-events: none;
-  width: 4em;
-  height: 4em;
-  margin: 0 auto;
-  border-radius: 50%;
-  background-color: #cd5c5c;
-}
+  &.rows-5 .row {
+    height: 19%;
+  }
+  .row {
+    user-select: none;
+  }
 
-#lineup .player .text {
-  line-height: 1.2em;
-  text-shadow: 1px 1px 1px #333, 1px -1px 1px #333, -1px 1px 1px #333, -1px -1px 1px #333;
-  pointer-events: none;
-}
+  .player {
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: top;
+    width: 25%;
 
-#lineup .player.active .icon {
-  box-shadow: 0 0 0 3px #cd5c5c;
-}
+    &.active .icon {
+      box-shadow: 0 0 0 3px #cd5c5c;
+    }
 
-#lineup.rows-4 .row {
-  height: 24%;
-}
+    .icon {
+      background-color: #cd5c5c;
+      border-radius: 50%;
+      height: 4em;
+      margin: 0 auto;
+      pointer-events: none;
+      width: 4em;
+    }
 
-#lineup.rows-5 .row {
-  height: 19%;
-}
-
-#lineup .row {
-  user-select: none;
+    .text {
+      line-height: 1.2em;
+      pointer-events: none;
+      text-shadow: 1px 1px 1px #333, 1px -1px 1px #333, -1px 1px 1px #333, -1px -1px 1px #333;
+    }
+  }
 }

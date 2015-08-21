@@ -9,27 +9,24 @@
   font-style: normal;
 }
 
-[class^="icon-"]:before, [class*=" icon-"]:before {
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  display: inline-block;
   font-family: "icons";
   font-style: normal;
   font-weight: normal;
-  speak: none;
- 
-  display: inline-block;
-  text-decoration: inherit;
-  width: 1em;
-  margin-right: .2em;
-  text-align: center;
-
   font-variant: normal;
-  text-transform: none;
- 
   line-height: 1em;
- 
+  margin-right: .2em;
+  speak: none;
+  text-align: center;
+  text-decoration: inherit;
+  text-transform: none;
+  width: 1em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
- 
+
 .icon-facebook-squared:before { content: '\e802'; color: #3b5998;}
 .icon-twitter-squared:before { content: '\e800'; color: #00aced; }
 .icon-gplus-squared:before { content: '\e804'; color: #d34836;}

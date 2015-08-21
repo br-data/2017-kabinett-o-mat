@@ -1,0 +1,32 @@
+@media (max-width: 780px) {
+
+  button span,
+  .button span {
+    display: none;
+  }
+
+  button:before,
+  .button:before {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 540px) {
+
+  button,
+  .button {
+    display: none;
+  }
+
+  #field {
+    width: 100%;
+  }
+
+  #sidebar {
+    display: none;
+  }
+
+  #lineup {
+    margin: 0;
+  }
+}
