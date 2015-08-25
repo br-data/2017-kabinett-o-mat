@@ -26,7 +26,8 @@ module.exports = function (grunt) {
                         'app/js/utils.js',
                         'app/js/tracking.js',
                         'app/js/sharing.js',
-                        'app/js/app.js'
+                        'app/js/app.js',
+                        'app/js/dragging.js'
                     ]
                 }
             }

@@ -1,4 +1,4 @@
-var app = (function (config, utils, tracking, sharing) {
+var app = (function (config, utils, dragging, tracking, sharing) {
 
     'use strict';
 
@@ -45,8 +45,11 @@ var app = (function (config, utils, tracking, sharing) {
             showList(data);
             updateList();
 
+            dragging.init();
+
             // Register the event handlers
             formationSelect.addEventListener('change', handleFormationChange);
+
             playerFilter.addEventListener('keydown', utils.preventEnter);
             playerFilter.addEventListener('keyup', handlePlayerSearch);
             playerFilter.addEventListener('search', handlePlayerSearch);
@@ -75,12 +78,12 @@ var app = (function (config, utils, tracking, sharing) {
             // @TODO Use a regular for loop
             for (var j = 0; j < arr[i].length; j++) {
 
-                var playerWrapper, playerIcon, playerName;
+                var positionElement, playerIcon, playerName;
                 var player = getPlayerData(arr[i][j]) || getPlayerData('zz');
 
-                playerWrapper = createElement('div', null,['className', 'player']);
-                playerWrapper.setAttribute('data-player', arr[i][j]);
-                playerWrapper.addEventListener('click', handlePositionSelect);
+                positionElement = createElement('div', null,['className', 'draggable dropzone player']);
+                positionElement.setAttribute('data-player', arr[i][j]);
+                positionElement.addEventListener('click', handlePositionSelect);
 
                 playerIcon = createElement('div', null, ['className', 'icon']);
                 playerIcon.style.background = 'url(img/players/' +
@@ -91,9 +94,9 @@ var app = (function (config, utils, tracking, sharing) {
                 playerName = createElement('p', null,
                     ['className', 'text'], ['textContent', player.name]);       
 
-                playerWrapper.appendChild(playerIcon);
-                playerWrapper.appendChild(playerName);
-                section.appendChild(playerWrapper);
+                positionElement.appendChild(playerIcon);
+                positionElement.appendChild(playerName);
+                section.appendChild(positionElement);
             }
 
             lineupSelect.appendChild(section);  
@@ -117,8 +120,11 @@ var app = (function (config, utils, tracking, sharing) {
                 index = positions.indexOf(obj[player].pos);
 
                 //playerElement = createElement('li', null, ['textContent', obj[player].name]);
-                playerElement = createElement('li', null, ['textContent', obj[player].name + ' (' + player + ')']);
+                playerElement = createElement('li', null, [
+                    'textContent', obj[player].name + ' (' + player + ')'
+                    ]);
                 playerElement.setAttribute('data-player', player);
+                playerElement.className = 'draggable';
                 playerElement.addEventListener('click', handlePlayerChange);
 
                 // If the position already exists, add the player ...
@@ -278,12 +284,12 @@ var app = (function (config, utils, tracking, sharing) {
 
                 if (currentList[i].getAttribute('data-player') === newPlayerId) {
 
-                    currentList[i].className = 'picked';
+                    currentList[i].className = 'draggable picked';
                 }
 
                 if (currentList[i].getAttribute('data-player') === oldPlayerId) {
 
-                    currentList[i].className = '';
+                    currentList[i].className = 'draggable';
                 }
             } else {
 
@@ -292,7 +298,7 @@ var app = (function (config, utils, tracking, sharing) {
                     if (currentTeamModel[j]
                         .indexOf(currentList[i].getAttribute('data-player')) > -1) {
 
-                        currentList[i].className = 'picked';
+                        currentList[i].className = 'draggable picked';
                     }
                 }
             }
@@ -473,6 +479,6 @@ var app = (function (config, utils, tracking, sharing) {
 
         init: init
     };
-})(config, utils, tracking, sharing);
+})(config, utils, dragging, tracking, sharing);
 
 app.init();

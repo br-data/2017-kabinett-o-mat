@@ -4,7 +4,7 @@
   height: 100%;
   position: relative;
   width: 25%;
-  z-index: 10;
+  z-index: 0;
 
   .content {
     height: 100%;
@@ -54,6 +54,7 @@
   li {
     line-height: 1.8em;
     cursor: pointer;
+    user-select: none;
 
     &.picked {
       color: #8fbc8f;
