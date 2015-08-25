@@ -5,13 +5,13 @@ Die App erlaubt es eine eigene Mannschaft aus bayrischen Erst- und Zweitligaspie
 ### Verwendung
 1. Repository klonen `git clone https://...`
 2. Erforderliche Module installieren `npm install`
-4. Optimiertes Projekt bauen `npm run grunt` oder `grunt build`
+3. Optimiertes Projekt bauen `grunt dist`
 
 Der Quellcode befindet sich im Verzeichnis `/app`, der optimierte Build findet sich in `dist`.
 
 ### Entwickeln
 1. Gegebenenfalls SASS installieren `sudo gem install sass`
-2. SASS-Compiler starten `npm run sass` oder `sass --watch app/scss:app/css`
+2. SASS-Compiler starten `grunt watch` oder `sass --watch app/scss:app/css`
 
 ### Datenmodel
 Die Anwendungsdaten sind in einem JSON-Dictionary gespeichert. Die ID sind zweistellige Strings (aa bis zz). 

@@ -1,19 +1,23 @@
 module.exports = function (grunt) {
 
+    'use strict';
+
+    var autoprefixer = require('autoprefixer-core');
+
     grunt.initConfig({
 
         pkg: grunt.file.readJSON('package.json'),
 
         clean: {
 
-            build: {
+            dist: {
                 src: ['dist']
             }
         },
 
         uglify: {
 
-            build: {
+            dist: {
 
                 files: {
                     
@@ -30,15 +34,29 @@ module.exports = function (grunt) {
 
         sass: {
 
-            build: {
+            dist: {
 
                 options: {
 
-                    style: 'expanded'
+                    style:'compressed'
                 },
+                
                 files: {
 
-                    'app/css/main.css': 'app/scss/main.scss'
+                    'dist/css/main.min.css' : 'app/scss/main.scss'
+                }
+            },
+
+            dev: {
+
+                options: {
+
+                    style:'expanded'
+                },
+
+                files: {
+
+                    'app/css/main.css' : 'app/scss/main.scss'
                 }
             }
         },
@@ -47,29 +65,35 @@ module.exports = function (grunt) {
 
             options: {
 
-                map: true,
                 processors: [
-                    require('autoprefixer-core')({ browsers: 'last 2 versions' })
-                ]},
 
-            build: {
+                    require('autoprefixer-core')({
+                        
+                        browsers: ['> 5%', 'last 2 versions', 'IE 7', 'IE 9']
+                    })
+                ],
+                map: true
+            },
+            dist: {
 
-                src: 'app/css/*.css'
-            }
-        },
+                files: {
 
-        cssmin: {
+                    'dist/css/main.min.css': 'dist/css/main.min.css'
+                }
+            },
 
-            build: {
+            dev: {
 
-                src: 'app/css/*',
-                dest: 'dist/css/main.min.css'
+                files: {
+
+                    'app/css/main.css' : 'app/css/main.css'
+                }
             }
         },
 
         copy: {
 
-            build: {
+            dist: {
 
                 files: [
 
@@ -89,6 +113,19 @@ module.exports = function (grunt) {
         usemin: {
 
             html: 'dist/index.html'
+        },
+
+        watch: {
+
+            scripts: {
+
+                options: {
+
+                    interrupt: true,
+                },
+                files: ['app/scss/**/*.scss'],
+                tasks: ['sass:dev', 'postcss:dev'],
+            },
         }
     });
 
@@ -96,9 +133,9 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-postcss');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-usemin');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
-    grunt.registerTask('build', ['clean:build', 'useminPrepare', 'uglify:build', 'sass:build', 'postcss:build', 'cssmin:build', 'copy:build', 'usemin']);
+    grunt.registerTask('dist', ['clean', 'useminPrepare', 'uglify:dist', 'sass:dist', 'postcss', 'copy', 'usemin']);
 };
