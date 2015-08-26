@@ -1,0 +1,9 @@
+.draggable {
+    -ms-touch-action: none;
+    touch-action: none;
+}
+
+.dragging {
+	list-style: none;
+	position: absolute;
+}

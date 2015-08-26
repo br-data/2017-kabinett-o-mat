@@ -81,7 +81,7 @@ var app = (function (config, utils, dragging, tracking, sharing) {
                 var positionElement, playerIcon, playerName;
                 var player = getPlayerData(arr[i][j]) || getPlayerData('zz');
 
-                positionElement = createElement('div', null,['className', 'draggable dropzone player']);
+                positionElement = createElement('div', null,['className', 'player']);
                 positionElement.setAttribute('data-player', arr[i][j]);
                 positionElement.addEventListener('click', handlePositionSelect);
 

@@ -4,48 +4,83 @@ var dragging = (function () {
 
     function init () {
 
+        var top = document.getElementById('sidebar');
+        var target, x, y, parent, sibling, placeholder;
+
         // target elements with the "draggable" class
-        interact('.draggable.player').draggable({
-            // enable inertial throwing
-            // inertia: true,
-            // keep the element within the area of it's parent
-            // restrict: {
-            //     restriction: "parent",
-            //     endOnly: true,
-            //     elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
-            // },
+        interact('.draggable').draggable({
+
+            // Physical element behaviour
+            inertia: true,
+
             onstart: function (event) {
 
+                target = event.target;
+                target.className = 'draggable dragging';
 
+                parent = target.parentNode;
+                sibling = target.nextSibling;
+
+                // Create placeholder, so the list won't jump
+                placeholder = document.createElement('li');
+                placeholder.appendChild(document.createTextNode('\u00A0'));
+
+                // Hack: Move element out of the overflow: auto context,
+                // because child elements get clipped by the overflow
+                parent.insertBefore(placeholder, sibling);
+                top.insertBefore(target, top.childNodes[0]);
+
+                // Set origin based on original position
+                event.interactable.options.origin = {
+                    // @TODO Determine x value
+                    x: 0,
+                    y: -event.clientY,
+                };
             },
-            // call this function on every dragmove event
-            onmove: dragMoveListener,
-            // call this function on every dragend event
-            onend: function (event) {
 
-                var target = event.target;
+            onmove: function (event) {
 
+                target = event.target;
+                
+                // Store dragged position in data-attribute
+                x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
+                y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+
+                // Translate the element
                 target.style.webkitTransform =
                 target.style.transform =
-                'none';
+                    'translate3d(' + x + 'px, ' + y + 'px, 0)';
+
+                // Update the position attributes
+                target.setAttribute('data-x', x);
+                target.setAttribute('data-y', y);
+            },
+
+            onend: function (event) {
+
+                target = event.target;
+
+                // Reset translation
+                target.style.webkitTransform =
+                target.style.transform =
+                    'translate3d(0, 0, 0)';
+
+                // Reset the data position
+                target.setAttribute('data-x', 0);
+                target.setAttribute('data-y', 0);
+
+                target.className = 'draggable';
+
+                // Hack: Move the dragged element back in overflow context;
+                parent.removeChild(placeholder);
+                parent.insertBefore(target, sibling);
             }
         });
 
-        function dragMoveListener (event) {
-
-            var target = event.target,
-                    // keep the dragged position in the data-x/data-y attributes
-                    x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
-                    y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
-
-            // translate the element
-            target.style.webkitTransform =
-            target.style.transform =
-                'translate(' + x + 'px, ' + y + 'px)';
-        }
+        
 
         // this is used later in the resizing demo
-        window.dragMoveListener = dragMoveListener;
+        //window.dragMoveListener = dragMoveListener;
 
         // // enable draggables to be dropped into this
         // interact('.dropzone').dropzone({

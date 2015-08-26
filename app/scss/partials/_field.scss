@@ -5,13 +5,11 @@ nav {
 #field {
   background: #8fbc8f;
   display: inline-block;
-  float: left;
   height: 100%;
   padding: 1em;
-  position: relative;
   text-align: center;
+  transform: translate3d(0, 0, 0);
   width: 75%;
-  z-index: 0;
 
   form {
     display: inline-block;

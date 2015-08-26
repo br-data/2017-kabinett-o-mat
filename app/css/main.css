@@ -79,13 +79,12 @@ nav {
 #field {
   background: #8fbc8f;
   display: inline-block;
-  float: left;
   height: 100%;
   padding: 1em;
-  position: relative;
   text-align: center;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
   width: 75%;
-  z-index: 0;
 }
 #field form {
   display: inline-block;
@@ -157,10 +156,10 @@ nav {
 #sidebar {
   background: #fff;
   display: inline-block;
+  float: right;
   height: 100%;
   position: relative;
   width: 25%;
-  z-index: 0;
 }
 #sidebar .content {
   height: 100%;
@@ -208,6 +207,8 @@ nav {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
 }
 #list li.picked {
   color: #8fbc8f;
@@ -317,7 +318,6 @@ button:hover,
   position: absolute;
   right: 10%;
   top: 15%;
-  z-index: 100;
 }
 #modal p {
   margin: .2em 0 1em;
@@ -353,6 +353,16 @@ button:hover,
 }
 .icons .big:hover {
   opacity: .7;
+}
+
+.draggable {
+  -ms-touch-action: none;
+  touch-action: none;
+}
+
+.dragging {
+  list-style: none;
+  position: absolute;
 }
 
 @media (max-width: 780px) {
@@ -398,7 +408,7 @@ html,
 body {
   background: #fff;
   color: #333;
-  font-family: "Open Sans", "Arial", sans-serif;
+  font-family: 'Open Sans', 'Arial', sans-serif;
   font-size: .9em;
   height: 100%;
   margin: 0;
