@@ -23,6 +23,7 @@ var app = (function (config, utils, dragging, tracking, sharing) {
     var closeButton = $('close');
     var directLink = $('direct');
     
+    // @TODO Move to init.js
     function init() {
 
         utils.getJSON('data/players.json', function (data) {
@@ -480,5 +481,3 @@ var app = (function (config, utils, dragging, tracking, sharing) {
         init: init
     };
 })(config, utils, dragging, tracking, sharing);
-
-app.init();

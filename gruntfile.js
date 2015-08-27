@@ -26,8 +26,8 @@ module.exports = function (grunt) {
                         'app/js/utils.js',
                         'app/js/tracking.js',
                         'app/js/sharing.js',
-                        'app/js/app.js',
-                        'app/js/dragging.js'
+                        'app/js/dragging.js',
+                        'app/js/app.js'
                     ]
                 }
             }
@@ -101,7 +101,9 @@ module.exports = function (grunt) {
                     { expand: true, flatten: true, src: ['app/index.html'], dest: 'dist/', filter: 'isFile' },
                     { expand: true, flatten: true, src: ['app/data/*'], dest: 'dist/data/', filter: 'isFile' },
                     { expand: true, flatten: true, src: ['app/font/*'], dest: 'dist/font/', filter: 'isFile' },
-                    { expand: true, cwd: 'app/img/', src: ['**/*'], dest: 'dist/img/' }
+                    { expand: true, cwd: 'app/img/', src: ['**/*'], dest: 'dist/img/' },
+
+                    { expand: true, flatten: true, src: ['bower_components/interact/interact.min.js'], dest: 'dist/js/lib/', filter: 'isFile' },
                 ]
             }
         },
