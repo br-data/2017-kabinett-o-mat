@@ -82,8 +82,9 @@ nav {
   height: 100%;
   padding: 1em;
   text-align: center;
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
+  -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+          transform: translate(0, 0);
   width: 75%;
 }
 #field form {
@@ -210,8 +211,9 @@ nav {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
+  -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+          transform: translate(0, 0);
 }
 #list li.picked {
   color: #8fbc8f;
@@ -434,4 +436,5 @@ button,
   -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
           transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
+
 /*# sourceMappingURL=main.css.map */

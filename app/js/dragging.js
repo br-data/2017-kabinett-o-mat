@@ -49,7 +49,7 @@ var dragging = (function () {
                 // Translate the element
                 target.style.webkitTransform =
                 target.style.transform =
-                    'translate3d(' + x + 'px, ' + y + 'px, 0)';
+                    'translate(' + x + 'px, ' + y + 'px)';
 
                 // Update the position attributes
                 target.setAttribute('data-x', x);
@@ -63,7 +63,7 @@ var dragging = (function () {
                 // Reset translation
                 target.style.webkitTransform =
                 target.style.transform =
-                    'translate3d(0, 0, 0)';
+                    'translate(0, 0)';
 
                 // Reset the data position
                 target.setAttribute('data-x', 0);
@@ -74,6 +74,52 @@ var dragging = (function () {
                 // Hack: Move the dragged element back in overflow context;
                 parent.removeChild(placeholder);
                 parent.insertBefore(target, sibling);
+            }
+        });
+
+        interact('.changeable').draggable({
+
+            // Physical element behaviour
+            inertia: true,
+
+            onstart: function (event) {
+
+                target = event.target;
+                target.classList.add('changing');
+            },
+
+            onmove: function (event) {
+
+                target = event.target;
+                
+                // Store dragged position in data-attribute
+                x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
+                y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+
+                // Translate the element
+                target.style.webkitTransform =
+                target.style.transform =
+                    'translate(' + x + 'px, ' + y + 'px)';
+
+                // Update the position attributes
+                target.setAttribute('data-x', x);
+                target.setAttribute('data-y', y);
+            },
+
+            onend: function (event) {
+
+                target = event.target;
+
+                // Reset translation
+                target.style.webkitTransform =
+                target.style.transform =
+                    'translate(0, 0)';
+                
+                // Update the position attributes
+                target.setAttribute('data-x', 0);
+                target.setAttribute('data-y', 0);
+
+                target.classList.remove('changing');
             }
         });
 

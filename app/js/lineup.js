@@ -42,7 +42,7 @@ var lineup = (function (config, utils, common) {
                 var positionElement, playerIcon, playerName;
                 var player = common.getPlayerData(model[i][j]) || common.getPlayerData('zz');
 
-                positionElement = createElement('div', null,['className', 'dropzone player']);
+                positionElement = createElement('div', null,['className', 'dropzone changeable player']);
                 positionElement.setAttribute('data-player', model[i][j]);
                 positionElement.addEventListener('click', handlePositionSelect);
 
@@ -117,7 +117,7 @@ var lineup = (function (config, utils, common) {
             target.classList.add('active');
 
             if (common.currentPosition) {
-                
+
                 common.currentPosition.classList.remove('active');
             }
 
