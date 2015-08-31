@@ -7,7 +7,7 @@ var dragging = (function () {
         var top = document.getElementById('sidebar');
         var target, x, y, parent, sibling, placeholder;
 
-        // target elements with the "draggable" class
+        // Target elements with the "draggable" class
         interact('.draggable').draggable({
 
             // Physical element behaviour
@@ -77,48 +77,45 @@ var dragging = (function () {
             }
         });
 
-        
 
-        // this is used later in the resizing demo
-        //window.dragMoveListener = dragMoveListener;
+        // Enable draggables to be dropped here
+        interact('.dropzone').dropzone({
 
-        // // enable draggables to be dropped into this
-        // interact('.dropzone').dropzone({
-        //     // only accept elements matching this CSS selector
-        //     accept: '#yes-drop',
-        //     // Require a 75% element overlap for a drop to be possible
-        //     overlap: 0.75,
+            // Require a 75% element overlap for a drop to be possible
+            overlap: 0.75,
 
-        //     // listen for drop related events:
+            // Listen for drop related events:
+            ondropactivate: function (event) {
+                
+                // Add active dropzone feedback
+                event.target.classList.add('drop-active');
+            },
+            ondragenter: function (event) {
 
-        //     ondropactivate: function (event) {
-        //         // add active dropzone feedback
-        //         event.target.classList.add('drop-active');
-        //     },
-        //     ondragenter: function (event) {
-        //         var draggableElement = event.relatedTarget,
-        //                 dropzoneElement = event.target;
+                var dropzoneElement = event.target;
 
-        //         // feedback the possibility of a drop
-        //         dropzoneElement.classList.add('drop-target');
-        //         draggableElement.classList.add('can-drop');
-        //         draggableElement.textContent = 'Dragged in';
-        //     },
-        //     ondragleave: function (event) {
-        //         // remove the drop feedback style
-        //         event.target.classList.remove('drop-target');
-        //         event.relatedTarget.classList.remove('can-drop');
-        //         event.relatedTarget.textContent = 'Dragged out';
-        //     },
-        //     ondrop: function (event) {
-        //         event.relatedTarget.textContent = 'Dropped';
-        //     },
-        //     ondropdeactivate: function (event) {
-        //         // remove active dropzone feedback
-        //         event.target.classList.remove('drop-active');
-        //         event.target.classList.remove('drop-target');
-        //     }
-        // });
+                // Feedback the possibility of a drop
+                dropzoneElement.classList.add('drop-target');
+            },
+            ondragleave: function (event) {
+
+                // Remove the drop feedback style
+                event.target.classList.remove('drop-target');
+            },
+            ondrop: function (event) {
+
+                var draggableElement = event.relatedTarget,
+                    dropzoneElement = event.target;
+
+                console.log(dropzoneElement, draggableElement);
+            },
+            ondropdeactivate: function (event) {
+                
+                // Remove active dropzone feedback
+                event.target.classList.remove('drop-active');
+                event.target.classList.remove('drop-target');
+            }
+        });
     }
 
     return {

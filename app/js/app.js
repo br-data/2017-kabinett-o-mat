@@ -82,7 +82,7 @@ var app = (function (config, utils, dragging, tracking, sharing) {
                 var positionElement, playerIcon, playerName;
                 var player = getPlayerData(arr[i][j]) || getPlayerData('zz');
 
-                positionElement = createElement('div', null,['className', 'player']);
+                positionElement = createElement('div', null,['className', 'dropzone player']);
                 positionElement.setAttribute('data-player', arr[i][j]);
                 positionElement.addEventListener('click', handlePositionSelect);
 
@@ -181,8 +181,8 @@ var app = (function (config, utils, dragging, tracking, sharing) {
         // If position gets clicked again, do nothing;
         if (currentPosition !== target) {
 
-            target.className = 'player active';
-            if (currentPosition) { currentPosition.className = 'player'; }
+            target.className = 'dropzone player active';
+            if (currentPosition) { currentPosition.className = 'dropzone player'; }
 
             updateInfo(target.getAttribute('data-player'));
         }
