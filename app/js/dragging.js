@@ -104,10 +104,9 @@ var dragging = (function () {
             },
             ondrop: function (event) {
 
-                var draggableElement = event.relatedTarget,
-                    dropzoneElement = event.target;
-
-                console.log(dropzoneElement, draggableElement);
+                lineup.handlePositionSelect(event);
+                common.currentPosition = event.target;
+                list.handlePlayerChange(event, event.target);
             },
             ondropdeactivate: function (event) {
                 

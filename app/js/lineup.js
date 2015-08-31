@@ -102,7 +102,7 @@ var lineup = (function (config, utils, common) {
 
         var target;
 
-        if (e && e.target) {
+        if (e) {
 
             target = e.target;
         } else {

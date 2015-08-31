@@ -44,7 +44,7 @@ var list = (function (config, utils, common) {
                     ]);
                 playerElement.setAttribute('data-player', player);
                 playerElement.className = 'draggable';
-                playerElement.addEventListener('click', handlePlayerChange);
+                //playerElement.addEventListener('click', handlePlayerChange);
 
                 // If the position already exists, add the player ...
                 if (index > -1) {
@@ -83,13 +83,41 @@ var list = (function (config, utils, common) {
         currentList = listSelect.querySelectorAll('[data-player]');
     }
 
+    // Blank out the currently selected players 
+    function updateList(newPlayerId, oldPlayerId) {
+
+        for (var i = 0; i < currentList.length; i++) {
+
+            if (oldPlayerId && newPlayerId) {
+
+                if (currentList[i].getAttribute('data-player') === newPlayerId) {
+
+                    currentList[i].className = 'draggable picked';
+                }
+
+                if (currentList[i].getAttribute('data-player') === oldPlayerId) {
+
+                    currentList[i].className = 'draggable';
+                }
+            } else {
+
+                for (var j = 0; j < common.currentTeamModel.length; j++) {
+
+                    if (common.currentTeamModel[j]
+                        .indexOf(currentList[i].getAttribute('data-player')) > -1) {
+
+                        currentList[i].className = 'draggable picked';
+                    }
+                }
+            }
+        }
+    }
+
     // Change the player. The elements newPlayer and oldPlayer are optional.
-    function handlePlayerChange(e, newPlayer, oldPlayer) {
+    function handlePlayerChange(e, oldPlayer) {
 
-        var newPlayerTarget = newPlayer || e.target;
+        var newPlayerTarget = e.relatedTarget || e.target;
         var oldPlayerTarget = oldPlayer || common.currentPosition;
-
-
 
         var newPlayerId = newPlayerTarget.getAttribute('data-player');
         var oldPlayerId = oldPlayerTarget.getAttribute('data-player');
@@ -148,36 +176,6 @@ var list = (function (config, utils, common) {
                 } else {
 
                     playerList[i].style.display = 'none';
-                }
-            }
-        }
-    }
-
-    // Blank out the currently selected players 
-    function updateList(newPlayerId, oldPlayerId) {
-
-        for (var i = 0; i < currentList.length; i++) {
-
-            if (oldPlayerId && newPlayerId) {
-
-                if (currentList[i].getAttribute('data-player') === newPlayerId) {
-
-                    currentList[i].className = 'draggable picked';
-                }
-
-                if (currentList[i].getAttribute('data-player') === oldPlayerId) {
-
-                    currentList[i].className = 'draggable';
-                }
-            } else {
-
-                for (var j = 0; j < common.currentTeamModel.length; j++) {
-
-                    if (common.currentTeamModel[j]
-                        .indexOf(currentList[i].getAttribute('data-player')) > -1) {
-
-                        currentList[i].className = 'draggable picked';
-                    }
                 }
             }
         }
@@ -253,6 +251,7 @@ var list = (function (config, utils, common) {
         init: init,
         showList: showList,
         updateList: updateList,
+        handlePlayerChange: handlePlayerChange
     };
 
 }(config, utils, common));
