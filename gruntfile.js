@@ -24,9 +24,12 @@ module.exports = function (grunt) {
                     'dist/js/app.min.js': [
                         'app/js/config.js',
                         'app/js/utils.js',
+                        'app/js/common.js',
                         'app/js/tracking.js',
                         'app/js/sharing.js',
                         'app/js/dragging.js',
+                        'app/js/list.js',
+                        'app/js/lineup.js',
                         'app/js/app.js'
                     ]
                 }
@@ -103,7 +106,14 @@ module.exports = function (grunt) {
                     { expand: true, flatten: true, src: ['app/font/*'], dest: 'dist/font/', filter: 'isFile' },
                     { expand: true, cwd: 'app/img/', src: ['**/*'], dest: 'dist/img/' },
 
-                    { expand: true, flatten: true, src: ['bower_components/interact/interact.min.js'], dest: 'dist/js/lib/', filter: 'isFile' },
+                    { expand: true, flatten: true, src: ['bower_components/interact/interact.min.js'],
+                        dest: 'dist/js/lib/', filter: 'isFile' },
+
+                    { expand: true, flatten: true, src: ['bower_components/classList/index.js'],
+                        dest: 'dist/js/lib/', filter: 'isFile', rename: function(dest, src) {
+                            return dest + src.replace('index','classList.min');
+                        }
+                    },
                 ]
             }
         },

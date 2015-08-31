@@ -16,6 +16,7 @@
     "bower_components"
   ],
   "dependencies": {
-    "interact": "~1.2.4"
+    "interact": "~1.2.4",
+    "classList": "https://raw.githubusercontent.com/eligrey/classList.js/master/classList.min.js"
   }
 }

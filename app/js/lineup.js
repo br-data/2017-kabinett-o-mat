@@ -76,7 +76,7 @@ var lineup = (function (config, utils, common) {
         common.currentFormation = formation;
 
         // Write class
-        lineupElement.className = 'rows-' + common.currentFormation.length;
+        lineupElement.classList.add('rows-' + common.currentFormation.length);
 
         // Flatten array 
         flatTeam = flatTeam.concat.apply(flatTeam, common.currentTeamModel);
@@ -114,8 +114,12 @@ var lineup = (function (config, utils, common) {
         // If position gets clicked again, do nothing;
         if (common.currentPosition !== target) {
 
-            target.className = 'dropzone player active';
-            if (common.currentPosition) { common.currentPosition.className = 'dropzone player'; }
+            target.classList.add('active');
+
+            if (common.currentPosition) {
+                
+                common.currentPosition.classList.remove('active');
+            }
 
             common.updateInfo(target.getAttribute('data-player'), infoBox);
         }
