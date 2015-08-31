@@ -16,7 +16,7 @@ var dragging = (function () {
             onstart: function (event) {
 
                 target = event.target;
-                target.className = 'draggable dragging';
+                target.classList.add('dragging');
 
                 parent = target.parentNode;
                 sibling = target.nextSibling;
@@ -69,7 +69,7 @@ var dragging = (function () {
                 target.setAttribute('data-x', 0);
                 target.setAttribute('data-y', 0);
 
-                target.className = 'draggable';
+                target.classList.remove('dragging');
 
                 // Hack: Move the dragged element back in overflow context;
                 parent.removeChild(placeholder);

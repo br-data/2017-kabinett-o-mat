@@ -44,7 +44,7 @@ var list = (function (config, utils, common) {
                     ]);
                 playerElement.setAttribute('data-player', player);
                 playerElement.className = 'draggable';
-                //playerElement.addEventListener('click', handlePlayerChange);
+                // playerElement.addEventListener('click', handlePlayerChange);
 
                 // If the position already exists, add the player ...
                 if (index > -1) {
@@ -88,14 +88,17 @@ var list = (function (config, utils, common) {
 
         for (var i = 0; i < currentList.length; i++) {
 
+            var currentId = currentList[i].getAttribute('data-player');
+
             if (oldPlayerId && newPlayerId) {
 
-                if (currentList[i].getAttribute('data-player') === newPlayerId) {
+                if (currentId === newPlayerId) {
 
                     currentList[i].className = 'draggable picked';
+                    console.log(currentList[i].className);
                 }
 
-                if (currentList[i].getAttribute('data-player') === oldPlayerId) {
+                if (currentId === oldPlayerId) {
 
                     currentList[i].className = 'draggable';
                 }
@@ -104,7 +107,7 @@ var list = (function (config, utils, common) {
                 for (var j = 0; j < common.currentTeamModel.length; j++) {
 
                     if (common.currentTeamModel[j]
-                        .indexOf(currentList[i].getAttribute('data-player')) > -1) {
+                        .indexOf(currentId) > -1) {
 
                         currentList[i].className = 'draggable picked';
                     }
