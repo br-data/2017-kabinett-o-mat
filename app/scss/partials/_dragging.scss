@@ -1,6 +1,13 @@
 .draggable {
     -ms-touch-action: none;
     touch-action: none;
+    transform: translate3d(0, 0, 0);
+}
+
+.changeable {
+    -ms-touch-action: none;
+    touch-action: none;
+    transform: translate3d(0, 0, 0);
 }
 
 .dragging {

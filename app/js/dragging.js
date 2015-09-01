@@ -51,7 +51,7 @@ var dragging = (function () {
                 // Translate the element
                 target.style.webkitTransform =
                 target.style.transform =
-                    'translate(' + x + 'px, ' + y + 'px)';
+                    'translate3d(' + x + 'px, ' + y + 'px, 0)';
 
                 // Update the position attributes
                 target.setAttribute('data-x', x);
@@ -65,7 +65,7 @@ var dragging = (function () {
                 // Reset translation
                 target.style.webkitTransform =
                 target.style.transform =
-                    'translate(0, 0)';
+                    'translate3d(0, 0, 0)';
 
                 // Reset the data position
                 target.setAttribute('data-x', 0);
@@ -99,7 +99,7 @@ var dragging = (function () {
                 // Translate the element
                 event.target.style.webkitTransform =
                 event.target.style.transform =
-                    'translate(' + x + 'px, ' + y + 'px)';
+                    'translate3d(' + x + 'px, ' + y + 'px, 0)';
 
                 // Update the position attributes
                 event.target.setAttribute('data-x', x);
@@ -111,7 +111,7 @@ var dragging = (function () {
                 // Reset translation
                 event.target.style.webkitTransform =
                 event.target.style.transform =
-                    'translate(0, 0)';
+                    'translate3d(0, 0, 0)';
                 
                 // Update the position attributes
                 event.target.setAttribute('data-x', 0);

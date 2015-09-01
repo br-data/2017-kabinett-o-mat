@@ -17,7 +17,33 @@
 
     <section id="field">
 
+      <nav>
+        
+        <a id="home" class="button" href="http://br.de/" target="_blank">
+          <i class="icon-reply small"></i>
+          <span>Zum Artikel</span>
+        </a>
+
+        <form>
+          <label for="formation">Aufstellung auswählen:</label>
+          <select id="formation">
+            <option>4-4-2</option>
+            <option>4-2-3-1</option>
+            <option>4-3-3</option>
+          </select>
+        </form>
+
+        <button id="share">
+          <i class="icon-paper-plane small"></i>
+          <span>Abstimmen</span>
+        </button>
+
+      </nav>
+
+      <div id="lineup"></div>
+
       <section id="modal">
+
           <div id="close">×</div>
 
           <h1>Vielen Dank für Ihre Stimme!</h1>
@@ -56,44 +82,20 @@
           <p>&nbsp;</p>
 
           <p>Unsere Datenschutzerklärung finden Sie <a href="http://www.br.de/footernavi/bayrischer_rundfunk/datenschutz/index.html" target="_blank">hier.</a></p>
+
       </section>
 
-      <nav>
-        
-        <a id="home" class="button" href="http://br.de/" target="_blank">
-          <i class="icon-reply small"></i>
-          <span>Zum Artikel</span>
-        </a>
-
-        <form>
-          <label for="formation">Aufstellung auswählen:</label>
-          <select id="formation">
-            <option>4-4-2</option>
-            <option>4-2-3-1</option>
-            <option>4-3-3</option>
-          </select>
-        </form>
-
-        <button id="share">
-          <i class="icon-paper-plane small"></i>
-          <span>Abstimmen</span>
-        </button>
-
-      </nav>
-
-      <div id="lineup" class="noselect"></div>
-      
     </section>
 
     <aside id="sidebar">
 
       <section class="content">
 
+        <section id="list"></section>
+
         <form>
           <input type="search" id="filter" name="search-player" placeholder="Spieler suchen" value="">
         </form>
-
-        <section id="list"></section>
 
         <div class="gradient"></div>
 

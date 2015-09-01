@@ -39,6 +39,7 @@
     margin: 0;
     padding: 1em 2em;
     list-style-type: none;
+    user-select: none;
 
     &:nth-child(odd) {
       background-color: #f4f4f4;
@@ -54,8 +55,6 @@
   li {
     line-height: 1.8em;
     cursor: pointer;
-    user-select: none;
-    transform: translate(0, 0);
 
     &.picked {
       color: #8fbc8f;

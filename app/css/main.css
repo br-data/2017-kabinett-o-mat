@@ -195,6 +195,10 @@ nav {
   margin: 0;
   padding: 1em 2em;
   list-style-type: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 #list ul:nth-child(odd) {
   background-color: #f4f4f4;
@@ -207,13 +211,6 @@ nav {
 #list li {
   line-height: 1.8em;
   cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  -webkit-transform: translate(0, 0);
-      -ms-transform: translate(0, 0);
-          transform: translate(0, 0);
 }
 #list li.picked {
   color: #8fbc8f;
@@ -363,6 +360,15 @@ button:hover,
 .draggable {
   -ms-touch-action: none;
   touch-action: none;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+
+.changeable {
+  -ms-touch-action: none;
+  touch-action: none;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
 }
 
 .dragging {
