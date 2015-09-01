@@ -9,15 +9,17 @@ var lineup = (function (config, utils, common) {
     var formationSelect = $('formation');
     var lineupElement = $('lineup');
     var infoBox = $('info');
+    var field = $('field');
+    var players = $$('.player');
 
     function init() {
 
         getFormation(common.currentTeamModel);
         showLineup(common.currentTeamModel);
         updateFormation(formationSelect, lineupElement);
-        handlePositionSelect();
 
         formationSelect.addEventListener('change', handleFormationChange);
+        field.addEventListener('click', handlePositionDeselect);
     }
 
     function showLineup(model) {
@@ -60,6 +62,8 @@ var lineup = (function (config, utils, common) {
 
             lineupElement.appendChild(section);  
         }
+
+        players = $$('.player');
     }
 
     // @TODO Split or rename
@@ -98,31 +102,49 @@ var lineup = (function (config, utils, common) {
 
     function handlePositionSelect(e) {
 
-        var target;
+        // Check if a position is selected
+        if(true) {
 
-        if (e) {
+            // If position gets clicked again, do nothing;
+            if (common.currentPosition !== e.target) {
 
-            target = e.target;
-        } else {
+                e.target.classList.add('active');
 
-            // If no player is selected, select the first one
-            target = $$('.player')[0];
-        }
+                if (common.currentPosition) {
 
-        // If position gets clicked again, do nothing;
-        if (common.currentPosition !== target) {
+                    common.currentPosition.classList.remove('active');
+                }
 
-            target.classList.add('active');
-
-            if (common.currentPosition) {
-
-                common.currentPosition.classList.remove('active');
+                common.updateInfo(e.target.getAttribute('data-player'), infoBox);
             }
 
-            common.updateInfo(target.getAttribute('data-player'), infoBox);
+            common.currentPosition = e.target;
+        }
+    }
+
+    function handlePositionDeselect(e) {
+
+        for (var i = 0; i < players.length; i++) {
+
+            if (e.target === players[i]) {
+
+                return false;
+            }
         }
 
-        common.currentPosition = target;
+        if (common.currentPosition) {
+
+            common.currentPosition.classList.remove('active');
+            common.currentPosition = null;
+        }
+
+        while (infoBox.firstChild) {
+
+            infoBox.removeChild(infoBox.firstChild);
+        }
+
+        createElement('h3', infoBox, ['textContent', 'Spielerinfo']);
+        createElement('p', infoBox, ['textContent', 'Wählen Sie einen Spieler aus, um mehr über ihn zu erfahren. Ziehen Sie einen Spieler auf eine Position, um diese zu besetzen.']);
     }
 
     function getFormation(arr) {

@@ -121,15 +121,22 @@ var list = (function (config, utils, common) {
         var oldPlayerTarget = oldPlayer || common.currentPosition;
 
         var newPlayerId = newPlayerTarget.getAttribute('data-player');
-        var oldPlayerId = oldPlayerTarget.getAttribute('data-player');
+        
+        if (newPlayerTarget && oldPlayerTarget) {
 
-        updatePosition(newPlayerId, oldPlayerId);
-        updateTeamModel(newPlayerId, oldPlayerId);
-        updateList(oldPlayerId, newPlayerId);
-        updateList(newPlayerId, oldPlayerId);
+            var oldPlayerId = oldPlayerTarget.getAttribute('data-player');
 
-        common.updateInfo(newPlayerId, infoBox);
-        lineup.updateFormation();
+            updatePosition(newPlayerId, oldPlayerId);
+            updateTeamModel(newPlayerId, oldPlayerId);
+            updateList(oldPlayerId, newPlayerId);
+            updateList(newPlayerId, oldPlayerId);
+
+            common.updateInfo(newPlayerId, infoBox);
+            lineup.updateFormation();
+        } else {
+
+            common.updateInfo(newPlayerId, infoBox);
+        }
     }
 
     function handlePlayerSearch(e) {
@@ -188,8 +195,6 @@ var list = (function (config, utils, common) {
                 (oldPlayerId.indexOf('z') ? oldPlayerId : 'zz') + '.jpg) center no-repeat';
             oldPlayerIcon.style['background-size'] = 'contain';
         }
-
-        console.log(common.currentPosition);
     }
 
     function updateTeamModel(newPlayerId, oldPlayerId) {
