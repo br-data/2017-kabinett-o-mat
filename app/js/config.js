@@ -1,7 +1,7 @@
 var config = {
 
-    defaultTeam: [['41', '42'], ['31', '32', '33', '34'], ['21', '22', '23', '24'], ['11']],
-    defaultHash: ['4142', '31323334', '21222324', '11'],
+    defaultTeam: [['zk', 'zj'], ['zi', 'zh', 'zg', 'zf'], ['ze', 'zd', 'zc', 'zb'], ['za']],
+    defaultHash: ['zkzj', 'zizhzgzf', 'zezdzczb', 'za'],
     positionOrder: ['tor', 'abwehr', 'mittelfeld', 'sturm'],
 
     sharing: {

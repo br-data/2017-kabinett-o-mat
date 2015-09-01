@@ -124,7 +124,7 @@ var list = (function (config, utils, common) {
         var oldPlayerId = oldPlayerTarget.getAttribute('data-player');
 
         // Player is not in the current team
-        if (!wasPicked(newPlayerId)) {
+        if (oldPlayer || !wasPicked(newPlayerId)) {
 
             // Assign the player to the new position and update 
             updatePosition(newPlayerId, oldPlayerId);
@@ -182,34 +182,41 @@ var list = (function (config, utils, common) {
         }
     }
 
+    //@TODO Refactor
     function updatePosition(newPlayerId, oldPlayerId) {
 
-        var position;
+        var newPosition = common.currentPosition;
+        var oldPosition = getPlayerElement(newPlayerId);
 
-        if (newPlayerId === 'zz') {
+        var newPlayer = common.getPlayerData(newPlayerId);
+        var newPlayerIcon = newPosition.getElementsByTagName('div')[0];
 
-            position = getPlayerElement(oldPlayerId);
-        } else {
+        newPosition.setAttribute('data-player', newPlayerId);
+        newPosition.getElementsByTagName('p')[0].textContent = newPlayer.name + ' (' + newPlayerId + ')';
 
-            position = common.currentPosition;
-        }
-
-        var player = common.getPlayerData(newPlayerId);
-        var playerIcon = position.getElementsByTagName('div')[0];
-
-        position.setAttribute('data-player', newPlayerId);
-        position.getElementsByTagName('p')[0].textContent = player.name;
-
-        playerIcon.style.background = 'url(img/players/' +
+        newPlayerIcon.style.background = 'url(img/players/' +
             newPlayerId + '.jpg) center no-repeat';
-        playerIcon.style['background-size'] = 'contain';
+        newPlayerIcon.style['background-size'] = 'contain';
+
+        //@TODO Merge duplicate code
+        if (oldPosition) {
+
+            var oldPlayer = common.getPlayerData(oldPlayerId);
+            var oldPlayerIcon = oldPosition.getElementsByTagName('div')[0];
+
+            oldPosition.setAttribute('data-player', oldPlayerId);
+            oldPosition.getElementsByTagName('p')[0].textContent = oldPlayer.name + ' (' + oldPlayerId + ')';
+
+            oldPlayerIcon.style.background = 'url(img/players/' +
+                oldPlayerId + '.jpg) center no-repeat';
+            oldPlayerIcon.style['background-size'] = 'contain';
+        }
     }
 
     function updateTeamModel(newPlayerId, oldPlayerId) {
         
         for (var i = 0; i < common.currentTeamModel.length; i++) {
 
-            
             var j = common.currentTeamModel[i].indexOf(oldPlayerId);
 
             if (j > -1) {
@@ -220,6 +227,8 @@ var list = (function (config, utils, common) {
                 break;
             }
         }
+
+        console.log(common.currentTeamModel);
     }
 
     function getPlayerElement(playerId) {

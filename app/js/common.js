@@ -27,9 +27,10 @@ var common = (function (utils) {
         return result.join('-');
     }
 
+    // Updates the info box HTML
     function updateInfo(playerId, infoBoxEl) {
 
-        if (isNaN(parseInt(playerId)) && playerId !== 'zz') {
+        if (playerId.indexOf('z')) {
 
             var player = getPlayerData(playerId);
 
@@ -47,6 +48,19 @@ var common = (function (utils) {
         }
     }
 
+    // Generates a random alphanumeric string, like a unique ID.
+    function generateId(len) {
+
+        var str = '';
+        var charset = 'abcdefghijklmnopqrstuvwxyz0123456789';
+
+        for(var i = 0; i < len; i++) {
+
+            str += charset.charAt(Math.floor(Math.random() * charset.length));
+        }
+
+        return str;
+    }
 
     return {
     	currentTeamModel: currentTeamModel,
@@ -56,7 +70,8 @@ var common = (function (utils) {
         
         getPlayerData: getPlayerData,
         teamToHash: teamToHash,
-        updateInfo: updateInfo
+        updateInfo: updateInfo,
+        generateId: generateId
     };
 
 }(utils));

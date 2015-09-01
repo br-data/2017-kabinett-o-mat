@@ -29,14 +29,12 @@ var lineup = (function (config, utils, common) {
             lineupElement.removeChild(lineupElement.firstChild);
         }
 
-        // @TODO Use a regular for loop
         for (var i = 0; i < model.length; i++) {
 
             var section = createElement('section', null,
                 ['className', 'row']);
 
             // Add players, line by line
-            // @TODO Use a regular for loop
             for (var j = 0; j < model[i].length; j++) {
 
                 var positionElement, playerIcon, playerName;
@@ -48,12 +46,12 @@ var lineup = (function (config, utils, common) {
 
                 playerIcon = createElement('div', null, ['className', 'icon']);
                 playerIcon.style.background = 'url(img/players/' +
-                    (isNaN(parseInt(model[i][j])) ? model[i][j] : 'zz') +
+                    (model[i][j].indexOf('z') ? model[i][j] : 'zz') +
                     '.jpg) center no-repeat';
                 playerIcon.style['background-size'] = 'contain';
 
                 playerName = createElement('p', null,
-                    ['className', 'text'], ['textContent', player.name]);       
+                    ['className', 'text'], ['textContent', player.name + ' (' + model[i][j] + ')']);       
 
                 positionElement.appendChild(playerIcon);
                 positionElement.appendChild(playerName);
@@ -64,7 +62,7 @@ var lineup = (function (config, utils, common) {
         }
     }
 
-        // @TODO Split or rename
+    // @TODO Split or rename
     function updateFormation() {
 
         // Get the current formation
