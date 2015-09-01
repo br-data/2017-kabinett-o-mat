@@ -82,37 +82,6 @@ var list = (function (config, utils, common) {
         currentList = listSelect.querySelectorAll('[data-player]');
     }
 
-    // Blank out the currently selected players 
-    function updateList(newPlayerId, oldPlayerId) {
-
-        for (var i = 0; i < currentList.length; i++) {
-
-            var currentId = currentList[i].getAttribute('data-player');
-
-            if (oldPlayerId && newPlayerId) {
-
-                if (currentId === newPlayerId) {
-
-                    currentList[i].classList.add('picked');
-                }
-
-                if (currentId === oldPlayerId) {
-
-                    currentList[i].classList.remove('picked');
-                }
-            } else {
-
-                for (var j = 0; j < common.currentTeamModel.length; j++) {
-
-                    if (common.currentTeamModel[j]
-                        .indexOf(currentId) > -1) {
-
-                        currentList[i].classList.add('picked');
-                    }
-                }
-            }
-        }
-    }
 
     // Change the player. The elements newPlayer and oldPlayer are optional.
     function handlePlayerChange(e, oldPlayer) {
@@ -128,7 +97,6 @@ var list = (function (config, utils, common) {
 
             updatePosition(newPlayerId, oldPlayerId);
             updateTeamModel(newPlayerId, oldPlayerId);
-            updateList(oldPlayerId, newPlayerId);
             updateList(newPlayerId, oldPlayerId);
 
             common.updateInfo(newPlayerId, infoBox);
@@ -165,7 +133,7 @@ var list = (function (config, utils, common) {
             }
         }
     }
-
+    
     //@TODO Refactor
     function updatePosition(newPlayerId, oldPlayerId) {
 
@@ -194,6 +162,35 @@ var list = (function (config, utils, common) {
             oldPlayerIcon.style.background = 'url(img/players/' +
                 (oldPlayerId.indexOf('z') ? oldPlayerId : 'zz') + '.jpg) center no-repeat';
             oldPlayerIcon.style['background-size'] = 'contain';
+        }
+    }
+
+    // Highlight the currently selected players 
+    function updateList() {
+
+        var pickedPlayers = [];
+
+        // Select all players which are currently picked
+        for (var i = 0; i < currentList.length; i++) {
+
+            var currentId = currentList[i].getAttribute('data-player');
+
+            for (var j = 0; j < common.currentTeamModel.length; j++) {
+
+                // Reset highlighting
+                currentList[i].classList.remove('picked');
+
+                if (common.currentTeamModel[j].indexOf(currentId) > -1) {
+
+                    pickedPlayers.push(i);
+                }
+            }
+        }
+
+        // Highlight all the picked players
+        for (var k = 0; k < pickedPlayers.length; k++) {
+
+            currentList[pickedPlayers[k]].classList.add('picked');
         }
     }
 
@@ -261,7 +258,8 @@ var list = (function (config, utils, common) {
         init: init,
         showList: showList,
         updateList: updateList,
-        handlePlayerChange: handlePlayerChange
+        handlePlayerChange: handlePlayerChange,
+        wasPicked: wasPicked
     };
 
 }(config, utils, common));
