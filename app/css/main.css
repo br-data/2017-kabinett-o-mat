@@ -74,6 +74,7 @@
 
 nav {
   height: 10%;
+  z-index: 30;
 }
 
 #field {
@@ -82,10 +83,8 @@ nav {
   height: 100%;
   padding: 1em;
   text-align: center;
-  -webkit-transform: translate(0, 0);
-      -ms-transform: translate(0, 0);
-          transform: translate(0, 0);
   width: 75%;
+  z-index: 10;
 }
 #field form {
   display: inline-block;
@@ -130,6 +129,7 @@ nav {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  z-index: 20;
 }
 #lineup .player {
   cursor: pointer;
@@ -138,10 +138,10 @@ nav {
   width: 25%;
 }
 #lineup .player.active .icon {
-  box-shadow: 0 0 0 3px #cd5c5c;
+  box-shadow: 0 0 0 5px #cd5c5c;
 }
 #lineup .player.drop-target .icon {
-  box-shadow: 0 0 0 3px #daa520;
+  box-shadow: 0 0 0 5px #daa520;
 }
 #lineup .player .icon {
   background-color: #cd5c5c;
@@ -164,6 +164,7 @@ nav {
   height: 100%;
   position: relative;
   width: 25%;
+  z-index: 40;
 }
 #sidebar .content {
   height: 100%;
@@ -176,6 +177,7 @@ nav {
   position: absolute;
   right: 0;
   top: 0;
+  z-index: 70;
 }
 #sidebar input {
   border-radius: 0;
@@ -190,6 +192,7 @@ nav {
 
 #list {
   padding-top: 4em;
+  z-index: 50;
 }
 #list ul {
   margin: 0;
@@ -253,6 +256,7 @@ nav {
   position: absolute;
   right: 0;
   width: 100%;
+  z-index: 60;
 }
 #info h3 {
   font-size: 1em;
@@ -320,6 +324,7 @@ button:hover,
   position: absolute;
   right: 10%;
   top: 15%;
+  z-index: 500;
 }
 #modal p {
   margin: .2em 0 1em;
@@ -360,20 +365,21 @@ button:hover,
 .draggable {
   -ms-touch-action: none;
   touch-action: none;
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
 }
 
 .changeable {
   -ms-touch-action: none;
   touch-action: none;
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
 }
 
 .dragging {
   list-style: none;
   position: absolute;
+  z-index: 300;
+}
+
+.changing {
+  z-index: 200;
 }
 
 @media (max-width: 780px) {

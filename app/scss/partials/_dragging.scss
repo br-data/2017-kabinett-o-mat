@@ -1,16 +1,19 @@
 .draggable {
     -ms-touch-action: none;
     touch-action: none;
-    transform: translate3d(0, 0, 0);
 }
 
 .changeable {
     -ms-touch-action: none;
     touch-action: none;
-    transform: translate3d(0, 0, 0);
 }
 
 .dragging {
 	list-style: none;
 	position: absolute;
+	z-index: 300;
+}
+
+.changing {
+	z-index: 200;
 }

@@ -65,7 +65,7 @@ var dragging = (function () {
                 // Reset translation
                 target.style.webkitTransform =
                 target.style.transform =
-                    'translate3d(0, 0, 0)';
+                    'none';
 
                 // Reset the data position
                 target.setAttribute('data-x', 0);
@@ -111,7 +111,7 @@ var dragging = (function () {
                 // Reset translation
                 event.target.style.webkitTransform =
                 event.target.style.transform =
-                    'translate3d(0, 0, 0)';
+                    'none';
                 
                 // Update the position attributes
                 event.target.setAttribute('data-x', 0);
@@ -125,8 +125,8 @@ var dragging = (function () {
         // The dropzone is event.target, the draggable is event.relatedTarget
         interact('.dropzone').dropzone({
 
-            // Require a 75% element overlap for a drop to be possible
-            overlap: 0.75,
+            // Require a 65% element overlap for a drop to be possible
+            overlap: 0.65,
 
             ondragenter: function (event) {
 
