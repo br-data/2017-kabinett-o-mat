@@ -123,36 +123,13 @@ var list = (function (config, utils, common) {
         var newPlayerId = newPlayerTarget.getAttribute('data-player');
         var oldPlayerId = oldPlayerTarget.getAttribute('data-player');
 
-        // Player is not in the current team
-        if (oldPlayer || !wasPicked(newPlayerId)) {
+        updatePosition(newPlayerId, oldPlayerId);
+        updateTeamModel(newPlayerId, oldPlayerId);
+        updateList(oldPlayerId, newPlayerId);
+        updateList(newPlayerId, oldPlayerId);
 
-            // Assign the player to the new position and update 
-            updatePosition(newPlayerId, oldPlayerId);
-            updateTeamModel(newPlayerId, oldPlayerId);
-            updateList(newPlayerId, oldPlayerId);
-            common.updateInfo(newPlayerId, infoBox);
-
-            lineup.updateFormation();
-
-        // Player is in the current team
-        } else {
-
-            // Remove the player from the current position,
-            // and assign the position to unknown
-            updatePosition('zz', newPlayerId);
-
-            // Assign the player to the new position
-            updatePosition(newPlayerId, oldPlayerId);
-
-            // Update model, list, info and formation
-            updateTeamModel('zz', newPlayerId);
-            updateTeamModel(newPlayerId, oldPlayerId);
-            updateList('zz', newPlayerId);
-            updateList(newPlayerId, oldPlayerId);
-
-            common.updateInfo(newPlayerId, infoBox);
-            lineup.updateFormation();
-        }
+        common.updateInfo(newPlayerId, infoBox);
+        lineup.updateFormation();
     }
 
     function handlePlayerSearch(e) {
@@ -188,47 +165,63 @@ var list = (function (config, utils, common) {
         var newPosition = common.currentPosition;
         var oldPosition = getPlayerElement(newPlayerId);
 
-        var newPlayer = common.getPlayerData(newPlayerId);
+        var newPlayer = common.getPlayerData(newPlayerId.indexOf('z') ? newPlayerId : 'zz');
         var newPlayerIcon = newPosition.getElementsByTagName('div')[0];
 
         newPosition.setAttribute('data-player', newPlayerId);
         newPosition.getElementsByTagName('p')[0].textContent = newPlayer.name + ' (' + newPlayerId + ')';
 
         newPlayerIcon.style.background = 'url(img/players/' +
-            newPlayerId + '.jpg) center no-repeat';
+            (newPlayerId.indexOf('z') ? newPlayerId : 'zz') + '.jpg) center no-repeat';
         newPlayerIcon.style['background-size'] = 'contain';
 
         //@TODO Merge duplicate code
         if (oldPosition) {
 
-            var oldPlayer = common.getPlayerData(oldPlayerId);
+            var oldPlayer = common.getPlayerData(oldPlayerId.indexOf('z') ? oldPlayerId : 'zz');
             var oldPlayerIcon = oldPosition.getElementsByTagName('div')[0];
 
             oldPosition.setAttribute('data-player', oldPlayerId);
             oldPosition.getElementsByTagName('p')[0].textContent = oldPlayer.name + ' (' + oldPlayerId + ')';
 
             oldPlayerIcon.style.background = 'url(img/players/' +
-                oldPlayerId + '.jpg) center no-repeat';
+                (oldPlayerId.indexOf('z') ? oldPlayerId : 'zz') + '.jpg) center no-repeat';
             oldPlayerIcon.style['background-size'] = 'contain';
         }
     }
 
     function updateTeamModel(newPlayerId, oldPlayerId) {
+
+        var oldPlayerRow, oldPlayerIndex, newPlayerRow, newPlayerIndex;
         
+        // Find player row and position (index) in multidimensional array
         for (var i = 0; i < common.currentTeamModel.length; i++) {
 
-            var j = common.currentTeamModel[i].indexOf(oldPlayerId);
+            // Find old player
+            if (common.currentTeamModel[i].indexOf(oldPlayerId) > -1) {
 
-            if (j > -1) {
+                oldPlayerRow = i;
+                oldPlayerIndex = common.currentTeamModel[i].indexOf(oldPlayerId);
+            }
 
-                common.currentTeamModel[i][j] = newPlayerId;
-                
-                // @TODO Make sure only one player is replaced
-                break;
+            // Find new player
+            if (common.currentTeamModel[i].indexOf(newPlayerId) > -1) {
+
+                newPlayerRow = i;
+                newPlayerIndex = common.currentTeamModel[i].indexOf(newPlayerId);
             }
         }
 
-        console.log(common.currentTeamModel);
+        // Update player ID at position, if found
+        if (oldPlayerIndex > -1) {
+
+            common.currentTeamModel[oldPlayerRow][oldPlayerIndex] = newPlayerId;
+        }
+
+        if (newPlayerIndex > -1) {
+
+            common.currentTeamModel[newPlayerRow][newPlayerIndex] = oldPlayerId;
+        }
     }
 
     function getPlayerElement(playerId) {
