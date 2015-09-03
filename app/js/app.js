@@ -1,5 +1,3 @@
-var allPlayers;
-
 var app = (function (config, utils, dragging, tracking, sharing, common, list, lineup) {
 
     'use strict';
@@ -16,13 +14,12 @@ var app = (function (config, utils, dragging, tracking, sharing, common, list, l
 
         utils.getJSON('data/players.json', function (players) {
 
-            //common.currentPlayers = players;
-            allPlayers = players;
+            common.setCurrentPlayers(players);
 
             // Check if a linup is predefined in the URL hash, eg #1112x
             if(location.hash) {
 
-                common.currentTeamModel = convertLineup(location.hash.replace('#',''));
+                common.currentTeamModel = common.convertLineup(location.hash.replace('#',''));
             } else {
 
                 common.currentTeamModel = config.defaultTeam;
@@ -37,27 +34,6 @@ var app = (function (config, utils, dragging, tracking, sharing, common, list, l
             shareButton.addEventListener('click', handleShare);
             closeButton.addEventListener('click', handleClose);
         });   
-    }
-
-    function convertLineup(str) {
-
-        // Hash string to array
-        var arr = str.split('-');
-
-        // If the array is malformed, fall back to default
-        if (arr.length < config.defaultTeam.length) {
-
-            arr = config.defaultHash;
-        }
-
-        // Split the position arrays into arrays with individual players
-        // Ex. [111213] becomes [11,12,13] 
-        for (var i = 0;  i < arr.length; i++) {
-
-            arr[i] = arr[i].match(/.{1,2}/g);
-        }
-
-        return arr;
     }
 
     function handleShare() {

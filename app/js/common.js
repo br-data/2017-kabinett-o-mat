@@ -11,7 +11,12 @@ var common = (function (utils) {
 
   	function getPlayerData(playerId) {
 
-        return allPlayers[playerId] || false;
+        return currentPlayers[playerId] || false;
+    }
+
+    function setCurrentPlayers(players) {
+
+        currentPlayers = players;
     }
 
     // Converts an location hash string, ex. 1011x2021...
@@ -25,6 +30,27 @@ var common = (function (utils) {
         }
 
         return result.join('-');
+    }
+
+    function convertLineup(str) {
+
+        // Hash string to array
+        var arr = str.split('-');
+
+        // If the array is malformed, fall back to default
+        if (arr.length < config.defaultTeam.length) {
+
+            arr = config.defaultHash;
+        }
+
+        // Split the position arrays into arrays with individual players
+        // Ex. [111213] becomes [11,12,13] 
+        for (var i = 0;  i < arr.length; i++) {
+
+            arr[i] = arr[i].match(/.{1,2}/g);
+        }
+
+        return arr;
     }
 
     // Updates the info box HTML
@@ -69,7 +95,9 @@ var common = (function (utils) {
     	currentPosition: currentPosition,
         
         getPlayerData: getPlayerData,
+        setCurrentPlayers: setCurrentPlayers,
         teamToHash: teamToHash,
+        convertLineup: convertLineup,
         updateInfo: updateInfo,
         generateId: generateId
     };

@@ -108,6 +108,9 @@ nav {
   text-indent: .01px;
   text-overflow: '';
 }
+#field select::-ms-expand {
+  display: none;
+}
 
 #lineup {
   background-image: url("../img/goal.png");

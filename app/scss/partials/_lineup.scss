@@ -35,6 +35,10 @@ nav {
     padding: 4px 46px 4px 8px;
     text-indent: .01px;
     text-overflow: '';
+
+    &::-ms-expand {
+      display: none;
+    }
   }
 }
 

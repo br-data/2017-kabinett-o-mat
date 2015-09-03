@@ -16,7 +16,7 @@ var lineup = (function (config, utils, common) {
 
         getFormation(common.currentTeamModel);
         showLineup(common.currentTeamModel);
-        updateFormation(formationSelect, lineupElement);
+        updateFormation();
 
         formationSelect.addEventListener('change', handleFormationChange);
         field.addEventListener('click', handlePositionDeselect);
@@ -75,6 +75,7 @@ var lineup = (function (config, utils, common) {
 
         // Add the goalkeeper
         formation.push('1');
+
         common.currentFormation = formation;
 
         // Write class
@@ -88,7 +89,7 @@ var lineup = (function (config, utils, common) {
 
         for (var i = 0;  i < formation.length; i++) {
 
-            common.currentTeamModel.push(flatTeam.splice(0, +formation[i]));
+            common.currentTeamModel.push(flatTeam.splice(0, parseInt(formation[i])));
         }
 
         location.hash = common.teamToHash(common.currentTeamModel);
@@ -96,7 +97,7 @@ var lineup = (function (config, utils, common) {
 
     function handleFormationChange() {
 
-        updateFormation(formationSelect, lineupElement);
+        updateFormation();
         showLineup(common.currentTeamModel);        
     }
 

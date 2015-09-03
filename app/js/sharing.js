@@ -37,6 +37,12 @@ var sharing = (function (config, utils) {
 
     function openPopup(e) {
 
+        // Set popup size an position;
+        var w = 500;
+        var h = 500;
+        var px = (screen.width / 2) - (w / 2);
+        var py = (screen.height / 2) - (h / 2);
+
         // Ensure compatibility with older browsers
         e = (e ? e : window.event);
         var t = (e.target ? e.target : e.srcElement);
@@ -45,14 +51,8 @@ var sharing = (function (config, utils) {
             t = t.parentNode;
         }
 
-        // Set popup position, if screenwith is not avaiable use preset value
-        var px = Math.floor(((screen.availWidth || 1024) - config.Width) / 2),
-            py = Math.floor(((screen.availHeight || 700) - config.Height) / 2);
-
-        // Open popup
-        var popup = window.open(t.href, 'social', 'width=' + config.sharing.width +
-            ',height=' + config.sharing.height + ',left=' + px + ',top=' + py +
-            ',location=0,menubar=0,toolbar=0,status=0,scrollbars=1,resizable=1');
+        var popup = window.open(t.href, '_blank', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h);
+        popup.moveTo(px, py);
 
         if (popup) {
 
@@ -68,8 +68,8 @@ var sharing = (function (config, utils) {
             e.returnValue = false;
         }
 
-    return !!popup;
-}
+        return !!popup;
+    }
 
     return {
 
