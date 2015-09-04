@@ -31,8 +31,8 @@ var app = (function (config, utils, dragging, tracking, sharing, common, list, l
             dragging.init();
 
             // Register the event handlers
-            shareButton.addEventListener('click', handleShare);
-            closeButton.addEventListener('click', handleClose);
+            shareButton.addEventListener('click', handleShare, false);
+            closeButton.addEventListener('click', handleClose, false);
         });   
     }
 

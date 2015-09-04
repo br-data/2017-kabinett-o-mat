@@ -7,6 +7,7 @@ $black: #333;
 @import 'partials/list';
 @import 'partials/sharing';
 @import 'partials/dragging';
+@import 'partials/fallback';
 @import 'partials/mediaqueries';
 
 html {
@@ -45,3 +46,4 @@ button,
   text-decoration: none;
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
+

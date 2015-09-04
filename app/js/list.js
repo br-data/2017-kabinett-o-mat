@@ -12,9 +12,9 @@ var list = (function (config, utils, common) {
     var infoBox = $('info');
     var lineupElement = $('lineup');
 
-    playerFilter.addEventListener('keydown', utils.preventEnter);
-    playerFilter.addEventListener('keyup', handlePlayerSearch);
-    playerFilter.addEventListener('search', handlePlayerSearch);
+    playerFilter.addEventListener('keydown', utils.preventEnter, false);
+    playerFilter.addEventListener('keyup', handlePlayerSearch, false);
+    playerFilter.addEventListener('search', handlePlayerSearch, false);
 
     function init(players) {
 
@@ -43,7 +43,7 @@ var list = (function (config, utils, common) {
                     ['textContent', obj[player].name + ' (' + player + ')'],
                     ['className', 'draggable']);
                 playerElement.setAttribute('data-player', player);
-                playerElement.addEventListener('click', handlePlayerChange);
+                playerElement.addEventListener('click', handlePlayerChange, false);
 
                 // If the position already exists, add the player ...
                 if (index > -1) {

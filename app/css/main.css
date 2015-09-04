@@ -385,6 +385,34 @@ button:hover,
   z-index: 200;
 }
 
+body > * {
+  display: none;
+}
+
+#fallback {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: inherit;
+  height: inherit;
+  z-index: 10000;
+  padding: 3em;
+  background: #fff;
+}
+
+.fallback #fallback {
+  display: block !important;
+}
+.fallback #fallback p {
+  margin: 0 auto 1em;
+  max-width: 600px;
+  font-size: 1.2em;
+  display: block !important;
+}
+
 @media (max-width: 780px) {
   button span,
   .button span {

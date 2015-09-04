@@ -14,8 +14,19 @@
 
   </head>
 
-  <body>
+  <!--[if lte IE 8]>
+    <body class="fallback">
+  <![endif]-->
 
+  <!--[if !lt IE 8]><!-->
+    <body>
+  <!--<![endif]-->
+
+    <div id="fallback">
+      <p>Der von Ihnen verwendete Browser ist veraltet. Damit Sie diese Anwendung nutzten können, aktualisieren Sie bitte Ihren Browser. Ein aktueller Browser verbessert die Geschwindigkeit mit der Webseiten dargestellt werden und schützt Sie besser vor Betrug, Viren und Datendiebstahl.</p>
+      <p>Hier finden Sie mehr Informationen darüber, wie Sie Ihren Browser aktualisieren können: <a href="https://browser-update.org/de/update.html">https://browser-update.org/de/update.html</a></p>
+    </div>
+  
     <section id="field">
 
       <nav>
@@ -45,44 +56,43 @@
 
       <section id="modal">
 
-          <div id="close">×</div>
+        <div id="close">×</div>
 
-          <h1>Vielen Dank für Ihre Stimme!</h1>
+        <h1>Vielen Dank für Ihre Stimme!</h1>
 
-          <p>Die Auswertung der Einsendungen werden wir bis zum XX.XX.XX auswerten. Den Beitrag können Sie dann auf BR1 hören.</p>
+        <p>Die Auswertung der Einsendungen werden wir bis zum XX.XX.XX auswerten. Den Beitrag können Sie dann auf BR1 hören.</p>
 
-          <h1>Teilen Sie Ihre Mannschaft mit Ihren Freunden:</h1>
+        <h1>Teilen Sie Ihre Mannschaft mit Ihren Freunden:</h1>
 
-          <p>Wenn Sie Ihre Mannschaft teilen, können andere Ihre Aufstellung sehen.</p>
+        <p>Wenn Sie Ihre Mannschaft teilen, können andere Ihre Aufstellung sehen.</p>
 
-          <div class="icons">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=%URL%" class="share facebook" target="_blank">
-              <i class="icon-facebook-squared big"></i>
-              <span>Facebook</span>
-            </a>
+        <div class="icons">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=%URL%" class="share facebook" target="_blank">
+            <i class="icon-facebook-squared big"></i>
+            <span>Facebook</span>
+          </a>
 
-            <a href="https://twitter.com/intent/tweet?url=%URL%&amp;text=%TEXT%&amp;via=%AUTHOR%&amp;hashtags=%HASHTAGS%&amp;related=%RELATED%" class="share twitter" target="_blank">
-              <i class="icon-twitter-squared big"></i>
-              <span>Twitter</span>
-            </a>
+          <a href="https://twitter.com/intent/tweet?url=%URL%&amp;text=%TEXT%&amp;via=%AUTHOR%&amp;hashtags=%HASHTAGS%&amp;related=%RELATED%" class="share twitter" target="_blank">
+            <i class="icon-twitter-squared big"></i>
+            <span>Twitter</span>
+          </a>
 
-            <a href="https://plus.google.com/share?url=%URL%" class="share google" target="_blank">
-              <i class="icon-gplus-squared big"></i>
-              <span>Google+</span>
-            </a>
+          <a href="https://plus.google.com/share?url=%URL%" class="share google" target="_blank">
+            <i class="icon-gplus-squared big"></i>
+            <span>Google+</span>
+          </a>
 
-            <a href="" target="_blank">
-              <i class="icon-mail-squared big"></i>
-              <span>E-Mail</span>
-            </a>
+          <a href="" target="_blank">
+            <i class="icon-mail-squared big"></i>
+            <span>E-Mail</span>
+          </a>
+        </div>
 
-          </div>
+        <p><strong>Direktlink:</strong> <a id="direct" href="http://br.de"></a></p>
 
-          <p><strong>Direktlink:</strong> <a id="direct" href="http://br.de"></a></p>
+        <p>&nbsp;</p>
 
-          <p>&nbsp;</p>
-
-          <p>Unsere Datenschutzerklärung finden Sie <a href="http://www.br.de/footernavi/bayrischer_rundfunk/datenschutz/index.html" target="_blank">hier.</a></p>
+        <p>Unsere Datenschutzerklärung finden Sie <a href="http://www.br.de/footernavi/bayrischer_rundfunk/datenschutz/index.html" target="_blank">hier.</a></p>
 
       </section>
 

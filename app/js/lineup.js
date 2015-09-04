@@ -18,8 +18,8 @@ var lineup = (function (config, utils, common) {
         showLineup(common.currentTeamModel);
         updateFormation();
 
-        formationSelect.addEventListener('change', handleFormationChange);
-        field.addEventListener('click', handlePositionDeselect);
+        formationSelect.addEventListener('change', handleFormationChange, false);
+        field.addEventListener('click', handlePositionDeselect, false);
     }
 
     function showLineup(model) {
@@ -44,7 +44,7 @@ var lineup = (function (config, utils, common) {
 
                 positionElement = createElement('div', null,['className', 'dropzone changeable player']);
                 positionElement.setAttribute('data-player', model[i][j]);
-                positionElement.addEventListener('click', handlePositionSelect);
+                positionElement.addEventListener('click', handlePositionSelect, false);
 
                 playerIcon = createElement('div', null, ['className', 'icon']);
                 playerIcon.style.background = 'url(img/players/' +
@@ -79,6 +79,7 @@ var lineup = (function (config, utils, common) {
         common.currentFormation = formation;
 
         // Write class
+        lineupElement.className = '';
         lineupElement.classList.add('rows-' + common.currentFormation.length);
 
         // Flatten array 
@@ -103,31 +104,45 @@ var lineup = (function (config, utils, common) {
 
     function handlePositionSelect(e) {
 
-        // Check if a position is selected
-        if(true) {
+        var target = e.target;
 
-            // If position gets clicked again, do nothing;
-            if (common.currentPosition !== e.target) {
+        // Because IE. Full stop.
+        if (e.target.parentNode.parentNode !== lineupElement) {
 
-                e.target.classList.add('active');
+            target = target.parentNode;
+        }
 
-                if (common.currentPosition) {
+        // If position gets clicked again, do nothing;
+        if (common.currentPosition !== target) {
 
-                    common.currentPosition.classList.remove('active');
-                }
+            target.classList.add('active');
 
-                common.updateInfo(e.target.getAttribute('data-player'), infoBox);
+            if (common.currentPosition) {
+
+                common.currentPosition.classList.remove('active');
             }
 
-            common.currentPosition = e.target;
+            common.updateInfo(target.getAttribute('data-player'), infoBox);
         }
+
+        common.currentPosition = target;
     }
 
     function handlePositionDeselect(e) {
 
+
+
         for (var i = 0; i < players.length; i++) {
 
-            if (e.target === players[i]) {
+            var target = e.target;
+
+            // Because IE. Full stop.
+            if (e.target.parentNode.parentNode !== lineupElement) {
+
+                target = target.parentNode;
+            }
+
+            if (target === players[i]) {
 
                 return false;
             }
