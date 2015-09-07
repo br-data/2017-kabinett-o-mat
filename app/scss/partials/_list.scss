@@ -1,5 +1,5 @@
 #sidebar {
-  background: #fff;
+  background: $white;
   display: inline-block;
   float: right;
   height: 100%;
@@ -13,7 +13,7 @@
   }
 
   form {
-    background: #fff;
+    background: $white;
     left: 0;
     padding: 1em;
     position: absolute;
@@ -31,7 +31,7 @@
 }
 
 #filter {
-  border: 2px solid #8fbc8f;
+  border: 2px solid $green;
 }
 
 #list {
@@ -45,7 +45,7 @@
     user-select: none;
 
     &:nth-child(odd) {
-      background-color: #f4f4f4;
+      background-color: $lightgrey;
     }
 
     &:last-child:after {
@@ -60,7 +60,7 @@
     cursor: pointer;
 
     &.picked {
-      color: #8fbc8f;
+      color: $green;
     }
 
     &:hover {
@@ -98,9 +98,9 @@
 }
 
 #info {
-  background-color: #778899;
+  background-color: $slategrey;
   bottom: 0;
-  color: #fff;
+  color: $white;
   height: 130px;
   left: 0;
   padding: 1em 1em 1em 2em;
@@ -133,6 +133,12 @@
   left: 0;
   right: 0;
   width: 100%;
-  background: linear-gradient(to bottom,rgba(255,255,255,0) 0,rgba(255,255,255,.01) 1%,rgba(255,255,255,1) 75%,rgba(255,255,255,1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#ffffff', GradientType=0);
+  background: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0) 0,
+    rgba(255,255,255,.01) 1%,
+    rgba(255,255,255,1) 75%,
+    rgba(255,255,255,1) 100%
+  );
 }

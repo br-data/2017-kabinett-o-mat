@@ -27,9 +27,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-facebook-squared:before { content: '\e802'; color: #3b5998;}
-.icon-twitter-squared:before { content: '\e800'; color: #00aced; }
-.icon-gplus-squared:before { content: '\e804'; color: #d34836;}
+.icon-facebook-squared:before { content: '\e802'; color: $facebook;}
+.icon-twitter-squared:before { content: '\e800'; color: $twitter; }
+.icon-gplus-squared:before { content: '\e804'; color: $gplus;}
 .icon-mail-squared:before { content: '\e809'; }
 .icon-reply:before { content: '\e801'; }
 .icon-paper-plane:before { content: '\e803'; }

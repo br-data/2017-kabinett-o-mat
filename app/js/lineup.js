@@ -53,7 +53,7 @@ var lineup = (function (config, utils, common) {
                 playerIcon.style['background-size'] = 'contain';
 
                 playerName = createElement('p', null,
-                    ['className', 'text'], ['textContent', player.name + ' (' + model[i][j] + ')']);       
+                    ['className', 'text'], ['textContent', player.name]);       
 
                 positionElement.appendChild(playerIcon);
                 positionElement.appendChild(playerName);

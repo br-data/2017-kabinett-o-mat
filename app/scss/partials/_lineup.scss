@@ -4,13 +4,14 @@ nav {
 }
 
 #field {
-  background: #8fbc8f;
+  background: $green;
   display: inline-block;
   height: 100%;
   padding: 1em;
   text-align: center;
   width: 75%;
   z-index: 10;
+  position: relative;
 
   form {
     display: inline-block;
@@ -18,7 +19,7 @@ nav {
   }
 
   label {
-    background: #fff;
+    background: $white;
     display: inline-block;
     line-height: 30px;
     padding: 0 .7em 0 .5em;
@@ -28,7 +29,7 @@ nav {
   select {
     -moz-appearance: none;
     -webkit-appearance: none;
-    background: #fff url(../img/arrow.png) no-repeat right 3px center;
+    background: $white url(../img/arrow.png) no-repeat right 3px center;
     background-size: 20px 13px;
     border: 0;
     cursor: pointer;
@@ -47,7 +48,7 @@ nav {
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: 100% auto;
-  color: #fff;
+  color: $white;
   height: 90%;
   margin: 2em 1em;
 
@@ -70,15 +71,15 @@ nav {
     width: 25%;
 
     &.active .icon {
-      box-shadow: 0 0 0 5px #cd5c5c;
+      box-shadow: 0 0 0 5px $red;
     }
 
     &.drop-target .icon {
-     box-shadow: 0 0 0 5px #daa520;
+     box-shadow: 0 0 0 5px $yellow;
     }
 
     .icon {
-      background-color: #cd5c5c;
+      background-color: $red;
       border-radius: 50%;
       height: 4em;
       margin: 0 auto;
@@ -89,7 +90,7 @@ nav {
     .text {
       line-height: 1.2em;
       pointer-events: none;
-      text-shadow: 1px 1px 1px #333, 1px -1px 1px #333, -1px 1px 1px #333, -1px -1px 1px #333;
+      text-shadow: 1px 1px 1px $black, 1px -1px 1px $black, -1px 1px 1px $black, -1px -1px 1px $black;
     }
 
     &.shake {

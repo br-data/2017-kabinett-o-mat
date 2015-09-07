@@ -40,7 +40,7 @@ var list = (function (config, utils, common) {
 
                 //playerElement = createElement('li', null, ['textContent', obj[player].name]);
                 playerElement = createElement('li', null,
-                    ['textContent', obj[player].name + ' (' + player + ')'],
+                    ['textContent', obj[player].name],
                     ['className', 'draggable']);
                 playerElement.setAttribute('data-player', player);
                 playerElement.addEventListener('click', handlePlayerChange, false);
@@ -113,7 +113,7 @@ var list = (function (config, utils, common) {
                 oldPlayerTarget.classList.add('shake');
                 setTimeout(function () {
                     oldPlayerTarget.classList.remove('shake');
-                }, 500);
+                }, 300);
             }
 
         } else {
@@ -159,7 +159,7 @@ var list = (function (config, utils, common) {
         var newPlayerIcon = newPosition.getElementsByTagName('div')[0];
 
         newPosition.setAttribute('data-player', newPlayerId);
-        newPosition.getElementsByTagName('p')[0].textContent = newPlayer.name + ' (' + newPlayerId + ')';
+        newPosition.getElementsByTagName('p')[0].textContent = newPlayer.name;
 
         newPlayerIcon.style.background = 'url(img/players/' +
             (newPlayerId.indexOf('z') ? newPlayerId : 'zz') + '.jpg) center no-repeat';
@@ -172,7 +172,7 @@ var list = (function (config, utils, common) {
             var oldPlayerIcon = oldPosition.getElementsByTagName('div')[0];
 
             oldPosition.setAttribute('data-player', oldPlayerId);
-            oldPosition.getElementsByTagName('p')[0].textContent = oldPlayer.name + ' (' + oldPlayerId + ')';
+            oldPosition.getElementsByTagName('p')[0].textContent = oldPlayer.name;
 
             oldPlayerIcon.style.background = 'url(img/players/' +
                 (oldPlayerId.indexOf('z') ? oldPlayerId : 'zz') + '.jpg) center no-repeat';
