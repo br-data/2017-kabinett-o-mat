@@ -82,7 +82,6 @@ var list = (function (config, utils, common) {
         currentList = listSelect.querySelectorAll('[data-player]');
     }
 
-
     // Change the player. The elements newPlayer and oldPlayer are optional.
     function handlePlayerChange(e, oldPlayer) {
 
@@ -90,19 +89,16 @@ var list = (function (config, utils, common) {
         var oldPlayerTarget = oldPlayer || common.currentPosition;
 
         var newPlayerId = newPlayerTarget.getAttribute('data-player');
+        var oldPlayerId = oldPlayerTarget ? oldPlayerTarget.getAttribute('data-player') : null;
 
         // Necessary to check if the new player is a goalkeeper
         var playerIsGoalie = common.getPlayerData(newPlayerId.indexOf('z') ? newPlayerId : 'zz').pos === 'Tor';
-        var positionIsGoal  = oldPlayerTarget.parentNode.classList.contains('row-1');
-
-        console.log('Goalkeeper: ', playerIsGoalie, 'Goal: ', positionIsGoal);
+        var positionIsGoal = oldPlayerTarget ? oldPlayerTarget.parentNode.classList.contains('row-1') : null;
         
-        if (newPlayerTarget && oldPlayerTarget) {
+        if (newPlayerId && oldPlayerId) {
 
-            // Allow only goalkeepers in goal...
-            if (positionIsGoal && playerIsGoalie) {
-
-                var oldPlayerId = oldPlayerTarget.getAttribute('data-player');
+            // Allow only goalkeepers in goal and  only field player in field...
+            if (positionIsGoal && playerIsGoalie || !positionIsGoal && !playerIsGoalie) {
 
                 updatePosition(newPlayerId, oldPlayerId);
                 updateTeamModel(newPlayerId, oldPlayerId);
@@ -111,22 +107,13 @@ var list = (function (config, utils, common) {
                 common.updateInfo(newPlayerId, infoBox);
                 lineup.updateFormation();
 
-            // Allow only field player in field...
-            } else if (!positionIsGoal && !playerIsGoalie) {
-
-                var oldPlayerId = oldPlayerTarget.getAttribute('data-player');
-
-                updatePosition(newPlayerId, oldPlayerId);
-                updateTeamModel(newPlayerId, oldPlayerId);
-                updateList(newPlayerId, oldPlayerId);
-
-                common.updateInfo(newPlayerId, infoBox);
-                lineup.updateFormation();
-
-            // ... else show feedback
+            // ... else show error feedback
             } else {
 
-                console.log('Illegal action');
+                oldPlayerTarget.classList.add('shake');
+                setTimeout(function () {
+                    oldPlayerTarget.classList.remove('shake');
+                }, 500);
             }
 
         } else {
