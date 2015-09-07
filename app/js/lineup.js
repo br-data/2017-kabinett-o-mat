@@ -34,7 +34,7 @@ var lineup = (function (config, utils, common) {
         for (var i = 0; i < model.length; i++) {
 
             var section = createElement('section', null,
-                ['className', 'row']);
+                ['className', 'row row-' + (model.length - i)]);
 
             // Add players, line by line
             for (var j = 0; j < model[i].length; j++) {

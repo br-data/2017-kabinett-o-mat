@@ -90,17 +90,45 @@ var list = (function (config, utils, common) {
         var oldPlayerTarget = oldPlayer || common.currentPosition;
 
         var newPlayerId = newPlayerTarget.getAttribute('data-player');
+
+        // Necessary to check if the new player is a goalkeeper
+        var playerIsGoalie = common.getPlayerData(newPlayerId.indexOf('z') ? newPlayerId : 'zz').pos === 'Tor';
+        var positionIsGoal  = oldPlayerTarget.parentNode.classList.contains('row-1');
+
+        console.log('Goalkeeper: ', playerIsGoalie, 'Goal: ', positionIsGoal);
         
         if (newPlayerTarget && oldPlayerTarget) {
 
-            var oldPlayerId = oldPlayerTarget.getAttribute('data-player');
+            // Allow only goalkeepers in goal...
+            if (positionIsGoal && playerIsGoalie) {
 
-            updatePosition(newPlayerId, oldPlayerId);
-            updateTeamModel(newPlayerId, oldPlayerId);
-            updateList(newPlayerId, oldPlayerId);
+                var oldPlayerId = oldPlayerTarget.getAttribute('data-player');
 
-            common.updateInfo(newPlayerId, infoBox);
-            lineup.updateFormation();
+                updatePosition(newPlayerId, oldPlayerId);
+                updateTeamModel(newPlayerId, oldPlayerId);
+                updateList(newPlayerId, oldPlayerId);
+
+                common.updateInfo(newPlayerId, infoBox);
+                lineup.updateFormation();
+
+            // Allow only field player in field...
+            } else if (!positionIsGoal && !playerIsGoalie) {
+
+                var oldPlayerId = oldPlayerTarget.getAttribute('data-player');
+
+                updatePosition(newPlayerId, oldPlayerId);
+                updateTeamModel(newPlayerId, oldPlayerId);
+                updateList(newPlayerId, oldPlayerId);
+
+                common.updateInfo(newPlayerId, infoBox);
+                lineup.updateFormation();
+
+            // ... else show feedback
+            } else {
+
+                console.log('Illegal action');
+            }
+
         } else {
 
             common.updateInfo(newPlayerId, infoBox);
