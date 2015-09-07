@@ -104,5 +104,6 @@
   "dx": { "team_short":"RBS", "team":"Real Betis Sevilla", "name":"Heiko Westermann", "rnr":17, "pos":"Abwehr", "geb_tag":"14.08.1983", "geb_ort":"Alzenau", "reg_bezirk":"Unterfranken"},
   "dy": { "team_short":"M60", "team":"TSV 1860 München", "name":"Stephan Hain", "rnr":16, "pos":"Sturm", "geb_tag":"27.09.1988", "geb_ort":"Zwiesel", "reg_bezirk":"Niederbayern"},
   "dz": { "team_short":"SGF", "team":"SpVgg Greuther Fürth", "name":"Leopold Zingerle", "rnr":40, "pos":"Tor", "geb_tag":"10.04.1994", "geb_ort":"München", "reg_bezirk":"Oberbayern"},
-  "ea": { "team_short":"M60", "team":"TSV 1860 München", "name":"Richard Neudecker", "rnr":31, "pos":"Mittelfeld", "geb_tag":"29.10.1996", "geb_ort":"Altötting", "reg_bezirk":"Oberbayern"}
+  "ea": { "team_short":"M60", "team":"TSV 1860 München", "name":"Richard Neudecker", "rnr":31, "pos":"Mittelfeld", "geb_tag":"29.10.1996", "geb_ort":"Altötting", "reg_bezirk":"Oberbayern"},
+  "eb": { "team_short":"SWC", "team":"Swansea City", "name":"Gerhard Tremmel", "rnr":25, "pos":"Tor", "geb_tag":"16.11.1978", "geb_ort":"München", "reg_bezirk":"Oberbayern"}
 }
