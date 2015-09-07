@@ -97,8 +97,12 @@ var list = (function (config, utils, common) {
         
         if (newPlayerId && oldPlayerId) {
 
+            console.log(newPlayerId && oldPlayerId);
+
             // Allow only goalkeepers in goal and  only field player in field...
             if (positionIsGoal && playerIsGoalie || !positionIsGoal && !playerIsGoalie) {
+
+                console.log(positionIsGoal && playerIsGoalie || !positionIsGoal && !playerIsGoalie);
 
                 updatePosition(newPlayerId, oldPlayerId);
                 updateTeamModel(newPlayerId, oldPlayerId);
