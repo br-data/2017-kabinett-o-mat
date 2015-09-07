@@ -842,6 +842,10 @@ body > * {
   .button:before {
     opacity: 1;
   }
+
+  .thanks {
+    display: none;
+  }
 }
 @media (max-width: 540px) {
   button,
@@ -898,5 +902,4 @@ button,
   -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
           transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
-
 /*# sourceMappingURL=main.css.map */

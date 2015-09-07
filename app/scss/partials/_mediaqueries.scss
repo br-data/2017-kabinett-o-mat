@@ -9,6 +9,10 @@
   .button:before {
     opacity: 1;
   }
+
+  .thanks {
+    display: none;
+  }
 }
 
 @media (max-width: 540px) {

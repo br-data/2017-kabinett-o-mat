@@ -2,7 +2,6 @@ var sharing = (function (config, utils) {
 
     'use strict';
 
-    var $ = utils.$;
     var $$ = utils.$$;
 
     function init() {
