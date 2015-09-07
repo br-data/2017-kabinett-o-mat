@@ -16,23 +16,21 @@ var sharing = (function (config, utils) {
             replaceUrl(links[a]);
             links[a].onclick = openPopup;
         }
-
     }
 
     // Replace all %PLACEHOLDERS%
     function replaceUrl(el) {
-
-        var url = location.href;
-        url = url.replace('#','%23');
-
         var oldUrl = el.href;
         var newUrl = oldUrl
-            .replace('%URL%', url || config.sharing.url)
+            .replace('%URL%', location.href || config.sharing.url)
             .replace('%TEXT%', config.sharing.text.split(' ').join('+'))
             .replace('%HASHTAGS%', config.sharing.hashtags)
             .replace('%AUTHOR%', config.sharing.author)
             .replace('%RELATED%', config.sharing.related);
-        el.href = encodeURI(newUrl);
+        
+        newUrl = encodeURI(newUrl);
+        newUrl = newUrl.replace('#','%23');
+        el.href = newUrl;
     }
 
     function openPopup(e) {
@@ -47,9 +45,7 @@ var sharing = (function (config, utils) {
         e = (e ? e : window.event);
         var t = (e.target ? e.target : e.srcElement);
 
-        if (t.tagName.toLowerCase() === 'img') {
-            t = t.parentNode;
-        }
+        t = t.parentNode;
 
         var popup = window.open(t.href, '_blank', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h);
         popup.moveTo(px, py);

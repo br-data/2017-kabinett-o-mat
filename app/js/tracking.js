@@ -14,13 +14,14 @@ var tracking = (function (config) {
 
 		request = new XMLHttpRequest();
 
-		request.onreadystatechange=function() {
+		// Callback
+		// request.onreadystatechange = function() {
 
-			if (request.readyState === 4 && request.status === 200) {
+		// 	if (request.readyState === 4 && request.status === 200) {
 
-				console.log('Request successfull');
-			}
-		};
+		// 		console.log('Request successfull');
+		// 	}
+		// };
 
 		request.open('POST','https://script.google.com/macros/s/AKfycbzvz2UDsyp6Iy7YMMVbbnUSKwfCsmrabnVBPlGscrz1STIfGEgE/exec', true);
 		request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');

@@ -639,10 +639,10 @@ nav {
   cursor: pointer;
 }
 #list li.picked {
-  color: #8fbc8f;
+  color: #bbb;
 }
 #list li:hover {
-  color: #999;
+  color: #8fbc8f;
 }
 #list .sturm:before {
   content: "Sturm";
@@ -670,7 +670,7 @@ nav {
 }
 
 #info {
-  background-color: #778899;
+  background-color: #789;
   bottom: 0;
   color: #fff;
   height: 130px;
@@ -742,7 +742,7 @@ button:hover,
   display: none;
   left: 10%;
   overflow: auto;
-  padding: 3em;
+  padding: 1em 4em 4em;
   position: absolute;
   right: 10%;
   top: 15%;

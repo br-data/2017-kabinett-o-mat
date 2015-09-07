@@ -60,11 +60,11 @@
     cursor: pointer;
 
     &.picked {
-      color: $green;
+      color: $grey;
     }
 
     &:hover {
-      color: #999;
+      color: $green;
     }
   }
 

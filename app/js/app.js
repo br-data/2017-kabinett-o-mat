@@ -17,7 +17,7 @@ var app = (function (config, utils, dragging, tracking, sharing, common, list, l
             common.setCurrentPlayers(players);
 
             // Check if a linup is predefined in the URL hash, eg #1112x
-            if(location.hash) {
+            if (location.hash) {
 
                 common.currentTeamModel = common.convertLineup(location.hash.replace('#',''));
             } else {
@@ -41,7 +41,7 @@ var app = (function (config, utils, dragging, tracking, sharing, common, list, l
         tracking.send('Lineup=' + common.teamToHash(common.currentTeamModel));
         sharing.init();
 
-        directLink.src = location.href;
+        directLink.href = location.href;
         directLink.textContent = location.href;
 
         modal.style.display = 'block';
