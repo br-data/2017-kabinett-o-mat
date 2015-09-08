@@ -111,34 +111,40 @@ button,
 }
 
 #main {
-  display: block;
-  height: 93%;
-  width: 100%;
+  height: calc(100% - 150px);
 }
 
+#header {
+  padding: 1em;
+  height: 150px;
+}
+
+#header h1 {
+  margin: 0 0 .5em;
+}
+
+#header p {
+  max-width: 750px;
+}
+
+.logo {
+  float: right;
+  height: 40px;
+}
+
+.embed #header {
+  display: none;
+}
+.embed #main {
+  height: 100%;
+}
 .embed .hideable {
   visibility: hidden;
-}
-
-.disclaimer {
-  display: block;
-  padding: 0 1em;
-}
-.disclaimer sup {
-  margin-right: .5em;
-  font-weight: bold;
 }
 
 nav {
   height: 10%;
   z-index: 30;
-}
-
-.logo {
-  position: absolute;
-  bottom: 2em;
-  left: 2em;
-  opacity: .7;
 }
 
 #field {
@@ -165,7 +171,7 @@ nav {
 #field select {
   -moz-appearance: none;
   -webkit-appearance: none;
-  background: #fff url(../img/arrow.png) no-repeat right 3px center;
+  background: #fff url("../img/arrow.png") no-repeat right 3px center;
   background-size: 20px 13px;
   border: 0;
   cursor: pointer;
@@ -794,9 +800,6 @@ button:hover,
 #share {
   float: right;
 }
-#share sup {
-  line-height: 0;
-}
 
 .small {
   font-size: 17px;
@@ -872,10 +875,6 @@ button:hover,
   z-index: 200;
 }
 
-body > * {
-  display: none;
-}
-
 #fallback {
   display: none;
   position: absolute;
@@ -890,10 +889,13 @@ body > * {
   background: #fff;
 }
 
-.fallback #fallback {
+.unsupported body > * {
+  display: none;
+}
+.unsupported #fallback {
   display: block !important;
 }
-.fallback #fallback p {
+.unsupported #fallback p {
   margin: 0 auto 1em;
   max-width: 600px;
   font-size: 1.2em;
@@ -943,69 +945,9 @@ body > * {
   #lineup {
     margin: 0;
   }
-}
-/* Mediaqueries for disclaimer */
-/* Big height */
-@media (max-height: 1400px) {
-  #main {
-    height: 93%;
-  }
-}
-@media (max-height: 1400px) and (max-width: 1400px) {
-  #main {
-    height: 93%;
-  }
-}
-@media (max-height: 1400px) and (max-width: 780px) {
-  #main {
-    height: 90%;
-  }
-}
-@media (max-height: 1400px) and (max-width: 560px) {
-  #main {
-    height: 87%;
-  }
-}
-/* Medium height */
-@media (max-height: 780px) {
-  #main {
-    height: 92%;
-  }
-}
-@media (max-height: 780px) and (max-width: 1400px) {
-  #main {
-    height: 90%;
-  }
-}
-@media (max-height: 780px) and (max-width: 780px) {
-  #main {
-    height: 85%;
-  }
-}
-@media (max-height: 780px) and (max-width: 560px) {
-  #main {
-    height: 80%;
-  }
-}
-/* Small height */
-@media (max-height: 560px) {
-  #main {
-    height: 91%;
-  }
-}
-@media (max-height: 560px) and (max-width: 1400px) {
-  #main {
-    height: 87%;
-  }
-}
-@media (max-height: 560px) and (max-width: 780px) {
-  #main {
-    height: 80%;
-  }
-}
-@media (max-height: 560px) and (max-width: 560px) {
-  #main {
-    height: 77%;
+
+  .disclaimer {
+    display: none;
   }
 }
 

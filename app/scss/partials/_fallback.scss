@@ -1,7 +1,3 @@
-body > * {
-  display: none;
-}
-
 #fallback {
   display: none;
   position: absolute;
@@ -16,7 +12,12 @@ body > * {
   background: $white;
 }
 
-.fallback {
+.unsupported {
+  
+  body > * {
+    display: none;
+  }
+
   #fallback {
     display: block !important;
 

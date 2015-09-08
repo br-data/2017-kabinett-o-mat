@@ -34,6 +34,9 @@ var common = (function (utils) {
 
     function convertLineup(str) {
 
+        // Remove hash
+        str = str.replace('#','');
+
         // Hash string to array
         var arr = str.split('-');
 

@@ -102,6 +102,7 @@ module.exports = function (grunt) {
                 files: [
 
                     { expand: true, flatten: true, src: ['app/index.html'], dest: 'dist/', filter: 'isFile' },
+                    { expand: true, flatten: true, src: ['app/favicon.ico'], dest: 'dist/', filter: 'isFile' },
                     { expand: true, flatten: true, src: ['app/data/*'], dest: 'dist/data/', filter: 'isFile' },
                     { expand: true, flatten: true, src: ['app/font/*'], dest: 'dist/font/', filter: 'isFile' },
                     { expand: true, cwd: 'app/img/', src: ['**/*'], dest: 'dist/img/' },

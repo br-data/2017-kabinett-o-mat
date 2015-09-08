@@ -36,23 +36,38 @@ button,
 }
 
 #main {
-  display: block;
-  height: 93%;
-  width: 100%;
+  height: calc(100% - 150px);
+}
+
+#header {
+  padding: 1em;
+  height: 150px;
+}
+
+#header h1 {
+  margin: 0 0 .5em;
+}
+
+#header p {
+  max-width: 750px;
+}
+
+.logo {
+  float: right;
+  height: 40px;
 }
 
 .embed {
+
+  #header {
+    display: none;
+  }
+
+  #main {
+    height: 100%;
+  }
+
   .hideable {
     visibility: hidden;
-  }
-}
-
-.disclaimer {
-  display: block;
-  padding: 0 1em;
-
-  sup {
-    margin-right: .5em;
-    font-weight: bold;
   }
 }

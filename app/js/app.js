@@ -19,7 +19,8 @@ var app = (function (config, utils, dragging, tracking, sharing, common, list, l
             // Check if a linup is predefined in the URL hash, eg #1112x
             if (location.hash) {
 
-                common.currentTeamModel = common.convertLineup(location.hash.replace('#',''));
+                // Remove query string 
+                common.currentTeamModel = common.convertLineup(location.hash.split('?')[0]);
             } else {
 
                 common.currentTeamModel = config.defaultTeam;
@@ -45,10 +46,11 @@ var app = (function (config, utils, dragging, tracking, sharing, common, list, l
     function handleShare() {
 
         var currentUrl = location.href || config.sharing.url;
-        var currentHash = currentUrl.split('#')[1];
 
         // Remove query string parameters
-        currentUrl =  currentUrl.split('?')[0] + '#' + currentHash;
+        currentUrl =  currentUrl.replace(/(\?.*)#/, '#');
+
+        console.log(currentUrl);
 
         sharing.init(currentUrl);
         tracking.send('Lineup=' + common.teamToHash(common.currentTeamModel));
