@@ -4,7 +4,11 @@ var sharing = (function (config, utils) {
 
     var $$ = utils.$$;
 
-    function init() {
+    var currentUrl;
+
+    function init(url) {
+
+        currentUrl = url || location.href;
 
         // Select all sharing links
         var links = $$('.icons > a');
@@ -19,13 +23,8 @@ var sharing = (function (config, utils) {
 
     // Replace all %PLACEHOLDERS%
     function replaceUrl(el) {
+
         var oldUrl = el.href;
-        var currentUrl = location.href || config.sharing.url;
-        var currentHash = currentUrl.split('#')[1];
-
-        // Remove query string parameters
-        currentUrl =  currentUrl.split('?')[0] + '#' + currentHash;
-
         var newUrl = oldUrl
             .replace('%URL%', currentUrl)
             .replace('%TEXT%', config.sharing.text.split(' ').join('+'))

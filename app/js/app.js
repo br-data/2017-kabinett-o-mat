@@ -44,11 +44,17 @@ var app = (function (config, utils, dragging, tracking, sharing, common, list, l
 
     function handleShare() {
 
-        tracking.send('Lineup=' + common.teamToHash(common.currentTeamModel));
-        sharing.init();
+        var currentUrl = location.href || config.sharing.url;
+        var currentHash = currentUrl.split('#')[1];
 
-        directLink.href = location.href;
-        directLink.textContent = location.href;
+        // Remove query string parameters
+        currentUrl =  currentUrl.split('?')[0] + '#' + currentHash;
+
+        sharing.init(currentUrl);
+        tracking.send('Lineup=' + common.teamToHash(common.currentTeamModel));
+
+        directLink.href = currentUrl;
+        directLink.textContent = currentUrl;
 
         modal.style.display = 'block';
     }
