@@ -61,8 +61,8 @@ var sharing = (function (config, utils) {
             // Prevents default to have the popup in the same Window and
             // not opening the link in a new tab
             if (e.preventDefault) {
+                
                 e.preventDefault();
-
             }
 
             e.returnValue = false;
