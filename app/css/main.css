@@ -589,7 +589,7 @@ nav {
   width: 25%;
   z-index: 40;
 }
-#sidebar .content {
+#sidebar .scrollable {
   height: 100%;
   overflow: auto;
 }
@@ -680,6 +680,7 @@ nav {
   right: 0;
   width: 100%;
   z-index: 60;
+  overflow: hidden;
 }
 #info h3 {
   font-size: 1em;
@@ -728,6 +729,9 @@ button:hover,
 
 #share {
   float: right;
+}
+#share sup {
+  line-height: 0;
 }
 
 .small {
@@ -852,6 +856,10 @@ body > * {
   .thanks {
     display: none;
   }
+
+  #main {
+    height: 90%;
+  }
 }
 @media (max-width: 540px) {
   button,
@@ -907,6 +915,32 @@ button,
   text-decoration: none;
   -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
           transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+#main {
+  display: block;
+  height: 93%;
+  width: 100%;
+}
+
+#disclaimer {
+  display: block;
+  padding: 0 1em;
+}
+#disclaimer sup {
+  margin-right: .5em;
+  font-weight: bold;
+}
+
+@media (max-width: 780px) {
+  #main {
+    height: 90%;
+  }
+}
+@media (min-width: 1400px) {
+  #main {
+    height: 95%;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

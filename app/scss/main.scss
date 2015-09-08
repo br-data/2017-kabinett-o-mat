@@ -59,3 +59,31 @@ button,
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
 
+#main {
+  display: block;
+  height: 93%;
+  width: 100%;
+}
+
+#disclaimer {
+  display: block;
+  padding: 0 1em;
+
+  sup {
+    margin-right: .5em;
+    font-weight: bold;
+  }
+}
+
+@media (max-width: 780px) {
+  
+  #main {
+    height: 90%;
+  }
+}
+@media (min-width: 1400px) {
+  
+  #main {
+    height: 95%;
+  }
+}
