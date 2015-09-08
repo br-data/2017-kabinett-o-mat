@@ -62,7 +62,6 @@
   "ch": { "team_short":"F95", "team":"Fortuna Düsseldorf", "name":"Oliver Fink", "rnr":7, "pos":"Mittelfeld", "geb_tag":"06.06.1982", "geb_ort":"Hirschau", "reg_bezirk":"Oberpfalz"},
   "ci": { "team_short":"F95", "team":"Fortuna Düsseldorf", "name":"Sercan Sararer", "rnr":22, "pos":"Mittelfeld", "geb_tag":"27.09.1989", "geb_ort":"Nürnberg", "reg_bezirk":"Mittelfranken"},
   "cj": { "team_short":"FSV", "team":"FSV Frankfurt", "name":"Manuel Konrad", "rnr":5, "pos":"Mittelfeld", "geb_tag":"14.04.1988", "geb_ort":"Illertissen", "reg_bezirk":"Schwaben"},
-  "ck": { "team_short":"BDX", "team":"Girondins Bordeaux", "name":"Diego Contento", "rnr":3, "pos":"Abwehr", "geb_tag":"01.05.1990", "geb_ort":"München", "reg_bezirk":"Oberbayern"},
   "cl": { "team_short":"KSC", "team":"Karlsruher SC", "name":"René Vollath", "rnr":24, "pos":"Tor", "geb_tag":"20.03.1990", "geb_ort":"Amberg", "reg_bezirk":"Oberpfalz"},
   "cm": { "team_short":"KSC", "team":"Karlsruher SC", "name":"Jan Mauersberger", "rnr":6, "pos":"Abwehr", "geb_tag":"17.06.1985", "geb_ort":"München", "reg_bezirk":"Oberbayern"},
   "cn": { "team_short":"KSC", "team":"Karlsruher SC", "name":"Enrico Valentini", "rnr":22, "pos":"Mittelfeld", "geb_tag":"20.02.1989", "geb_ort":"Nürnberg", "reg_bezirk":"Mittelfranken"},
