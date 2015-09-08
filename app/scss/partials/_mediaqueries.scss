@@ -1,3 +1,4 @@
+/* General mediaqueries */
 @media (min-width: 1100px) {
 
   #lineup .player .icon {
@@ -44,5 +45,94 @@
 
   #lineup {
     margin: 0;
+  }
+}
+
+/* Mediaqueries for disclaimer */
+
+/* Big height */
+@media (max-height: 1400px) {
+
+  #main {
+    height: 93%;
+  }
+  
+  @media (max-width: 1400px) {
+  
+    #main {
+      height: 93%;
+    }
+  }
+
+  @media (max-width: 780px) {
+  
+    #main {
+      height: 90%;
+    }
+  }
+
+  @media (max-width: 560px) {
+  
+    #main {
+      height: 87%;
+    }
+  }
+}
+
+/* Medium height */
+@media (max-height: 780px) {
+  
+  #main {
+    height: 92%;
+  }
+  
+  @media (max-width: 1400px) {
+  
+    #main {
+      height: 90%;
+    }
+  }
+
+  @media (max-width: 780px) {
+  
+    #main {
+      height: 85%;
+    }
+  }
+
+  @media (max-width: 560px) {
+  
+    #main {
+      height: 80%;
+    }
+  }
+}
+
+/* Small height */
+@media (max-height: 560px) {
+
+  #main {
+    height: 91%;
+  }
+  
+  @media (max-width: 1400px) {
+  
+    #main {
+      height: 87%;
+    }
+  }
+
+  @media (max-width: 780px) {
+  
+    #main {
+      height: 80%;
+    }
+  }
+
+  @media (max-width: 560px) {
+  
+    #main {
+      height: 77%;
+    }
   }
 }

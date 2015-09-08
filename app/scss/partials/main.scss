@@ -1,0 +1,58 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  background: $white;
+  color: $black;
+  font-family: 'Open Sans', 'Arial', sans-serif;
+  font-size: .9em;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+input,
+select,
+button,
+.button {
+  background-color: $white;
+  border: none;
+  border-radius: 0;
+  font-family: inherit;
+  font-size: inherit;
+  height: 30px;
+  outline: none;
+  text-decoration: none;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+#main {
+  display: block;
+  height: 93%;
+  width: 100%;
+}
+
+.embed {
+  .hideable {
+    visibility: hidden;
+  }
+}
+
+.disclaimer {
+  display: block;
+  padding: 0 1em;
+
+  sup {
+    margin-right: .5em;
+    font-weight: bold;
+  }
+}
