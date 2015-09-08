@@ -14,6 +14,10 @@
 
   #filter {
     border: 2px solid $grey;
+
+    &:focus {
+      border: 2px solid $br-blue;
+    }
   }
 
   form {

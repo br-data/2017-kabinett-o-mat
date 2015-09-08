@@ -31,11 +31,15 @@ nav {
     -webkit-appearance: none;
     background: $white url('../img/arrow.png') no-repeat right 3px center;
     background-size: 20px 13px;
-    border: 0;
+    border: 2px solid $white;
     cursor: pointer;
     padding: 4px 46px 4px 8px;
     text-indent: .01px;
     text-overflow: '';
+
+    &:focus {
+      border: 2px solid $br-blue;
+    }
 
     &::-ms-expand {
       display: none;
