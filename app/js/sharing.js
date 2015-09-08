@@ -20,8 +20,14 @@ var sharing = (function (config, utils) {
     // Replace all %PLACEHOLDERS%
     function replaceUrl(el) {
         var oldUrl = el.href;
+        var currentUrl = location.href || config.sharing.url;
+        var currentHash = currentUrl.split('#')[1];
+
+        // Remove query string parameters
+        currentUrl =  currentUrl.split('?')[0] + '#' + currentHash;
+
         var newUrl = oldUrl
-            .replace('%URL%', location.href || config.sharing.url)
+            .replace('%URL%', currentUrl)
             .replace('%TEXT%', config.sharing.text.split(' ').join('+'))
             .replace('%HASHTAGS%', config.sharing.hashtags)
             .replace('%AUTHOR%', config.sharing.author)

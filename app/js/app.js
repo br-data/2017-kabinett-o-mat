@@ -24,6 +24,12 @@ var app = (function (config, utils, dragging, tracking, sharing, common, list, l
 
                 common.currentTeamModel = config.defaultTeam;
             }
+
+            // Check if the url parameter embed is set 
+            if (utils.getUrlParam('embed')) {
+
+                document.body.classList.add('embed');
+            }
            
             // Inital drawing
             lineup.init();

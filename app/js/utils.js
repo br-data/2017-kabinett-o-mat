@@ -106,6 +106,16 @@ var utils = (function() {
         httpRequest.send(); 
     }
 
+    function getUrlParam(name) {
+
+        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+
+        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)'),
+            results = regex.exec(location.search);
+
+        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    }
+
     function fuzzySearch(substr, str) {
 
         var result = str.toLowerCase(), i = 0, n = -1, l;
@@ -153,6 +163,7 @@ var utils = (function() {
         isElement: isElement,
         createElement: createElement,
         getJSON: getJSON,
+        getUrlParam: getUrlParam,
         fuzzySearch: fuzzySearch,
         pad: pad,
         preventEnter: preventEnter
