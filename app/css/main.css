@@ -77,6 +77,13 @@ nav {
   z-index: 30;
 }
 
+.logo {
+  position: absolute;
+  bottom: 2em;
+  left: 2em;
+  opacity: .7;
+}
+
 #field {
   background: #8fbc8f;
   display: inline-block;
@@ -935,6 +942,16 @@ button,
 @media (max-width: 780px) {
   #main {
     height: 90%;
+  }
+}
+@media (max-height: 780px) {
+  #main {
+    height: 90%;
+  }
+}
+@media (max-height: 560px) {
+  #main {
+    height: 85%;
   }
 }
 @media (min-width: 1400px) {
