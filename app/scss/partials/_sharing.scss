@@ -1,6 +1,7 @@
 button,
 .button {
   color: $black;
+  background: $white;
   cursor: pointer;
   font-weight: bold;
   padding: .1em .7em .1em .5em;
@@ -9,8 +10,8 @@ button,
 
 button:hover,
 .button:hover {
-  background: #778899;
   color: $white;
+  background: $br-blue;
 }
 
 #home {

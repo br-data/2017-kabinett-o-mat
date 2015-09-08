@@ -12,6 +12,10 @@
     overflow: auto;
   }
 
+  #filter {
+    border: 2px solid $grey;
+  }
+
   form {
     background: $white;
     left: 0;
@@ -30,10 +34,6 @@
   }
 }
 
-#filter {
-  border: 2px solid $green;
-}
-
 #list {
   padding-top: 4em;
   z-index: 50;
@@ -44,9 +44,9 @@
     list-style-type: none;
     user-select: none;
 
-    &:nth-child(odd) {
-      background-color: $lightgrey;
-    }
+    // &:nth-child(odd) {
+    //   background-color: $lightgrey;
+    // }
 
     &:last-child:after {
       content:"\a";
@@ -64,7 +64,7 @@
     }
 
     &:hover {
-      color: $green;
+      color: $br-blue;
     }
   }
 

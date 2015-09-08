@@ -24,11 +24,15 @@
   }
 
   #main {
-    height: 90%;
+    height: calc(100% - 190px);
+  }
+
+  #header {
+    height: 190px;
   }
 }
 
-@media (max-width: 540px) {
+@media (max-width: 560px) {
 
   button,
   .button {
@@ -45,6 +49,14 @@
 
   #lineup {
     margin: 0;
+  }
+
+  #main {
+    height: calc(100% - 160px);
+  }
+
+  #header {
+    height: 160px;
   }
 
   .disclaimer {

@@ -71,15 +71,15 @@ nav {
     width: 25%;
 
     &.active .icon {
-      box-shadow: 0 0 0 5px $red;
+      box-shadow: 0 0 0 5px $br-blue;
     }
 
     &.drop-target .icon {
-     box-shadow: 0 0 0 5px $yellow;
+     box-shadow: 0 0 0 5px $lightblue;
     }
 
     .icon {
-      background-color: $red;
+      background-color: $br-blue;
       border-radius: 50%;
       height: 4em;
       margin: 0 auto;

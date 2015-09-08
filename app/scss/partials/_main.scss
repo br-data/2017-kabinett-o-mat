@@ -12,7 +12,7 @@ html,
 body {
   background: $white;
   color: $black;
-  font-family: 'Open Sans', 'Arial', sans-serif;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
   font-size: .9em;
   height: 100%;
   margin: 0;
@@ -36,20 +36,32 @@ button,
 }
 
 #main {
-  height: calc(100% - 150px);
+  height: calc(100% - 160px);
 }
 
 #header {
   padding: 1em;
-  height: 150px;
+  height: 160px;
+  -webkit-font-smoothing: antialiased;
 }
 
 #header h1 {
+  font-size: 1.8em;
   margin: 0 0 .5em;
+  font-weight: normal
+}
+
+#header h1 em {
+  display: block;
+  color: $br-blue;
+  font-style: normal;
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 #header p {
-  max-width: 750px;
+  font-size: 1.1em;
+  max-width: 90%;
 }
 
 .logo {
