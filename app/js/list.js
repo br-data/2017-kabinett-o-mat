@@ -23,26 +23,34 @@ var list = (function (config, utils, common) {
     }
 
     // The input object is structured like a dictionary
-    function showList(obj) {
+    function showList(players) {
 
         var positions = [];
         var elements = [];
 
-        for (var player in obj) {
+        // Sort array by name
+        players.sort(function (a, b) {
+
+            a = a.name.toUpperCase();
+            b = b.name.toUpperCase();
+            return (a < b) ? -1 : (a > b) ? 1 : 0;
+        });
+
+        for (var i = 0; i < players.length; i++) {
 
             // Players without position shouldn't appear in the list
-            if (obj[player].pos && obj.hasOwnProperty(player)) {
+            if (players[i].pos) {
 
                 var index, playerElement;
 
                 // Check if the position wrapper already exists
-                index = positions.indexOf(obj[player].pos);
+                index = positions.indexOf(players[i].pos);
 
-                //playerElement = createElement('li', null, ['textContent', obj[player].name]);
+                //playerElement = createElement('li', null, ['textContent', players[i].name]);
                 playerElement = createElement('li', null,
-                    ['textContent', obj[player].name],
+                    ['textContent', players[i].name],
                     ['className', 'draggable']);
-                playerElement.setAttribute('data-player', player);
+                playerElement.setAttribute('data-player', players[i].id);
                 playerElement.addEventListener('click', handlePlayerChange, false);
 
                 // If the position already exists, add the player ...
@@ -54,11 +62,11 @@ var list = (function (config, utils, common) {
                 } else {
 
                     elements[index] = createElement('ul', null,
-                        ['className', obj[player].pos.toLowerCase()]);
+                        ['className', players[i].pos.toLowerCase()]);
                     elements[index].appendChild(playerElement);
 
                     // Add the position name to array
-                    positions.push(obj[player].pos);
+                    positions.push(players[i].pos);
 
                     // Add the position wrapper element to array 
                     elements.push(elements[index]);

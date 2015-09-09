@@ -11,7 +11,10 @@ var common = (function (utils) {
 
   	function getPlayerData(playerId) {
 
-        return currentPlayers[playerId] || false;
+        return currentPlayers.filter(function (obj) {
+
+            return obj.id === playerId;
+        })[0] || false;
     }
 
     function setCurrentPlayers(players) {

@@ -50,8 +50,6 @@ var app = (function (config, utils, dragging, tracking, sharing, common, list, l
         // Remove query string parameters
         currentUrl =  currentUrl.replace(/(\?.*)#/, '#');
 
-        console.log(currentUrl);
-
         sharing.init(currentUrl);
         tracking.send('Lineup=' + common.teamToHash(common.currentTeamModel));
 

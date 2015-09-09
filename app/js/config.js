@@ -6,7 +6,7 @@ var config = {
 
     sharing: {
 		url: 'http://br.de',
-		text: 'Bayerische Nationalmannschaft',
+		text: 'Meine bayerische Nationalmannschaft:',
 		hashtags: 'heimvorteil',
 		author: 'BR_Data',
 		related: 'BR24,blickpunktsport',
