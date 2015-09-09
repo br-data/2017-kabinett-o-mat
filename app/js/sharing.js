@@ -37,9 +37,8 @@ var sharing = (function (config, utils) {
             .replace('%RELATED%', config.sharing.related);
 
         if (!el.classList.contains('e-mail')) {
-            console.log(el.classList);
+
             newUrl = encodeURI(newUrl);
-            console.log(newUrl);
         }
         
         newUrl = newUrl.replace('#','%23');

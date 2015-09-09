@@ -74,6 +74,7 @@
 
 html {
   box-sizing: border-box;
+  background: #fff;
 }
 
 *,
@@ -84,7 +85,6 @@ html {
 
 html,
 body {
-  background: #fff;
   color: #262626;
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
   font-size: .9em;
@@ -777,6 +777,9 @@ nav {
 #info h3 {
   font-size: 1em;
   margin: 0 0 .5em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 #info p {
   margin: .2em 0 .5em;
@@ -955,6 +958,15 @@ button:hover,
     height: 16em;
   }
 }
+@media (max-height: 560px) and (min-width: 561px) {
+  body {
+    overflow: auto;
+  }
+
+  #main {
+    height: 100%;
+  }
+}
 @media (max-width: 560px) {
   button,
   .button {
@@ -974,17 +986,22 @@ button:hover,
   }
 
   #main {
-    height: calc(100% - 13em);
+    height: calc(100% - 14em);
     margin: 0;
   }
 
   #header {
-    height: 13em;
+    height: 14em;
     margin: 0;
   }
 
   .disclaimer {
     display: none;
+  }
+
+  #lineup .player .icon {
+    width: 3em;
+    height: 3em;
   }
 }
 @media (max-width: 420px) {
@@ -999,6 +1016,12 @@ button:hover,
 
   #header p {
     display: none;
+  }
+
+  #lineup .player .icon {
+    background: #0076c2 !important;
+    width: 2em;
+    height: 2em;
   }
 }
 

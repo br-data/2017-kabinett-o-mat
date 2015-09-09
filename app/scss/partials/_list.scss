@@ -117,6 +117,9 @@
   h3 {
     font-size: 1em;
     margin: 0 0 .5em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   p {

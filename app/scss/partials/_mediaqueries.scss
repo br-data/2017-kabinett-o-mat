@@ -32,6 +32,17 @@
   }
 }
 
+@media (max-height: 560px) and (min-width: 561px) {
+
+  body {
+    overflow: auto;
+  }
+
+  #main {
+    height: 100%;
+  }
+}
+
 @media (max-width: 560px) {
 
   button,
@@ -52,17 +63,22 @@
   }
 
   #main {
-    height: calc(100% - 13em);
+    height: calc(100% - 14em);
     margin: 0;
   }
 
   #header {
-    height: 13em;
+    height: 14em;
     margin: 0;
   }
 
   .disclaimer {
     display: none;
+  }
+
+  #lineup .player .icon {
+    width: 3em;
+    height: 3em;
   }
 }
 
@@ -79,5 +95,11 @@
 
   #header p {
     display: none;
+  }
+
+  #lineup .player .icon {
+    background: $br-blue !important;
+    width: 2em;
+    height: 2em;
   }
 }
