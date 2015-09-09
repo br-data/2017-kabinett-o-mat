@@ -24,7 +24,7 @@
   }
 
   #main {
-    height: calc(100% - 21em);
+    height: calc(100% - 22em);
   }
 
   #header {
@@ -32,7 +32,15 @@
   }
 }
 
-@media (max-height: 560px) and (min-width: 561px) {
+@media (max-height: 640px) and (min-height: 560px) {
+
+  #lineup .player .icon {
+    width: 3em;
+    height: 3em;
+  }
+}
+
+@media (max-height: 560px) and (min-width: 560px) {
 
   body {
     overflow: auto;

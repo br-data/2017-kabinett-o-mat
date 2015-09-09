@@ -115,7 +115,7 @@ body {
 }
 
 #main {
-  height: calc(100% - 18em);
+  height: calc(100% - 19em);
   margin: 1em 2em 2em;
   /* IE hack */
   float: left;
@@ -145,6 +145,10 @@ body {
 #header p {
   font-size: 1.1em;
   max-width: 90%;
+}
+#header a {
+  border: 0;
+  text-decoration: none;
 }
 #header .logo {
   float: right;
@@ -955,14 +959,20 @@ button:hover,
   }
 
   #main {
-    height: calc(100% - 21em);
+    height: calc(100% - 22em);
   }
 
   #header {
     height: 16em;
   }
 }
-@media (max-height: 560px) and (min-width: 561px) {
+@media (max-height: 640px) and (min-height: 560px) {
+  #lineup .player .icon {
+    width: 3em;
+    height: 3em;
+  }
+}
+@media (max-height: 560px) and (min-width: 560px) {
   body {
     overflow: auto;
   }

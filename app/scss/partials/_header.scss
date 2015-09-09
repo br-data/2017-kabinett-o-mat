@@ -1,5 +1,5 @@
 #main {
-  height: calc(100% - 18em);
+  height: calc(100% - 19em);
   margin: 1em 2em 2em;
 
   /* IE hack */
@@ -32,6 +32,11 @@
   p {
     font-size: 1.1em;
     max-width: 90%;
+  }
+
+  a {
+    border: 0;
+    text-decoration: none;
   }
 
   .logo {

@@ -159,7 +159,6 @@ var lineup = (function (config, utils, common) {
             infoBox.removeChild(infoBox.firstChild);
         }
 
-        createElement('h3', infoBox, ['textContent', 'Spielerinfo']);
         createElement('p', infoBox, ['textContent', 'Wählen Sie einen Spieler aus, um mehr über ihn zu erfahren. Ziehen Sie einen Spieler auf eine Position, um diese zu besetzen.']);
     }
 
