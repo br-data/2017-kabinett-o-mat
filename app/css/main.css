@@ -117,6 +117,10 @@ body {
 #main {
   height: calc(100% - 18em);
   margin: 1em 2em 2em;
+  /* IE hack */
+  float: left;
+  width: 100%;
+  padding-right: 4em;
 }
 
 #header {
@@ -981,13 +985,11 @@ button:hover,
     display: none;
   }
 
-  #lineup {
-    margin: 0;
-  }
-
   #main {
     height: calc(100% - 14em);
     margin: 0;
+    padding: 0;
+    float: left;
   }
 
   #header {
@@ -1024,4 +1026,5 @@ button:hover,
     height: 2em;
   }
 }
+
 /*# sourceMappingURL=main.css.map */

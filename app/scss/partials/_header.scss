@@ -1,6 +1,11 @@
 #main {
   height: calc(100% - 18em);
   margin: 1em 2em 2em;
+
+  /* IE hack */
+  float: left;
+  width: 100%;
+  padding-right: 4em;
 }
 
 #header {
