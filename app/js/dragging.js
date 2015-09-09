@@ -5,7 +5,8 @@ var dragging = (function () {
     function init () {
 
         var top = document.getElementById('sidebar');
-        var target, x, y, parent, sibling, placeholder;
+        var main = document.getElementById('main');
+        var target, x, y, offsetY, parent, sibling, placeholder;
 
         // Target list elements with the "draggable" class
         interact('.draggable').draggable({
@@ -32,11 +33,13 @@ var dragging = (function () {
                 parent.insertBefore(placeholder, sibling);
                 top.insertBefore(target, top.childNodes[0]);
 
+                offsetY = -(event.clientY - main.getBoundingClientRect().top);
+
                 // Set origin based on original position
                 event.interactable.options.origin = {
                     // @TODO Determine x value
                     x: 0,
-                    y: -event.clientY,
+                    y: offsetY
                 };
             },
 
