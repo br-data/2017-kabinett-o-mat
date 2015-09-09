@@ -24,11 +24,11 @@
   }
 
   #main {
-    height: calc(100% - 190px);
+    height: calc(100% - 21em);
   }
 
   #header {
-    height: 190px;
+    height: 16em;
   }
 }
 
@@ -52,14 +52,32 @@
   }
 
   #main {
-    height: calc(100% - 160px);
+    height: calc(100% - 13em);
+    margin: 0;
   }
 
   #header {
-    height: 160px;
+    height: 13em;
+    margin: 0;
   }
 
   .disclaimer {
+    display: none;
+  }
+}
+
+@media (max-width: 420px) {
+
+  #main {
+    height: calc(100% - 9em);
+  }
+
+  #header {
+    height: 9em;
+    margin: 0;
+  }
+
+  #header p {
     display: none;
   }
 }

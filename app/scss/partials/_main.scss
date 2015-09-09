@@ -35,51 +35,6 @@ button,
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
 
-#main {
-  height: calc(100% - 160px);
-}
-
-#header {
-  padding: 1em;
-  height: 160px;
-  -webkit-font-smoothing: antialiased;
-}
-
-#header h1 {
-  font-size: 1.8em;
-  margin: 0 0 .5em;
-  font-weight: normal
-}
-
-#header h1 em {
-  display: block;
-  color: $br-blue;
-  font-style: normal;
-  font-size: 1rem;
-  font-weight: bold;
-}
-
-#header p {
-  font-size: 1.1em;
-  max-width: 90%;
-}
-
-.logo {
-  float: right;
-  height: 40px;
-}
-
-.embed {
-
-  #header {
-    display: none;
-  }
-
-  #main {
-    height: 100%;
-  }
-
-  .hideable {
-    visibility: hidden;
-  }
+body {
+  background: $lightgrey;
 }

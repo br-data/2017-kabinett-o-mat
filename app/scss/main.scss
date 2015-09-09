@@ -3,7 +3,7 @@ $br-blue: #0076c2;
 $black: #262626;
 $white: #fff;
 $grey: #c6c5c0;
-$lightgrey: #f8f7f6;
+$lightgrey: #dbd9d3;
 $slategrey: #2b2b2b;
 
 $lightblue: #82cafa;
@@ -16,6 +16,7 @@ $gplus: #d34836;
 @import 'partials/font';
 @import 'partials/icons';
 @import 'partials/main';
+@import 'partials/header';
 @import 'partials/lineup';
 @import 'partials/list';
 @import 'partials/sharing';

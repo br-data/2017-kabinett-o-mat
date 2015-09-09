@@ -7,11 +7,12 @@ nav {
   background: $green;
   display: inline-block;
   height: 100%;
-  padding: 1em;
+  padding: 1em 1em 0;
   text-align: center;
   width: 75%;
   z-index: 10;
   position: relative;
+  overflow: hidden;
 
   form {
     display: inline-block;

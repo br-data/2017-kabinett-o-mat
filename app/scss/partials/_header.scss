@@ -1,0 +1,56 @@
+#main {
+  height: calc(100% - 18em);
+  margin: 1em 2em 2em;
+}
+
+#header {
+  background: $white;
+  margin: 2em 2em 1em;
+  padding: 1em;
+  height: 13em;
+  -webkit-font-smoothing: antialiased;
+
+  h1 {
+    font-size: 1.8em;
+    margin: 0 0 .5em;
+    font-weight: normal
+  }
+
+  em {
+    display: block;
+    color: $br-blue;
+    font-style: normal;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  p {
+    font-size: 1.1em;
+    max-width: 90%;
+  }
+
+  .logo {
+    float: right;
+    height: 40px;
+  }
+}
+
+.embed {
+
+  body {
+    background: $white;
+  }
+
+  #header {
+    display: none;
+  }
+
+  #main {
+    height: 100%;
+    margin: 0;
+  }
+
+  .hideable {
+    visibility: hidden;
+  }
+}
