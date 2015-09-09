@@ -6,8 +6,8 @@ var config = {
 
     sharing: {
 		url: 'http://br.de',
-		text: 'Meine bayerische Nationalmannschaft:',
-		hashtags: 'heimvorteil',
+		text: 'Wenn ich Trainer wäre, würde ich meine bayerische Nationalmannschaft so aufstellen:',
+		hashtags: 'Heimvorteil',
 		author: 'BR_Data',
 		related: 'BR24,blickpunktsport',
 		width: 500,

@@ -17,7 +17,11 @@ var sharing = (function (config, utils) {
         for (var a = 0; a < links.length; a++) {
 
             replaceUrl(links[a]);
-            links[a].onclick = openPopup;
+            
+            if (!links[a].classList.contains('e-mail')) {
+
+                links[a].onclick = openPopup;
+            }
         }
     }
 
@@ -31,8 +35,13 @@ var sharing = (function (config, utils) {
             .replace('%HASHTAGS%', config.sharing.hashtags)
             .replace('%AUTHOR%', config.sharing.author)
             .replace('%RELATED%', config.sharing.related);
+
+        if (!el.classList.contains('e-mail')) {
+            console.log(el.classList);
+            newUrl = encodeURI(newUrl);
+            console.log(newUrl);
+        }
         
-        newUrl = encodeURI(newUrl);
         newUrl = newUrl.replace('#','%23');
         el.href = newUrl;
     }
