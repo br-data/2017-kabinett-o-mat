@@ -17,6 +17,8 @@
   ],
   "dependencies": {
     "interact": "~1.2.4",
-    "classList": "https://raw.githubusercontent.com/eligrey/classList.js/master/classList.min.js"
+    "classList": "https://raw.githubusercontent.com/eligrey/classList.js/master/classList.min.js",
+    "miso.dataset": "0.4.1",
+    "filesaver": "https://github.com/eligrey/FileSaver.js.git"
   }
 }

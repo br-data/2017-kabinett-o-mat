@@ -130,8 +130,6 @@ var lineup = (function (config, utils, common) {
 
     function handlePositionDeselect(e) {
 
-
-
         for (var i = 0; i < players.length; i++) {
 
             var target = e.target;
