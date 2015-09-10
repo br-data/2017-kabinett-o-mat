@@ -35,11 +35,14 @@
   }
 
   a {
-    border: 0;
     text-decoration: none;
+    outline: none;
+    border: 0
   }
 
   .logo {
+    border: 0;
+    outline: none;
     float: right;
     height: 40px;
   }
@@ -58,6 +61,9 @@
   #main {
     height: 100%;
     margin: 0;
+    float: none;
+    width: 100%;
+    padding: 0;
   }
 
   .hideable {
