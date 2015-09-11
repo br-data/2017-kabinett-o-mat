@@ -64,17 +64,55 @@
         var worksheet = '1';
         var blob;
 
-        document.getElementById('get-data').onclick = getSpreadsheet;
+        var result = document.getElementById('result');
+
+        document.getElementById('get-data').onclick = init;
         document.getElementById('save-file').onclick = saveFile;
 
-        //getSpreadsheet(analyseData);
-        getJson('testdata.json', analyseData)
+        function init() {
+
+          // getSpreadsheet(analyseData);
+          getJson('testdata.json', analyseData);
+        }
 
         function analyseData(data) {
 
-          console.log('Formations: ', countFormations(data));
-          console.log('Players: ', countPlayers(data));
-          console.log('Positions: ', countPositions(data));
+          var formations = countFormations(data);
+          var players = countPlayers(data);
+          var positions = countPositions(data);
+
+          addElement(formations, 3, 'Formation');
+          addElement(players, 3, 'Beliebteste Spieler');
+          addElement(positions.strikers, 3, 'Beliebteste Stürmer');
+          addElement(positions.midfielders, 3, 'Beliebteste Mittelfeldspieler');
+          addElement(positions.defenders, 3, 'Beliebteste Verteidiger');
+          addElement(positions.goalkeepers, 3, 'Beliebteste Torhüter');
+        }
+
+        function addElement(arr, limit, title) {
+
+          var list = document.createElement('ol');
+          
+          limit = limit || arr.length;
+
+          for (var i = 0; i < limit; i++) {
+
+            var element = document.createElement('li');
+            var text = document.createTextNode(arr[i][0] + ': ' + arr[i][1]);
+
+            element.appendChild(text);
+            list.appendChild(element);
+          }
+
+          if (title) {
+
+            var headline = document.createElement('h3');
+            var text = document.createTextNode(title);
+            headline.appendChild(text);
+            result.appendChild(headline);
+          }
+
+          result.appendChild(list);
         }
 
         function getSpreadsheet(callback) {
@@ -95,7 +133,7 @@
             },
             error : function() {
 
-              outputData("Daten konnten nicht geladen werden. Vielleicht sind Sie nicht mit dem Internet verbunden oder das Spreadsheet wurde nicht veröffentlicht.");
+              outputData('<p>Daten konnten nicht geladen werden. Vielleicht sind Sie nicht mit dem Internet verbunden oder das Spreadsheet wurde nicht veröffentlicht.</p>');
             }
           });
         }
@@ -278,8 +316,12 @@
 
         function outputData(string) {
 
-          document.getElementById('result').textContent = string;
-          blob = new Blob([string], {type: 'application/json;charset=utf-8'});
+          var element = document.createElement('p');
+          var text =  document.createTextNode(string);
+
+          element.appendChild(text);
+          result.appendChild(element);
+          //blob = new Blob([string], {type: 'application/json;charset=utf-8'});
         }
 
         function toCSV(objArray) {
