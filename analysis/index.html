@@ -282,6 +282,31 @@
           blob = new Blob([string], {type: 'application/json;charset=utf-8'});
         }
 
+        function toCSV(objArray) {
+
+            var arr = typeof objArray !== 'object' ? JSON.parse(objArray) : objArray;
+            var str = '';
+
+            for (var i = 0; i < arr.length; i++) {
+
+              var line = '';
+
+              for (var key in arr[i]) {
+
+                if (line !== '') {
+
+                  line += ',';
+                }
+
+                line += arr[i][key];
+              }
+
+              str += line + '\r\n';
+            }
+
+            return str;
+        }
+
         function saveFile() {
 
           if (blob) {
