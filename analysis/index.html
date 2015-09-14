@@ -9,7 +9,8 @@
   <style type="text/css">
     
     html, body, main {
-      height: 100%; 
+      height: 100%;
+      font-family: Arial, sans-serif;
     }
 
     main {
@@ -28,12 +29,14 @@
       color: #666;
     }
 
-    textarea {
-      font-family: monospace;
-      margin-top: 2em;
-      height: 50%;
-      width: 100%;
+    h3 {
+      margin-bottom: 0;
     }
+
+    ol {
+      margin-top: .5em;
+    }
+
   </style>
 
   <script type="text/javascript" src="../bower_components/miso.dataset/dist/miso.ds.deps.min.0.4.1.js"></script>
@@ -71,7 +74,7 @@
 
         function init() {
 
-          // getSpreadsheet(analyseData);
+          //getSpreadsheet(analyseData);
           getJson('testdata.json', analyseData);
         }
 
@@ -80,13 +83,19 @@
           var formations = countFormations(data);
           var players = countPlayers(data);
           var positions = countPositions(data);
+          var rows = countRows(data);
+          var lineups = countLineups(data);
 
-          addElement(formations, 3, 'Formation');
+          addElement(formations, 3, 'Beliebtestes Spielsystem');
           addElement(players, 3, 'Beliebteste Spieler');
           addElement(positions.strikers, 3, 'Beliebteste Stürmer');
           addElement(positions.midfielders, 3, 'Beliebteste Mittelfeldspieler');
           addElement(positions.defenders, 3, 'Beliebteste Verteidiger');
           addElement(positions.goalkeepers, 3, 'Beliebteste Torhüter');
+          addElement(rows[2], 3, 'Beliebteste Zweiter-Formation');
+          addElement(rows[3], 3, 'Beliebteste Dreier-Formation');
+          addElement(rows[4], 3, 'Beliebteste Vierer-Formation');
+          addElement(lineups, 3, 'Beliebteste Mannschaft');
         }
 
         function addElement(arr, limit, title) {
@@ -246,6 +255,51 @@
             midfielders: getCount(midfielders),
             defenders: getCount(defenders),
             goalkeepers: getCount(goalkeepers)
+          };
+        }
+
+        function countLineups(data) {
+
+          var lineups = [];
+
+          for (var entry = 0; entry < data.length; entry++) {
+
+            lineups.push(data[entry].hash);
+          }
+
+          return getCount(lineups);
+        }
+
+        function countRows(data) {
+
+          var rows2 = [];
+          var rows3 = [];
+          var rows4 = [];
+
+          for (var entry = 0; entry < data.length; entry++) {
+
+            var lineup = data[entry].lineup;
+
+            for (var row = 0; row < lineup.length; row++) {
+
+              if (lineup[row].length === 2) {
+
+                rows2.push(lineup[row].sort().join(''));
+              } else if (lineup[row].length === 3) {
+
+                rows3.push(lineup[row].sort().join(''));
+              } else if (lineup[row].length === 4) {
+
+                rows4.push(lineup[row].sort().join(''));
+              }
+            }
+          }
+
+          return {
+
+            2: getCount(rows2),
+            3: getCount(rows3),
+            4: getCount(rows4),
           };
         }
 
