@@ -14,8 +14,8 @@
 
     function init() {
 
-        getSpreadsheet(analyseData);
-        //getJson('testdata.json', analyseData);
+        //getSpreadsheet(analyseData);
+        getJson('testdata.json', analyseData);
     }
 
     function analyseData(data) {
@@ -55,20 +55,27 @@
 
         for (var i = 0; i < limit; i++) {
 
-            var element = document.createElement('li');
-            var elementText = '';
+            var item = document.createElement('li');
+            var count = document.createElement('em');
+
+            var itemText;
+            var countText;
 
             if (filter) {
 
-                elementText = document.createTextNode(
-                    (filter(arr[i][0]).split(',').join(', ')) + ': ' + arr[i][1]);
+                itemText = document.createTextNode(
+                    (filter(arr[i][0]).split(',').join(', ')) + ': ');
+                countText = document.createTextNode(arr[i][1]);
             } else {
                 
-                elementText = document.createTextNode(arr[i][0] + ': ' + arr[i][1]);
+                itemText = document.createTextNode(arr[i][0] + ': ');
+                countText = document.createTextNode(arr[i][1]);
             }
 
-            element.appendChild(elementText);
-            list.appendChild(element);
+            count.appendChild(countText);
+            item.appendChild(itemText);
+            item.appendChild(count);
+            list.appendChild(item);
         }
 
         if (title) {
