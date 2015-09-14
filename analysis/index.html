@@ -31,10 +31,25 @@
 
     h3 {
       margin-bottom: 0;
+      display: inline-block;
     }
 
     ol {
       margin-top: .5em;
+    }
+
+    .download {
+      display: inline-block;
+      cursor: pointer;
+      margin-left: .5em;
+      height: 16px;
+      width: 16px;
+      background-size: 16px 16px;
+      background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSIxNnB4IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxNiAxNiIgd2lkdGg9IjE2cHgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6c2tldGNoPSJodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2gvbnMiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48dGl0bGUvPjxkZWZzLz48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGlkPSJJY29ucyB3aXRoIG51bWJlcnMiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIj48ZyBmaWxsPSIjMDAwMDAwIiBpZD0iR3JvdXAiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC03MjAuMDAwMDAwLCAtNDMyLjAwMDAwMCkiPjxwYXRoIGQ9Ik03MjEsNDQ2IEw3MzMsNDQ2IEw3MzMsNDQzIEw3MzUsNDQzIEw3MzUsNDQ2IEw3MzUsNDQ4IEw3MjEsNDQ4IFogTTcyMSw0NDMgTDcyMyw0NDMgTDcyMyw0NDYgTDcyMSw0NDYgWiBNNzI2LDQzMyBMNzMwLDQzMyBMNzMwLDQ0MCBMNzMyLDQ0MCBMNzI4LDQ0NSBMNzI0LDQ0MCBMNzI2LDQ0MCBaIE03MjYsNDMzIiBpZD0iUmVjdGFuZ2xlIDIxNyIvPjwvZz48L2c+PC9zdmc+);
+    }
+
+    .download:hover {
+      opacity: .7;
     }
 
   </style>
@@ -52,370 +67,13 @@
 
       <form>
         <button type="button" id="get-data">Auswerten</button>
-        <button type="button" id="save-file">Tabelle herunterladen</button>
       </form>
 
       <p id="result"></p>
 
     </main>
 
-    <script>
-      (function () {
-        'use strict';
-
-        var key = '1Flk6E-hy1aHmIno3nkp9n8f2eFBYu4E4Q1tRKCNBheI';
-        var worksheet = '1';
-        var blob;
-
-        var result = document.getElementById('result');
-
-        document.getElementById('get-data').onclick = init;
-        document.getElementById('save-file').onclick = saveFile;
-
-        function init() {
-
-          //getSpreadsheet(analyseData);
-          getJson('testdata.json', analyseData);
-        }
-
-        function analyseData(data) {
-
-          var formations = countFormations(data);
-          var players = countPlayers(data);
-          var positions = countPositions(data);
-          var rows = countRows(data);
-          var lineups = countLineups(data);
-
-          addElement(formations, 3, 'Beliebtestes Spielsystem');
-          addElement(players, 3, 'Beliebteste Spieler');
-          addElement(positions.strikers, 3, 'Beliebteste Stürmer');
-          addElement(positions.midfielders, 3, 'Beliebteste Mittelfeldspieler');
-          addElement(positions.defenders, 3, 'Beliebteste Verteidiger');
-          addElement(positions.goalkeepers, 3, 'Beliebteste Torhüter');
-          addElement(rows[2], 3, 'Beliebteste Zweiter-Formation');
-          addElement(rows[3], 3, 'Beliebteste Dreier-Formation');
-          addElement(rows[4], 3, 'Beliebteste Vierer-Formation');
-          addElement(lineups, 3, 'Beliebteste Mannschaft');
-        }
-
-        function addElement(arr, limit, title) {
-
-          var list = document.createElement('ol');
-          
-          limit = limit || arr.length;
-
-          for (var i = 0; i < limit; i++) {
-
-            var element = document.createElement('li');
-            var text = document.createTextNode(arr[i][0] + ': ' + arr[i][1]);
-
-            element.appendChild(text);
-            list.appendChild(element);
-          }
-
-          if (title) {
-
-            var headline = document.createElement('h3');
-            var text = document.createTextNode(title);
-            headline.appendChild(text);
-            result.appendChild(headline);
-          }
-
-          result.appendChild(list);
-        }
-
-        function getSpreadsheet(callback) {
-
-          var ds = new Miso.Dataset({
-
-            importer: Miso.Dataset.Importers.GoogleSpreadsheet,
-            parser: Miso.Dataset.Parsers.GoogleSpreadsheet,
-            key: key,
-            worksheet: worksheet
-          });
-
-          ds.fetch({
-
-            success : function() {
-
-              callback(convertData(ds.toJSON()));
-            },
-            error : function() {
-
-              outputData('<p>Daten konnten nicht geladen werden. Vielleicht sind Sie nicht mit dem Internet verbunden oder das Spreadsheet wurde nicht veröffentlicht.</p>');
-            }
-          });
-        }
-
-        function getJson(path, callback) {
-
-          microAjax(path, function (res) {
-
-            callback(JSON.parse(res));
-          });
-        }
-
-        function convertData(data) {
-
-          for (var entry = 0; entry < data.length; entry++) {
-
-            var hash = data[entry].Lineup;
-            var timestamp = new Date(data[entry].Timestamp['_d']);
-            var lineup = data[entry].Lineup.split('-');
-            
-            for (var row = 0; row < lineup.length; row++) {
-
-              lineup[row] = lineup[row].match(/.{1,2}/g);
-            }
-
-            data[entry] = {
-
-              hash: hash,
-              timestamp: timestamp,
-              lineup: lineup
-            };
-          }
-
-          return data;
-        }
-
-        function countFormations(data) {
-
-          var formations = [];
-
-          for (var entry = 0; entry < data.length; entry++) {
-
-            var formation = [];
-
-            var lineup = data[entry].lineup;
-
-            lineup.reverse();
-
-            // Start at 1 to remove the goalkeeper
-            for (var row = 1; row < lineup.length; row++) {
-
-              formation.push(lineup[row].length);
-            }
-
-            formations.push(formation.join('-'));
-          }
-          
-          formations = count(formations);
-          formations = toArray(formations);
-
-          return formations;
-        }
-
-        function countPlayers(data) {
-
-          var players = [];
-
-          for (var entry = 0; entry < data.length; entry++) {
-
-
-            players.push(flatten(data[entry].lineup));
-          }
-
-          return getCount(players);
-        }
-
-        function countPositions(data) {
-
-          var strikers = [];
-          var midfielders = [];
-          var defenders = [];
-          var goalkeepers = [];
-
-          for (var entry = 0; entry < data.length; entry++) {
-
-            var lineup = data[entry].lineup;
-
-            if (lineup.length === 4) {
-
-              strikers.push(lineup[0]);
-              midfielders.push(lineup[1]);
-              defenders.push(lineup[2]);
-              goalkeepers.push(lineup[3]);
-            } else if (lineup.length === 5) {
-
-              strikers.push(lineup[0]);
-              midfielders.push(lineup[1]);
-              midfielders.push(lineup[2]);
-              defenders.push(lineup[3]);
-              goalkeepers.push(lineup[4]);
-            } else {
-
-              console.log('Weird linup detected:', lineup);
-            }
-          }
-
-          return {
-
-            strikers: getCount(strikers),
-            midfielders: getCount(midfielders),
-            defenders: getCount(defenders),
-            goalkeepers: getCount(goalkeepers)
-          };
-        }
-
-        function countLineups(data) {
-
-          var lineups = [];
-
-          for (var entry = 0; entry < data.length; entry++) {
-
-            lineups.push(data[entry].hash);
-          }
-
-          return getCount(lineups);
-        }
-
-        function countRows(data) {
-
-          var rows2 = [];
-          var rows3 = [];
-          var rows4 = [];
-
-          for (var entry = 0; entry < data.length; entry++) {
-
-            var lineup = data[entry].lineup;
-
-            for (var row = 0; row < lineup.length; row++) {
-
-              if (lineup[row].length === 2) {
-
-                rows2.push(lineup[row].sort().join(''));
-              } else if (lineup[row].length === 3) {
-
-                rows3.push(lineup[row].sort().join(''));
-              } else if (lineup[row].length === 4) {
-
-                rows4.push(lineup[row].sort().join(''));
-              }
-            }
-          }
-
-          return {
-
-            2: getCount(rows2),
-            3: getCount(rows3),
-            4: getCount(rows4),
-          };
-        }
-
-        function getCount(players) {
-
-          players = flatten(players);
-          players = count(players);
-          players = clean(players);
-          players = toArray(players);
-          players = sort(players).reverse();
-
-          return players;
-        }
-
-        function flatten(arr) {
-
-          var flat = [];
-
-          return flat.concat.apply(flat, arr);
-        }
-
-        function count(arr) {
-
-          var counts = {};
-
-          arr.forEach( function(n) {
-
-            counts[n] = (counts[n] || 0) + 1;
-          });
-
-          return counts;
-        }
-
-        function toArray(obj) {
-
-          var arr = [];
-
-          for (var key in obj) {
-
-            arr.push([key, obj[key]]);
-          }
-
-          return arr;
-        }
-
-        function sort(arr) {
-
-          return arr.sort(
-
-            function(a, b) {
-
-              return a[1] - b[1];
-            });
-        }
-
-        function clean(obj) {
-
-          for (var key in obj) {
-
-            if (!key.indexOf('z')) {
-
-              delete obj[key];
-            }
-          }
-
-          return obj;
-        }
-
-        function outputData(string) {
-
-          var element = document.createElement('p');
-          var text =  document.createTextNode(string);
-
-          element.appendChild(text);
-          result.appendChild(element);
-          //blob = new Blob([string], {type: 'application/json;charset=utf-8'});
-        }
-
-        function toCSV(objArray) {
-
-            var arr = typeof objArray !== 'object' ? JSON.parse(objArray) : objArray;
-            var str = '';
-
-            for (var i = 0; i < arr.length; i++) {
-
-              var line = '';
-
-              for (var key in arr[i]) {
-
-                if (line !== '') {
-
-                  line += ',';
-                }
-
-                line += arr[i][key];
-              }
-
-              str += line + '\r\n';
-            }
-
-            return str;
-        }
-
-        function saveFile() {
-
-          if (blob) {
-
-            saveAs(blob, 'data.json');
-          } else {
-
-            getSpreadsheet();
-          }
-        }
-      }());
-     
-    </script>
+    <script src="analysis.js" type="text/javascript" ></script>
 
   </body>
 
