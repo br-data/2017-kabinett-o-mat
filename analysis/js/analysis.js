@@ -14,8 +14,11 @@
 
     function init() {
 
-        //getSpreadsheet(analyseData);
-        getJson('testdata.json', analyseData);
+        // Get live data
+        getSpreadsheet(analyseData);
+        
+        // Get test data
+        //getJson('data/testdata.json', analyseData);
     }
 
     function analyseData(data) {
@@ -28,7 +31,7 @@
 
         trackingData = data;
 
-        getJson('players.json', render);
+        getJson('data/players.json', render);
 
         function render(data) {
 
