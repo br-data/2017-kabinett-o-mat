@@ -44,3 +44,8 @@ Die Anwendungsdaten sind in einem JSON-Dictionary `players.json` gespeichert. Di
     }
 }
 ```
+
+Bekannte Probleme:
+- Drag and Drop unter IE9 funktioniert nicht
+- Scrollen auf Geräten mit kleinen Viewport ist schwierig
+- Tracking-Requests können mehr als einmal abgesendet werden
