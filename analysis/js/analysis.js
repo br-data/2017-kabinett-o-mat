@@ -27,6 +27,7 @@
         var players = countPlayers(data);
         var positions = countPositions(data);
         var rows = countRows(data);
+
         var lineups = countLineups(data);
 
         trackingData = data;
@@ -217,15 +218,15 @@
             if (lineup.length === 4) {
 
                 strikers.push(lineup[3]);
-                midfielders.push(lineup[1]);
-                defenders.push(lineup[2]);
+                midfielders.push(lineup[2]);
+                defenders.push(lineup[1]);
                 goalkeepers.push(lineup[0]);
             } else if (lineup.length === 5) {
 
                 strikers.push(lineup[4]);
-                midfielders.push(lineup[1]);
+                midfielders.push(lineup[3]);
                 midfielders.push(lineup[2]);
-                defenders.push(lineup[3]);
+                defenders.push(lineup[1]);
                 goalkeepers.push(lineup[0]);
             } else {
 
