@@ -51,7 +51,7 @@ var app = (function (config, utils, dragging, tracking, sharing, common, list, l
         currentUrl =  currentUrl.replace(/(\?.*)#/, '#');
 
         sharing.init(currentUrl);
-        tracking.send('Lineup=' + common.teamToHash(common.currentTeamModel));
+        // tracking.send('Lineup=' + common.teamToHash(common.currentTeamModel));
 
         directLink.href = currentUrl;
         directLink.textContent = currentUrl;
