@@ -107,7 +107,7 @@ module.exports = function (grunt) {
                     { expand: true, flatten: true, src: ['app/font/*'], dest: 'dist/font/', filter: 'isFile' },
                     { expand: true, cwd: 'app/img/', src: ['**/*'], dest: 'dist/img/' },
 
-                    { expand: true, flatten: true, src: ['bower_components/interact/interact.min.js'],
+                    { expand: true, flatten: true, src: ['bower_components/interact/dist/interact.min.js'],
                         dest: 'dist/js/lib/', filter: 'isFile' },
 
                     { expand: true, flatten: true, src: ['bower_components/classList/index.js'],
