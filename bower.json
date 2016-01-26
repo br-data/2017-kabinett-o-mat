@@ -9,7 +9,7 @@
     "type": "git",
     "url": "https://stekhn@bitbucket.org/team_aquarium/soccer-team-lineup.git"
   },
-  "main": "app/index.html",
+  "main": "src/index.html",
   "ignore": [
     "**/.*",
     "node_modules",

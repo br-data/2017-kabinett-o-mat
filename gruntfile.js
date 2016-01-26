@@ -22,15 +22,15 @@ module.exports = function (grunt) {
                 files: {
                     
                     'dist/js/app.min.js': [
-                        'app/js/config.js',
-                        'app/js/utils.js',
-                        'app/js/common.js',
-                        'app/js/tracking.js',
-                        'app/js/sharing.js',
-                        'app/js/dragging.js',
-                        'app/js/list.js',
-                        'app/js/lineup.js',
-                        'app/js/app.js'
+                        'src/js/config.js',
+                        'src/js/utils.js',
+                        'src/js/common.js',
+                        'src/js/tracking.js',
+                        'src/js/sharing.js',
+                        'src/js/dragging.js',
+                        'src/js/list.js',
+                        'src/js/lineup.js',
+                        'src/js/app.js'
                     ]
                 }
             }
@@ -47,7 +47,7 @@ module.exports = function (grunt) {
                 
                 files: {
 
-                    'dist/css/main.min.css' : 'app/scss/main.scss'
+                    'dist/css/main.min.css' : 'src/scss/main.scss'
                 }
             },
 
@@ -60,7 +60,7 @@ module.exports = function (grunt) {
 
                 files: {
 
-                    'app/css/main.css' : 'app/scss/main.scss'
+                    'src/css/main.css' : 'src/scss/main.scss'
                 }
             }
         },
@@ -90,7 +90,7 @@ module.exports = function (grunt) {
 
                 files: {
 
-                    'app/css/main.css' : 'app/css/main.css'
+                    'src/css/main.css' : 'src/css/main.css'
                 }
             }
         },
@@ -101,11 +101,11 @@ module.exports = function (grunt) {
 
                 files: [
 
-                    { expand: true, flatten: true, src: ['app/index.html'], dest: 'dist/', filter: 'isFile' },
-                    { expand: true, flatten: true, src: ['app/favicon.ico'], dest: 'dist/', filter: 'isFile' },
-                    { expand: true, flatten: true, src: ['app/data/*'], dest: 'dist/data/', filter: 'isFile' },
-                    { expand: true, flatten: true, src: ['app/font/*'], dest: 'dist/font/', filter: 'isFile' },
-                    { expand: true, cwd: 'app/img/', src: ['**/*'], dest: 'dist/img/' },
+                    { expand: true, flatten: true, src: ['src/index.html'], dest: 'dist/', filter: 'isFile' },
+                    { expand: true, flatten: true, src: ['src/favicon.ico'], dest: 'dist/', filter: 'isFile' },
+                    { expand: true, flatten: true, src: ['src/data/*'], dest: 'dist/data/', filter: 'isFile' },
+                    { expand: true, flatten: true, src: ['src/font/*'], dest: 'dist/font/', filter: 'isFile' },
+                    { expand: true, cwd: 'src/img/', src: ['**/*'], dest: 'dist/img/' },
 
                     { expand: true, flatten: true, src: ['bower_components/interact/dist/interact.min.js'],
                         dest: 'dist/js/lib/', filter: 'isFile' },
@@ -121,7 +121,7 @@ module.exports = function (grunt) {
 
         useminPrepare: {
 
-            html: 'app/index.html'
+            html: 'src/index.html'
         },
 
         usemin: {
@@ -137,7 +137,7 @@ module.exports = function (grunt) {
 
                     interrupt: true,
                 },
-                files: ['app/scss/**/*.scss'],
+                files: ['src/scss/**/*.scss'],
                 tasks: ['sass:dev', 'postcss:dev'],
             },
         }

@@ -9,11 +9,11 @@ Die App erlaubt es eine eigene Mannschaft aus bayerischen Erst- und Zweitligaspi
 3. Erforderliche Bibliotheken installieren `bower install`
 4. Optimiertes Projekt bauen `grunt dist`
 
-Der Quellcode befindet sich im Verzeichnis `app/`, der optimierte Build findet sich in `dist/`.
+Der Quellcode befindet sich im Verzeichnis `src/`, der optimierte Build findet sich in `dist/`.
 
 ### Entwickeln
 1. Gegebenenfalls SASS installieren `sudo gem install sass`
-2. SASS-Compiler starten `grunt watch` oder `sass --watch app/scss:app/css`
+2. SASS-Compiler starten `grunt watch` oder `sass --watch src/scss:src/css`
 
 ### Tracking
 Alle Benutzeraufstellungen werden in ein [Google Spreadsheet](https://docs.google.com/spreadsheets/d/1Flk6E-hy1aHmIno3nkp9n8f2eFBYu4E4Q1tRKCNBheI/) gespeichert. Die Anbindung erfolgt dabei über ein [Skript](https://mashe.hawksey.info/2014/07/google-sheets-as-a-database-insert-with-apps-script-using-postget-methods-with-ajax-example/) im Google Spreadsheet, welches die Requests entgegen nimmt. Der Request selbst ist ein einfacher POST-Request:
