@@ -1,71 +1,71 @@
 var app = (function (config, utils, dragging, tracking, sharing, common, list, lineup) {
 
-    'use strict';
+  'use strict';
 
-    var $ = utils.$;
-    
-    var modal = $('modal');
-    var shareButton = $('share');
-    var closeButton = $('close');
-    var directLink = $('direct');
-    
-    // @TODO Move to init.js
-    function init() {
+  var $ = utils.$;
 
-        utils.getJSON('data/players.json', function (players) {
+  var modal = $('modal');
+  var shareButton = $('share');
+  var closeButton = $('close');
+  var directLink = $('direct');
 
-            common.setCurrentPlayers(players);
+  // @TODO Move to init.js
+  function init() {
 
-            // Check if a linup is predefined in the URL hash, eg #1112x
-            if (location.hash) {
+    utils.getJSON('data/players.json', function (players) {
 
-                // Remove query string 
-                common.currentTeamModel = common.convertLineup(location.hash.split('?')[0]);
-            } else {
+      common.setCurrentPlayers(players);
 
-                common.currentTeamModel = config.defaultTeam;
-            }
+      // Check if a linup is predefined in the URL hash, eg #1112x
+      if (location.hash) {
 
-            // Check if the url parameter embed is set 
-            if (utils.getUrlParam('embed')) {
+        // Remove query string
+        common.currentTeamModel = common.convertLineup(location.hash.split('?')[0]);
+      } else {
 
-                document.body.classList.add('embed');
-            }
-           
-            // Inital drawing
-            lineup.init();
-            list.init(players);
-            dragging.init();
+        common.currentTeamModel = config.defaultTeam;
+      }
 
-            // Register the event handlers
-            shareButton.addEventListener('click', handleShare, false);
-            closeButton.addEventListener('click', handleClose, false);
-        });   
-    }
+      // Check if the url parameter embed is set
+      if (utils.getUrlParam('embed')) {
 
-    function handleShare() {
+        document.body.classList.add('embed');
+      }
 
-        var currentUrl = location.href || config.sharing.url;
+      // Inital drawing
+      lineup.init();
+      list.init(players);
+      dragging.init();
 
-        // Remove query string parameters
-        currentUrl =  currentUrl.replace(/(\?.*)#/, '#');
+      // Register the event handlers
+      shareButton.addEventListener('click', handleShare, false);
+      closeButton.addEventListener('click', handleClose, false);
+    });
+  }
 
-        sharing.init(currentUrl);
-        // tracking.send('Lineup=' + common.teamToHash(common.currentTeamModel));
+  function handleShare() {
 
-        directLink.href = currentUrl;
-        directLink.textContent = currentUrl;
+    var currentUrl = location.href || config.sharing.url;
 
-        modal.style.display = 'block';
-    }
+    // Remove query string parameters
+    currentUrl =  currentUrl.replace(/(\?.*)#/, '#');
 
-    function handleClose() {
+    sharing.init(currentUrl);
+    // tracking.send('Lineup=' + common.teamToHash(common.currentTeamModel));
 
-        modal.style.display = 'none';
-    }
+    directLink.href = currentUrl;
+    directLink.textContent = currentUrl;
 
-    return {
+    modal.style.display = 'block';
+  }
 
-        init: init,
-    };
+  function handleClose() {
+
+    modal.style.display = 'none';
+  }
+
+  return {
+
+    init: init,
+  };
 })(config, utils, dragging, tracking, sharing, common, list, lineup);

@@ -1,186 +1,186 @@
 var lineup = (function (config, utils, common) {
 
-    'use strict';
+  'use strict';
 
-    var $ = utils.$;
-    var $$ = utils.$$;
-    var createElement = utils.createElement;
+  var $ = utils.$;
+  var $$ = utils.$$;
+  var createElement = utils.createElement;
 
-    var formationSelect = $('formation');
-    var lineupElement = $('lineup');
-    var infoBox = $('info');
-    var field = $('field');
-    var players = $$('.player');
+  var formationSelect = $('formation');
+  var lineupElement = $('lineup');
+  var infoBox = $('info');
+  var field = $('field');
+  var players = $$('.player');
 
-    function init() {
+  function init() {
 
-        getFormation(common.currentTeamModel);
-        showLineup(common.currentTeamModel);
-        updateFormation();
+    getFormation(common.currentTeamModel);
+    showLineup(common.currentTeamModel);
+    updateFormation();
 
-        formationSelect.addEventListener('change', handleFormationChange, false);
-        field.addEventListener('click', handlePositionDeselect, false);
+    formationSelect.addEventListener('change', handleFormationChange, false);
+    field.addEventListener('click', handlePositionDeselect, false);
+  }
+
+  function showLineup(model) {
+
+    // Clear current team element
+    // http://jsperf.com/innerhtml-vs-removechild/47
+    while (lineupElement.firstChild) {
+
+      lineupElement.removeChild(lineupElement.firstChild);
     }
 
-    function showLineup(model) {
+    for (var i = 0; i < model.length; i++) {
 
-        // Clear current team element
-        // http://jsperf.com/innerhtml-vs-removechild/47
-        while (lineupElement.firstChild) {
+      var section = createElement('section', null,
+        ['className', 'row row-' + (model.length - i)]);
 
-            lineupElement.removeChild(lineupElement.firstChild);
-        }
+      // Add players, line by line
+      for (var j = 0; j < model[i].length; j++) {
 
-        for (var i = 0; i < model.length; i++) {
+        var positionElement, playerIcon, playerName;
+        var player = common.getPlayerData(model[i][j]) || common.getPlayerData('zz');
 
-            var section = createElement('section', null,
-                ['className', 'row row-' + (model.length - i)]);
+        positionElement = createElement('div', null,['className', 'dropzone changeable player']);
+        positionElement.setAttribute('data-player', model[i][j]);
+        positionElement.addEventListener('click', handlePositionSelect, false);
 
-            // Add players, line by line
-            for (var j = 0; j < model[i].length; j++) {
+        playerIcon = createElement('div', null, ['className', 'icon']);
+        playerIcon.style.background = 'url(img/players/' +
+          (model[i][j].indexOf('z') ? model[i][j] : 'zz') +
+          '.jpg) center no-repeat';
+        playerIcon.style['background-size'] = 'contain';
 
-                var positionElement, playerIcon, playerName;
-                var player = common.getPlayerData(model[i][j]) || common.getPlayerData('zz');
+        playerName = createElement('p', null,
+          ['className', 'text'], ['textContent', player.name]);
 
-                positionElement = createElement('div', null,['className', 'dropzone changeable player']);
-                positionElement.setAttribute('data-player', model[i][j]);
-                positionElement.addEventListener('click', handlePositionSelect, false);
+        positionElement.appendChild(playerIcon);
+        positionElement.appendChild(playerName);
+        section.appendChild(positionElement);
+      }
 
-                playerIcon = createElement('div', null, ['className', 'icon']);
-                playerIcon.style.background = 'url(img/players/' +
-                    (model[i][j].indexOf('z') ? model[i][j] : 'zz') +
-                    '.jpg) center no-repeat';
-                playerIcon.style['background-size'] = 'contain';
-
-                playerName = createElement('p', null,
-                    ['className', 'text'], ['textContent', player.name]);       
-
-                positionElement.appendChild(playerIcon);
-                positionElement.appendChild(playerName);
-                section.appendChild(positionElement);
-            }
-
-            lineupElement.appendChild(section);  
-        }
-
-        players = $$('.player');
+      lineupElement.appendChild(section);
     }
 
-    // @TODO Split or rename
-    function updateFormation() {
+    players = $$('.player');
+  }
 
-        // Get the current formation
-        var formation = formationSelect.value.split('-').reverse();
-        var flatTeam = [];
+  // @TODO Split or rename
+  function updateFormation() {
 
-        // Add the goalkeeper
-        formation.push('1');
+    // Get the current formation
+    var formation = formationSelect.value.split('-').reverse();
+    var flatTeam = [];
 
-        common.currentFormation = formation;
+    // Add the goalkeeper
+    formation.push('1');
 
-        // Write class
-        lineupElement.className = '';
-        lineupElement.classList.add('rows-' + common.currentFormation.length);
+    common.currentFormation = formation;
 
-        // Flatten array 
-        flatTeam = flatTeam.concat.apply(flatTeam, common.currentTeamModel);
+    // Write class
+    lineupElement.className = '';
+    lineupElement.classList.add('rows-' + common.currentFormation.length);
 
-        // Clear current team model;
-        common.currentTeamModel = [];
+    // Flatten array
+    flatTeam = flatTeam.concat.apply(flatTeam, common.currentTeamModel);
 
-        for (var i = 0;  i < formation.length; i++) {
+    // Clear current team model;
+    common.currentTeamModel = [];
 
-            common.currentTeamModel.push(flatTeam.splice(0, parseInt(formation[i])));
-        }
+    for (var i = 0;  i < formation.length; i++) {
 
-        location.hash = common.teamToHash(common.currentTeamModel);
+      common.currentTeamModel.push(flatTeam.splice(0, parseInt(formation[i])));
     }
 
-    function handleFormationChange() {
+    location.hash = common.teamToHash(common.currentTeamModel);
+  }
 
-        updateFormation();
-        showLineup(common.currentTeamModel);        
+  function handleFormationChange() {
+
+    updateFormation();
+    showLineup(common.currentTeamModel);
+  }
+
+  function handlePositionSelect(e) {
+
+    var target = e.target;
+
+    // Because IE. Full stop.
+    if (e.target.parentNode.parentNode !== lineupElement) {
+
+      target = target.parentNode;
     }
 
-    function handlePositionSelect(e) {
+    // If position gets clicked again, do nothing;
+    if (common.currentPosition !== target) {
 
-        var target = e.target;
+      target.classList.add('active');
 
-        // Because IE. Full stop.
-        if (e.target.parentNode.parentNode !== lineupElement) {
+      if (common.currentPosition) {
 
-            target = target.parentNode;
-        }
+        common.currentPosition.classList.remove('active');
+      }
 
-        // If position gets clicked again, do nothing;
-        if (common.currentPosition !== target) {
-
-            target.classList.add('active');
-
-            if (common.currentPosition) {
-
-                common.currentPosition.classList.remove('active');
-            }
-
-            common.updateInfo(target.getAttribute('data-player'), infoBox);
-        }
-
-        common.currentPosition = target;
+      common.updateInfo(target.getAttribute('data-player'), infoBox);
     }
 
-    function handlePositionDeselect(e) {
+    common.currentPosition = target;
+  }
 
-        for (var i = 0; i < players.length; i++) {
+  function handlePositionDeselect(e) {
 
-            var target = e.target;
+    for (var i = 0; i < players.length; i++) {
 
-            // Because IE. Full stop.
-            if (e.target.parentNode.parentNode !== lineupElement) {
+      var target = e.target;
 
-                target = target.parentNode;
-            }
+      // Because IE. Full stop.
+      if (e.target.parentNode.parentNode !== lineupElement) {
 
-            if (target === players[i]) {
+        target = target.parentNode;
+      }
 
-                return false;
-            }
-        }
+      if (target === players[i]) {
 
-        if (common.currentPosition) {
-
-            common.currentPosition.classList.remove('active');
-            common.currentPosition = null;
-        }
-
-        while (infoBox.firstChild) {
-
-            infoBox.removeChild(infoBox.firstChild);
-        }
-
-        createElement('p', infoBox, ['textContent', 'Wählen Sie einen Spieler aus, um mehr über ihn zu erfahren. Ziehen Sie einen Spieler auf eine Position, um diese zu besetzen.']);
+        return false;
+      }
     }
 
-    function getFormation(arr) {
+    if (common.currentPosition) {
 
-        var result = [];
-        
-        for (var i = 0;  i < arr.length; i++) {
-
-            result.push(arr[i].length);
-        }
-
-        common.currentFormation = result;
-        result.pop();
-        formationSelect.value = result.reverse().join('-');
+      common.currentPosition.classList.remove('active');
+      common.currentPosition = null;
     }
 
-    return {
+    while (infoBox.firstChild) {
 
-        init: init,
-        showLineup: showLineup,
-        handlePositionSelect: handlePositionSelect,
-        updateFormation: updateFormation,
-        getFormation: getFormation
-    };
+      infoBox.removeChild(infoBox.firstChild);
+    }
+
+    createElement('p', infoBox, ['textContent', 'Wählen Sie einen Spieler aus, um mehr über ihn zu erfahren. Ziehen Sie einen Spieler auf eine Position, um diese zu besetzen.']);
+  }
+
+  function getFormation(arr) {
+
+    var result = [];
+
+    for (var i = 0;  i < arr.length; i++) {
+
+      result.push(arr[i].length);
+    }
+
+    common.currentFormation = result;
+    result.pop();
+    formationSelect.value = result.reverse().join('-');
+  }
+
+  return {
+
+    init: init,
+    showLineup: showLineup,
+    handlePositionSelect: handlePositionSelect,
+    updateFormation: updateFormation,
+    getFormation: getFormation
+  };
 
 }(config, utils, common));

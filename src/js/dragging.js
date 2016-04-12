@@ -1,163 +1,163 @@
 var dragging = (function () {
 
-    'use strict';
+  'use strict';
 
-    function init () {
+  function init () {
 
-        var top = document.getElementById('sidebar');
-        var main = document.getElementById('main');
-        var target, x, y, offsetY, parent, sibling, placeholder;
+    var top = document.getElementById('sidebar');
+    var main = document.getElementById('main');
+    var target, x, y, offsetY, parent, sibling, placeholder;
 
-        // Target list elements with the "draggable" class
-        interact('.draggable').draggable({
+    // Target list elements with the "draggable" class
+    interact('.draggable').draggable({
 
-            // Physical element behaviour
-            inertia: true,
+      // Physical element behaviour
+      inertia: true,
 
-            target: null,
+      target: null,
 
-            onstart: function (event) {
+      onstart: function (event) {
 
-                target = event.target;
-                target.classList.add('dragging');
+        target = event.target;
+        target.classList.add('dragging');
 
-                parent = target.parentNode;
-                sibling = target.nextSibling;
+        parent = target.parentNode;
+        sibling = target.nextSibling;
 
-                // Create placeholder, so the list won't jump
-                placeholder = document.createElement('li');
-                placeholder.appendChild(document.createTextNode('\u00A0'));
+        // Create placeholder, so the list won't jump
+        placeholder = document.createElement('li');
+        placeholder.appendChild(document.createTextNode('\u00A0'));
 
-                // Hack: Move element out of the overflow: auto context,
-                // because child elements get clipped by the overflow
-                parent.insertBefore(placeholder, sibling);
-                top.insertBefore(target, top.childNodes[0]);
+        // Hack: Move element out of the overflow: auto context,
+        // because child elements get clipped by the overflow
+        parent.insertBefore(placeholder, sibling);
+        top.insertBefore(target, top.childNodes[0]);
 
-                offsetY = -(event.clientY - main.getBoundingClientRect().top);
+        offsetY = -(event.clientY - main.getBoundingClientRect().top);
 
-                // Set origin based on original position
-                event.interactable.options.origin = {
-                    // @TODO Determine x value
-                    x: 0,
-                    y: offsetY
-                };
-            },
+        // Set origin based on original position
+        event.interactable.options.origin = {
+          // @TODO Determine x value
+          x: 0,
+          y: offsetY
+        };
+      },
 
-            onmove: function (event) {
+      onmove: function (event) {
 
-                target = event.target;
-                
-                // Store dragged position in data-attribute
-                x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
-                y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+        target = event.target;
 
-                // Translate the element
-                target.style.webkitTransform =
-                target.style.transform =
-                    'translate3d(' + x + 'px, ' + y + 'px, 0)';
+        // Store dragged position in data-attribute
+        x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
+        y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
 
-                // Update the position attributes
-                target.setAttribute('data-x', x);
-                target.setAttribute('data-y', y);
-            },
+        // Translate the element
+        target.style.webkitTransform =
+        target.style.transform =
+          'translate3d(' + x + 'px, ' + y + 'px, 0)';
 
-            onend: function (event) {
+        // Update the position attributes
+        target.setAttribute('data-x', x);
+        target.setAttribute('data-y', y);
+      },
 
-                target = event.target;
+      onend: function (event) {
 
-                // Reset translation
-                target.style.webkitTransform =
-                target.style.transform =
-                    'none';
+        target = event.target;
 
-                // Reset the data position
-                target.setAttribute('data-x', 0);
-                target.setAttribute('data-y', 0);
+        // Reset translation
+        target.style.webkitTransform =
+        target.style.transform =
+          'none';
 
-                target.classList.remove('dragging');
+        // Reset the data position
+        target.setAttribute('data-x', 0);
+        target.setAttribute('data-y', 0);
 
-                // Hack: Move the dragged element back in overflow context;
-                parent.removeChild(placeholder);
-                parent.insertBefore(target, sibling);
-            }
-        });
-    
-        //  Target all position elements with the "changeable" class
-        interact('.changeable').draggable({
+        target.classList.remove('dragging');
 
-            // Physical element behaviour
-            inertia: true,
+        // Hack: Move the dragged element back in overflow context;
+        parent.removeChild(placeholder);
+        parent.insertBefore(target, sibling);
+      }
+    });
 
-            onstart: function (event) {
+    //  Target all position elements with the "changeable" class
+    interact('.changeable').draggable({
 
-                event.target.classList.add('changing');
-            },
+      // Physical element behaviour
+      inertia: true,
 
-            onmove: function (event) {
-                
-                // Store dragged position in data-attribute
-                var x = (parseFloat(event.target.getAttribute('data-x')) || 0) + event.dx;
-                var y = (parseFloat(event.target.getAttribute('data-y')) || 0) + event.dy;
+      onstart: function (event) {
 
-                // Translate the element
-                event.target.style.webkitTransform =
-                event.target.style.transform =
-                    'translate3d(' + x + 'px, ' + y + 'px, 0)';
+        event.target.classList.add('changing');
+      },
 
-                // Update the position attributes
-                event.target.setAttribute('data-x', x);
-                event.target.setAttribute('data-y', y);
-            },
+      onmove: function (event) {
 
-            onend: function (event) {
+        // Store dragged position in data-attribute
+        var x = (parseFloat(event.target.getAttribute('data-x')) || 0) + event.dx;
+        var y = (parseFloat(event.target.getAttribute('data-y')) || 0) + event.dy;
 
-                // Reset translation
-                event.target.style.webkitTransform =
-                event.target.style.transform =
-                    'none';
-                
-                // Update the position attributes
-                event.target.setAttribute('data-x', 0);
-                event.target.setAttribute('data-y', 0);
+        // Translate the element
+        event.target.style.webkitTransform =
+        event.target.style.transform =
+          'translate3d(' + x + 'px, ' + y + 'px, 0)';
 
-                event.target.classList.remove('changing');
-            }
-        });
+        // Update the position attributes
+        event.target.setAttribute('data-x', x);
+        event.target.setAttribute('data-y', y);
+      },
 
-        // Enable draggables to be dropped here
-        // The dropzone is event.target, the draggable is event.relatedTarget
-        interact('.dropzone').dropzone({
+      onend: function (event) {
 
-            // Require a 65% element overlap for a drop to be possible
-            overlap: 0.65,
+        // Reset translation
+        event.target.style.webkitTransform =
+        event.target.style.transform =
+          'none';
 
-            ondragenter: function (event) {
+        // Update the position attributes
+        event.target.setAttribute('data-x', 0);
+        event.target.setAttribute('data-y', 0);
 
-                // Feedback the possibility of a drop
-                event.target.classList.add('drop-target');
-            },
-            ondragleave: function (event) {
+        event.target.classList.remove('changing');
+      }
+    });
 
-                // Remove the drop feedback style
-                event.target.classList.remove('drop-target');
-            },
-            ondrop: function (event) {
+    // Enable draggables to be dropped here
+    // The dropzone is event.target, the draggable is event.relatedTarget
+    interact('.dropzone').dropzone({
 
-                // Call the event handlers
-                lineup.handlePositionSelect(event);
-                list.handlePlayerChange(event, event.target);
-            },
-            ondropdeactivate: function (event) {
-                
-                // Remove active dropzone feedback
-                event.target.classList.remove('drop-target');
-            }
-        });
-    }
+      // Require a 65% element overlap for a drop to be possible
+      overlap: 0.65,
 
-    return {
+      ondragenter: function (event) {
 
-        init: init
-    };
+        // Feedback the possibility of a drop
+        event.target.classList.add('drop-target');
+      },
+      ondragleave: function (event) {
+
+        // Remove the drop feedback style
+        event.target.classList.remove('drop-target');
+      },
+      ondrop: function (event) {
+
+        // Call the event handlers
+        lineup.handlePositionSelect(event);
+        list.handlePlayerChange(event, event.target);
+      },
+      ondropdeactivate: function (event) {
+
+        // Remove active dropzone feedback
+        event.target.classList.remove('drop-target');
+      }
+    });
+  }
+
+  return {
+
+    init: init
+  };
 
 }());

@@ -1,42 +1,42 @@
-var tracking = (function (config) {
+var tracking = (function () {
 
-	'use strict';
+  'use strict';
 
-	var request;
+  var request;
 
-    //ex. str = "Lineup=acab-axavasat-amanafbn-ba";
-	function send(str) {
+  //ex. str = "Lineup=acab-axavasat-amanafbn-ba";
+  function send(str) {
 
-		if (request) {
+    if (request) {
 
-	    	request.abort();
-	    }
+      request.abort();
+    }
 
-		request = new XMLHttpRequest();
+    request = new XMLHttpRequest();
 
-		// Callback
-		// request.onreadystatechange = function() {
+    // Callback
+    // request.onreadystatechange = function() {
 
-		// 	if (request.readyState === 4 && request.status === 200) {
+    //  if (request.readyState === 4 && request.status === 200) {
 
-		// 		console.log('Request successfull');
-		// 	}
-		// };
+    //  console.log('Request successfull');
+    //  }
+    // };
 
-		try {
+    try {
 
-			request.open('POST','https://script.google.com/macros/s/AKfycbzvz2UDsyp6Iy7YMMVbbnUSKwfCsmrabnVBPlGscrz1STIfGEgE/exec', true);
-			request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-			request.send(str);
-		} catch(err) {
+      request.open('POST','https://script.google.com/macros/s/AKfycbzvz2UDsyp6Iy7YMMVbbnUSKwfCsmrabnVBPlGscrz1STIfGEgE/exec', true);
+      request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+      request.send(str);
+    } catch (err) {
 
-			console.log('Could not send tracking string: ', err);
-		}
-	}
+      console.log('Could not send tracking string: ', err);
+    }
+  }
 
-	return {
+  return {
 
-        send: send
-    };
+    send: send
+  };
 
 }(config));

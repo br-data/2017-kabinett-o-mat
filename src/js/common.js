@@ -1,111 +1,111 @@
 var common = (function (utils) {
 
-    'use strict';
+  'use strict';
 
-    var createElement = utils.createElement;
+  var createElement = utils.createElement;
 
-    var currentTeamModel;
-    var currentPlayers;
-    var currentFormation;
-    var currentPosition;
+  var currentTeamModel;
+  var currentPlayers;
+  var currentFormation;
+  var currentPosition;
 
   	function getPlayerData(playerId) {
 
-        return currentPlayers.filter(function (obj) {
+    return currentPlayers.filter(function (obj) {
 
-            return obj.id === playerId;
-        })[0] || false;
+      return obj.id === playerId;
+    })[0] || false;
+  }
+
+  function setCurrentPlayers(players) {
+
+    currentPlayers = players;
+  }
+
+  // Converts an location hash string, ex. 1011x2021...
+  function teamToHash(arr) {
+
+    var result = [];
+
+    for (var i = 0;  i < arr.length; i++) {
+
+      result.push(arr[i].join(''));
     }
 
-    function setCurrentPlayers(players) {
+    return result.join('-');
+  }
 
-        currentPlayers = players;
+  function convertLineup(str) {
+
+    // Remove hash
+    str = str.replace('#','');
+
+    // Hash string to array
+    var arr = str.split('-');
+
+    // If the array is malformed, fall back to default
+    if (arr.length < config.defaultTeam.length) {
+
+      arr = config.defaultHash;
     }
 
-    // Converts an location hash string, ex. 1011x2021...
-    function teamToHash(arr) {
+    // Split the position arrays into arrays with individual players
+    // Ex. [111213] becomes [11,12,13]
+    for (var i = 0;  i < arr.length; i++) {
 
-        var result = [];
-
-        for (var i = 0;  i < arr.length; i++) {
-   
-            result.push(arr[i].join(''));
-        }
-
-        return result.join('-');
+      arr[i] = arr[i].match(/.{1,2}/g);
     }
 
-    function convertLineup(str) {
+    return arr;
+  }
 
-        // Remove hash
-        str = str.replace('#','');
+  // Updates the info box HTML
+  function updateInfo(playerId, infoBoxEl) {
 
-        // Hash string to array
-        var arr = str.split('-');
+    if (playerId.indexOf('z')) {
 
-        // If the array is malformed, fall back to default
-        if (arr.length < config.defaultTeam.length) {
+      var player = getPlayerData(playerId);
 
-            arr = config.defaultHash;
-        }
+      while (infoBoxEl.firstChild) {
 
-        // Split the position arrays into arrays with individual players
-        // Ex. [111213] becomes [11,12,13] 
-        for (var i = 0;  i < arr.length; i++) {
+        infoBoxEl.removeChild(infoBoxEl.firstChild);
+      }
 
-            arr[i] = arr[i].match(/.{1,2}/g);
-        }
+      createElement('img', infoBoxEl, ['src', 'img/logos/' +
+        player.team_short + '.png'], ['alt', player.team]);
+      createElement('h3', infoBoxEl, ['textContent', player.name]);
+      createElement('p', infoBoxEl, ['textContent', player.team]);
+      createElement('p', infoBoxEl, ['textContent', player.geb_tag + ' in ' +
+        player.geb_ort + ', ' + player.reg_bezirk, infoBoxEl]);
+    }
+  }
 
-        return arr;
+  // Generates a random alphanumeric string, like a unique ID.
+  function generateId(len) {
+
+    var str = '';
+    var charset = 'abcdefghijklmnopqrstuvwxyz0123456789';
+
+    for(var i = 0; i < len; i++) {
+
+      str += charset.charAt(Math.floor(Math.random() * charset.length));
     }
 
-    // Updates the info box HTML
-    function updateInfo(playerId, infoBoxEl) {
+    return str;
+  }
 
-        if (playerId.indexOf('z')) {
+  return {
+  	currentTeamModel: currentTeamModel,
+  	currentPlayers: currentPlayers,
+    currentFormation: currentFormation,
+  	currentPosition: currentPosition,
 
-            var player = getPlayerData(playerId);
-
-            while (infoBoxEl.firstChild) {
-
-                infoBoxEl.removeChild(infoBoxEl.firstChild);
-            }
-
-            createElement('img', infoBoxEl, ['src', 'img/logos/' +
-                player.team_short + '.png'], ['alt', player.team]);
-            createElement('h3', infoBoxEl, ['textContent', player.name]);
-            createElement('p', infoBoxEl, ['textContent', player.team]);
-            createElement('p', infoBoxEl, ['textContent', player.geb_tag + ' in ' +
-                player.geb_ort + ', ' + player.reg_bezirk, infoBoxEl]);
-        }
-    }
-
-    // Generates a random alphanumeric string, like a unique ID.
-    function generateId(len) {
-
-        var str = '';
-        var charset = 'abcdefghijklmnopqrstuvwxyz0123456789';
-
-        for(var i = 0; i < len; i++) {
-
-            str += charset.charAt(Math.floor(Math.random() * charset.length));
-        }
-
-        return str;
-    }
-
-    return {
-    	currentTeamModel: currentTeamModel,
-    	currentPlayers: currentPlayers,
-        currentFormation: currentFormation,
-    	currentPosition: currentPosition,
-        
-        getPlayerData: getPlayerData,
-        setCurrentPlayers: setCurrentPlayers,
-        teamToHash: teamToHash,
-        convertLineup: convertLineup,
-        updateInfo: updateInfo,
-        generateId: generateId
-    };
+    getPlayerData: getPlayerData,
+    setCurrentPlayers: setCurrentPlayers,
+    teamToHash: teamToHash,
+    convertLineup: convertLineup,
+    updateInfo: updateInfo,
+    generateId: generateId
+  };
 
 }(utils));
