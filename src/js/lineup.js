@@ -1,4 +1,4 @@
-var lineup = (function (config, utils, common) {
+var lineup = (function () {
 
   'use strict';
 
@@ -182,5 +182,4 @@ var lineup = (function (config, utils, common) {
     updateFormation: updateFormation,
     getFormation: getFormation
   };
-
-}(config, utils, common));
+}());

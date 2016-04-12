@@ -2,7 +2,7 @@ var config = {
 
   defaultTeam: [['zk', 'zj'], ['zi', 'zh', 'zg', 'zf'], ['ze', 'zd', 'zc', 'zb'], ['za']],
   defaultHash: ['zkzj', 'zizhzgzf', 'zezdzczb', 'za'],
-  positionOrder: ['tor', 'abwehr', 'mittelfeld', 'sturm'],
+  positionOrder: ['sturm', 'mittelfeld', 'abwehr', 'tor'],
 
   sharing: {
     url: 'http://br.de',

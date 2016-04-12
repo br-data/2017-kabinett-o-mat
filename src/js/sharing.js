@@ -1,4 +1,4 @@
-var sharing = (function (config, utils) {
+var sharing = (function () {
 
   'use strict';
 
@@ -83,5 +83,4 @@ var sharing = (function (config, utils) {
 
     init: init
   };
-
-}(config, utils));
+}());

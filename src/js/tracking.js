@@ -38,5 +38,4 @@ var tracking = (function () {
 
     send: send
   };
-
-}(config));
+}());

@@ -16,7 +16,7 @@ Der Quellcode befindet sich im Verzeichnis `src/`, der optimierte Build findet s
 2. SASS-Compiler starten `grunt watch` oder `sass --watch src/scss:src/css`
 
 ### Tracking
-Alle Benutzeraufstellungen werden in ein [Google Spreadsheet](https://docs.google.com/spreadsheets/d/1Flk6E-hy1aHmIno3nkp9n8f2eFBYu4E4Q1tRKCNBheI/) gespeichert. Die Anbindung erfolgt dabei über ein [Skript](https://mashe.hawksey.info/2014/07/google-sheets-as-a-database-insert-with-apps-script-using-postget-methods-with-ajax-example/) im Google Spreadsheet, welches die Requests entgegen nimmt. Der Request selbst ist ein einfacher POST-Request:
+Alle Benutzeraufstellungen werden in ein [Google Spreadsheet](https://docs.google.com/spreadsheets/d/1Flk6E-hy1aHmIno3nkp9n8f2eFBYu4E4Q1tRKCNBheI/) gespeichert. Die Anbindung erfolgt dabei über ein [Skript](https://mashe.hawksey.info/2014/07/google-sheets-as-a-database-insert-with-apps-script-using-postget-methods-with-ajax-example/) im Google Spreadsheet, welches die Requests entgegennimmt. Der Request selbst ist ein einfacher POST-Request:
 
 ```javascript
 request.open('POST','https://script.google.com/macros/s/AKfycbzvz2UDsyp6Iy7YMMVbbnUSKwfCsmrabnVBPlGscrz1STIfGEgE/exec', true);

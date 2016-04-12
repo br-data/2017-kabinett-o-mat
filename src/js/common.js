@@ -1,4 +1,4 @@
-var common = (function (utils) {
+var common = (function () {
 
   'use strict';
 
@@ -9,7 +9,7 @@ var common = (function (utils) {
   var currentFormation;
   var currentPosition;
 
-  	function getPlayerData(playerId) {
+  function getPlayerData(playerId) {
 
     return currentPlayers.filter(function (obj) {
 
@@ -95,10 +95,10 @@ var common = (function (utils) {
   }
 
   return {
-  	currentTeamModel: currentTeamModel,
-  	currentPlayers: currentPlayers,
+    currentTeamModel: currentTeamModel,
+    currentPlayers: currentPlayers,
     currentFormation: currentFormation,
-  	currentPosition: currentPosition,
+    currentPosition: currentPosition,
 
     getPlayerData: getPlayerData,
     setCurrentPlayers: setCurrentPlayers,
@@ -107,5 +107,4 @@ var common = (function (utils) {
     updateInfo: updateInfo,
     generateId: generateId
   };
-
-}(utils));
+}());

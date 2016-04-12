@@ -1,4 +1,4 @@
-var app = (function (config, utils, dragging, tracking, sharing, common, list, lineup) {
+var app = (function () {
 
   'use strict';
 
@@ -66,6 +66,6 @@ var app = (function (config, utils, dragging, tracking, sharing, common, list, l
 
   return {
 
-    init: init,
+    init: init
   };
-})(config, utils, dragging, tracking, sharing, common, list, lineup);
+})();

@@ -159,5 +159,4 @@ var dragging = (function () {
 
     init: init
   };
-
 }());

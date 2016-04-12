@@ -1,4 +1,4 @@
-var list = (function (config, utils, common) {
+var list = (function () {
 
   'use strict';
 
@@ -284,5 +284,4 @@ var list = (function (config, utils, common) {
     handlePlayerChange: handlePlayerChange,
     wasPicked: wasPicked
   };
-
-}(config, utils, common));
+}());
