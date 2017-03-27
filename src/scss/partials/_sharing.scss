@@ -4,8 +4,8 @@ button,
   background: $white;
   cursor: pointer;
   font-weight: bold;
-  padding: .1em .7em .1em .5em;
-  line-height: 30px;
+  padding: .5em;
+  line-height: 1;
 }
 
 button:hover,
@@ -41,7 +41,7 @@ button:hover,
   z-index: 500;
 
   p {
-    margin: .2em 0 1em; 
+    margin: .2em 0 1em;
   }
 
   h1 {

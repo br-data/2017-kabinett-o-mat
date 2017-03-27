@@ -1,11 +1,7 @@
 #main {
+  display: block;
   height: calc(100% - 19em);
-  margin: 1em 2em 2em;
-
-  /* IE hack */
-  float: left;
-  width: 100%;
-  padding-right: 4em;
+  margin: 2em;
 }
 
 #header {
@@ -31,6 +27,7 @@
 
   p {
     font-size: 1.1em;
+    line-height: 1.6;
     max-width: 90%;
   }
 

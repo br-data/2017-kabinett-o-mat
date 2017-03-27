@@ -9,17 +9,7 @@
 
 @media (max-width: 780px) {
 
-  button span,
-  .button span {
-    display: none;
-  }
-
-  button:before,
-  .button:before {
-    opacity: 1;
-  }
-
-  .thanks {
+  a#home {
     display: none;
   }
 
@@ -70,7 +60,6 @@
     height: calc(100% - 14em);
     margin: 0;
     padding: 0;
-    float: left;
   }
 
   #header {

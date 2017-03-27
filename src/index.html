@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
+
     <title>Bayerische Nationalmannschaft</title>
 
     <!-- Standard -->
@@ -15,7 +15,7 @@
     <meta name="author" content="Bayerischer Rundfunk">
     <meta name="location" content="br.de, München">
     <meta name="robots" content="index, follow, noodp">
-    
+
     <!-- Open Graph, Facebook, Google -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Bayerische Nationalmannschaft">
@@ -26,7 +26,7 @@
     <meta property="og:description" content="Wer sind die besten Spieler Bayerns? Wählen Sie für dieses kleine Gedankenspiel aus allen bayerischen Erst- und Zweitligaspielern sowie ausgewählten Auslands-Bayern aus und stellen Sie Ihre Mannschaft auf.">
     <meta property="og:image" content="http://www.woherstammtdieliga.de/mannschaft/img/preview.jpg">
     <meta property="fb:page_id" content="372812681285">
-    
+
     <!-- Twitter -->
     <meta name="twitter:card" content="summary">
     <meta name="DCTERMS.type" content="indexPage">
@@ -36,11 +36,11 @@
     <meta name="twitter:url" content="http://woherstammtdieliga.de/mannschaft">
     <meta name="twitter:image:src" content="http://www.woherstammtdieliga.de/mannschaft/img/preview.jpg">
     <meta name="twitter:account_id" content="372812681285">
-        
+
 
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-    
+
     <!-- build:css css/main.min.css -->
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!-- endbuild -->
@@ -57,14 +57,14 @@
 
     <div id="fallback">
       <p>Der von Ihnen verwendete Browser ist veraltet. Damit Sie diese Anwendung nutzten können, aktualisieren Sie bitte Ihren Browser. Ein aktueller Browser verbessert die Geschwindigkeit mit der Webseiten dargestellt werden und schützt Sie besser vor Betrug, Viren und Datendiebstahl.</p>
-      
+
       <p>Hier finden Sie mehr Informationen darüber, wie Sie Ihren Browser aktualisieren können: <a href="https://browser-update.org/de/update.html">https://browser-update.org/de/update.html</a></p>
     </div>
 
     <header id="header">
-      
+
       <a href="http://br.de/" target="_blank">
-        <img class="logo" src="img/logo.png">
+        <img class="logo" src="img/logo.svg">
       </a>
 
       <h1>
@@ -75,16 +75,15 @@
       <p>Besetzen Sie alle Positionen mit den Spielern Ihrer Wahl und teilen Sie das Ergebnis mit Ihren Freunden. Wie die anderen Leser abgestimmt haben, erfahren Sie hier: <a href="http://www.br.de/extra/br-data/bayerische-nationalmannschaft-ergebnis-100.html" target="_blank">Das ist die bayerische Nationalmannschaft</a>.
 
     </header>
-  
-    <main id="main">
+
+    <article id="main">
 
       <section id="field">
 
         <nav>
-          
+
           <a id="home" class="button hideable" href="http://woherstammtdieliga.de" target="_blank">
-            <i class="icon-reply small"></i>
-            <span>Zum Artikel</span>
+            <i class="icon-reply small"></i> Zum Artikel
           </a>
 
           <form>
@@ -97,8 +96,7 @@
           </form>
 
           <button id="share">
-            <i class="icon-share small"></i>
-            <span>Teilen</span>
+            <i class="icon-share small"></i> Teilen
           </button>
 
         </nav>
@@ -110,7 +108,7 @@
           <div id="close">×</div>
 
           <h1>Teilen Sie Ihre Mannschaft mit Ihren Freunden:</h1>
-          
+
           <div class="icons">
             <a href="https://www.facebook.com/sharer/sharer.php?u=%URL%" class="share facebook" target="_blank">
               <i class="icon-facebook-squared big"></i>
@@ -164,17 +162,17 @@
         </section>
 
       </aside>
-      
-    </main>
 
-    <!-- build:js js/lib/classList.min.js --> 
+    </article>
+
+    <!-- build:js js/lib/classList.min.js -->
     <!--[if lte IE 9]>
-        <script src="../bower_components/classList/index.js"></script>
+        <script src="../node_modules/classlist-polyfill/src/index.js"></script>
     <![endif]-->
     <!-- endbuild -->
 
-    <!-- build:js js/lib/interact.min.js -->    
-    <script type="text/javascript" src="../bower_components/interact/dist/interact.min.js"></script>
+    <!-- build:js js/lib/interact.min.js -->
+    <script type="text/javascript" src="../node_modules/interactjs/dist/interact.min.js"></script>
     <!-- endbuild -->
 
     <!-- build:js js/app.min.js -->
@@ -192,7 +190,7 @@
     <script type="text/javascript">
       app.init();
     </script>
-   
+
   </body>
 
 </html>
