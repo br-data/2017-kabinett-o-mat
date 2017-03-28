@@ -6,7 +6,6 @@ Die App erlaubt es eine eigene Mannschaft aus bayerischen Erst- und Zweitligaspi
 ### Verwendung
 1. Repository klonen `git clone https://...`
 2. Erforderliche Module installieren `npm install`
-3. Erforderliche Bibliotheken installieren `bower install`
 4. Optimiertes Projekt bauen `grunt dist`
 
 Der Quellcode befindet sich im Verzeichnis `src/`, der optimierte Build findet sich in `dist/`.

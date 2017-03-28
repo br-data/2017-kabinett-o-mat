@@ -3,15 +3,22 @@
   "description": "Choose your own soccer lineup and share it",
   "author": "Steffen Kühne",
   "version": "1.0.0",
-  "license": "properietary",
+  "license": "MIT",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://stekhn@bitbucket.org/team_aquarium/soccer-team-lineup.git"
+    "url": "git@github.com:br-data/heimvorteil-nationalmannschaft.git"
   },
   "scripts": {
     "sass": "grunt watch",
     "grunt": "grunt build"
+  },
+  "dependencies": {
+    "classlist-polyfill": "^1.2.0",
+    "d3": "~3.5.6",
+    "file-saver": "~1.3.3",
+    "interactjs": "^1.2.8",
+    "miso.dataset": "0.4.1"
   },
   "devDependencies": {
     "autoprefixer-core": "~5.2.1",
