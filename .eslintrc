@@ -9,7 +9,11 @@
     "dragging": true,
     "list": true,
     "lineup": true,
-    "app": true
+    "app": true,
+
+    "Miso": true,
+    "microAjax": true,
+    "saveAs": true
   },
   "rules": {
     "indent": [2, 2, {"SwitchCase": 1}],
