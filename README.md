@@ -1,5 +1,5 @@
 # Bayerische Nationalmannschaft
-Die App erlaubt es eine eigene Mannschaft aus bayerischen Erst- und Zweitligaspielern aufzustellen. Die Aufstellung wir als Location Hash (#adaj-akavcoab-acaeaaaf-ag) gespeichert und kann so über die sozialen Netzwerke geteilt werden. Die App wurde das Projekt [Heimvorteil – Woher stammt die Liga](http://web.br.de/woher-stammt-die-liga/) entwickelt.
+Die App erlaubt es eine eigene Mannschaft aus bayerischen Erst- und Zweitligaspielern aufzustellen. Die Aufstellung wir als Location Hash (#adaj-akavcoab-acaeaaaf-ag) gespeichert und kann so über die sozialen Netzwerke geteilt werden. Entwickelt wurde die App für das Projekt [Heimvorteil – Woher stammt die Liga](http://web.br.de/woher-stammt-die-liga/).
 
 - **BR:** [Wähle deine bayerische Nationalmannschaft](http://web.br.de/interaktiv/heimvorteil-nationalmannschaft/#adaj-akavcoab-acaeaaaf-ag)
 - **SWR:** [Wähle Deine Südwest-Elf der Saison](http://www.swr.de/sport/fussball-voting-waehle-deine-suedwest-elf-der-saison/-/id=13831144/did=19555592/nid=13831144/182zxt1/index.html)
@@ -13,7 +13,7 @@ Die App erlaubt es eine eigene Mannschaft aus bayerischen Erst- und Zweitligaspi
 Der Quellcode befindet sich im Verzeichnis `src/`, der optimierte Build findet sich in `dist/`.
 
 ### Daten
-Alle Spielerdaten beruhen auf Vereinsangaben. Die Anwendungsdaten sind in einem JSON-Dictionary `players.json` gespeichert. Die ID ist jeweils eine zweistelliger String (aa bis zz).
+Alle Spielerdaten beruhen auf Vereinsangaben. Die Anwendungsdaten sind in einem JSON-Dictionary `players.json` gespeichert. Die ID ist jeweils eine zweistellige Buchstabenkombination (aa bis zz).
 
 ```json
 {
