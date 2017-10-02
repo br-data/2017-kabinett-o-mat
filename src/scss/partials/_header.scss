@@ -1,14 +1,6 @@
-#main {
-  display: block;
-  height: calc(100% - 19em);
-  margin: 2em;
-}
-
 #header {
   background: $white;
-  margin: 2em 2em 1em;
   padding: 1em;
-  height: 13em;
   -webkit-font-smoothing: antialiased;
 
   h1 {
@@ -42,28 +34,5 @@
     outline: none;
     float: right;
     height: 40px;
-  }
-}
-
-.embed {
-
-  body {
-    background: $white;
-  }
-
-  #header {
-    display: none;
-  }
-
-  #main {
-    height: 100%;
-    margin: 0;
-    float: none;
-    width: 100%;
-    padding: 0;
-  }
-
-  .hideable {
-    visibility: hidden;
   }
 }

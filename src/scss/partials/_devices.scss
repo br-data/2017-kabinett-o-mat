@@ -12,14 +12,6 @@
   a#home {
     display: none;
   }
-
-  #main {
-    height: calc(100% - 22em);
-  }
-
-  #header {
-    height: 16em;
-  }
 }
 
 @media (max-height: 640px) and (min-height: 560px) {
@@ -57,7 +49,6 @@
   }
 
   #main {
-    height: calc(100% - 14em);
     margin: 0;
     padding: 0;
   }
@@ -78,15 +69,6 @@
 }
 
 @media (max-width: 420px) {
-
-  #main {
-    height: calc(100% - 9em);
-  }
-
-  #header {
-    height: 9em;
-    margin: 0;
-  }
 
   #header p {
     display: none;

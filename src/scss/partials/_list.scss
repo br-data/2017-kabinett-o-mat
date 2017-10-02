@@ -72,29 +72,36 @@
     }
   }
 
-  .sturm:before {
-    content: "Sturm";
+  .cdu:before {
+    content: "CDU";
     font-weight: bold;
     line-height: 2.2em;
     vertical-align: top;
   }
 
-  .mittelfeld:before {
-    content: "Mittelfeld";
+  .csu:before {
+    content: "CSU";
     font-weight: bold;
     line-height: 2.2em;
     vertical-align: top;
   }
 
-  .abwehr:before {
-    content: "Abwehr";
+  .fdp:before {
+    content: "FDP";
     font-weight: bold;
     line-height: 2.2em;
     vertical-align: top;
   }
 
-  .tor:before {
-    content: "Tor";
+  .gruene:before {
+    content: "Grüne";
+    font-weight: bold;
+    line-height: 2.2em;
+    vertical-align: top;
+  }
+
+  .parteilos:before {
+    content: "Parteilos";
     font-weight: bold;
     line-height: 2.2em;
     vertical-align: top;

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: 'Open Sans';
   src: url("../font/OpenSans-Regular.eot?v=1.1.0");
@@ -73,14 +74,16 @@
 }
 
 html {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   background: #fff;
 }
 
 *,
 *:before,
 *:after {
-  box-sizing: inherit;
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
 }
 
 html,
@@ -90,7 +93,6 @@ body {
   font-size: .9em;
   height: 100%;
   margin: 0;
-  overflow: hidden;
   padding: 0;
 }
 
@@ -106,24 +108,19 @@ button,
   height: 30px;
   outline: none;
   text-decoration: none;
+  -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
 }
 
 body {
   background: #dbd9d3;
 }
 
-#main {
-  display: block;
-  height: calc(100% - 19em);
-  margin: 2em;
-}
-
 #header {
   background: #fff;
-  margin: 2em 2em 1em;
   padding: 1em;
-  height: 13em;
   -webkit-font-smoothing: antialiased;
 }
 #header h1 {
@@ -153,23 +150,6 @@ body {
   outline: none;
   float: right;
   height: 40px;
-}
-
-.embed body {
-  background: #fff;
-}
-.embed #header {
-  display: none;
-}
-.embed #main {
-  height: 100%;
-  margin: 0;
-  float: none;
-  width: 100%;
-  padding: 0;
-}
-.embed .hideable {
-  visibility: hidden;
 }
 
 nav {
@@ -219,10 +199,6 @@ nav {
 }
 
 #lineup {
-  background-image: url("../img/goal.png");
-  background-position: bottom;
-  background-repeat: no-repeat;
-  background-size: 100% auto;
   color: #fff;
   height: 90%;
   margin-top: 1em;
@@ -247,10 +223,12 @@ nav {
   width: 25%;
 }
 #lineup .player.active .icon {
-  box-shadow: 0 0 0 5px #0076c2;
+  -webkit-box-shadow: 0 0 0 5px #0076c2;
+          box-shadow: 0 0 0 5px #0076c2;
 }
 #lineup .player.drop-target .icon {
-  box-shadow: 0 0 0 5px #82cafa;
+  -webkit-box-shadow: 0 0 0 5px #82cafa;
+          box-shadow: 0 0 0 5px #82cafa;
 }
 #lineup .player .icon {
   background-color: #0076c2;
@@ -748,26 +726,32 @@ nav {
 #list li:hover {
   color: #0076c2;
 }
-#list .sturm:before {
-  content: "Sturm";
+#list .cdu:before {
+  content: "CDU";
   font-weight: bold;
   line-height: 2.2em;
   vertical-align: top;
 }
-#list .mittelfeld:before {
-  content: "Mittelfeld";
+#list .csu:before {
+  content: "CSU";
   font-weight: bold;
   line-height: 2.2em;
   vertical-align: top;
 }
-#list .abwehr:before {
-  content: "Abwehr";
+#list .fdp:before {
+  content: "FDP";
   font-weight: bold;
   line-height: 2.2em;
   vertical-align: top;
 }
-#list .tor:before {
-  content: "Tor";
+#list .gruene:before {
+  content: "Grüne";
+  font-weight: bold;
+  line-height: 2.2em;
+  vertical-align: top;
+}
+#list .parteilos:before {
+  content: "Parteilos";
   font-weight: bold;
   line-height: 2.2em;
   vertical-align: top;
@@ -811,6 +795,7 @@ nav {
   right: 0;
   width: 100%;
   background: none;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(255, 255, 255, 0)), color-stop(1%, rgba(255, 255, 255, 0.01)), color-stop(75%, white), to(white));
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.01) 1%, white 75%, white 100%);
 }
 
@@ -950,14 +935,6 @@ button:hover,
   a#home {
     display: none;
   }
-
-  #main {
-    height: calc(100% - 22em);
-  }
-
-  #header {
-    height: 16em;
-  }
 }
 @media (max-height: 640px) and (min-height: 560px) {
   #lineup .player .icon {
@@ -989,7 +966,6 @@ button:hover,
   }
 
   #main {
-    height: calc(100% - 14em);
     margin: 0;
     padding: 0;
   }
@@ -1009,15 +985,6 @@ button:hover,
   }
 }
 @media (max-width: 420px) {
-  #main {
-    height: calc(100% - 9em);
-  }
-
-  #header {
-    height: 9em;
-    margin: 0;
-  }
-
   #header p {
     display: none;
   }
@@ -1028,4 +995,5 @@ button:hover,
     height: 2em;
   }
 }
+
 /*# sourceMappingURL=main.css.map */

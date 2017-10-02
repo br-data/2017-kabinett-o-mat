@@ -22,17 +22,12 @@ var common = (function () {
     currentPlayers = players;
   }
 
-  // Converts an location hash string, ex. 1011x2021...
+  // Converts an location hash string, ex. 1011-2021...
   function teamToHash(arr) {
 
-    var result = [];
+    var result = arr.join('-');
 
-    for (var i = 0;  i < arr.length; i++) {
-
-      result.push(arr[i].join(''));
-    }
-
-    return result.join('-');
+    return result;
   }
 
   function convertLineup(str) {
@@ -62,22 +57,20 @@ var common = (function () {
   // Updates the info box HTML
   function updateInfo(playerId, infoBoxEl) {
 
-    if (playerId.indexOf('z')) {
+    var player = getPlayerData(playerId);
 
-      var player = getPlayerData(playerId);
+    while (infoBoxEl.firstChild) {
 
-      while (infoBoxEl.firstChild) {
-
-        infoBoxEl.removeChild(infoBoxEl.firstChild);
-      }
-
-      createElement('img', infoBoxEl, ['src', 'img/logos/' +
-        player.team_short + '.png'], ['alt', player.team]);
-      createElement('h3', infoBoxEl, ['textContent', player.name]);
-      createElement('p', infoBoxEl, ['textContent', player.team]);
-      createElement('p', infoBoxEl, ['textContent', player.geb_tag + ' in ' +
-        player.geb_ort + ', ' + player.reg_bezirk, infoBoxEl]);
+      infoBoxEl.removeChild(infoBoxEl.firstChild);
     }
+
+    // createElement('img', infoBoxEl, ['src', 'img/logos/' +
+    //   player.team_short + '.png'], ['alt', player.team]);
+    createElement('h3', infoBoxEl, ['textContent', player.name]);
+    createElement('p', infoBoxEl, ['textContent', player.party]);
+    createElement('p', infoBoxEl, ['textContent', player.position]);
+    // createElement('p', infoBoxEl, ['textContent', player.position + ' in ' +
+    //   player.geb_ort + ', ' + player.reg_bezirk, infoBoxEl]);
   }
 
   // Generates a random alphanumeric string, like a unique ID.

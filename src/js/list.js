@@ -38,39 +38,35 @@ var list = (function () {
 
     for (var i = 0; i < players.length; i++) {
 
-      // Players without position shouldn't appear in the list
-      if (players[i].pos) {
+      var index, playerElement;
 
-        var index, playerElement;
+      // Check if the position wrapper already exists
+      index = positions.indexOf(players[i].party);
 
-        // Check if the position wrapper already exists
-        index = positions.indexOf(players[i].pos);
+      //playerElement = createElement('li', null, ['textContent', players[i].name]);
+      playerElement = createElement('li', null,
+        ['textContent', players[i].name + ' ' + players[i].id],
+        ['className', 'draggable']);
+      playerElement.setAttribute('data-player', players[i].id);
+      playerElement.addEventListener('click', handlePlayerChange, false);
 
-        //playerElement = createElement('li', null, ['textContent', players[i].name]);
-        playerElement = createElement('li', null,
-          ['textContent', players[i].name],
-          ['className', 'draggable']);
-        playerElement.setAttribute('data-player', players[i].id);
-        playerElement.addEventListener('click', handlePlayerChange, false);
+      // If the position already exists, add the player ...
+      if (index > -1) {
 
-        // If the position already exists, add the player ...
-        if (index > -1) {
+        elements[index].appendChild(playerElement);
 
-          elements[index].appendChild(playerElement);
+      // ... else create a new position and add the player
+      } else {
 
-        // ... else create a new position and add the player
-        } else {
+        elements[index] = createElement('ul', null,
+          ['className', players[i].party.toLowerCase()]);
+        elements[index].appendChild(playerElement);
 
-          elements[index] = createElement('ul', null,
-            ['className', players[i].pos.toLowerCase()]);
-          elements[index].appendChild(playerElement);
+        // Add the position name to array
+        positions.push(players[i].party);
 
-          // Add the position name to array
-          positions.push(players[i].pos);
-
-          // Add the position wrapper element to array
-          elements.push(elements[index]);
-        }
+        // Add the position wrapper element to array
+        elements.push(elements[index]);
       }
     }
 
@@ -99,31 +95,14 @@ var list = (function () {
     var newPlayerId = newPlayerTarget.getAttribute('data-player');
     var oldPlayerId = oldPlayerTarget ? oldPlayerTarget.getAttribute('data-player') : null;
 
-    // Necessary to check if the new player is a goalkeeper
-    var playerIsGoalie = common.getPlayerData(newPlayerId.indexOf('z') ? newPlayerId : 'zz').pos === 'Tor';
-    var positionIsGoal = oldPlayerTarget ? oldPlayerTarget.parentNode.classList.contains('row-1') : null;
-
     if (newPlayerId && oldPlayerId) {
 
-      // Allow only goalkeepers in goal and  only field player in field...
-      if (positionIsGoal && playerIsGoalie || !positionIsGoal && !playerIsGoalie) {
+      updateTeamModel(newPlayerId, oldPlayerId);
+      updatePosition(newPlayerId, oldPlayerId);
+      updateList(newPlayerId, oldPlayerId);
 
-        updatePosition(newPlayerId, oldPlayerId);
-        updateTeamModel(newPlayerId, oldPlayerId);
-        updateList(newPlayerId, oldPlayerId);
-
-        common.updateInfo(newPlayerId, infoBox);
-        lineup.updateFormation();
-
-      // ... else show error feedback
-      } else {
-
-        oldPlayerTarget.classList.add('shake');
-        setTimeout(function () {
-          oldPlayerTarget.classList.remove('shake');
-        }, 300);
-      }
-
+      common.updateInfo(newPlayerId, infoBox);
+      lineup.updateFormation();
     } else {
 
       common.updateInfo(newPlayerId, infoBox);
@@ -167,11 +146,11 @@ var list = (function () {
     var newPlayerIcon = newPosition.getElementsByTagName('div')[0];
 
     newPosition.setAttribute('data-player', newPlayerId);
-    newPosition.getElementsByTagName('p')[0].textContent = newPlayer.name;
+    newPosition.getElementsByTagName('p')[0].textContent = newPlayer.name + ' ' + newPlayer.id;
 
-    newPlayerIcon.style.background = 'url(img/players/' +
-      (newPlayerId.indexOf('z') ? newPlayerId : 'zz') + '.jpg) center no-repeat';
-    newPlayerIcon.style['background-size'] = 'contain';
+    // newPlayerIcon.style.background = 'url(img/players/' +
+    //   (newPlayerId.indexOf('z') ? newPlayerId : 'zz') + '.jpg) center no-repeat';
+    // newPlayerIcon.style['background-size'] = 'contain';
 
     //@TODO Merge duplicate code
     if (oldPosition) {
@@ -182,9 +161,9 @@ var list = (function () {
       oldPosition.setAttribute('data-player', oldPlayerId);
       oldPosition.getElementsByTagName('p')[0].textContent = oldPlayer.name;
 
-      oldPlayerIcon.style.background = 'url(img/players/' +
-        (oldPlayerId.indexOf('z') ? oldPlayerId : 'zz') + '.jpg) center no-repeat';
-      oldPlayerIcon.style['background-size'] = 'contain';
+      // oldPlayerIcon.style.background = 'url(img/players/' +
+      //   (oldPlayerId.indexOf('z') ? oldPlayerId : 'zz') + '.jpg) center no-repeat';
+      // oldPlayerIcon.style['background-size'] = 'contain';
     }
   }
 
@@ -219,35 +198,29 @@ var list = (function () {
 
   function updateTeamModel(newPlayerId, oldPlayerId) {
 
-    var oldPlayerRow, oldPlayerIndex, newPlayerRow, newPlayerIndex;
+    var oldPlayerIndex, newPlayerIndex;
 
-    // Find player row and position (index) in multidimensional array
-    for (var i = 0; i < common.currentTeamModel.length; i++) {
+    // Find old player
+    if (common.currentTeamModel.indexOf(oldPlayerId) > -1) {
 
-      // Find old player
-      if (common.currentTeamModel[i].indexOf(oldPlayerId) > -1) {
+      oldPlayerIndex = common.currentTeamModel.indexOf(oldPlayerId);
+    }
 
-        oldPlayerRow = i;
-        oldPlayerIndex = common.currentTeamModel[i].indexOf(oldPlayerId);
-      }
+    // Find new player
+    if (common.currentTeamModel.indexOf(newPlayerId) > -1) {
 
-      // Find new player
-      if (common.currentTeamModel[i].indexOf(newPlayerId) > -1) {
-
-        newPlayerRow = i;
-        newPlayerIndex = common.currentTeamModel[i].indexOf(newPlayerId);
-      }
+      newPlayerIndex = common.currentTeamModel.indexOf(newPlayerId);
     }
 
     // Update player ID at position, if found
     if (oldPlayerIndex > -1) {
 
-      common.currentTeamModel[oldPlayerRow][oldPlayerIndex] = newPlayerId;
+      common.currentTeamModel[oldPlayerIndex] = newPlayerId;
     }
 
     if (newPlayerIndex > -1) {
 
-      common.currentTeamModel[newPlayerRow][newPlayerIndex] = oldPlayerId;
+      common.currentTeamModel[newPlayerIndex] = oldPlayerId;
     }
   }
 

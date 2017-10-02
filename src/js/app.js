@@ -12,7 +12,7 @@ var app = (function () {
   // @TODO Move to init.js
   function init() {
 
-    utils.getJSON('data/players.json', function (players) {
+    utils.getJSON('data/politicians.json', function (players) {
 
       common.setCurrentPlayers(players);
 
