@@ -7,14 +7,7 @@
   }
 }
 
-@media (max-width: 780px) {
-
-  a#home {
-    display: none;
-  }
-}
-
-@media (max-height: 640px) and (min-height: 560px) {
+@media (max-height: 640px) {
 
   #lineup .player .icon {
     width: 3em;
@@ -22,45 +15,7 @@
   }
 }
 
-@media (max-height: 560px) and (min-width: 560px) {
-
-  body {
-    overflow: auto;
-  }
-
-  #main {
-    height: 100%;
-  }
-}
-
 @media (max-width: 560px) {
-
-  button,
-  .button {
-    display: none;
-  }
-
-  #field {
-    width: 100%;
-  }
-
-  #sidebar {
-    display: none;
-  }
-
-  #main {
-    margin: 0;
-    padding: 0;
-  }
-
-  #header {
-    height: 14em;
-    margin: 0;
-  }
-
-  .disclaimer {
-    display: none;
-  }
 
   #lineup .player .icon {
     width: 3em;
@@ -70,12 +25,7 @@
 
 @media (max-width: 420px) {
 
-  #header p {
-    display: none;
-  }
-
   #lineup .player .icon {
-    background: $br-blue !important;
     width: 2em;
     height: 2em;
   }

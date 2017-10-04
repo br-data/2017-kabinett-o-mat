@@ -114,14 +114,14 @@ button,
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
 }
 
-body {
-  background: #dbd9d3;
+#main {
+  height: calc(100% - 80px);
+  overflow: hidden;
 }
 
 #header {
-  background: #fff;
+  height: 80px;
   padding: 1em;
-  -webkit-font-smoothing: antialiased;
 }
 #header h1 {
   font-size: 1.8em;
@@ -152,22 +152,20 @@ body {
   height: 40px;
 }
 
-nav {
-  height: 10%;
-  z-index: 30;
-}
-
 #field {
-  background: #6fb76e;
-  background-image: radial-gradient(ellipse at center, #87c65d 0%, #3b793a 100%);
-  display: inline-block;
+  width: calc(100% - 220px);
   height: 100%;
+  background: #6fb76e;
+  background-image: radial-gradient(ellipse at center, #fff 0%, #ccc 100%);
+  display: inline-block;
   padding: 1em 1em 0;
   text-align: center;
-  width: 75%;
   z-index: 10;
   position: relative;
   overflow: hidden;
+}
+#field nav {
+  z-index: 30;
 }
 #field form {
   display: inline-block;
@@ -199,22 +197,8 @@ nav {
 }
 
 #lineup {
-  color: #fff;
   height: 90%;
   margin-top: 1em;
-}
-#lineup.rows-4 .row {
-  height: 24%;
-}
-#lineup.rows-5 .row {
-  height: 19%;
-}
-#lineup .row {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  z-index: 20;
 }
 #lineup .player {
   cursor: pointer;
@@ -241,7 +225,6 @@ nav {
 #lineup .player .text {
   line-height: 1.2em;
   pointer-events: none;
-  text-shadow: 1px 1px 1px #262626, 1px -1px 1px #262626, -1px 1px 1px #262626, -1px -1px 1px #262626;
 }
 #lineup .player.shake {
   -webkit-animation-name: shake;
@@ -664,12 +647,11 @@ nav {
   }
 }
 #sidebar {
-  background: #fff;
+  width: 220px;
+  height: 100%;
   display: inline-block;
   float: right;
-  height: 100%;
   position: relative;
-  width: 25%;
   z-index: 40;
 }
 #sidebar .scrollable {
@@ -931,66 +913,20 @@ button:hover,
     height: 5em;
   }
 }
-@media (max-width: 780px) {
-  a#home {
-    display: none;
-  }
-}
-@media (max-height: 640px) and (min-height: 560px) {
+@media (max-height: 640px) {
   #lineup .player .icon {
     width: 3em;
     height: 3em;
   }
 }
-@media (max-height: 560px) and (min-width: 560px) {
-  body {
-    overflow: auto;
-  }
-
-  #main {
-    height: 100%;
-  }
-}
 @media (max-width: 560px) {
-  button,
-  .button {
-    display: none;
-  }
-
-  #field {
-    width: 100%;
-  }
-
-  #sidebar {
-    display: none;
-  }
-
-  #main {
-    margin: 0;
-    padding: 0;
-  }
-
-  #header {
-    height: 14em;
-    margin: 0;
-  }
-
-  .disclaimer {
-    display: none;
-  }
-
   #lineup .player .icon {
     width: 3em;
     height: 3em;
   }
 }
 @media (max-width: 420px) {
-  #header p {
-    display: none;
-  }
-
   #lineup .player .icon {
-    background: #0076c2 !important;
     width: 2em;
     height: 2em;
   }
