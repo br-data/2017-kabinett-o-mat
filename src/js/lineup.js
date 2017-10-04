@@ -6,10 +6,9 @@ var lineup = (function () {
   var $$ = utils.$$;
   var createElement = utils.createElement;
 
-  var formationSelect = $('formation');
-  var lineupElement = $('lineup');
-  var infoBox = $('info');
-  var field = $('field');
+  var lineupElement = $('#lineup');
+  var infoBox = $('#info');
+  var field = $('#field');
   var players = $$('.player');
 
   function init() {

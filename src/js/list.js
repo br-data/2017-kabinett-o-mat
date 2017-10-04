@@ -7,10 +7,10 @@ var list = (function () {
 
   var currentList;
 
-  var listSelect = $('list');
-  var playerFilter = $('filter');
-  var infoBox = $('info');
-  var lineupElement = $('lineup');
+  var listSelect = $('#list');
+  var playerFilter = $('#filter');
+  var infoBox = $('#info');
+  var lineupElement = $('#lineup');
 
   playerFilter.addEventListener('keydown', utils.preventEnter, false);
   playerFilter.addEventListener('keyup', handlePlayerSearch, false);

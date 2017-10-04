@@ -1,308 +1,308 @@
 [
- {
-   "id": "aa",
-   "name": "Angela Merkel",
-   "party": "CDU",
-   "position": "Bundeskanzlerin"
- },
- {
-   "id": "ab",
-   "name": "Wolfgang Schäuble",
-   "party": "CDU",
-   "position": "Bundesfinanzminister"
- },
- {
-   "id": "ac",
-   "name": "Ursula von der Leyen",
-   "party": "CDU",
-   "position": "Bundesverteidigungsministerin"
- },
- {
-   "id": "ad",
-   "name": "Peter Altmaier",
-   "party": "CDU",
-   "position": "Bundesminister für besondere Aufgaben (Kanzleramtschef)"
- },
- {
-   "id": "ae",
-   "name": "Thomas de Maizière",
-   "party": "CDU",
-   "position": "Bundesinnenminister"
- },
- {
-   "id": "af",
-   "name": "Hermann Gröhe",
-   "party": "CDU",
-   "position": "Bundesgesundheitsminister"
- },
- {
-   "id": "ag",
-   "name": "Volker Kauder",
-   "party": "CDU",
-   "position": "Vorsitzender der Unionsfraktion"
- },
- {
-   "id": "ah",
-   "name": "Johanna Wanka",
-   "party": "CDU",
-   "position": "Bundesbildungsministerin"
- },
- {
-   "id": "ai",
-   "name": "Ralph Brinkhaus",
-   "party": "CDU",
-   "position": "Fraktionsvize für Finanzen"
- },
- {
-   "id": "aj",
-   "name": "Julia Klöckner",
-   "party": "CDU",
-   "position": "CDU-Chefin in Rheinland-Pfalz"
- },
- {
-   "id": "ak",
-   "name": "Annegret Kramp-Karrenbauer",
-   "party": "CDU",
-   "position": "Ministerpräsidentin des Saarlandes"
- },
- {
-   "id": "al",
-   "name": "Volker Bouffier",
-   "party": "CDU",
-   "position": "Ministerpräsident Hessen"
- },
- {
-   "id": "am",
-   "name": "Armin Laschet",
-   "party": "CDU",
-   "position": "Ministerpräsident NRW"
- },
- {
-   "id": "an",
-   "name": "Jens Spahn",
-   "party": "CDU",
-   "position": "Parlamentarischer Staatssekretär Finanzen"
- },
- {
-   "id": "ao",
-   "name": "Jens Weidmann",
-   "party": "parteilos",
-   "position": "Bundesbankpräsident"
- },
- {
-   "id": "ap",
-   "name": "Karl-Theodor zu Guttenberg",
-   "party": "CSU",
-   "position": "Unternehmer"
- },
- {
-   "id": "aq",
-   "name": "Joachim Herrmann",
-   "party": "CSU",
-   "position": "Innenminister Bayern"
- },
- {
-   "id": "ar",
-   "name": "Andreas Scheuer",
-   "party": "CSU",
-   "position": "CSU-Generalsekretär"
- },
- {
-   "id": "as",
-   "name": "Hans-Peter Friedrich",
-   "party": "CSU",
-   "position": "stellvertretender Fraktionsvorsitzender"
- },
- {
-   "id": "at",
-   "name": "Manfred Weber",
-   "party": "CSU",
-   "position": "Fraktionsvorsitzender EVP im Europaparlament"
- },
- {
-   "id": "au",
-   "name": "Ilse Aigner",
-   "party": "CSU",
-   "position": "Wirtschaftsministerin in Bayern"
- },
- {
-   "id": "av",
-   "name": "Markus Söder",
-   "party": "CSU",
-   "position": "Finanzminister in Bayern"
- },
- {
-   "id": "aw",
-   "name": "Alexander Dobrindt",
-   "party": "CSU",
-   "position": "Bundesverkehrsminister"
- },
- {
-   "id": "ax",
-   "name": "Christian Schmidt",
-   "party": "CSU",
-   "position": "Bundesentwicklungsminister"
- },
- {
-   "id": "ay",
-   "name": "Horst Seehofer",
-   "party": "CSU",
-   "position": "Ministerpräsident Bayern"
- },
- {
-   "id": "az",
-   "name": "Gerd Müller",
-   "party": "CSU",
-   "position": "Bundesentwicklungsminister"
- },
- {
-   "id": "ba",
-   "name": "Christian Lindner",
-   "party": "FDP",
-   "position": "FDP-Spitzenkandidat"
- },
- {
-   "id": "bb",
-   "name": "Wolfgang Kubicki",
-   "party": "FDP",
-   "position": "Fraktionsvorsitzender der FDP in Schleswig-Holstein"
- },
- {
-   "id": "bc",
-   "name": "Alexander Graf Lambsdorff",
-   "party": "FDP",
-   "position": "Vizepräsident des Europaparlaments"
- },
- {
-   "id": "bd",
-   "name": "Nicola Beer",
-   "party": "FDP",
-   "position": "FDP-Generalsekretärin"
- },
- {
-   "id": "be",
-   "name": "Johannes Vogel",
-   "party": "FDP",
-   "position": "Generalsekretär NRW-FDP"
- },
- {
-   "id": "bf",
-   "name": "Katja Suding",
-   "party": "FDP",
-   "position": "Fraktionsvorsitzende der FDP in Hamburg"
- },
- {
-   "id": "bg",
-   "name": "Carl-Ludwig Thiele",
-   "party": "FDP",
-   "position": "Vorstandsmitglied Deutsche Bank"
- },
- {
-   "id": "bh",
-   "name": "Werner Hoyer",
-   "party": "FDP",
-   "position": "Präsident der Europäischen Investitionsbank"
- },
- {
-   "id": "bi",
-   "name": "Volker Wissing",
-   "party": "FDP",
-   "position": "Wirtschaftsminister Rheinland-Pfalz"
- },
- {
-   "id": "bj",
-   "name": "Hermann Otto Solms",
-   "party": "FDP",
-   "position": "FDP-Schatzmeister"
- },
- {
-   "id": "bk",
-   "name": "Cem Özdemir",
-   "party": "Gruene",
-   "position": "Parteivorsitzender"
- },
- {
-   "id": "bl",
-   "name": "Katrin Göring-Eckardt",
-   "party": "Gruene",
-   "position": "Fraktionsvorsitzende im Bundestag"
- },
- {
-   "id": "bm",
-   "name": "Anton Hofreiter",
-   "party": "Gruene",
-   "position": "Fraktionsvorsitzender im Bundestag"
- },
- {
-   "id": "bn",
-   "name": "Simone Peter",
-   "party": "Gruene",
-   "position": "Parteivorsitzende"
- },
- {
-   "id": "bo",
-   "name": "Omid Nouripour",
-   "party": "Gruene",
-   "position": "Außenpolitischer Sprecher der Grünenfraktion"
- },
- {
-   "id": "bp",
-   "name": "Ekin Deligöz",
-   "party": "Gruene",
-   "position": "MdB"
- },
- {
-   "id": "bq",
-   "name": "Claudia Roth",
-   "party": "Gruene",
-   "position": "MdB"
- },
- {
-   "id": "br",
-   "name": "Jürgen Trittin",
-   "party": "Gruene",
-   "position": "MdB"
- },
- {
-   "id": "bs",
-   "name": "Konstantin von Notz",
-   "party": "Gruene",
-   "position": "MdB"
- },
- {
-   "id": "bt",
-   "name": "Renate Künast",
-   "party": "Gruene",
-   "position": "MdB"
- },
- {
-   "id": "bu",
-   "name": "Ska Keller",
-   "party": "Gruene",
-   "position": "Vorsitzende Grünen-Fraktion im EU-Parlament"
- },
- {
-   "id": "bv",
-   "name": "Sven Giegold",
-   "party": "Gruene",
-   "position": "MdEP"
- },
- {
-   "id": "bw",
-   "name": "Rebecca Harms",
-   "party": "Gruene",
-   "position": "MdEP"
- },
- {
-   "id": "bx",
-   "name": "Winfried Kretschmann",
-   "party": "Gruene",
-   "position": "Ministerpräsident von Baden-Württemberg"
- },
- {
-   "id": "by",
-   "name": "Boris Palmer",
-   "party": "Gruene",
-   "position": "Bürgermeister von Tübingen"
- }
+  {
+    "id": "aa",
+    "name": "Angela Merkel",
+    "party": "CDU",
+    "position": "Bundeskanzlerin"
+  },
+  {
+    "id": "ab",
+    "name": "Wolfgang Schäuble",
+    "party": "CDU",
+    "position": "Bundesfinanzminister"
+  },
+  {
+    "id": "ac",
+    "name": "Ursula von der Leyen",
+    "party": "CDU",
+    "position": "Bundesverteidigungsministerin"
+  },
+  {
+    "id": "ad",
+    "name": "Peter Altmaier",
+    "party": "CDU",
+    "position": "Bundesminister für besondere Aufgaben (Kanzleramtschef)"
+  },
+  {
+    "id": "ae",
+    "name": "Thomas de Maizière",
+    "party": "CDU",
+    "position": "Bundesinnenminister"
+  },
+  {
+    "id": "af",
+    "name": "Hermann Gröhe",
+    "party": "CDU",
+    "position": "Bundesgesundheitsminister"
+  },
+  {
+    "id": "ag",
+    "name": "Volker Kauder",
+    "party": "CDU",
+    "position": "Vorsitzender der Unionsfraktion"
+  },
+  {
+    "id": "ah",
+    "name": "Johanna Wanka",
+    "party": "CDU",
+    "position": "Bundesbildungsministerin"
+  },
+  {
+    "id": "ai",
+    "name": "Ralph Brinkhaus",
+    "party": "CDU",
+    "position": "Fraktionsvize für Finanzen"
+  },
+  {
+    "id": "aj",
+    "name": "Julia Klöckner",
+    "party": "CDU",
+    "position": "CDU-Chefin in Rheinland-Pfalz"
+  },
+  {
+    "id": "ak",
+    "name": "Annegret Kramp-Karrenbauer",
+    "party": "CDU",
+    "position": "Ministerpräsidentin des Saarlandes"
+  },
+  {
+    "id": "al",
+    "name": "Volker Bouffier",
+    "party": "CDU",
+    "position": "Ministerpräsident Hessen"
+  },
+  {
+    "id": "am",
+    "name": "Armin Laschet",
+    "party": "CDU",
+    "position": "Ministerpräsident NRW"
+  },
+  {
+    "id": "an",
+    "name": "Jens Spahn",
+    "party": "CDU",
+    "position": "Parlamentarischer Staatssekretär Finanzen"
+  },
+  {
+    "id": "ao",
+    "name": "Jens Weidmann",
+    "party": "parteilos",
+    "position": "Bundesbankpräsident"
+  },
+  {
+    "id": "ap",
+    "name": "Karl-Theodor zu Guttenberg",
+    "party": "CSU",
+    "position": "Unternehmer"
+  },
+  {
+    "id": "aq",
+    "name": "Joachim Herrmann",
+    "party": "CSU",
+    "position": "Innenminister Bayern"
+  },
+  {
+    "id": "ar",
+    "name": "Andreas Scheuer",
+    "party": "CSU",
+    "position": "CSU-Generalsekretär"
+  },
+  {
+    "id": "as",
+    "name": "Hans-Peter Friedrich",
+    "party": "CSU",
+    "position": "stellvertretender Fraktionsvorsitzender"
+  },
+  {
+    "id": "at",
+    "name": "Manfred Weber",
+    "party": "CSU",
+    "position": "Fraktionsvorsitzender EVP im Europaparlament"
+  },
+  {
+    "id": "au",
+    "name": "Ilse Aigner",
+    "party": "CSU",
+    "position": "Wirtschaftsministerin in Bayern"
+  },
+  {
+    "id": "av",
+    "name": "Markus Söder",
+    "party": "CSU",
+    "position": "Finanzminister in Bayern"
+  },
+  {
+    "id": "aw",
+    "name": "Alexander Dobrindt",
+    "party": "CSU",
+    "position": "Bundesverkehrsminister"
+  },
+  {
+    "id": "ax",
+    "name": "Christian Schmidt",
+    "party": "CSU",
+    "position": "Bundesentwicklungsminister"
+  },
+  {
+    "id": "ay",
+    "name": "Horst Seehofer",
+    "party": "CSU",
+    "position": "Ministerpräsident Bayern"
+  },
+  {
+    "id": "az",
+    "name": "Gerd Müller",
+    "party": "CSU",
+    "position": "Bundesentwicklungsminister"
+  },
+  {
+    "id": "ba",
+    "name": "Christian Lindner",
+    "party": "FDP",
+    "position": "FDP-Spitzenkandidat"
+  },
+  {
+    "id": "bb",
+    "name": "Wolfgang Kubicki",
+    "party": "FDP",
+    "position": "Fraktionsvorsitzender der FDP in Schleswig-Holstein"
+  },
+  {
+    "id": "bc",
+    "name": "Alexander Graf Lambsdorff",
+    "party": "FDP",
+    "position": "Vizepräsident des Europaparlaments"
+  },
+  {
+    "id": "bd",
+    "name": "Nicola Beer",
+    "party": "FDP",
+    "position": "FDP-Generalsekretärin"
+  },
+  {
+    "id": "be",
+    "name": "Johannes Vogel",
+    "party": "FDP",
+    "position": "Generalsekretär NRW-FDP"
+  },
+  {
+    "id": "bf",
+    "name": "Katja Suding",
+    "party": "FDP",
+    "position": "Fraktionsvorsitzende der FDP in Hamburg"
+  },
+  {
+    "id": "bg",
+    "name": "Carl-Ludwig Thiele",
+    "party": "FDP",
+    "position": "Vorstandsmitglied Deutsche Bank"
+  },
+  {
+    "id": "bh",
+    "name": "Werner Hoyer",
+    "party": "FDP",
+    "position": "Präsident der Europäischen Investitionsbank"
+  },
+  {
+    "id": "bi",
+    "name": "Volker Wissing",
+    "party": "FDP",
+    "position": "Wirtschaftsminister Rheinland-Pfalz"
+  },
+  {
+    "id": "bj",
+    "name": "Hermann Otto Solms",
+    "party": "FDP",
+    "position": "FDP-Schatzmeister"
+  },
+  {
+    "id": "bk",
+    "name": "Cem Özdemir",
+    "party": "Gruene",
+    "position": "Parteivorsitzender"
+  },
+  {
+    "id": "bl",
+    "name": "Katrin Göring-Eckardt",
+    "party": "Gruene",
+    "position": "Fraktionsvorsitzende im Bundestag"
+  },
+  {
+    "id": "bm",
+    "name": "Anton Hofreiter",
+    "party": "Gruene",
+    "position": "Fraktionsvorsitzender im Bundestag"
+  },
+  {
+    "id": "bn",
+    "name": "Simone Peter",
+    "party": "Gruene",
+    "position": "Parteivorsitzende"
+  },
+  {
+    "id": "bo",
+    "name": "Omid Nouripour",
+    "party": "Gruene",
+    "position": "Außenpolitischer Sprecher der Grünenfraktion"
+  },
+  {
+    "id": "bp",
+    "name": "Ekin Deligöz",
+    "party": "Gruene",
+    "position": "MdB"
+  },
+  {
+    "id": "bq",
+    "name": "Claudia Roth",
+    "party": "Gruene",
+    "position": "MdB"
+  },
+  {
+    "id": "br",
+    "name": "Jürgen Trittin",
+    "party": "Gruene",
+    "position": "MdB"
+  },
+  {
+    "id": "bs",
+    "name": "Konstantin von Notz",
+    "party": "Gruene",
+    "position": "MdB"
+  },
+  {
+    "id": "bt",
+    "name": "Renate Künast",
+    "party": "Gruene",
+    "position": "MdB"
+  },
+  {
+    "id": "bu",
+    "name": "Ska Keller",
+    "party": "Gruene",
+    "position": "Vorsitzende Grünen-Fraktion im EU-Parlament"
+  },
+  {
+    "id": "bv",
+    "name": "Sven Giegold",
+    "party": "Gruene",
+    "position": "MdEP"
+  },
+  {
+    "id": "bw",
+    "name": "Rebecca Harms",
+    "party": "Gruene",
+    "position": "MdEP"
+  },
+  {
+    "id": "bx",
+    "name": "Winfried Kretschmann",
+    "party": "Gruene",
+    "position": "Ministerpräsident von Baden-Württemberg"
+  },
+  {
+    "id": "by",
+    "name": "Boris Palmer",
+    "party": "Gruene",
+    "position": "Bürgermeister von Tübingen"
+  }
 ]

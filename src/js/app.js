@@ -4,43 +4,49 @@ var app = (function () {
 
   var $ = utils.$;
 
-  var modal = $('modal');
-  var shareButton = $('share');
-  var closeButton = $('close');
-  var directLink = $('direct');
+  var modal = $('#modal');
+  var shareButton = $('#share');
+  var closeButton = $('#close');
+  var directLink = $('#direct');
 
   // @TODO Move to init.js
   function init() {
 
-    utils.getJSON('data/politicians.json', function (players) {
+    utils.getJSON('data/politicians.json', function (politicians) {
 
-      common.setCurrentPlayers(players);
+      utils.getJSON('data/positions.json', function (positions) {
 
-      // Check if a linup is predefined in the URL hash, eg #1112x
-      if (location.hash) {
-
-        // Remove query string
-        common.currentTeamModel = common.convertLineup(location.hash.split('?')[0]);
-      } else {
-
-        common.currentTeamModel = config.defaultTeam;
-      }
-
-      // Check if the url parameter embed is set
-      if (utils.getUrlParam('embed')) {
-
-        document.body.classList.add('embed');
-      }
-
-      // Inital drawing
-      lineup.init();
-      list.init(players);
-      dragging.init();
-
-      // Register the event handlers
-      shareButton.addEventListener('click', handleShare, false);
-      closeButton.addEventListener('click', handleClose, false);
+        setup(politicians, positions)
+      });
     });
+  }
+
+  function setup(players, positions) {
+
+    common.setCurrentPlayers(players);
+
+
+    // Check if a linup is predefined in the URL hash, eg #1112x
+    if (location.hash) {
+
+      // Remove query string
+      common.currentTeamModel = common.convertLineup(location.hash.split('?')[0]);
+    } else {
+
+      common.currentTeamModel = config.defaultTeam;
+    }
+
+    console.log(common.currentPlayers);
+    console.log(common.currentTeamModel);
+
+    // Inital drawing
+    lineup.init();
+    list.init(players);
+    dragging.init();
+
+    // Register the event handlers
+    shareButton.addEventListener('click', handleShare, false);
+    closeButton.addEventListener('click', handleClose, false);
   }
 
   function handleShare() {

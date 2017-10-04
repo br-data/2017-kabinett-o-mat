@@ -1,0 +1,18 @@
+[
+  { "name": "Kanzlerin", "id": "kk", "current": null },
+  { "name": "Bundeskanzleramt", "id": "ka", "current": null },
+  { "name": "Arbeit und Soziales", "id": "bmas", "current": null },
+  { "name": "Auswärtiges Amt", "id": "aa", "current": null },
+  { "name": "Bildung und Forschung", "id": "bmbf", "current": null },
+  { "name": "Landwirtschaft", "id": "bmel", "current": null },
+  { "name": "Familie", "id": "bmfsfj", "current": null },
+  { "name": "Finanzen", "id": "bmf", "current": null },
+  { "name": "Gesundheit", "id": "bmg", "current": null },
+  { "name": "Inneres", "id": "bmi", "current": null },
+  { "name": "Justiz", "id": "bmjv", "current": null },
+  { "name": "Umwelt", "id": "bmub", "current": null },
+  { "name": "Verkehr", "id": "bmvi", "current": null },
+  { "name": "Verteidigung", "id": "bmvg", "current": null },
+  { "name": "Wirtschaft", "id": "bmwi", "current": null },
+  { "name": "Entwicklungshilfe", "id": "bmz", "current": null }
+]

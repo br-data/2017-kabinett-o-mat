@@ -10,7 +10,7 @@ var utils = (function () {
 
       if (typeof elementOrId === 'string') {
 
-        result = document.getElementById(elementOrId);
+        result = document.querySelector(elementOrId);
         return $(result);
       } else {
 
