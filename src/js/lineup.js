@@ -6,55 +6,39 @@ var lineup = (function () {
   var $$ = utils.$$;
   var createElement = utils.createElement;
 
-  var lineupElement = $('#lineup');
   var infoBox = $('#info');
   var field = $('#field');
   var players = $$('.player');
 
   function init() {
 
-    showLineup(common.currentTeamModel);
+    update();
     updateFormation();
 
     field.addEventListener('click', handlePositionDeselect, false);
   }
 
-  function showLineup(model) {
+  function update() {
 
-    // Clear current team element
-    // http://jsperf.com/innerhtml-vs-removechild/47
-    while (lineupElement.firstChild) {
+    var positions = $$('.position');
+    var departments = common.getDepartments();
 
-      lineupElement.removeChild(lineupElement.firstChild);
-    }
+    positions.forEach(function (pos) {
 
-    for (var i = 0; i < model.length; i++) {
+      var icon = pos.querySelector('.icon');
+      var text = pos.querySelector('.politician');
 
-      // Add players, line by line
-      var positionElement, playerIcon, playerName;
-      var player = common.getPlayerData(model[i]) || common.getPlayerData('zz');
+      var depId = pos.getAttribute('data-department')
+      var polId = pos.getAttribute('data-politician')
 
-      positionElement = createElement('div', null,['className', 'dropzone changeable player']);
-      positionElement.setAttribute('data-player', model[i]);
-      positionElement.addEventListener('click', handlePositionSelect, false);
+      var dep = common.getDepartment(depId)
+      var pol = common.getPolitician(dep.politician)
 
-      playerIcon = createElement('div', null, ['className', 'icon']);
-      // playerIcon.style.background = 'url(img/players/' +
-      //   (model[i][j].indexOf('z') ? model[i][j] : 'zz') +
-      //   '.jpg) center no-repeat';
-      playerIcon.style['background-size'] = 'contain';
+      icon.src = dep.politician ? 'img/politicians/aa.jpg' : 'img/departments/dep.png';
+      text.textContent = dep.politician ? pol.name : 'zu besetzen';
 
-      playerName = createElement('p', null,
-        ['className', 'text'], ['textContent', player.name + ' ' + player.id]);
-
-      positionElement.appendChild(playerIcon);
-      positionElement.appendChild(playerName);
-      lineupElement.appendChild(positionElement);
-
-      lineupElement.appendChild(positionElement);
-    }
-
-    players = $$('.player');
+      pos.setAttribute('data-politician', pol.id || '');
+    })
   }
 
   function updateFormation() {
@@ -65,7 +49,7 @@ var lineup = (function () {
   function handleFormationChange() {
 
     updateFormation();
-    showLineup(common.currentTeamModel);
+    update(common.currentTeamModel);
   }
 
   function handlePositionSelect(e) {
@@ -129,7 +113,7 @@ var lineup = (function () {
   return {
 
     init: init,
-    showLineup: showLineup,
+    update: update,
     handlePositionSelect: handlePositionSelect,
     updateFormation: updateFormation
   };

@@ -18,12 +18,16 @@ var list = (function () {
 
   function init(players) {
 
-    showList(players);
+    showList();
     updateList();
   }
 
   // The input object is structured like a dictionary
-  function showList(players) {
+  function showList() {
+
+    var players = common.getPoliticians();
+
+    console.log(players);
 
     var positions = [];
     var elements = [];
@@ -47,7 +51,7 @@ var list = (function () {
       playerElement = createElement('li', null,
         ['textContent', players[i].name + ' ' + players[i].id],
         ['className', 'draggable']);
-      playerElement.setAttribute('data-player', players[i].id);
+      playerElement.setAttribute('data-politician', players[i].id);
       playerElement.addEventListener('click', handlePlayerChange, false);
 
       // If the position already exists, add the player ...
@@ -83,7 +87,7 @@ var list = (function () {
       listSelect.appendChild(elements[i]);
     }
 
-    currentList = listSelect.querySelectorAll('[data-player]');
+    currentList = listSelect.querySelectorAll('[data-politician]');
   }
 
   // Change the player. The elements newPlayer and oldPlayer are optional.
@@ -92,17 +96,22 @@ var list = (function () {
     var newPlayerTarget = e.relatedTarget || e.target;
     var oldPlayerTarget = oldPlayer || common.currentPosition;
 
-    var newPlayerId = newPlayerTarget.getAttribute('data-player');
-    var oldPlayerId = oldPlayerTarget ? oldPlayerTarget.getAttribute('data-player') : null;
+    console.log(newPlayerTarget, oldPlayerTarget);
+
+    var newPlayerId = newPlayerTarget.getAttribute('data-politician');
+    var oldPlayerId = oldPlayerTarget ? oldPlayerTarget.getAttribute('data-department') : null;
+
+    console.log(newPlayerId, oldPlayerId);
 
     if (newPlayerId && oldPlayerId) {
 
-      updateTeamModel(newPlayerId, oldPlayerId);
-      updatePosition(newPlayerId, oldPlayerId);
       updateList(newPlayerId, oldPlayerId);
 
+      var dep = common.getDepartment(oldPlayerId)
+      dep.politician = newPlayerId;
+
+      lineup.update()
       common.updateInfo(newPlayerId, infoBox);
-      lineup.updateFormation();
     } else {
 
       common.updateInfo(newPlayerId, infoBox);
@@ -136,37 +145,6 @@ var list = (function () {
     }
   }
 
-  //@TODO Refactor
-  function updatePosition(newPlayerId, oldPlayerId) {
-
-    var newPosition = common.currentPosition;
-    var oldPosition = getPlayerElement(newPlayerId);
-
-    var newPlayer = common.getPlayerData(newPlayerId.indexOf('z') ? newPlayerId : 'zz');
-    var newPlayerIcon = newPosition.getElementsByTagName('div')[0];
-
-    newPosition.setAttribute('data-player', newPlayerId);
-    newPosition.getElementsByTagName('p')[0].textContent = newPlayer.name + ' ' + newPlayer.id;
-
-    // newPlayerIcon.style.background = 'url(img/players/' +
-    //   (newPlayerId.indexOf('z') ? newPlayerId : 'zz') + '.jpg) center no-repeat';
-    // newPlayerIcon.style['background-size'] = 'contain';
-
-    //@TODO Merge duplicate code
-    if (oldPosition) {
-
-      var oldPlayer = common.getPlayerData(oldPlayerId.indexOf('z') ? oldPlayerId : 'zz');
-      var oldPlayerIcon = oldPosition.getElementsByTagName('div')[0];
-
-      oldPosition.setAttribute('data-player', oldPlayerId);
-      oldPosition.getElementsByTagName('p')[0].textContent = oldPlayer.name;
-
-      // oldPlayerIcon.style.background = 'url(img/players/' +
-      //   (oldPlayerId.indexOf('z') ? oldPlayerId : 'zz') + '.jpg) center no-repeat';
-      // oldPlayerIcon.style['background-size'] = 'contain';
-    }
-  }
-
   // Highlight the currently selected players
   function updateList() {
 
@@ -175,7 +153,7 @@ var list = (function () {
     // Select all players which are currently picked
     for (var i = 0; i < currentList.length; i++) {
 
-      var currentId = currentList[i].getAttribute('data-player');
+      var currentId = currentList[i].getAttribute('data-politician');
 
       for (var j = 0; j < common.currentTeamModel.length; j++) {
 
@@ -226,11 +204,11 @@ var list = (function () {
 
   function getPlayerElement(playerId) {
 
-    var players = lineupElement.querySelectorAll('[data-player]');
+    var players = lineupElement.querySelectorAll('[data-politician]');
 
     for (var i = 0; i < players.length; i++) {
 
-      if (players[i].getAttribute('data-player') === playerId) {
+      if (players[i].getAttribute('data-politician') === playerId) {
 
         return players[i];
       }

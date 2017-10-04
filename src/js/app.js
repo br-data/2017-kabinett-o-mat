@@ -14,17 +14,17 @@ var app = (function () {
 
     utils.getJSON('data/politicians.json', function (politicians) {
 
-      utils.getJSON('data/positions.json', function (positions) {
+      utils.getJSON('data/departments.json', function (departments) {
 
-        setup(politicians, positions)
+        setup(politicians, departments)
       });
     });
   }
 
-  function setup(players, positions) {
+  function setup(politicians, departments) {
 
-    common.setCurrentPlayers(players);
-
+    common.setPoliticians(politicians);
+    common.setDepartments(departments);
 
     // Check if a linup is predefined in the URL hash, eg #1112x
     if (location.hash) {
@@ -36,12 +36,9 @@ var app = (function () {
       common.currentTeamModel = config.defaultTeam;
     }
 
-    console.log(common.currentPlayers);
-    console.log(common.currentTeamModel);
-
     // Inital drawing
     lineup.init();
-    list.init(players);
+    list.init();
     dragging.init();
 
     // Register the event handlers

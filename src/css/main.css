@@ -155,7 +155,7 @@ button,
 #field {
   width: calc(100% - 220px);
   height: 100%;
-  background: #6fb76e;
+  background: #ddd;
   background-image: radial-gradient(ellipse at center, #fff 0%, #ccc 100%);
   display: inline-block;
   padding: 1em 1em 0;
@@ -198,23 +198,28 @@ button,
 
 #lineup {
   height: 90%;
-  margin-top: 1em;
+  margin-top: 50px;
 }
-#lineup .player {
+#lineup .position {
+  width: 150px;
   cursor: pointer;
   display: inline-block;
   vertical-align: top;
-  width: 25%;
+  margin: 1em;
 }
-#lineup .player.active .icon {
+#lineup .position p {
+  margin: 0;
+  pointer-events: none;
+}
+#lineup .position.active .icon {
   -webkit-box-shadow: 0 0 0 5px #0076c2;
           box-shadow: 0 0 0 5px #0076c2;
 }
-#lineup .player.drop-target .icon {
+#lineup .position.drop-target .icon {
   -webkit-box-shadow: 0 0 0 5px #82cafa;
           box-shadow: 0 0 0 5px #82cafa;
 }
-#lineup .player .icon {
+#lineup .position .icon {
   background-color: #0076c2;
   border-radius: 50%;
   height: 4em;
@@ -222,11 +227,7 @@ button,
   pointer-events: none;
   width: 4em;
 }
-#lineup .player .text {
-  line-height: 1.2em;
-  pointer-events: none;
-}
-#lineup .player.shake {
+#lineup .position.shake {
   -webkit-animation-name: shake;
           animation-name: shake;
   -webkit-animation-duration: 200ms;

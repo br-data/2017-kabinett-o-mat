@@ -26,6 +26,7 @@
   <!--<![endif]-->
 
     <div id="fallback">
+
       <p>Der von Ihnen verwendete Browser ist veraltet. Damit Sie diese Anwendung nutzten können, aktualisieren Sie bitte Ihren Browser. Ein aktueller Browser verbessert die Geschwindigkeit mit der Webseiten dargestellt werden und schützt Sie besser vor Betrug, Viren und Datendiebstahl.</p>
 
       <p>Hier finden Sie mehr Informationen darüber, wie Sie Ihren Browser aktualisieren können: <a href="https://browser-update.org/de/update.html">https://browser-update.org/de/update.html</a></p>
@@ -41,7 +42,6 @@
         <em>Wer wird Minister?</em>
         Kabinett-O-Mat
       </h1>
-
     </header>
 
     <article id="main">
@@ -57,10 +57,91 @@
           <button id="share">
             <i class="icon-share small"></i> Teilen
           </button>
-
         </nav>
 
-        <div id="lineup"></div>
+        <div id="lineup">
+
+          <div class="dropzone changeable position" data-department="kk" data-player="">
+            <p class="department">Kanzlerin</p>
+            <img class="icon" src="img/departments/dep.png">
+            <p class="politician">zu besetzen</p>
+          </div>
+          <div class="dropzone changeable position" data-department="ka" data-player="">
+            <p class="department">Bundeskanzleramt</p>
+            <img class="icon" src="img/departments/dep.png">
+            <p class="politician">zu besetzen</p>
+          </div>
+          <div class="dropzone changeable position" data-department="bmas" data-player="">
+            <p class="department">Arbeit und Soziales</p>
+            <img class="icon" src="img/departments/dep.png">
+            <p class="politician">zu besetzen</p>
+          </div>
+          <div class="dropzone changeable position" data-department="aa" data-player="">
+            <p class="department">Auswärtiges Amt</p>
+            <img class="icon" src="img/departments/dep.png">
+            <p class="politician">zu besetzen</p>
+          </div>
+          <div class="dropzone changeable position" data-department="bmbf" data-player="">
+            <p class="department">Bildung und Forschung</p>
+            <img class="icon" src="img/departments/dep.png">
+            <p class="politician">zu besetzen</p>
+          </div>
+          <div class="dropzone changeable position" data-department="bmel" data-player="">
+            <p class="department">Landwirtschaft</p>
+            <img class="icon" src="img/departments/dep.png">
+            <p class="politician">zu besetzen</p>
+          </div>
+          <div class="dropzone changeable position" data-department="bmfsfj" data-player="">
+            <p class="department">Familie</p>
+            <img class="icon" src="img/departments/dep.png">
+            <p class="politician">zu besetzen</p>
+          </div>
+          <div class="dropzone changeable position" data-department="bmf" data-player="">
+            <p class="department">Finanzen</p>
+            <img class="icon" src="img/departments/dep.png">
+            <p class="politician">zu besetzen</p>
+          </div>
+          <div class="dropzone changeable position" data-department="bmg" data-player="">
+            <p class="department">Gesundheit</p>
+            <img class="icon" src="img/departments/dep.png">
+            <p class="politician">zu besetzen</p>
+          </div>
+          <div class="dropzone changeable position" data-department="bmi" data-player="">
+            <p class="department">Inneres</p>
+            <img class="icon" src="img/departments/dep.png">
+            <p class="politician">zu besetzen</p>
+          </div>
+          <div class="dropzone changeable position" data-department="bmjv" data-player="">
+            <p class="department">Justiz</p>
+            <img class="icon" src="img/departments/dep.png">
+            <p class="politician">zu besetzen</p>
+          </div>
+          <div class="dropzone changeable position" data-department="bmub" data-player="">
+            <p class="department">Umwelt</p>
+            <img class="icon" src="img/departments/dep.png">
+            <p class="politician">zu besetzen</p>
+          </div>
+          <div class="dropzone changeable position" data-department="bmvi" data-player="">
+            <p class="department">Verkehr</p>
+            <img class="icon" src="img/departments/dep.png">
+            <p class="politician">zu besetzen</p>
+          </div>
+          <div class="dropzone changeable position" data-department="bmvg" data-player="">
+            <p class="department">Verteidigung</p>
+            <img class="icon" src="img/departments/dep.png">
+            <p class="politician">zu besetzen</p>
+          </div>
+          <div class="dropzone changeable position" data-department="bmwi" data-player="">
+            <p class="department">Wirtschaft</p>
+            <img class="icon" src="img/departments/dep.png">
+            <p class="politician">zu besetzen</p>
+          </div>
+          <div class="dropzone changeable position" data-department="bmz" data-player="">
+            <p class="department">Entwicklungshilfe</p>
+            <img class="icon" src="img/departments/dep.png">
+            <p class="politician">zu besetzen</p>
+          </div>
+        </div>
 
         <section id="modal">
 
@@ -97,9 +178,7 @@
           <p>&nbsp;</p>
 
           <p>Unsere Datenschutzerklärung finden Sie <a href="http://www.br.de/footernavi/bayrischer_rundfunk/datenschutz/index.html" target="_blank">hier.</a></p>
-
         </section>
-
       </section>
 
       <aside id="sidebar">
@@ -117,11 +196,8 @@
           <section id="info">
             <p>Wählen Sie einen Spieler aus, um mehr über ihn zu erfahren. Ziehen Sie einen Spieler auf eine Position, um diese zu besetzen.</p>
           </section>
-
         </section>
-
       </aside>
-
     </article>
 
     <!-- build:js js/lib/classList.min.js -->
@@ -149,7 +225,5 @@
     <script type="text/javascript">
       app.init();
     </script>
-
   </body>
-
 </html>

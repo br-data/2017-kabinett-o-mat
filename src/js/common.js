@@ -4,22 +4,48 @@ var common = (function () {
 
   var createElement = utils.createElement;
 
+  var politicians;
+  var departments;
+
+
   var currentTeamModel;
-  var currentPlayers;
   var currentFormation;
   var currentPosition;
 
-  function getPlayerData(playerId) {
+  function getPolitician(id) {
 
-    return currentPlayers.filter(function (obj) {
+    return politicians.filter(function (pol) {
 
-      return obj.id === playerId;
+      return pol.id === id;
     })[0] || false;
   }
 
-  function setCurrentPlayers(players) {
+  function getDepartment(id) {
 
-    currentPlayers = players;
+    return departments.filter(function (dep) {
+
+      return dep.id === id;
+    })[0] || false;
+  }
+
+  function setPoliticians(array) {
+
+    politicians = array;
+  }
+
+  function setDepartments(array) {
+
+    departments = array;
+  }
+
+  function getPoliticians(array) {
+
+    return politicians;
+  }
+
+  function getDepartments(array) {
+
+    return departments;
   }
 
   // Converts an location hash string, ex. 1011-2021...
@@ -55,9 +81,9 @@ var common = (function () {
   }
 
   // Updates the info box HTML
-  function updateInfo(playerId, infoBoxEl) {
+  function updateInfo(polId, infoBoxEl) {
 
-    var player = getPlayerData(playerId);
+    var politician = getPolitician(polId);
 
     while (infoBoxEl.firstChild) {
 
@@ -65,12 +91,12 @@ var common = (function () {
     }
 
     // createElement('img', infoBoxEl, ['src', 'img/logos/' +
-    //   player.team_short + '.png'], ['alt', player.team]);
-    createElement('h3', infoBoxEl, ['textContent', player.name]);
-    createElement('p', infoBoxEl, ['textContent', player.party]);
-    createElement('p', infoBoxEl, ['textContent', player.position]);
-    // createElement('p', infoBoxEl, ['textContent', player.position + ' in ' +
-    //   player.geb_ort + ', ' + player.reg_bezirk, infoBoxEl]);
+    //   politician.team_short + '.png'], ['alt', politician.team]);
+    createElement('h3', infoBoxEl, ['textContent', politician.name]);
+    createElement('p', infoBoxEl, ['textContent', politician.party]);
+    createElement('p', infoBoxEl, ['textContent', politician.position]);
+    // createElement('p', infoBoxEl, ['textContent', politician.position + ' in ' +
+    //   politician.geb_ort + ', ' + politician.reg_bezirk, infoBoxEl]);
   }
 
   // Generates a random alphanumeric string, like a unique ID.
@@ -88,13 +114,18 @@ var common = (function () {
   }
 
   return {
+    setPoliticians: setPoliticians,
+    setDepartments: setDepartments,
+    getPoliticians: getPoliticians,
+    getDepartments: getDepartments,
+
+    getDepartment: getDepartment,
+    getPolitician: getPolitician,
+
     currentTeamModel: currentTeamModel,
-    currentPlayers: currentPlayers,
     currentFormation: currentFormation,
     currentPosition: currentPosition,
 
-    getPlayerData: getPlayerData,
-    setCurrentPlayers: setCurrentPlayers,
     teamToHash: teamToHash,
     convertLineup: convertLineup,
     updateInfo: updateInfo,
