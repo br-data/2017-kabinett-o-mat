@@ -201,31 +201,37 @@ button,
   margin-top: 50px;
 }
 #lineup .position {
-  width: 150px;
+  width: 145px;
   cursor: pointer;
   display: inline-block;
   vertical-align: top;
-  margin: 1em;
+  margin: 1em 1em 3em;
+  position: relative;
 }
 #lineup .position p {
-  margin: 0;
   pointer-events: none;
+  height: 24px;
+  margin: 0;
 }
-#lineup .position.active .icon {
-  -webkit-box-shadow: 0 0 0 5px #0076c2;
-          box-shadow: 0 0 0 5px #0076c2;
-}
-#lineup .position.drop-target .icon {
-  -webkit-box-shadow: 0 0 0 5px #82cafa;
-          box-shadow: 0 0 0 5px #82cafa;
+#lineup .position .politician {
+  position: absolute;
+  top: 24px;
+  left: 0;
+  right: 0;
 }
 #lineup .position .icon {
-  background-color: #0076c2;
-  border-radius: 50%;
-  height: 4em;
-  margin: 0 auto;
-  pointer-events: none;
   width: 4em;
+  height: 4em;
+  border-radius: 50%;
+  pointer-events: none;
+}
+#lineup .position.drop-target .icon {
+  -webkit-box-shadow: 0 0 0 5px #262626;
+          box-shadow: 0 0 0 5px #262626;
+}
+#lineup .position .active .icon {
+  -webkit-box-shadow: 0 0 0 5px #0076c2;
+          box-shadow: 0 0 0 5px #0076c2;
 }
 #lineup .position.shake {
   -webkit-animation-name: shake;

@@ -57,32 +57,39 @@
   margin-top: 50px;
 
   .position {
-    width: 150px;
+    width: 145px;
     cursor: pointer;
     display: inline-block;
     vertical-align: top;
-    margin: 1em;
+    margin: 1em 1em 3em;
+    position: relative;
 
     p {
-      margin: 0;
       pointer-events: none;
+      height: 24px;
+      margin: 0;
     }
 
-    &.active .icon {
-      box-shadow: 0 0 0 5px $br-blue;
-    }
-
-    &.drop-target .icon {
-     box-shadow: 0 0 0 5px $lightblue;
+    .politician {
+      position: absolute;
+      top: 24px;
+      left: 0;
+      right: 0;
     }
 
     .icon {
-      background-color: $br-blue;
-      border-radius: 50%;
-      height: 4em;
-      margin: 0 auto;
-      pointer-events: none;
       width: 4em;
+      height: 4em;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    &.drop-target .icon {
+     box-shadow: 0 0 0 5px $black;
+    }
+
+    .active .icon {
+      box-shadow: 0 0 0 5px $br-blue;
     }
 
     &.shake {

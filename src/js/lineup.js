@@ -20,25 +20,25 @@ var lineup = (function () {
 
   function update() {
 
-    var positions = $$('.position');
-    var departments = common.getDepartments();
+    // var positions = $$('.position');
+    // var departments = common.getDepartments();
 
-    positions.forEach(function (pos) {
+    // positions.forEach(function (pos) {
 
-      var icon = pos.querySelector('.icon');
-      var text = pos.querySelector('.politician');
+    //   var icon = pos.querySelector('.icon');
+    //   var text = pos.querySelector('.politician');
 
-      var depId = pos.getAttribute('data-department')
-      var polId = pos.getAttribute('data-politician')
+    //   var depId = pos.getAttribute('data-department')
+    //   var polId = pos.getAttribute('data-politician')
 
-      var dep = common.getDepartment(depId)
-      var pol = common.getPolitician(dep.politician)
+    //   var dep = common.getDepartment(depId)
+    //   var pol = common.getPolitician(dep.politician)
 
-      icon.src = dep.politician ? 'img/politicians/aa.jpg' : 'img/departments/dep.png';
-      text.textContent = dep.politician ? pol.name : 'zu besetzen';
+    //   icon.src = dep.politician ? 'img/politicians/aa.jpg' : 'img/departments/dep.png';
+    //   text.textContent = dep.politician ? pol.name : 'zu besetzen';
 
-      pos.setAttribute('data-politician', pol.id || '');
-    })
+    //   pos.setAttribute('data-politician', pol.id || '');
+    // })
   }
 
   function updateFormation() {
