@@ -84,11 +84,11 @@
       pointer-events: none;
     }
 
-    &.drop-target .icon {
-     box-shadow: 0 0 0 5px $black;
+    &.drop-target .department .icon {
+     box-shadow: 0 0 0 5px $white;
     }
 
-    .active .icon {
+    .selected {
       box-shadow: 0 0 0 5px $br-blue;
     }
 

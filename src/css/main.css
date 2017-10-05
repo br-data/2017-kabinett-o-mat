@@ -225,11 +225,11 @@ button,
   border-radius: 50%;
   pointer-events: none;
 }
-#lineup .position.drop-target .icon {
-  -webkit-box-shadow: 0 0 0 5px #262626;
-          box-shadow: 0 0 0 5px #262626;
+#lineup .position.drop-target .department .icon {
+  -webkit-box-shadow: 0 0 0 5px #fff;
+          box-shadow: 0 0 0 5px #fff;
 }
-#lineup .position .active .icon {
+#lineup .position .selected {
   -webkit-box-shadow: 0 0 0 5px #0076c2;
           box-shadow: 0 0 0 5px #0076c2;
 }

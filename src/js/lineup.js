@@ -6,39 +6,52 @@ var lineup = (function () {
   var $$ = utils.$$;
   var createElement = utils.createElement;
 
-  var infoBox = $('#info');
-  var field = $('#field');
-  var players = $$('.player');
+  var $infoBox = $('#info');
+  var $field = $('#field');
 
   function init() {
 
     update();
     updateFormation();
 
-    field.addEventListener('click', handlePositionDeselect, false);
+    bind()
   }
 
   function update() {
 
-    // var positions = $$('.position');
-    // var departments = common.getDepartments();
+    var $$positions = $$('.position');
+    var departments = common.getDepartments();
 
-    // positions.forEach(function (pos) {
+    $$positions.forEach(function ($position) {
 
-    //   var icon = pos.querySelector('.icon');
-    //   var text = pos.querySelector('.politician');
+      var $politician = $position.querySelector('.politician')
 
-    //   var depId = pos.getAttribute('data-department')
-    //   var polId = pos.getAttribute('data-politician')
+      var $icon = $politician.querySelector('.icon');
+      var $name = $politician.querySelector('.name');
 
-    //   var dep = common.getDepartment(depId)
-    //   var pol = common.getPolitician(dep.politician)
+      var depId = $position.getAttribute('data-department')
+      var polId = $politician.getAttribute('data-politician')
 
-    //   icon.src = dep.politician ? 'img/politicians/aa.jpg' : 'img/departments/dep.png';
-    //   text.textContent = dep.politician ? pol.name : 'zu besetzen';
+      var dep = common.getDepartment(depId)
+      var pol = common.getPolitician(dep.politician)
 
-    //   pos.setAttribute('data-politician', pol.id || '');
-    // })
+      $icon.src = dep.politician ? 'img/politicians/aa.jpg' : 'img/politicians/none.png';
+      $name.textContent = dep.politician ? pol.name : 'zu besetzen';
+
+      $position.setAttribute('data-politician', pol.id || '');
+    })
+  }
+
+  function bind() {
+
+    var $$positions = $$('.position');
+
+    $$positions.forEach(function ($position) {
+
+      $position.addEventListener('click', handlePositionSelect, true);
+    })
+
+    $field.addEventListener('click', handlePositionDeselect, true);
   }
 
   function updateFormation() {
@@ -54,60 +67,39 @@ var lineup = (function () {
 
   function handlePositionSelect(e) {
 
-    var target = e.target;
+    console.log('handlePositionSelect');
 
-    // Because IE. Full stop.
-    // if (e.target.parentNode.parentNode !== lineupElement) {
+    var $position, $icon;
 
-    //   target = target.parentNode;
-    // }
+    if (e.target.classList.contains('dropzone')) {
+
+      $position = e.target;
+    } else {
+
+      $position = e.target.parentNode;
+    }
+
+    $icon = $position.querySelector('.department .icon');
 
     // If position gets clicked again, do nothing;
-    if (common.currentPosition !== target) {
+    if (common.currentPosition !== $position) {
 
-      target.classList.add('active');
+      $icon.classList.add('selected');
 
       if (common.currentPosition) {
 
-        common.currentPosition.classList.remove('active');
+        common.currentPosition.querySelector('.department .icon').classList.remove('selected');
       }
 
-      common.updateInfo(target.getAttribute('data-player'), infoBox);
+      common.updateInfo(undefined, $infoBox);
     }
 
-    common.currentPosition = target;
+    common.currentPosition = $position;
   }
 
   function handlePositionDeselect(e) {
 
-    for (var i = 0; i < players.length; i++) {
-
-      var target = e.target;
-
-      // Because IE. Full stop.
-      if (e.target.parentNode.parentNode !== lineupElement) {
-
-        target = target.parentNode;
-      }
-
-      if (target === players[i]) {
-
-        return false;
-      }
-    }
-
-    if (common.currentPosition) {
-
-      common.currentPosition.classList.remove('active');
-      common.currentPosition = null;
-    }
-
-    while (infoBox.firstChild) {
-
-      infoBox.removeChild(infoBox.firstChild);
-    }
-
-    createElement('p', infoBox, ['textContent', 'Wählen Sie einen Spieler aus, um mehr über ihn zu erfahren. Ziehen Sie einen Spieler auf eine Position, um diese zu besetzen.']);
+    console.log('handlePositionDeselect');
   }
 
   return {

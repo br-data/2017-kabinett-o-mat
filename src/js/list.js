@@ -94,14 +94,12 @@ var list = (function () {
   function handlePlayerChange(e, oldPlayer) {
 
     var newPlayerTarget = e.relatedTarget || e.target;
-    var oldPlayerTarget = oldPlayer || common.currentPosition;
+    var oldPlayerTarget = oldPlayer;
 
-    console.log(newPlayerTarget, oldPlayerTarget);
+    //console.log(newPlayerTarget, oldPlayerTarget);
 
     var newPlayerId = newPlayerTarget.getAttribute('data-politician');
     var oldPlayerId = oldPlayerTarget ? oldPlayerTarget.getAttribute('data-department') : null;
-
-    console.log(newPlayerId, oldPlayerId);
 
     if (newPlayerId && oldPlayerId) {
 
