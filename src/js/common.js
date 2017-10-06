@@ -7,7 +7,6 @@ var common = (function () {
   var politicians;
   var departments;
 
-
   var currentTeamModel;
   var currentFormation;
   var currentPosition;
@@ -38,14 +37,38 @@ var common = (function () {
     departments = array;
   }
 
-  function getPoliticians(array) {
+  function getPoliticians() {
 
     return politicians;
   }
 
-  function getDepartments(array) {
+  function getDepartments() {
 
     return departments;
+  }
+
+  function update(oldDepartmentId, oldPoliticianId, newDepartmentId, newPoliticianId) {
+
+    console.log('old', oldDepartmentId, oldPoliticianId);
+    console.log('new', newDepartmentId, newPoliticianId);
+
+    if (oldPoliticianId) {
+
+      var newDepartment = common.getDepartment(newDepartmentId);
+      newDepartment.politician = oldPoliticianId;
+    }
+
+    if (oldDepartmentId) {
+
+      var oldDepartment = common.getDepartment(oldDepartmentId);
+      oldDepartment.politician = null;
+    }
+
+    if (oldDepartmentId && newPoliticianId) {
+
+      var changeDepartment = common.getDepartment(oldDepartmentId);
+      changeDepartment.politician = newPoliticianId;
+    }
   }
 
   // Converts an location hash string, ex. 1011-2021...
@@ -127,6 +150,8 @@ var common = (function () {
 
     getDepartment: getDepartment,
     getPolitician: getPolitician,
+
+    update: update,
 
     currentTeamModel: currentTeamModel,
     currentFormation: currentFormation,

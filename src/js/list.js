@@ -19,7 +19,7 @@ var list = (function () {
   function init(players) {
 
     showList();
-    updateList();
+    update();
   }
 
   // The input object is structured like a dictionary
@@ -48,7 +48,7 @@ var list = (function () {
       //playerElement = createElement('li', null, ['textContent', players[i].name]);
       playerElement = createElement('li', null,
         ['textContent', players[i].name + ' ' + players[i].id],
-        ['className', 'draggable']);
+        ['className', 'politician draggable']);
       playerElement.setAttribute('data-politician', players[i].id);
       playerElement.addEventListener('click', handlePlayerChange, false);
 
@@ -89,32 +89,37 @@ var list = (function () {
   }
 
   // Change the player. The elements newPlayer and oldPlayer are optional.
-  function handlePlayerChange(e, oldPlayer) {
+  function handlePlayerChange(e, newPolitician) {
 
-    var newPlayerTarget = e.relatedTarget || e.target;
-    var oldPlayerTarget = oldPlayer;
+    var $oldPosition = e.relatedTarget || e.target;
+    var $newPosition = newPolitician;
 
-    var newPlayerId = newPlayerTarget.getAttribute('data-politician');
-    var oldPlayerId = oldPlayerTarget ?
-      oldPlayerTarget.getAttribute('data-department') :
-      common.currentPosition.getAttribute('data-department');
-
-    console.log(oldPlayerId, '=>', newPlayerId);
-
-    var dep = common.getDepartment(oldPlayerId);
-    dep.politician = newPlayerId;
-
-    lineup.update();
-
-    if (newPlayerId && oldPlayerId) {
-
-      updateList(newPlayerId, oldPlayerId);
-
-      common.updateInfo(newPlayerId, infoBox);
-    } else {
-
-      common.updateInfo(newPlayerId, infoBox);
+    if (!$oldPosition.classList.contains('position')) {
+      if ($oldPosition.tagName !== 'LI') {
+        $oldPosition = $oldPosition.parentNode;
+      }
     }
+
+    if (!$newPosition.classList.contains('position')) {
+      $newPosition = $newPosition.parentNode;
+    }
+
+    var $oldDepartment = $oldPosition;
+    var $oldPolitician = $oldPosition.querySelector('.politician') || $oldPosition;
+    var $newDepartment = $newPosition ?
+      $newPosition : common.currentPosition;
+    var $newPolitician = $newPosition ?
+      $newPosition.querySelector('.politician') : common.currentPosition.querySelector('.politician');
+
+    var oldDepartmentId = $oldDepartment.getAttribute('data-department') || false;
+    var oldPoliticianId = $oldPolitician.getAttribute('data-politician') || false;
+    var newDepartmentId = $newDepartment.getAttribute('data-department') || false;
+    var newPoliticianId = $newPolitician.getAttribute('data-politician') || false;
+
+    update(oldPoliticianId, newDepartmentId);
+    common.update(oldDepartmentId, oldPoliticianId, newDepartmentId, newPoliticianId);
+    lineup.update();
+    common.updateInfo(oldPoliticianId, infoBox);
   }
 
   function handlePlayerSearch(e) {
@@ -145,7 +150,7 @@ var list = (function () {
   }
 
   // Highlight the currently selected players
-  function updateList() {
+  function update() {
 
     var pickedPlayers = [];
 
@@ -173,31 +178,31 @@ var list = (function () {
     }
   }
 
-  function updateTeamModel(newPlayerId, oldPlayerId) {
+  function updateTeamModel(oldPoliticianId, newDepartmentId) {
 
     var oldPlayerIndex, newPlayerIndex;
 
     // Find old player
-    if (common.currentTeamModel.indexOf(oldPlayerId) > -1) {
+    if (common.currentTeamModel.indexOf(newDepartmentId) > -1) {
 
-      oldPlayerIndex = common.currentTeamModel.indexOf(oldPlayerId);
+      oldPlayerIndex = common.currentTeamModel.indexOf(newDepartmentId);
     }
 
     // Find new player
-    if (common.currentTeamModel.indexOf(newPlayerId) > -1) {
+    if (common.currentTeamModel.indexOf(oldPoliticianId) > -1) {
 
-      newPlayerIndex = common.currentTeamModel.indexOf(newPlayerId);
+      newPlayerIndex = common.currentTeamModel.indexOf(oldPoliticianId);
     }
 
     // Update player ID at position, if found
     if (oldPlayerIndex > -1) {
 
-      common.currentTeamModel[oldPlayerIndex] = newPlayerId;
+      common.currentTeamModel[oldPlayerIndex] = oldPoliticianId;
     }
 
     if (newPlayerIndex > -1) {
 
-      common.currentTeamModel[newPlayerIndex] = oldPlayerId;
+      common.currentTeamModel[newPlayerIndex] = newDepartmentId;
     }
   }
 
@@ -230,7 +235,7 @@ var list = (function () {
 
     init: init,
     showList: showList,
-    updateList: updateList,
+    update: update,
     handlePlayerChange: handlePlayerChange,
     wasPicked: wasPicked
   };

@@ -16,7 +16,7 @@ var lineup = (function () {
     bind();
   }
 
-  function update() {
+  function update(oldDepartmentId, oldPoliticianId, newDepartmentId, newPoliticianId) {
 
     var $$positions = $$('.position');
 
@@ -27,16 +27,16 @@ var lineup = (function () {
       var $icon = $politician.querySelector('.icon');
       var $name = $politician.querySelector('.name');
 
-      var depId = $position.getAttribute('data-department');
+      var departmentId = $position.getAttribute('data-department');
 
-      var dep = common.getDepartment(depId);
-      var pol = common.getPolitician(dep.politician);
+      var department = common.getDepartment(departmentId);
+      var politician = common.getPolitician(department.politician);
 
-      $icon.src = dep.politician ? 'img/politicians/aa.jpg' : 'img/politicians/none.png';
-      $name.textContent = dep.politician ? pol.name : 'zu besetzen';
+      $icon.src = department.politician ? 'img/politicians/aa.jpg' : 'img/politicians/none.png';
+      $name.textContent = department.politician ? politician.name : 'zu besetzen';
 
-      $politician.classList.toggle('changeable', dep.politician);
-      $position.setAttribute('data-politician', pol.id || '');
+      $politician.classList.toggle('changeable', department.politician);
+      $politician.setAttribute('data-politician', politician.id || '');
     });
   }
 
@@ -63,35 +63,33 @@ var lineup = (function () {
 
   function handlePositionSelect(e) {
 
-    console.log('handlePositionSelect');
+    // var $position, $icon;
 
-    var $position, $icon;
+    // if (e.target.classList.contains('dropzone')) {
 
-    if (e.target.classList.contains('dropzone')) {
+    //   $position = e.target;
+    // } else {
 
-      $position = e.target;
-    } else {
+    //   $position = e.target.parentNode;
+    // }
 
-      $position = e.target.parentNode;
-    }
+    // $icon = $position.querySelector('.department .icon');
 
-    $icon = $position.querySelector('.department .icon');
+    // // If position gets clicked again, do nothing;
+    // if (common.currentPosition !== $position) {
 
-    // If position gets clicked again, do nothing;
-    if (common.currentPosition !== $position) {
+    //   $icon.classList.add('selected');
 
-      $icon.classList.add('selected');
+    //   if (common.currentPosition) {
 
-      if (common.currentPosition) {
+    //     common.currentPosition.querySelector('.department .icon')
+    //       .classList.remove('selected');
+    //   }
 
-        common.currentPosition.querySelector('.department .icon')
-          .classList.remove('selected');
-      }
+    //   common.updateInfo(undefined, $infoBox);
+    // }
 
-      common.updateInfo(undefined, $infoBox);
-    }
-
-    common.currentPosition = $position;
+    // common.currentPosition = $position;
   }
 
   return {
