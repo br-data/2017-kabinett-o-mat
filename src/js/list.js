@@ -27,8 +27,6 @@ var list = (function () {
 
     var players = common.getPoliticians();
 
-    console.log(players);
-
     var positions = [];
     var elements = [];
 
@@ -96,19 +94,22 @@ var list = (function () {
     var newPlayerTarget = e.relatedTarget || e.target;
     var oldPlayerTarget = oldPlayer;
 
-    //console.log(newPlayerTarget, oldPlayerTarget);
-
     var newPlayerId = newPlayerTarget.getAttribute('data-politician');
-    var oldPlayerId = oldPlayerTarget ? oldPlayerTarget.getAttribute('data-department') : null;
+    var oldPlayerId = oldPlayerTarget ?
+      oldPlayerTarget.getAttribute('data-department') :
+      common.currentPosition.getAttribute('data-department');
+
+    console.log(oldPlayerId, '=>', newPlayerId);
+
+    var dep = common.getDepartment(oldPlayerId);
+    dep.politician = newPlayerId;
+
+    lineup.update();
 
     if (newPlayerId && oldPlayerId) {
 
       updateList(newPlayerId, oldPlayerId);
 
-      var dep = common.getDepartment(oldPlayerId)
-      dep.politician = newPlayerId;
-
-      lineup.update()
       common.updateInfo(newPlayerId, infoBox);
     } else {
 

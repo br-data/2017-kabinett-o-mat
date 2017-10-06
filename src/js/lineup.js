@@ -4,7 +4,6 @@ var lineup = (function () {
 
   var $ = utils.$;
   var $$ = utils.$$;
-  var createElement = utils.createElement;
 
   var $infoBox = $('#info');
   var $field = $('#field');
@@ -14,32 +13,31 @@ var lineup = (function () {
     update();
     updateFormation();
 
-    bind()
+    bind();
   }
 
   function update() {
 
     var $$positions = $$('.position');
-    var departments = common.getDepartments();
 
     $$positions.forEach(function ($position) {
 
-      var $politician = $position.querySelector('.politician')
+      var $politician = $position.querySelector('.politician');
 
       var $icon = $politician.querySelector('.icon');
       var $name = $politician.querySelector('.name');
 
-      var depId = $position.getAttribute('data-department')
-      var polId = $politician.getAttribute('data-politician')
+      var depId = $position.getAttribute('data-department');
 
-      var dep = common.getDepartment(depId)
-      var pol = common.getPolitician(dep.politician)
+      var dep = common.getDepartment(depId);
+      var pol = common.getPolitician(dep.politician);
 
       $icon.src = dep.politician ? 'img/politicians/aa.jpg' : 'img/politicians/none.png';
       $name.textContent = dep.politician ? pol.name : 'zu besetzen';
 
+      $politician.classList.toggle('changeable', dep.politician);
       $position.setAttribute('data-politician', pol.id || '');
-    })
+    });
   }
 
   function bind() {
@@ -49,9 +47,7 @@ var lineup = (function () {
     $$positions.forEach(function ($position) {
 
       $position.addEventListener('click', handlePositionSelect, true);
-    })
-
-    $field.addEventListener('click', handlePositionDeselect, true);
+    });
   }
 
   function updateFormation() {
@@ -88,18 +84,14 @@ var lineup = (function () {
 
       if (common.currentPosition) {
 
-        common.currentPosition.querySelector('.department .icon').classList.remove('selected');
+        common.currentPosition.querySelector('.department .icon')
+          .classList.remove('selected');
       }
 
       common.updateInfo(undefined, $infoBox);
     }
 
     common.currentPosition = $position;
-  }
-
-  function handlePositionDeselect(e) {
-
-    console.log('handlePositionDeselect');
   }
 
   return {
