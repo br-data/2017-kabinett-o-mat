@@ -2,13 +2,9 @@ var common = (function () {
 
   'use strict';
 
-  var createElement = utils.createElement;
-
   var politicians;
   var departments;
 
-  var currentTeamModel;
-  var currentFormation;
   var currentPosition;
 
   function getPolitician(id) {
@@ -67,12 +63,7 @@ var common = (function () {
 
   function update(oldDepartmentId, oldPoliticianId, newDepartmentId, newPoliticianId) {
 
-    console.log('old', oldDepartmentId, oldPoliticianId);
-    console.log('new', newDepartmentId, newPoliticianId);
-
     if (oldPoliticianId) {
-
-      console.log(newDepartment);
 
       var newDepartment = common.getDepartment(newDepartmentId);
       newDepartment.politician = oldPoliticianId;
@@ -91,50 +82,32 @@ var common = (function () {
     }
   }
 
-  // Converts an location hash string, ex. 1011-2021...
-  function teamToHash(arr) {
+  function setHash() {
 
-    var result = arr.join('-');
+    if (location.hash) {
 
-    return result;
+      var hash = location.hash.split('?')[0];
+
+      var politicians = hash.replace('#','').split('-');
+
+      politicians.forEach(function (politician, index) {
+
+        politician = getPolitician(politician);
+        departments[index].politician = politician.id;
+      });
+    }
   }
 
-  function convertLineup(str) {
+  function getHash() {
 
-    // Remove hash
-    str = str.replace('#','');
+    var hash = [];
 
-    // Hash string to array
-    var arr = str.split('-');
+    departments.forEach(function (department) {
 
-    // If the array is malformed, fall back to default
-    if (arr.length < config.defaultTeam.length) {
+      hash.push(department.politician || 'xx');
+    });
 
-      arr = config.defaultHash;
-    }
-
-    // Split the position arrays into arrays with individual players
-    // Ex. [111213] becomes [11,12,13]
-    for (var i = 0;  i < arr.length; i++) {
-
-      arr[i] = arr[i].match(/.{1,2}/g);
-    }
-
-    return arr;
-  }
-
-  // Generates a random alphanumeric string, like a unique ID.
-  function generateId(len) {
-
-    var str = '';
-    var charset = 'abcdefghijklmnopqrstuvwxyz0123456789';
-
-    for(var i = 0; i < len; i++) {
-
-      str += charset.charAt(Math.floor(Math.random() * charset.length));
-    }
-
-    return str;
+    location.hash = hash.join('-');
   }
 
   return {
@@ -150,12 +123,9 @@ var common = (function () {
 
     update: update,
 
-    currentTeamModel: currentTeamModel,
-    currentFormation: currentFormation,
-    currentPosition: currentPosition,
+    getHash: getHash,
+    setHash: setHash,
 
-    teamToHash: teamToHash,
-    convertLineup: convertLineup,
-    generateId: generateId
+    currentPosition: currentPosition
   };
 }());

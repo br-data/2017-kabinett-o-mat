@@ -9,7 +9,6 @@ var lineup = (function () {
 
     bind();
     update();
-    updateFormation();
   }
 
   function update() {
@@ -51,17 +50,6 @@ var lineup = (function () {
     }
   }
 
-  function updateFormation() {
-
-    //location.hash = common.teamToHash(common.currentTeamModel);
-  }
-
-  function handleFormationChange() {
-
-    updateFormation();
-    update(common.currentTeamModel);
-  }
-
   function handleSelect(e) {
 
     var $position, $icon;
@@ -98,6 +86,5 @@ var lineup = (function () {
     init: init,
     update: update,
     handleSelect: handleSelect,
-    updateFormation: updateFormation
   };
 }());

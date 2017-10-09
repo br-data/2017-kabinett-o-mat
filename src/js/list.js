@@ -3,7 +3,6 @@ var list = (function () {
   'use strict';
 
   var $ = utils.$;
-  var createElement = utils.createElement;
 
   var $currentList;
 
@@ -60,9 +59,9 @@ var list = (function () {
     var newPoliticianId = $newPolitician.getAttribute('data-politician') || false;
 
     common.update(oldDepartmentId, oldPoliticianId, newDepartmentId, newPoliticianId);
+    common.getHash();
     lineup.update();
     list.update(oldPoliticianId, newDepartmentId);
-
     infobox.update(oldPoliticianId);
   }
 
