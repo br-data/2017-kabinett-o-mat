@@ -20,46 +20,19 @@ var list = (function () {
     update();
   }
 
-  // The input object is structured like a dictionary
   function bind() {
 
-    var politicians = common.getPoliticians();
-
-    // Sort array by name
-    politicians.sort(function (a, b) {
-
-      a = a.name.toUpperCase();
-      b = b.name.toUpperCase();
-      return (a < b) ? -1 : (a > b) ? 1 : 0;
-    });
-
-    config.partyOrder.forEach(function (party) {
-
-      var members = politicians.filter(function (politician) {
-
-        return politician.party == party;
-      });
-
-      var $party = createElement('ul', null,
-        ['className', common.getClass(party)]);
-
-      members.forEach(function (member) {
-
-        var $member = createElement('li', null,
-          ['textContent', member.name + ' ' + member.id],
-          ['className', 'politician draggable']);
-        $member.setAttribute('data-politician', member.id);
-        $member.addEventListener('click', function (e) {
-          common.currentPosition ? handleChange(e) : infobox.update(member.id);
-        }, false);
-
-        $party.appendChild($member);
-      });
-
-      $list.appendChild($party);
-    });
-
     $currentList = $list.querySelectorAll('[data-politician]');
+
+    for (var i = 0; i < $currentList.length; i++) {
+
+      var $politician = $currentList[i];
+      var politicianId = $politician.getAttribute('[data-politician]');
+
+      $politician.addEventListener('click', function (e) {
+        common.currentPosition ? handleChange(e) : infobox.update(politicianId);
+      }, false);
+    }
   }
 
   // Change the politician. The elements newpolitician and oldpolitician are optional.

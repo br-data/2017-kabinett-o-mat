@@ -9,14 +9,13 @@ var app = (function () {
   var closeButton = $('#close');
   var directLink = $('#direct');
 
-  // @TODO Move to init.js
   function init() {
 
     utils.getJSON('data/politicians.json', function (politicians) {
 
       utils.getJSON('data/departments.json', function (departments) {
 
-        setup(politicians, departments)
+        setup(politicians, departments);
       });
     });
   }
@@ -42,8 +41,8 @@ var app = (function () {
     dragging.init();
 
     // Register the event handlers
-    shareButton.addEventListener('click', handleShare, false);
-    closeButton.addEventListener('click', handleClose, false);
+    // shareButton.addEventListener('click', handleShare, false);
+    // closeButton.addEventListener('click', handleClose, false);
   }
 
   function handleShare() {
@@ -53,7 +52,6 @@ var app = (function () {
     // Remove query string parameters
     currentUrl =  currentUrl.replace(/(\?.*)#/, '#');
 
-    sharing.init(currentUrl);
     // tracking.send('Lineup=' + common.teamToHash(common.currentTeamModel));
 
     directLink.href = currentUrl;

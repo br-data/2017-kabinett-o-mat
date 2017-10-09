@@ -195,7 +195,6 @@ button,
 
 #lineup {
   height: 90%;
-  margin-top: 50px;
 }
 #lineup .position {
   position: relative;
@@ -217,14 +216,13 @@ button,
 }
 #lineup .position .department {
   z-index: 10;
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
 }
 #lineup .position .politician {
   position: absolute;
   top: 18px;
   left: 0;
   right: 0;
+  z-index: 100;
 }
 #lineup .position .icon {
   width: 4em;
@@ -257,6 +255,10 @@ button,
   -webkit-box-shadow: 0 0 0 3px #ddd, 0 0 0 5px #2b2b2b;
           box-shadow: 0 0 0 3px #ddd, 0 0 0 5px #2b2b2b;
 }
+#lineup .position.drop-target .department .icon {
+  -webkit-box-shadow: 0 0 0 3px #ddd, 0 0 0 5px #2b2b2b;
+          box-shadow: 0 0 0 3px #ddd, 0 0 0 5px #2b2b2b;
+}
 
 #sidebar {
   width: 220px;
@@ -279,7 +281,7 @@ button,
 #sidebar form {
   background: #fff;
   left: 0;
-  padding: 1em;
+  padding: 15px;
   position: absolute;
   right: 0;
   top: 0;
@@ -298,7 +300,7 @@ button,
 }
 #list ul {
   margin: 0;
-  padding: 1em 2em;
+  padding: 10px 20px;
   list-style-type: none;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -358,7 +360,7 @@ button,
   color: #fff;
   height: 130px;
   left: 0;
-  padding: 1em 1em 1em 2em;
+  padding: 10px 20px;
   position: absolute;
   right: 0;
   width: 100%;

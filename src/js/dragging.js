@@ -128,8 +128,8 @@ var dragging = (function () {
     // The dropzone is event.target, the draggable is event.relatedTarget
     interact('.dropzone').dropzone({
 
-      // Require a 65% element overlap for a drop to be possible
-      overlap: 0.65,
+      // Require a 75% element overlap for a drop to be possible
+      overlap: 0.75,
 
       ondragenter: function (event) {
 

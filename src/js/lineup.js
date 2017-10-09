@@ -14,16 +14,16 @@ var lineup = (function () {
 
   function update() {
 
-    var $$positions = $$('.position');
+    var $$positions = $$('[data-department]');
 
-    $$positions.forEach(function ($position) {
+    for (var i = 0; i < $$positions.length; i++) {
 
-      var $politician = $position.querySelector('.politician');
+      var $politician = $$positions[i].querySelector('.politician');
 
       var $icon = $politician.querySelector('.icon');
       var $name = $politician.querySelector('.name');
 
-      var departmentId = $position.getAttribute('data-department');
+      var departmentId = $$positions[i].getAttribute('data-department');
 
       var department = common.getDepartment(departmentId);
       var politician = common.getPolitician(department.politician);
@@ -36,20 +36,19 @@ var lineup = (function () {
       $name.textContent = politician.id ?
         politician.name : 'zu besetzen';
 
-      $politician.classList.toggle('changeable', department.politician &&
-        department.politician !== 'aa');
+      $politician.classList.toggle('changeable', department.politician);
       $politician.setAttribute('data-politician', politician.id || '');
-    });
+    }
   }
 
   function bind() {
 
-    var $$positions = $$('.position');
+    var $$positions = $$('[data-department]');
 
-    $$positions.forEach(function ($position) {
+    for (var i = 0; i < $$positions.length; i++) {
 
-      $position.addEventListener('click', handleSelect, true);
-    });
+      $$positions[i].addEventListener('click', handleSelect, true);
+    }
   }
 
   function updateFormation() {

@@ -50,7 +50,6 @@
 
 #lineup {
   height: 90%;
-  margin-top: 50px;
 
   .position {
     position: relative;
@@ -70,7 +69,6 @@
 
     .department {
       z-index: 10;
-      transform: translate3d(0, 0, 0);
     }
 
     .politician {
@@ -78,6 +76,7 @@
       top: 18px;
       left: 0;
       right: 0;
+      z-index: 100;
     }
 
     .icon {
@@ -113,8 +112,8 @@
       box-shadow: 0 0 0 3px #ddd, 0 0 0 5px #2b2b2b;
     }
 
-    // &.drop-target .department .icon {
-    //  box-shadow: 0 0 0 5px red;
-    // }
+    &.drop-target .department .icon {
+      box-shadow: 0 0 0 3px #ddd, 0 0 0 5px #2b2b2b;
+    }
   }
 }
