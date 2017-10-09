@@ -5,91 +5,66 @@ var list = (function () {
   var $ = utils.$;
   var createElement = utils.createElement;
 
-  var currentList;
+  var $currentList;
 
-  var listSelect = $('#list');
-  var playerFilter = $('#filter');
-  var infoBox = $('#info');
-  var lineupElement = $('#lineup');
+  var $list = $('#list');
+  var $search = $('#filter');
+  var $infobox = $('#info');
 
-  playerFilter.addEventListener('keydown', utils.preventEnter, false);
-  playerFilter.addEventListener('keyup', handlePlayerSearch, false);
-  playerFilter.addEventListener('search', handlePlayerSearch, false);
+  $search.addEventListener('keydown', utils.preventEnter, false);
+  $search.addEventListener('keyup', handleSearch, false);
+  $search.addEventListener('search', handleSearch, false);
 
   function init() {
 
-    showList();
+    bind();
     update();
   }
 
   // The input object is structured like a dictionary
-  function showList() {
+  function bind() {
 
-    var players = common.getPoliticians();
-
-    var positions = [];
-    var elements = [];
+    var politicians = common.getPoliticians();
 
     // Sort array by name
-    players.sort(function (a, b) {
+    politicians.sort(function (a, b) {
 
       a = a.name.toUpperCase();
       b = b.name.toUpperCase();
       return (a < b) ? -1 : (a > b) ? 1 : 0;
     });
 
-    for (var i = 0; i < players.length; i++) {
+    config.partyOrder.forEach(function (party) {
 
-      var index, playerElement;
+      var members = politicians.filter(function (politician) {
 
-      // Check if the position wrapper already exists
-      index = positions.indexOf(players[i].party);
+        return politician.party == party;
+      });
 
-      //playerElement = createElement('li', null, ['textContent', players[i].name]);
-      playerElement = createElement('li', null,
-        ['textContent', players[i].name + ' ' + players[i].id],
-        ['className', 'politician draggable']);
-      playerElement.setAttribute('data-politician', players[i].id);
-      playerElement.addEventListener('click', handlePlayerChange, false);
+      var $party = createElement('ul', null,
+        ['className', common.getClass(party)]);
 
-      // If the position already exists, add the player ...
-      if (index > -1) {
+      members.forEach(function (member) {
 
-        elements[index].appendChild(playerElement);
+        var $member = createElement('li', null,
+          ['textContent', member.name + ' ' + member.id],
+          ['className', 'politician draggable']);
+        $member.setAttribute('data-politician', member.id);
+        $member.addEventListener('click', handleChange, false);
 
-      // ... else create a new position and add the player
-      } else {
+        $party.appendChild($member);
+      });
 
-        elements[index] = createElement('ul', null,
-          ['className', players[i].party.toLowerCase()]);
-        elements[index].appendChild(playerElement);
-
-        // Add the position name to array
-        positions.push(players[i].party);
-
-        // Add the position wrapper element to array
-        elements.push(elements[index]);
-      }
-    }
-
-    // Sort the position by the order defined in the config
-    elements.sort(function (a, b) {
-
-      return config.positionOrder.indexOf(a.className) -
-        config.positionOrder.indexOf(b.className);
+      $list.appendChild($party);
     });
 
-    // Add all positions and players to the list
-    for (var i = 0; i < elements.length; i++) {
-
-      listSelect.appendChild(elements[i]);
-    }
-
-    currentList = listSelect.querySelectorAll('[data-politician]');
+    $currentList = $list.querySelectorAll('[data-politician]');
   }
 
-  // Change the player. The elements newPlayer and oldPlayer are optional.
-  function handlePlayerChange(e, newPolitician) {
+  // Change the politician. The elements newpolitician and oldpolitician are optional.
+  function handleChange(e, newPolitician) {
+
+    console.log('handleChange');
 
     var $oldPosition = e.relatedTarget || e.target;
     var $newPosition = newPolitician || common.currentPosition;
@@ -112,127 +87,60 @@ var list = (function () {
     var newDepartmentId = $newPosition.getAttribute('data-department') || false;
     var newPoliticianId = $newPolitician.getAttribute('data-politician') || false;
 
-    update(oldPoliticianId, newDepartmentId);
     common.update(oldDepartmentId, oldPoliticianId, newDepartmentId, newPoliticianId);
+    common.updateInfo(oldPoliticianId, $infobox);
     lineup.update();
-    common.updateInfo(oldPoliticianId, infoBox);
+    list.update(oldPoliticianId, newDepartmentId);
   }
 
-  function handlePlayerSearch(e) {
+  function handleSearch() {
 
-    // Get a list of all players
-    var playerList = listSelect.getElementsByTagName('li');
-    var filter = playerFilter.value.toUpperCase();
+    // Get a list of all politicians
+    var $politicians = $list.getElementsByTagName('li');
+    var filter = $search.value.toUpperCase();
 
     // Search for current query and hide mismatches
-    for (var i = 0; i < playerList.length; i++) {
+    for (var i = 0; i < $politicians.length; i++) {
 
       if (filter === '') {
 
-        playerList[i].style.display = 'list-item';
+        $politicians[i].style.display = 'list-item';
       } else {
 
-        var text = playerList[i].textContent;
+        var text = $politicians[i].textContent;
 
         if (utils.fuzzySearch(filter, text.toUpperCase())) {
 
-          playerList[i].style.display = 'list-item';
+          $politicians[i].style.display = 'list-item';
         } else {
 
-          playerList[i].style.display = 'none';
+          $politicians[i].style.display = 'none';
         }
       }
     }
   }
 
-  // Highlight the currently selected players
+  // Highlight the currently selected politicians
   function update() {
 
-    var pickedPlayers = [];
+    // Select all politicians in list
+    for (var i = 0; i < $currentList.length; i++) {
 
-    // Select all players which are currently picked
-    for (var i = 0; i < currentList.length; i++) {
+      var politicianId = $currentList[i].getAttribute('data-politician');
+      var departments = common.getDepartments().filter(function (department) {
+        return department.politician == politicianId;
+      });
 
-      var currentId = currentList[i].getAttribute('data-politician');
-
-      for (var j = 0; j < common.currentTeamModel.length; j++) {
-
-        // Reset highlighting
-        currentList[i].classList.remove('picked');
-
-        if (common.currentTeamModel[j].indexOf(currentId) > -1) {
-
-          pickedPlayers.push(i);
-        }
-      }
-    }
-
-    // Highlight all the picked players
-    for (var k = 0; k < pickedPlayers.length; k++) {
-
-      currentList[pickedPlayers[k]].classList.add('picked');
-    }
-  }
-
-  function updateTeamModel(oldPoliticianId, newDepartmentId) {
-
-    var oldPlayerIndex, newPlayerIndex;
-
-    // Find old player
-    if (common.currentTeamModel.indexOf(newDepartmentId) > -1) {
-
-      oldPlayerIndex = common.currentTeamModel.indexOf(newDepartmentId);
-    }
-
-    // Find new player
-    if (common.currentTeamModel.indexOf(oldPoliticianId) > -1) {
-
-      newPlayerIndex = common.currentTeamModel.indexOf(oldPoliticianId);
-    }
-
-    // Update player ID at position, if found
-    if (oldPlayerIndex > -1) {
-
-      common.currentTeamModel[oldPlayerIndex] = oldPoliticianId;
-    }
-
-    if (newPlayerIndex > -1) {
-
-      common.currentTeamModel[newPlayerIndex] = newDepartmentId;
-    }
-  }
-
-  function getPlayerElement(playerId) {
-
-    var players = lineupElement.querySelectorAll('[data-politician]');
-
-    for (var i = 0; i < players.length; i++) {
-
-      if (players[i].getAttribute('data-politician') === playerId) {
-
-        return players[i];
-      }
-    }
-  }
-
-  // Check if a player is already part of the team
-  function wasPicked(playerId) {
-
-    for (var i = 0; i < common.currentTeamModel.length; i++) {
-
-      if (common.currentTeamModel[i].indexOf(playerId) > -1) {
-
-        return true;
-      }
+      // Toggle highlighting
+      $currentList[i].classList.toggle('picked', departments.length === 1);
     }
   }
 
   return {
 
     init: init,
-    showList: showList,
+    bind: bind,
     update: update,
-    handlePlayerChange: handlePlayerChange,
-    wasPicked: wasPicked
+    handleChange: handleChange
   };
 }());

@@ -47,12 +47,32 @@ var common = (function () {
     return departments;
   }
 
+  function getClass(party) {
+
+    switch (party) {
+      case 'CDU':
+        return 'cdu';
+      case 'CSU':
+        return 'csu';
+      case 'FDP':
+        return 'fdp';
+      case 'Bündnis 90/Die Grünen':
+        return 'gruene';
+      case 'parteilos':
+        return 'parteilos';
+      default:
+        return false;
+    }
+  }
+
   function update(oldDepartmentId, oldPoliticianId, newDepartmentId, newPoliticianId) {
 
     console.log('old', oldDepartmentId, oldPoliticianId);
     console.log('new', newDepartmentId, newPoliticianId);
 
     if (oldPoliticianId) {
+
+      console.log(newDepartment);
 
       var newDepartment = common.getDepartment(newDepartmentId);
       newDepartment.politician = oldPoliticianId;
@@ -150,6 +170,8 @@ var common = (function () {
 
     getDepartment: getDepartment,
     getPolitician: getPolitician,
+
+    getClass: getClass,
 
     update: update,
 

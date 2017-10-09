@@ -6,7 +6,6 @@ var lineup = (function () {
   var $$ = utils.$$;
 
   var $infoBox = $('#info');
-  var $field = $('#field');
 
   function init() {
 
@@ -35,7 +34,7 @@ var lineup = (function () {
       $icon.src = politician.id ?
         'img/politicians/' + politician.id + '.jpg' : 'img/politicians/none.png';
       $icon.className = politician.id ?
-        'icon ' + getClass(politician.party) : 'icon';
+        'icon ' + common.getClass(politician.party) : 'icon';
 
       $name.textContent = politician.id ?
         politician.name : 'zu besetzen';
@@ -51,7 +50,7 @@ var lineup = (function () {
 
     $$positions.forEach(function ($position) {
 
-      $position.addEventListener('click', handlePositionSelect, true);
+      $position.addEventListener('click', handleSelect, true);
     });
   }
 
@@ -66,7 +65,7 @@ var lineup = (function () {
     update(common.currentTeamModel);
   }
 
-  function handlePositionSelect(e) {
+  function handleSelect(e) {
 
     var $position, $icon;
 
@@ -97,25 +96,11 @@ var lineup = (function () {
     common.currentPosition = $position;
   }
 
-  function getClass(party) {
-
-    switch (party) {
-      case 'CDU':
-        return 'cdu';
-      case 'CSU':
-        return 'csu';
-      case 'FDP':
-        return 'fdp';
-      case 'Bündnis 90/Die Grünen':
-        return 'gruene';
-    }
-  }
-
   return {
 
     init: init,
     update: update,
-    handlePositionSelect: handlePositionSelect,
+    handleSelect: handleSelect,
     updateFormation: updateFormation
   };
 }());

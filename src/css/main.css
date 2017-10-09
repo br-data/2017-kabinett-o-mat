@@ -76,21 +76,18 @@
 html {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  background: #fff;
+  height: 100%;
 }
 
-*,
-*:before,
-*:after {
+*, *:before, *:after {
   -webkit-box-sizing: inherit;
           box-sizing: inherit;
 }
 
-html,
 body {
   color: #262626;
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-  font-size: .9em;
+  font-size: .85em;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -237,24 +234,24 @@ button,
   pointer-events: none;
 }
 #lineup .position .icon.cdu {
-  -webkit-box-shadow: 0 0 0 6px #121212;
-          box-shadow: 0 0 0 6px #121212;
+  -webkit-box-shadow: 0 0 0 5px #121212;
+          box-shadow: 0 0 0 5px #121212;
 }
 #lineup .position .icon.csu {
-  -webkit-box-shadow: 0 0 0 6px #00b2ff;
-          box-shadow: 0 0 0 6px #00b2ff;
+  -webkit-box-shadow: 0 0 0 5px #00b2ff;
+          box-shadow: 0 0 0 5px #00b2ff;
 }
 #lineup .position .icon.fdp {
-  -webkit-box-shadow: 0 0 0 6px #ffdd00;
-          box-shadow: 0 0 0 6px #ffdd00;
+  -webkit-box-shadow: 0 0 0 5px #ffdd00;
+          box-shadow: 0 0 0 5px #ffdd00;
 }
 #lineup .position .icon.gruene {
-  -webkit-box-shadow: 0 0 0 6px #309128;
-          box-shadow: 0 0 0 6px #309128;
+  -webkit-box-shadow: 0 0 0 5px #309128;
+          box-shadow: 0 0 0 5px #309128;
 }
 #lineup .position .icon.parteilos {
-  -webkit-box-shadow: 0 0 0 6px #ffffff;
-          box-shadow: 0 0 0 6px #ffffff;
+  -webkit-box-shadow: 0 0 0 5px #ffffff;
+          box-shadow: 0 0 0 5px #ffffff;
 }
 #lineup .position .selected {
   -webkit-box-shadow: 0 0 0 3px #ddd, 0 0 0 5px #2b2b2b;

@@ -144,8 +144,8 @@ var dragging = (function () {
       ondrop: function (event) {
 
         // Call the event handlers
-        lineup.handlePositionSelect(event);
-        list.handlePlayerChange(event, event.target);
+        lineup.handleSelect(event);
+        list.handleChange(event, event.target);
       },
       ondropdeactivate: function (event) {
 

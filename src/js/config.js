@@ -2,7 +2,7 @@ var config = {
 
   defaultTeam: ['aa', 'ab', 'ac', 'ad', 'ae', 'af', 'ag', 'ah', 'ai', 'aj', 'ak', 'al'],
   defaultHash: ['aa', 'ab', 'ac', 'ad', 'ae', 'af', 'ag', 'ah', 'ai', 'aj', 'ak', 'al'],
-  positionOrder: ['CDU', 'CSU', 'FDP', 'Bündnis 90/Die Grünen', 'parteilos'],
+  partyOrder: ['CDU', 'CSU', 'FDP', 'Bündnis 90/Die Grünen', 'parteilos'],
 
   sharing: {
     url: 'http://br.de',
