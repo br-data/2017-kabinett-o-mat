@@ -197,14 +197,10 @@ button,
   height: 90%;
   margin-top: 50px;
 }
-#lineup p {
-  height: 18px;
-  margin: 0;
-}
 #lineup .position {
   position: relative;
   display: inline-block;
-  width: 145px;
+  min-width: 145px;
   height: 120px;
   cursor: pointer;
   vertical-align: top;
@@ -214,6 +210,10 @@ button,
       -ms-user-select: none;
           user-select: none;
   -webkit-touch-callout: none;
+}
+#lineup .position p {
+  height: 18px;
+  margin: 0;
 }
 #lineup .position .department {
   z-index: 10;
@@ -316,6 +316,7 @@ button,
 }
 #list li.picked {
   color: #c6c5c0;
+  pointer-events: none;
 }
 #list li:hover {
   color: #0076c2;

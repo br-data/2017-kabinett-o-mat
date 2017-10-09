@@ -5,14 +5,11 @@ var lineup = (function () {
   var $ = utils.$;
   var $$ = utils.$$;
 
-  var $infoBox = $('#info');
-
   function init() {
 
+    bind();
     update();
     updateFormation();
-
-    bind();
   }
 
   function update() {
@@ -39,7 +36,8 @@ var lineup = (function () {
       $name.textContent = politician.id ?
         politician.name : 'zu besetzen';
 
-      $politician.classList.toggle('changeable', department.politician);
+      $politician.classList.toggle('changeable', department.politician &&
+        department.politician !== 'aa');
       $politician.setAttribute('data-politician', politician.id || '');
     });
   }
@@ -90,7 +88,7 @@ var lineup = (function () {
           .classList.remove('selected');
       }
 
-      common.updateInfo(undefined, $infoBox);
+      infobox.update(undefined);
     }
 
     common.currentPosition = $position;

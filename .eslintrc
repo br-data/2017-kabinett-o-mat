@@ -7,13 +7,10 @@
     "tracking": true,
     "sharing": true,
     "dragging": true,
+    "infobox": true,
     "list": true,
     "lineup": true,
-    "app": true,
-
-    "Miso": true,
-    "microAjax": true,
-    "saveAs": true
+    "app": true
   },
   "rules": {
     "indent": [2, 2, {"SwitchCase": 1}],

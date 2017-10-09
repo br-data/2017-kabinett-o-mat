@@ -49,28 +49,24 @@
 }
 
 #lineup {
-  // background-image: url('../img/goal.png');
-  // background-position: bottom;
-  // background-repeat: no-repeat;
-  // background-size: 100% auto;
   height: 90%;
   margin-top: 50px;
-
-  p {
-    height: 18px;
-    margin: 0;
-  }
 
   .position {
     position: relative;
     display: inline-block;
-    width: 145px;
+    min-width: 145px;
     height: 120px;
     cursor: pointer;
     vertical-align: top;
     margin: 1em;
     user-select: none;
     -webkit-touch-callout: none;
+
+    p {
+      height: 18px;
+      margin: 0;
+    }
 
     .department {
       z-index: 10;

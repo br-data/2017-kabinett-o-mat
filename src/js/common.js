@@ -123,31 +123,6 @@ var common = (function () {
     return arr;
   }
 
-  // Updates the info box HTML
-  function updateInfo(polId, infoBoxEl) {
-
-
-    while (infoBoxEl.firstChild) {
-
-      infoBoxEl.removeChild(infoBoxEl.firstChild);
-    }
-
-    if (polId) {
-
-      var politician = getPolitician(polId);
-      // createElement('img', infoBoxEl, ['src', 'img/logos/' +
-      //   politician.team_short + '.png'], ['alt', politician.team]);
-      createElement('h3', infoBoxEl, ['textContent', politician.name]);
-      createElement('p', infoBoxEl, ['textContent', politician.party]);
-      createElement('p', infoBoxEl, ['textContent', politician.position]);
-      // createElement('p', infoBoxEl, ['textContent', politician.position + ' in ' +
-      //   politician.geb_ort + ', ' + politician.reg_bezirk, infoBoxEl]);
-    } else {
-
-      createElement('p', infoBoxEl, ['textContent', 'Lorem ipsum dolores sit amet.']);
-    }
-  }
-
   // Generates a random alphanumeric string, like a unique ID.
   function generateId(len) {
 
@@ -181,7 +156,6 @@ var common = (function () {
 
     teamToHash: teamToHash,
     convertLineup: convertLineup,
-    updateInfo: updateInfo,
     generateId: generateId
   };
 }());

@@ -9,7 +9,6 @@ var list = (function () {
 
   var $list = $('#list');
   var $search = $('#filter');
-  var $infobox = $('#info');
 
   $search.addEventListener('keydown', utils.preventEnter, false);
   $search.addEventListener('keyup', handleSearch, false);
@@ -50,7 +49,9 @@ var list = (function () {
           ['textContent', member.name + ' ' + member.id],
           ['className', 'politician draggable']);
         $member.setAttribute('data-politician', member.id);
-        $member.addEventListener('click', handleChange, false);
+        $member.addEventListener('click', function (e) {
+          common.currentPosition ? handleChange(e) : infobox.update(member.id);
+        }, false);
 
         $party.appendChild($member);
       });
@@ -63,8 +64,6 @@ var list = (function () {
 
   // Change the politician. The elements newpolitician and oldpolitician are optional.
   function handleChange(e, newPolitician) {
-
-    console.log('handleChange');
 
     var $oldPosition = e.relatedTarget || e.target;
     var $newPosition = newPolitician || common.currentPosition;
@@ -88,9 +87,10 @@ var list = (function () {
     var newPoliticianId = $newPolitician.getAttribute('data-politician') || false;
 
     common.update(oldDepartmentId, oldPoliticianId, newDepartmentId, newPoliticianId);
-    common.updateInfo(oldPoliticianId, $infobox);
     lineup.update();
     list.update(oldPoliticianId, newDepartmentId);
+
+    infobox.update(oldPoliticianId);
   }
 
   function handleSearch() {
