@@ -85,224 +85,278 @@
   },
   {
     "id": "ao",
+    "name": "Annette Widmann-Mauz",
+    "party": "CDU",
+    "position": "Parlamentarische Staatssekretärin Gesundheit"
+  },
+  {
+    "id": "ap",
+    "name": "Norbert Röttgen",
+    "party": "CDU",
+    "position": "Vorsitzender Auswärtiger Ausschuss"
+  },
+  {
+    "id": "aq",
+    "name": "Peter Tauber",
+    "party": "CDU",
+    "position": "Generalsekretär CDU"
+  },
+  {
+    "id": "ar",
+    "name": "Günther Oettinger",
+    "party": "CDU",
+    "position": "EU-Kommissar für Digitale Gesellschaft und Wirtschaft"
+  },
+  {
+    "id": "as",
     "name": "Jens Weidmann",
     "party": "parteilos",
     "position": "Bundesbankpräsident"
   },
   {
-    "id": "ap",
+    "id": "at",
     "name": "Karl-Theodor zu Guttenberg",
     "party": "CSU",
     "position": "Unternehmer"
   },
   {
-    "id": "aq",
+    "id": "au",
     "name": "Joachim Herrmann",
     "party": "CSU",
     "position": "Innenminister Bayern"
   },
   {
-    "id": "ar",
+    "id": "av",
     "name": "Andreas Scheuer",
     "party": "CSU",
     "position": "CSU-Generalsekretär"
   },
   {
-    "id": "as",
+    "id": "aw",
     "name": "Hans-Peter Friedrich",
     "party": "CSU",
     "position": "stellvertretender Fraktionsvorsitzender"
   },
   {
-    "id": "at",
+    "id": "ax",
     "name": "Manfred Weber",
     "party": "CSU",
     "position": "Fraktionsvorsitzender EVP im Europaparlament"
   },
   {
-    "id": "au",
+    "id": "ay",
     "name": "Ilse Aigner",
     "party": "CSU",
     "position": "Wirtschaftsministerin in Bayern"
   },
   {
-    "id": "av",
+    "id": "az",
     "name": "Markus Söder",
     "party": "CSU",
     "position": "Finanzminister in Bayern"
   },
   {
-    "id": "aw",
+    "id": "ba",
     "name": "Alexander Dobrindt",
     "party": "CSU",
     "position": "Bundesverkehrsminister"
   },
   {
-    "id": "ax",
+    "id": "bb",
     "name": "Christian Schmidt",
     "party": "CSU",
     "position": "Bundesentwicklungsminister"
   },
   {
-    "id": "ay",
+    "id": "bc",
     "name": "Horst Seehofer",
     "party": "CSU",
     "position": "Ministerpräsident Bayern"
   },
   {
-    "id": "az",
+    "id": "bd",
+    "name": "Dorothee Bär",
+    "party": "CSU",
+    "position": "Parlamentarische Staatssekretärin Verkehr"
+  },
+  {
+    "id": "be",
     "name": "Gerd Müller",
     "party": "CSU",
     "position": "Bundesentwicklungsminister"
   },
   {
-    "id": "ba",
+    "id": "bf",
     "name": "Christian Lindner",
     "party": "FDP",
-    "position": "FDP-Spitzenkandidat"
+    "position": "FDP-Parteivorsitzender"
   },
   {
-    "id": "bb",
+    "id": "bg",
     "name": "Wolfgang Kubicki",
     "party": "FDP",
     "position": "Fraktionsvorsitzender der FDP in Schleswig-Holstein"
   },
   {
-    "id": "bc",
+    "id": "bh",
     "name": "Alexander Graf Lambsdorff",
     "party": "FDP",
     "position": "Vizepräsident des Europaparlaments"
   },
   {
-    "id": "bd",
+    "id": "bi",
     "name": "Nicola Beer",
     "party": "FDP",
     "position": "FDP-Generalsekretärin"
   },
   {
-    "id": "be",
+    "id": "bj",
     "name": "Johannes Vogel",
     "party": "FDP",
     "position": "Generalsekretär NRW-FDP"
   },
   {
-    "id": "bf",
+    "id": "bk",
     "name": "Katja Suding",
     "party": "FDP",
     "position": "Fraktionsvorsitzende der FDP in Hamburg"
   },
   {
-    "id": "bg",
+    "id": "bl",
     "name": "Carl-Ludwig Thiele",
     "party": "FDP",
-    "position": "Vorstandsmitglied Deutsche Bank"
+    "position": "Vorstandsmitglied Deutsche Bundesbank"
   },
   {
-    "id": "bh",
+    "id": "bm",
     "name": "Werner Hoyer",
     "party": "FDP",
     "position": "Präsident der Europäischen Investitionsbank"
   },
   {
-    "id": "bi",
+    "id": "bn",
     "name": "Volker Wissing",
     "party": "FDP",
     "position": "Wirtschaftsminister Rheinland-Pfalz"
   },
   {
-    "id": "bj",
+    "id": "bo",
     "name": "Hermann Otto Solms",
     "party": "FDP",
     "position": "FDP-Schatzmeister"
   },
   {
-    "id": "bk",
-    "name": "Cem Özdemir",
-    "party": "Gruene",
-    "position": "Parteivorsitzender"
-  },
-  {
-    "id": "bl",
-    "name": "Katrin Göring-Eckardt",
-    "party": "Gruene",
-    "position": "Fraktionsvorsitzende im Bundestag"
-  },
-  {
-    "id": "bm",
-    "name": "Anton Hofreiter",
-    "party": "Gruene",
-    "position": "Fraktionsvorsitzender im Bundestag"
-  },
-  {
-    "id": "bn",
-    "name": "Simone Peter",
-    "party": "Gruene",
-    "position": "Parteivorsitzende"
-  },
-  {
-    "id": "bo",
-    "name": "Omid Nouripour",
-    "party": "Gruene",
-    "position": "Außenpolitischer Sprecher der Grünenfraktion"
-  },
-  {
     "id": "bp",
-    "name": "Ekin Deligöz",
-    "party": "Gruene",
-    "position": "MdB"
+    "name": "Philipp Rösler",
+    "party": "FDP",
+    "position": "Vorstandsmitglied Weltwirtschaftsforum"
   },
   {
     "id": "bq",
-    "name": "Claudia Roth",
-    "party": "Gruene",
-    "position": "MdB"
+    "name": "Marie-Agnes Strack-Zimmermann",
+    "party": "FDP",
+    "position": "Stellvertretende FDP-Bundesvorsitzende"
   },
   {
     "id": "br",
-    "name": "Jürgen Trittin",
-    "party": "Gruene",
-    "position": "MdB"
+    "name": "Michael Theurer",
+    "party": "FDP",
+    "position": "Abgeordneter im Europaparlament"
   },
   {
     "id": "bs",
-    "name": "Konstantin von Notz",
-    "party": "Gruene",
-    "position": "MdB"
+    "name": "Gesine Meißner",
+    "party": "FDP",
+    "position": "Abgeordnete im Europaparlament"
   },
   {
     "id": "bt",
-    "name": "Renate Künast",
-    "party": "Gruene",
-    "position": "MdB"
+    "name": "Cem Özdemir",
+    "party": "Bündnis 90/Die Grünen",
+    "position": "Parteivorsitzender"
   },
   {
     "id": "bu",
-    "name": "Ska Keller",
-    "party": "Gruene",
-    "position": "Vorsitzende Grünen-Fraktion im EU-Parlament"
+    "name": "Katrin Göring-Eckardt",
+    "party": "Bündnis 90/Die Grünen",
+    "position": "Fraktionsvorsitzende im Bundestag"
   },
   {
     "id": "bv",
-    "name": "Sven Giegold",
-    "party": "Gruene",
-    "position": "MdEP"
+    "name": "Anton Hofreiter",
+    "party": "Bündnis 90/Die Grünen",
+    "position": "Fraktionsvorsitzender im Bundestag"
   },
   {
     "id": "bw",
-    "name": "Rebecca Harms",
-    "party": "Gruene",
-    "position": "MdEP"
+    "name": "Simone Peter",
+    "party": "Bündnis 90/Die Grünen",
+    "position": "Parteivorsitzende"
   },
   {
     "id": "bx",
-    "name": "Winfried Kretschmann",
-    "party": "Gruene",
-    "position": "Ministerpräsident von Baden-Württemberg"
+    "name": "Omid Nouripour",
+    "party": "Bündnis 90/Die Grünen",
+    "position": "Außenpolitischer Sprecher der Grünenfraktion"
   },
   {
     "id": "by",
+    "name": "Claudia Roth",
+    "party": "Bündnis 90/Die Grünen",
+    "position": "Vizepräsidentin des Bundestags"
+  },
+  {
+    "id": "bz",
+    "name": "Jürgen Trittin",
+    "party": "Bündnis 90/Die Grünen",
+    "position": "Bundestagsabgeordneter"
+  },
+  {
+    "id": "ca",
+    "name": "Konstantin von Notz",
+    "party": "Bündnis 90/Die Grünen",
+    "position": "Bundestagsabgeordneter"
+  },
+  {
+    "id": "cb",
+    "name": "Renate Künast",
+    "party": "Bündnis 90/Die Grünen",
+    "position": "Bundestagsabgeordnete"
+  },
+  {
+    "id": "cc",
+    "name": "Ska Keller",
+    "party": "Bündnis 90/Die Grünen",
+    "position": "Vorsitzende Grünen-Fraktion im EU-Parlament"
+  },
+  {
+    "id": "cd",
+    "name": "Sven Giegold",
+    "party": "Bündnis 90/Die Grünen",
+    "position": "Abgeordneter im Europaparlament"
+  },
+  {
+    "id": "ce",
+    "name": "Rebecca Harms",
+    "party": "Bündnis 90/Die Grünen",
+    "position": "Abgeordnete im Europaparlament"
+  },
+  {
+    "id": "cf",
+    "name": "Winfried Kretschmann",
+    "party": "Bündnis 90/Die Grünen",
+    "position": "Ministerpräsident von Baden-Württemberg"
+  },
+  {
+    "id": "cg",
     "name": "Boris Palmer",
-    "party": "Gruene",
+    "party": "Bündnis 90/Die Grünen",
     "position": "Bürgermeister von Tübingen"
+  },
+  {
+    "id": "ch",
+    "name": "Robert Habeck",
+    "party": "Bündnis 90/Die Grünen",
+    "position": "Minister für Energiewende [...] in Schleswig-Holstein"
   }
 ]
