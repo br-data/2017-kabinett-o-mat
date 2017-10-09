@@ -16,7 +16,7 @@ var lineup = (function () {
     bind();
   }
 
-  function update(oldDepartmentId, oldPoliticianId, newDepartmentId, newPoliticianId) {
+  function update() {
 
     var $$positions = $$('.position');
 
@@ -32,8 +32,13 @@ var lineup = (function () {
       var department = common.getDepartment(departmentId);
       var politician = common.getPolitician(department.politician);
 
-      $icon.src = department.politician ? 'img/politicians/aa.jpg' : 'img/politicians/none.png';
-      $name.textContent = department.politician ? politician.name : 'zu besetzen';
+      $icon.src = politician.id ?
+        'img/politicians/' + politician.id + '.jpg' : 'img/politicians/none.png';
+      $icon.className = politician.id ?
+        'icon ' + getClass(politician.party) : 'icon';
+
+      $name.textContent = politician.id ?
+        politician.name : 'zu besetzen';
 
       $politician.classList.toggle('changeable', department.politician);
       $politician.setAttribute('data-politician', politician.id || '');
@@ -63,33 +68,47 @@ var lineup = (function () {
 
   function handlePositionSelect(e) {
 
-    // var $position, $icon;
+    var $position, $icon;
 
-    // if (e.target.classList.contains('dropzone')) {
+    if (e.target.classList.contains('dropzone')) {
 
-    //   $position = e.target;
-    // } else {
+      $position = e.target;
+    } else {
 
-    //   $position = e.target.parentNode;
-    // }
+      $position = e.target.parentNode;
+    }
 
-    // $icon = $position.querySelector('.department .icon');
+    $icon = $position.querySelector('.department .icon');
 
-    // // If position gets clicked again, do nothing;
-    // if (common.currentPosition !== $position) {
+    // If position gets clicked again, do nothing;
+    if (common.currentPosition !== $position) {
 
-    //   $icon.classList.add('selected');
+      $icon.classList.add('selected');
 
-    //   if (common.currentPosition) {
+      if (common.currentPosition) {
 
-    //     common.currentPosition.querySelector('.department .icon')
-    //       .classList.remove('selected');
-    //   }
+        common.currentPosition.querySelector('.department .icon')
+          .classList.remove('selected');
+      }
 
-    //   common.updateInfo(undefined, $infoBox);
-    // }
+      common.updateInfo(undefined, $infoBox);
+    }
 
-    // common.currentPosition = $position;
+    common.currentPosition = $position;
+  }
+
+  function getClass(party) {
+
+    switch (party) {
+      case 'CDU':
+        return 'cdu';
+      case 'CSU':
+        return 'csu';
+      case 'FDP':
+        return 'fdp';
+      case 'Bündnis 90/Die Grünen':
+        return 'gruene';
+    }
   }
 
   return {

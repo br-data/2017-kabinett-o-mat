@@ -16,7 +16,7 @@ var list = (function () {
   playerFilter.addEventListener('keyup', handlePlayerSearch, false);
   playerFilter.addEventListener('search', handlePlayerSearch, false);
 
-  function init(players) {
+  function init() {
 
     showList();
     update();
@@ -92,7 +92,7 @@ var list = (function () {
   function handlePlayerChange(e, newPolitician) {
 
     var $oldPosition = e.relatedTarget || e.target;
-    var $newPosition = newPolitician;
+    var $newPosition = newPolitician || common.currentPosition;
 
     if (!$oldPosition.classList.contains('position')) {
       if ($oldPosition.tagName !== 'LI') {
@@ -104,16 +104,12 @@ var list = (function () {
       $newPosition = $newPosition.parentNode;
     }
 
-    var $oldDepartment = $oldPosition;
     var $oldPolitician = $oldPosition.querySelector('.politician') || $oldPosition;
-    var $newDepartment = $newPosition ?
-      $newPosition : common.currentPosition;
-    var $newPolitician = $newPosition ?
-      $newPosition.querySelector('.politician') : common.currentPosition.querySelector('.politician');
+    var $newPolitician = $newPosition.querySelector('.politician');
 
-    var oldDepartmentId = $oldDepartment.getAttribute('data-department') || false;
+    var oldDepartmentId = $oldPosition.getAttribute('data-department') || false;
     var oldPoliticianId = $oldPolitician.getAttribute('data-politician') || false;
-    var newDepartmentId = $newDepartment.getAttribute('data-department') || false;
+    var newDepartmentId = $newPosition.getAttribute('data-department') || false;
     var newPoliticianId = $newPolitician.getAttribute('data-politician') || false;
 
     update(oldPoliticianId, newDepartmentId);
