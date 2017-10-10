@@ -239,9 +239,9 @@
           </div>
         </div>
 
-        <section id="modal">
+        <section id="modal-share" class="modal">
 
-          <div id="close">×</div>
+          <div id="share-close" class="close">×</div>
 
           <h1>Teilen Sie Ihre Mannschaft mit Ihren Freunden:</h1>
 
@@ -251,7 +251,7 @@
               <span>Facebook</span>
             </a>
 
-            <a href="https://twitter.com/intent/tweet?url=%URL%&amp;text=%TEXT%&amp;via=%AUTHOR%&amp;hashtags=%HASHTAGS%&amp;related=%RELATED%" class="share twitter" target="_blank">
+            <a href="https://twitter.com/intent/tweet?url=%URL%&amp;text=Wer+wird+Minister?+Meine+Traum-Koalition+im+Kabinett-O-Mat:&amp;hashtags=Jamaika,BTW17&amp;related=tagesschau,br24,br_data" class="share twitter" target="_blank">
               <i class="icon-twitter-squared big"></i>
               <span>Twitter</span>
             </a>
@@ -261,7 +261,7 @@
               <span>Google+</span>
             </a>
 
-            <a href="mailto:?subject=Bayerische%20Nationalmannschaft&body=Wenn%20ich%20Trainer%20w%C3%A4re,%20w%C3%BCrde%20ich%20meine%20bayerische%20Nationalmannschaft%20so%20aufstellen:%20%URL%" class="e-mail" target="_blank">
+            <a href="mailto:?subject=Kabinett-O-Mat=Wer wird Minister? Ich habe meine Traum-Koalition aufgestellt: %URL%" class="e-mail" target="_blank">
               <i class="icon-mail-squared big"></i>
               <span>E-Mail</span>
             </a>
@@ -274,6 +274,15 @@
           <p>&nbsp;</p>
 
           <p>Unsere Datenschutzerklärung finden Sie <a href="http://www.br.de/footernavi/bayrischer_rundfunk/datenschutz/index.html" target="_blank">hier.</a></p>
+        </section>
+
+        <section id="modal-info" class="modal">
+
+          <div id="info-close" class="close">×</div>
+
+          <h1>Über das Projekt:</h1>
+
+          <p>„Kabinett-O-Mat“ ist ein Projekt von <a href="http://www.br.de/extra/br-data/index.html">BR Data</a>. Wenn Sie Fragen oder Anregungen haben, können Sie und eine <a href="mailto:data@br.de">E-Mail schreiben</a> oder auf <a href="https://twitter.com/br_data">Twitter kontaktieren</a>.</p>
         </section>
       </section>
 
@@ -404,6 +413,7 @@
     <!-- build:js scripts/main.min.js -->
     <script type="text/javascript" src="scripts/modules/utils.js"></script>
     <script type="text/javascript" src="scripts/modules/common.js"></script>
+    <script type="text/javascript" src="scripts/modules/sharing.js"></script>
     <script type="text/javascript" src="scripts/modules/tracking.js"></script>
     <script type="text/javascript" src="scripts/modules/dragging.js"></script>
     <script type="text/javascript" src="scripts/modules/infobox.js"></script>

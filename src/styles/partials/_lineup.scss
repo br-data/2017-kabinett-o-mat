@@ -12,6 +12,8 @@
 }
 
 #lineup {
+  user-select: none;
+  -webkit-touch-callout: none;
 
   .position {
     position: relative;
@@ -21,8 +23,6 @@
     cursor: pointer;
     vertical-align: top;
     margin: 10px;
-    user-select: none;
-    -webkit-touch-callout: none;
 
     p {
       height: 18px;

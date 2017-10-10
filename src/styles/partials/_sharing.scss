@@ -21,15 +21,17 @@
   float: right;
 }
 
-#modal {
+.modal {
   background: $white;
   display: none;
-  left: 10%;
-  overflow: auto;
-  padding: 1em 4em 4em;
   position: absolute;
-  right: 10%;
-  top: 15%;
+  left: 1em;
+  right: 1em;
+  top: 5em;
+  bottom: 1em;
+  overflow: auto;
+  border: 1px solid;
+  padding: 1em 4em 4em;
   z-index: 500;
 
   p {
@@ -41,7 +43,7 @@
   }
 }
 
-#close {
+.close {
   position: absolute;
   top: .5em;
   right: 1em;

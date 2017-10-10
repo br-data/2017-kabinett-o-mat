@@ -4,9 +4,14 @@ var app = (function () {
 
   var $ = utils.$;
 
-  var $modal = $('#modal');
   var $shareButton = $('#share');
-  var $closeButton = $('#close');
+  var $modalShare = $('#modal-share');
+  var $shareClose = $('#share-close');
+
+  var $infoButton = $('#credits');
+  var $modalInfo = $('#modal-info');
+  var $infoClose = $('#info-close');
+
   var $directLink = $('#direct');
 
   function init() {
@@ -29,6 +34,12 @@ var app = (function () {
         dragging.init();
       });
     });
+
+    $shareButton.addEventListener('click', handleShare, false);
+    $shareClose.addEventListener('click', handleShareClose, false);
+
+    $infoButton.addEventListener('click', handleInfo, false);
+    $infoClose.addEventListener('click', handleInfoClose, false);
   }
 
   function handleShare() {
@@ -39,16 +50,29 @@ var app = (function () {
     currentUrl =  currentUrl.replace(/(\?.*)#/, '#');
 
     // tracking.send('Lineup=' + common.teamToHash(common.currentTeamModel));
+    sharing.init(currentUrl);
 
     $directLink.href = currentUrl;
     $directLink.textContent = currentUrl;
 
-    $modal.style.display = 'block';
+    $modalInfo.style.display = 'none';
+    $modalShare.style.display = 'block';
   }
 
-  function handleClose() {
+  function handleShareClose() {
 
-    $modal.style.display = 'none';
+    $modalShare.style.display = 'none';
+  }
+
+  function handleInfo() {
+
+    $modalShare.style.display = 'none';
+    $modalInfo.style.display = 'block';
+  }
+
+  function handleInfoClose() {
+
+    $modalInfo.style.display = 'none';
   }
 
   return {
