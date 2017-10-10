@@ -1,5 +1,5 @@
 #field {
-  width: calc(100% - 220px);
+  width: calc(100% - 210px);
   height: 100%;
   background: $lightgrey;
   background-image: radial-gradient(ellipse at center, #fff 0%, #ccc 100%);
@@ -58,7 +58,7 @@
     height: 120px;
     cursor: pointer;
     vertical-align: top;
-    margin: 1em;
+    margin: 10px;
     user-select: none;
     -webkit-touch-callout: none;
 
@@ -82,7 +82,7 @@
     .icon {
       width: 4em;
       height: 4em;
-      margin: 10px 0;
+      margin: 7px 0;
       border-radius: 50%;
       pointer-events: none;
 

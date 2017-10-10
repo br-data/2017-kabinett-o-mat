@@ -1,32 +1,24 @@
 /* General mediaqueries */
-@media (min-width: 1100px) {
-
-  #lineup .player .icon {
-    width: 5em;
-    height: 5em;
-  }
-}
-
 @media (max-height: 640px) {
 
-  #lineup .player .icon {
-    width: 3em;
-    height: 3em;
+  #lineup .position .icon {
+    width: 4em;
+    height: 4em;
   }
 }
 
 @media (max-width: 560px) {
 
-  #lineup .player .icon {
+  #field {
+    padding: 10px 0;
+  }
+
+  #lineup .position {
+    margin: 0 5px;
+  }
+
+  #lineup .position .icon {
     width: 3em;
     height: 3em;
-  }
-}
-
-@media (max-width: 420px) {
-
-  #lineup .player .icon {
-    width: 2em;
-    height: 2em;
   }
 }

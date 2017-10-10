@@ -67,6 +67,8 @@ var lineup = (function () {
     // If position gets clicked again, do nothing;
     if (common.currentPosition !== $position) {
 
+      var $politician = $position.querySelector('.politician');
+
       $icon.classList.add('selected');
 
       if (common.currentPosition) {
@@ -75,8 +77,9 @@ var lineup = (function () {
           .classList.remove('selected');
       }
 
-      infobox.update($position.querySelector('.politician')
-        .getAttribute('data-politician'));
+      infobox.update($politician ?
+        $politician.getAttribute('data-politician') : undefined
+      );
     }
 
     common.currentPosition = $position;
