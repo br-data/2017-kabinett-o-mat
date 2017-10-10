@@ -240,24 +240,24 @@ button,
           box-shadow: 0 0 0 5px #00b2ff;
 }
 #lineup .position .icon.fdp {
-  -webkit-box-shadow: 0 0 0 5px #ffdd00;
-          box-shadow: 0 0 0 5px #ffdd00;
+  -webkit-box-shadow: 0 0 0 5px #fd0;
+          box-shadow: 0 0 0 5px #fd0;
 }
 #lineup .position .icon.gruene {
   -webkit-box-shadow: 0 0 0 5px #309128;
           box-shadow: 0 0 0 5px #309128;
 }
 #lineup .position .icon.parteilos {
-  -webkit-box-shadow: 0 0 0 5px #ffffff;
-          box-shadow: 0 0 0 5px #ffffff;
+  -webkit-box-shadow: 0 0 0 5px #fff;
+          box-shadow: 0 0 0 5px #fff;
 }
 #lineup .position .selected {
-  -webkit-box-shadow: 0 0 0 3px #ddd, 0 0 0 5px #2b2b2b;
-          box-shadow: 0 0 0 3px #ddd, 0 0 0 5px #2b2b2b;
+  -webkit-box-shadow: 0 0 0 3px #ddd, 0 0 0 5px #3b3b3b;
+          box-shadow: 0 0 0 3px #ddd, 0 0 0 5px #3b3b3b;
 }
 #lineup .position.drop-target .department .icon {
-  -webkit-box-shadow: 0 0 0 3px #ddd, 0 0 0 5px #2b2b2b;
-          box-shadow: 0 0 0 3px #ddd, 0 0 0 5px #2b2b2b;
+  -webkit-box-shadow: 0 0 0 3px #ddd, 0 0 0 5px #3b3b3b;
+          box-shadow: 0 0 0 3px #ddd, 0 0 0 5px #3b3b3b;
 }
 
 #sidebar {
@@ -355,10 +355,10 @@ button,
 }
 
 #info {
-  background-color: #2b2b2b;
+  background-color: #3b3b3b;
   bottom: 0;
   color: #fff;
-  height: 130px;
+  height: 140px;
   left: 0;
   padding: 10px 20px;
   position: absolute;
@@ -366,34 +366,58 @@ button,
   width: 100%;
   z-index: 60;
   overflow: hidden;
+  border-top: 10px solid #0076c2;
 }
 #info h3 {
   font-size: 1em;
-  margin: 0 0 .5em;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+  margin: 0 0 .75em;
 }
 #info p {
   margin: .2em 0 .5em;
 }
 #info img {
   float: right;
-  margin-left: 1em;
+  margin: 2px 0 0 10px;
+}
+#info.cdu {
+  border-color: #121212;
+}
+#info.cdu img {
+  height: 18px;
+}
+#info.csu {
+  border-color: #00b2ff;
+}
+#info.csu img {
+  height: 18px;
+}
+#info.fdp {
+  border-color: #fd0;
+}
+#info.fdp img {
+  width: 60px;
+}
+#info.gruene {
+  border-color: #309128;
+}
+#info.gruene img {
   width: 50px;
+}
+#info.parteilos {
+  border-color: #fff;
 }
 
 .gradient {
   pointer-events: none;
   height: 40px;
   position: absolute;
-  bottom: 130px;
+  bottom: 140px;
   left: 0;
   right: 0;
   width: 100%;
   background: none;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(255, 255, 255, 0)), color-stop(1%, rgba(255, 255, 255, 0.01)), color-stop(75%, white), to(white));
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.01) 1%, white 75%, white 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(255, 255, 255, 0)), color-stop(50%, rgba(255, 255, 255, 0.75)), to(white));
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.75) 50%, white 100%);
 }
 
 button,

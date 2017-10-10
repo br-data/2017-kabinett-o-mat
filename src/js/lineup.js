@@ -75,7 +75,8 @@ var lineup = (function () {
           .classList.remove('selected');
       }
 
-      infobox.update(undefined);
+      infobox.update($position.querySelector('.politician')
+        .getAttribute('data-politician'));
     }
 
     common.currentPosition = $position;
@@ -85,6 +86,6 @@ var lineup = (function () {
 
     init: init,
     update: update,
-    handleSelect: handleSelect,
+    handleSelect: handleSelect
   };
 }());

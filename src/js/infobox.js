@@ -18,17 +18,18 @@ var infobox = (function () {
     if (politicianId) {
 
       var politician = common.getPolitician(politicianId);
-      // createElement('img', $infobox, ['src', 'img/logos/' +
-      //   politician.team_short + '.png'], ['alt', politician.team]);
+      createElement('img', $infobox, ['src', 'img/parties/' +
+        common.getClass(politician.party) + '.svg'], ['alt', politician.party]);
       createElement('h3', $infobox, ['textContent', politician.name]);
-      createElement('p', $infobox, ['textContent', politician.party]);
       createElement('p', $infobox, ['textContent', politician.position]);
-      // createElement('p', $infobox, ['textContent', politician.position + ' in ' +
-      //   politician.geb_ort + ', ' + politician.reg_bezirk, $infobox]);
+
+      $infobox.className = common.getClass(politician.party);
     } else {
 
       createElement('p', $infobox,
         ['textContent', 'Wählen Sie einen Politiker aus der Liste aus, um diese Position zu besetzen.']);
+
+      $infobox.className = '';
     }
   }
 
