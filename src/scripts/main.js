@@ -49,7 +49,7 @@ var app = (function () {
     // Remove query string parameters
     currentUrl =  currentUrl.replace(/(\?.*)#/, '#');
 
-    // tracking.send('Lineup=' + common.teamToHash(common.currentTeamModel));
+    tracking.send(common.getHashString());
     sharing.init(currentUrl);
 
     $directLink.href = currentUrl;

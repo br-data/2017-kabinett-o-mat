@@ -4,8 +4,7 @@ var tracking = (function () {
 
   var request;
 
-  //ex. str = "Lineup=acab-axavasat-amanafbn-ba";
-  function send(str) {
+  function send(hash) {
 
     if (request) {
 
@@ -14,20 +13,10 @@ var tracking = (function () {
 
     request = new XMLHttpRequest();
 
-    // Callback
-    // request.onreadystatechange = function() {
-
-    //  if (request.readyState === 4 && request.status === 200) {
-
-    //  console.log('Request successfull');
-    //  }
-    // };
-
     try {
 
-      request.open('POST','https://script.google.com/macros/s/AKfycbzvz2UDsyp6Iy7YMMVbbnUSKwfCsmrabnVBPlGscrz1STIfGEgE/exec', true);
-      request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-      request.send(str);
+      request.open('POST','http://localhost:3007/' + hash, true);
+      request.send(hash);
     } catch (err) {
 
       console.log('Could not send tracking string: ', err);

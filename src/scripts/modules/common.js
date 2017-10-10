@@ -110,6 +110,18 @@ var common = (function () {
     location.hash = hash.join('-');
   }
 
+  function getHashString() {
+
+    var hash = [];
+
+    departments.forEach(function (department) {
+
+      hash.push(department.politician || 'xx');
+    });
+
+    return hash.join('-');
+  }
+
   return {
     setPoliticians: setPoliticians,
     setDepartments: setDepartments,
@@ -125,6 +137,7 @@ var common = (function () {
 
     getHash: getHash,
     setHash: setHash,
+    getHashString: getHashString,
 
     currentPosition: currentPosition
   };
