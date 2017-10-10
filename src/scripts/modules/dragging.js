@@ -5,7 +5,7 @@ var dragging = (function () {
   function init () {
 
     var top = document.getElementById('sidebar');
-    var main = document.getElementById('main');
+    var main = document.getElementById('app');
     var target, x, y, offsetY, parent, sibling, placeholder;
 
     // Target list elements with the "draggable" class

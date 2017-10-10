@@ -18,7 +18,7 @@ var infobox = (function () {
     if (politicianId) {
 
       var politician = common.getPolitician(politicianId);
-      createElement('img', $infobox, ['src', 'img/parties/' +
+      createElement('img', $infobox, ['src', 'images/parties/' +
         common.getClass(politician.party) + '.svg'], ['alt', politician.party]);
       createElement('h3', $infobox, ['textContent', politician.name]);
       createElement('p', $infobox, ['textContent', politician.position]);

@@ -213,6 +213,7 @@ button,
   background: #fff;
   width: 210px;
   height: 100%;
+  border-left: 1px solid #000;
   display: inline-block;
   float: right;
   position: relative;
@@ -223,10 +224,10 @@ button,
   overflow: auto;
 }
 #sidebar #filter {
-  border: 2px solid #bbb;
+  border: 1px solid #000;
 }
 #sidebar #filter:focus {
-  border: 2px solid #0076c2;
+  border: 1px solid #0076c2;
 }
 #sidebar form {
   background: #fff;
@@ -272,30 +273,40 @@ button,
 }
 #list .cdu:before {
   content: "CDU";
+  padding-left: 5px;
+  border-left: 3px solid #121212;
   font-weight: bold;
   line-height: 2.2em;
   vertical-align: top;
 }
 #list .csu:before {
   content: "CSU";
+  padding-left: 5px;
+  border-left: 3px solid #00b2ff;
   font-weight: bold;
   line-height: 2.2em;
   vertical-align: top;
 }
 #list .fdp:before {
   content: "FDP";
+  padding-left: 5px;
+  border-left: 3px solid #fd0;
   font-weight: bold;
   line-height: 2.2em;
   vertical-align: top;
 }
 #list .gruene:before {
   content: "Grüne";
+  padding-left: 5px;
+  border-left: 3px solid #309128;
   font-weight: bold;
   line-height: 2.2em;
   vertical-align: top;
 }
 #list .parteilos:before {
   content: "Parteilos";
+  padding-left: 5px;
+  border-left: 3px solid #fff;
   font-weight: bold;
   line-height: 2.2em;
   vertical-align: top;
@@ -363,6 +374,7 @@ button,
   padding: 5px 10px;
   font-size: 1em;
   font-weight: bold;
+  border: 1px solid #000;
 }
 
 .button:hover {

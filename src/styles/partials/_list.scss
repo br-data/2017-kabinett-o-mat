@@ -2,6 +2,7 @@
   background: $white;
   width: 210px;
   height: 100%;
+  border-left: 1px solid $black;
   display: inline-block;
   float: right;
   position: relative;
@@ -13,10 +14,10 @@
   }
 
   #filter {
-    border: 2px solid $grey;
+    border: 1px solid $black;
 
     &:focus {
-      border: 2px solid $br-blue;
+      border: 1px solid $br-blue;
     }
   }
 
@@ -71,6 +72,8 @@
 
   .cdu:before {
     content: "CDU";
+    padding-left: 5px;
+    border-left: 3px solid $cdu;
     font-weight: bold;
     line-height: 2.2em;
     vertical-align: top;
@@ -78,6 +81,8 @@
 
   .csu:before {
     content: "CSU";
+    padding-left: 5px;
+    border-left: 3px solid $csu;
     font-weight: bold;
     line-height: 2.2em;
     vertical-align: top;
@@ -85,6 +90,8 @@
 
   .fdp:before {
     content: "FDP";
+    padding-left: 5px;
+    border-left: 3px solid $fdp;
     font-weight: bold;
     line-height: 2.2em;
     vertical-align: top;
@@ -92,6 +99,8 @@
 
   .gruene:before {
     content: "Grüne";
+    padding-left: 5px;
+    border-left: 3px solid $gruene;
     font-weight: bold;
     line-height: 2.2em;
     vertical-align: top;
@@ -99,6 +108,8 @@
 
   .parteilos:before {
     content: "Parteilos";
+    padding-left: 5px;
+    border-left: 3px solid $parteilos;
     font-weight: bold;
     line-height: 2.2em;
     vertical-align: top;
