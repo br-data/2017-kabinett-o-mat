@@ -507,6 +507,13 @@ button:hover,
   z-index: 200;
 }
 
+body.embed header {
+  display: none;
+}
+body.embed #main {
+  height: 100%;
+}
+
 #fallback {
   display: none;
   position: absolute;

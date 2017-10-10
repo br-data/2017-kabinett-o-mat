@@ -11,6 +11,11 @@ var app = (function () {
 
   function init() {
 
+    if (utils.getUrlParam('embed')) {
+
+      document.body.classList.add('embed');
+    }
+
     utils.getJSON('data/politicians.json', function (politicians) {
 
       utils.getJSON('data/departments.json', function (departments) {
@@ -19,7 +24,6 @@ var app = (function () {
         common.setDepartments(departments);
         common.setHash();
 
-        // Inital drawing
         lineup.init();
         list.init();
         dragging.init();
