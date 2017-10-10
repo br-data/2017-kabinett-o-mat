@@ -1,10 +1,16 @@
 body.embed {
 
-  header {
+  #header {
     display: none;
   }
 
-  #main {
+  #app {
     height: 100%;
+    max-width: 100%;
+    border: 0;
+  }
+
+  #footer {
+    display: none;
   }
 }

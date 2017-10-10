@@ -93,42 +93,53 @@ button,
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
 
-#main {
-  height: calc(100% - 170px);
+#app {
+  height: 700px;
+  max-width: 1200px;
   overflow: hidden;
+  border: 1px solid #3b3b3b;
+  margin: 0 auto;
 }
 
-#header {
+#header,
+#footer {
   height: 170px;
+  max-width: 840px;
   padding: 1em;
+  margin: 0 auto;
 }
-#header h1 {
+#header h1,
+#footer h1 {
   font-size: 1.8em;
   margin: 0 0 .5em;
   font-weight: normal;
 }
-#header em {
+#header em,
+#footer em {
   display: block;
   color: #0076c2;
   font-style: normal;
   font-size: 1rem;
   font-weight: bold;
 }
-#header p {
+#header p,
+#footer p {
   font-size: 1.1em;
   line-height: 1.6;
   max-width: 90%;
 }
-#header a {
+#header a,
+#footer a {
   outline: none;
   border: 0;
   color: #000;
 }
-#header .logo {
+#header .logo,
+#footer .logo {
   border: 0;
   outline: none;
   float: right;
-  height: 40px;
+  height: 35px;
 }
 
 #field {
@@ -141,7 +152,7 @@ button,
   text-align: center;
   z-index: 10;
   position: relative;
-  overflow: hidden;
+  overflow: auto;
 }
 
 #lineup .position {
@@ -434,11 +445,16 @@ button,
   z-index: 200;
 }
 
-body.embed header {
+body.embed #header {
   display: none;
 }
-body.embed #main {
+body.embed #app {
   height: 100%;
+  max-width: 100%;
+  border: 0;
+}
+body.embed #footer {
+  display: none;
 }
 
 #fallback {

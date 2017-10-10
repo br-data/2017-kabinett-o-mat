@@ -31,7 +31,10 @@ button,
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
 
-#main {
-  height: calc(100% - 170px);
+#app {
+  height: 700px;
+  max-width: 1200px;
   overflow: hidden;
+  border: 1px solid $slategrey;
+  margin: 0 auto;
 }
