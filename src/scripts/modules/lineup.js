@@ -28,7 +28,7 @@ var lineup = (function () {
       var politician = common.getPolitician(department.politician);
 
       $icon.src = politician.id ?
-        'img/politicians/' + politician.id + '.jpg' : 'img/politicians/none.png';
+        'images/politicians/' + politician.id + '.jpg' : 'images/politicians/none.png';
       $icon.className = politician.id ?
         'icon ' + common.getClass(politician.party) : 'icon';
 

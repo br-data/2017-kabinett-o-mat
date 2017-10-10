@@ -1,22 +1,9 @@
 @charset "UTF-8";
-@font-face {
-  font-family: 'Open Sans';
-  src: url("../font/OpenSans-Regular.eot?v=1.1.0");
-  src: url("../font/OpenSans-Regular.eot?#iefix&v=1.1.0") format("embedded-opentype"), url("../font/OpenSans-Regular.woff2?v=1.1.0") format("woff2"), url("../font/OpenSans-Regular.woff?v=1.1.0") format("woff"), url("../font/OpenSans-Regular.ttf?v=1.1.0") format("truetype"), url("../font/OpenSans-Regular.svg?v=1.1.0#Regular") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Open Sans';
-  src: url("../font/OpenSans-Bold.eot?v=1.1.0");
-  src: url("../font/OpenSans-Bold.eot?#iefix&v=1.1.0") format("embedded-opentype"), url("../font/OpenSans-Bold.woff2?v=1.1.0") format("woff2"), url("../font/OpenSans-Bold.woff?v=1.1.0") format("woff"), url("../font/OpenSans-Bold.ttf?v=1.1.0") format("truetype"), url("../font/OpenSans-Bold.svg?v=1.1.0#Bold") format("svg");
-  font-weight: bold;
-  font-style: normal;
-}
+@import url(https://web.br.de/interaktiv/assets/fonts/open-sans/open-sans-v13-light.css);
 @font-face {
   font-family: 'icons';
-  src: url("../font/icons.eot?71462735");
-  src: url("../font/icons.eot?71462735#iefix") format("embedded-opentype"), url("../font/icons.woff?71462735") format("woff"), url("../font/icons.ttf?71462735") format("truetype"), url("../font/icons.svg?71462735#icons") format("svg");
+  src: url("../fonts/icons.eot?71462735");
+  src: url("../fonts/icons.eot?71462735#iefix") format("embedded-opentype"), url("../fonts/icons.woff?71462735") format("woff"), url("../fonts/icons.ttf?71462735") format("truetype"), url("../fonts/icons.svg?71462735#icons") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -74,14 +61,12 @@
 }
 
 html {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   height: 100%;
 }
 
 *, *:before, *:after {
-  -webkit-box-sizing: inherit;
-          box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 body {
@@ -105,10 +90,7 @@ button,
   height: 30px;
   outline: none;
   text-decoration: none;
-  -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-  transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
 }
 
 #main {
@@ -170,10 +152,7 @@ button,
   cursor: pointer;
   vertical-align: top;
   margin: 10px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
   -webkit-touch-callout: none;
 }
 #lineup .position p {
@@ -198,32 +177,25 @@ button,
   pointer-events: none;
 }
 #lineup .position .icon.cdu {
-  -webkit-box-shadow: 0 0 0 5px #121212;
-          box-shadow: 0 0 0 5px #121212;
+  box-shadow: 0 0 0 5px #121212;
 }
 #lineup .position .icon.csu {
-  -webkit-box-shadow: 0 0 0 5px #00b2ff;
-          box-shadow: 0 0 0 5px #00b2ff;
+  box-shadow: 0 0 0 5px #00b2ff;
 }
 #lineup .position .icon.fdp {
-  -webkit-box-shadow: 0 0 0 5px #fd0;
-          box-shadow: 0 0 0 5px #fd0;
+  box-shadow: 0 0 0 5px #fd0;
 }
 #lineup .position .icon.gruene {
-  -webkit-box-shadow: 0 0 0 5px #309128;
-          box-shadow: 0 0 0 5px #309128;
+  box-shadow: 0 0 0 5px #309128;
 }
 #lineup .position .icon.parteilos {
-  -webkit-box-shadow: 0 0 0 5px #fff;
-          box-shadow: 0 0 0 5px #fff;
+  box-shadow: 0 0 0 5px #fff;
 }
 #lineup .position .selected {
-  -webkit-box-shadow: 0 0 0 3px #ddd, 0 0 0 5px #3b3b3b;
-          box-shadow: 0 0 0 3px #ddd, 0 0 0 5px #3b3b3b;
+  box-shadow: 0 0 0 3px #ddd, 0 0 0 5px #3b3b3b;
 }
 #lineup .position.drop-target .department .icon {
-  -webkit-box-shadow: 0 0 0 3px #ddd, 0 0 0 5px #3b3b3b;
-          box-shadow: 0 0 0 3px #ddd, 0 0 0 5px #3b3b3b;
+  box-shadow: 0 0 0 3px #ddd, 0 0 0 5px #3b3b3b;
 }
 
 #sidebar {
@@ -269,10 +241,7 @@ button,
   margin: 0;
   padding: 10px 20px;
   list-style-type: none;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 #list ul:last-child:after {
   content: "\a";

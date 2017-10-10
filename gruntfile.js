@@ -58,7 +58,7 @@ module.exports = function (grunt) {
 
         files: {
 
-          'src/css/main.css' : 'src/scss/main.scss'
+          'src/styles/main.css' : 'src/styles/main.scss'
         }
       }
     },
@@ -141,7 +141,7 @@ module.exports = function (grunt) {
 
           interrupt: true
         },
-        files: ['src/scss/**/*.scss'],
+        files: ['src/styles/**/*.scss'],
         tasks: ['sass:dev', 'postcss:dev']
       }
     }
