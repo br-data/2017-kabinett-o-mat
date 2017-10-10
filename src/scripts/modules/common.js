@@ -2,6 +2,8 @@ var common = (function () {
 
   'use strict';
 
+  var userId = utils.uuid();
+
   var politicians;
   var departments;
 
@@ -122,6 +124,11 @@ var common = (function () {
     return hash.join('-');
   }
 
+  function getUserId() {
+
+    return userId;
+  }
+
   return {
     setPoliticians: setPoliticians,
     setDepartments: setDepartments,
@@ -138,6 +145,8 @@ var common = (function () {
     getHash: getHash,
     setHash: setHash,
     getHashString: getHashString,
+
+    getUserId: getUserId,
 
     currentPosition: currentPosition
   };
