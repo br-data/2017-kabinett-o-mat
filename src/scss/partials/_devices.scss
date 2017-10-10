@@ -9,8 +9,17 @@
 
 @media (max-width: 560px) {
 
+  #share {
+    float: none;
+    margin: 0 10px 15px;
+  }
+
+  #credits {
+    display: none;
+  }
+
   #field {
-    padding: 10px 0;
+    padding: 15px 0;
   }
 
   #lineup .position {

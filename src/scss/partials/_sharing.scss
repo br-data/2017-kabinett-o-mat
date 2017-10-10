@@ -1,32 +1,23 @@
-button,
 .button {
   color: $black;
   background: $white;
   cursor: pointer;
+  padding: 5px 10px;
+  font-size: 1em;
   font-weight: bold;
-  padding: .5em;
-  line-height: 1;
 }
 
-button:hover,
 .button:hover {
   color: $white;
   background: $br-blue;
 }
 
-#home {
+#credits {
   float: left;
 }
 
 #share {
   float: right;
-}
-
-.small {
-  font-size: 17px;
-  opacity: .7;
-  vertical-align: top;
-  margin: 0 .1em;
 }
 
 #modal {

@@ -85,7 +85,7 @@ html {
 }
 
 body {
-  color: #262626;
+  color: #000;
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
   font-size: .85em;
   height: 100%;
@@ -112,12 +112,12 @@ button,
 }
 
 #main {
-  height: calc(100% - 80px);
+  height: calc(100% - 170px);
   overflow: hidden;
 }
 
 #header {
-  height: 80px;
+  height: 170px;
   padding: 1em;
 }
 #header h1 {
@@ -140,7 +140,7 @@ button,
 #header a {
   outline: none;
   border: 0;
-  color: #262626;
+  color: #000;
 }
 #header .logo {
   border: 0;
@@ -161,41 +161,7 @@ button,
   position: relative;
   overflow: hidden;
 }
-#field nav {
-  z-index: 30;
-}
-#field form {
-  display: inline-block;
-  padding-bottom: 2em;
-}
-#field label {
-  background: #fff;
-  display: inline-block;
-  line-height: 30px;
-  padding: 0 .7em 0 .5em;
-  vertical-align: top;
-}
-#field select {
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  background: #fff url("../img/arrow.png") no-repeat right 3px center;
-  background-size: 20px 13px;
-  border: 2px solid #fff;
-  cursor: pointer;
-  padding: 4px 46px 4px 8px;
-  text-indent: .01px;
-  text-overflow: '';
-}
-#field select:focus {
-  border: 2px solid #0076c2;
-}
-#field select::-ms-expand {
-  display: none;
-}
 
-#lineup {
-  height: 90%;
-}
 #lineup .position {
   position: relative;
   display: inline-block;
@@ -227,7 +193,7 @@ button,
 #lineup .position .icon {
   width: 4em;
   height: 4em;
-  margin: 7px 0;
+  margin: 8px 0 4px;
   border-radius: 50%;
   pointer-events: none;
 }
@@ -261,6 +227,7 @@ button,
 }
 
 #sidebar {
+  background: #fff;
   width: 210px;
   height: 100%;
   display: inline-block;
@@ -409,35 +376,26 @@ button,
   border-color: #fff;
 }
 
-button,
 .button {
-  color: #262626;
+  color: #000;
   background: #fff;
   cursor: pointer;
+  padding: 5px 10px;
+  font-size: 1em;
   font-weight: bold;
-  padding: .5em;
-  line-height: 1;
 }
 
-button:hover,
 .button:hover {
   color: #fff;
   background: #0076c2;
 }
 
-#home {
+#credits {
   float: left;
 }
 
 #share {
   float: right;
-}
-
-.small {
-  font-size: 17px;
-  opacity: .7;
-  vertical-align: top;
-  margin: 0 .1em;
 }
 
 #modal {
@@ -462,7 +420,7 @@ button:hover,
   position: absolute;
   top: .5em;
   right: 1em;
-  color: #262626;
+  color: #000;
   font-size: 2em;
   font-weight: 700;
   text-decoration: none;
@@ -474,7 +432,7 @@ button:hover,
   margin: 2em 0;
 }
 .icons a {
-  color: #262626;
+  color: #000;
   text-decoration: none;
   margin: 0 1em;
   display: inline-block;
@@ -549,8 +507,17 @@ body.embed #main {
   }
 }
 @media (max-width: 560px) {
+  #share {
+    float: none;
+    margin: 0 10px 15px;
+  }
+
+  #credits {
+    display: none;
+  }
+
   #field {
-    padding: 10px 0;
+    padding: 15px 0;
   }
 
   #lineup .position {

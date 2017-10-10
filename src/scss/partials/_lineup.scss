@@ -9,47 +9,9 @@
   z-index: 10;
   position: relative;
   overflow: hidden;
-
-  nav {
-    z-index: 30;
-  }
-
-  form {
-    display: inline-block;
-    padding-bottom: 2em;
-  }
-
-  label {
-    background: $white;
-    display: inline-block;
-    line-height: 30px;
-    padding: 0 .7em 0 .5em;
-    vertical-align: top;
-  }
-
-  select {
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    background: $white url('../img/arrow.png') no-repeat right 3px center;
-    background-size: 20px 13px;
-    border: 2px solid $white;
-    cursor: pointer;
-    padding: 4px 46px 4px 8px;
-    text-indent: .01px;
-    text-overflow: '';
-
-    &:focus {
-      border: 2px solid $br-blue;
-    }
-
-    &::-ms-expand {
-      display: none;
-    }
-  }
 }
 
 #lineup {
-  height: 90%;
 
   .position {
     position: relative;
@@ -82,7 +44,7 @@
     .icon {
       width: 4em;
       height: 4em;
-      margin: 7px 0;
+      margin: 8px 0 4px;
       border-radius: 50%;
       pointer-events: none;
 
