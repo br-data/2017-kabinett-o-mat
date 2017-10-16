@@ -18,9 +18,8 @@
   .position {
     position: relative;
     display: inline-block;
-    min-width: 145px;
+    min-width: 120px;
     height: 120px;
-    cursor: pointer;
     vertical-align: top;
     margin: 10px;
 
@@ -31,6 +30,7 @@
 
     .department {
       z-index: 10;
+      cursor: pointer;
     }
 
     .politician {
@@ -39,42 +39,51 @@
       left: 0;
       right: 0;
       z-index: 100;
+      cursor: pointer;
+
+      &.changing {
+        z-index: 500;
+        cursor: pointer;
+        cursor: grabbing;
+        cursor: -moz-grabbing;
+        cursor: -webkit-grabbing;
+      }
     }
 
     .icon {
       width: 4em;
       height: 4em;
-      margin: 8px 0 4px;
+      margin: 10px 0 5px;
       border-radius: 50%;
       pointer-events: none;
 
       &.cdu {
-        box-shadow: 0 0 0 5px $cdu;
+        box-shadow: 0 0 0 4px $cdu;
       }
 
       &.csu {
-        box-shadow: 0 0 0 5px $csu;
+        box-shadow: 0 0 0 4px $csu;
       }
 
       &.fdp {
-        box-shadow: 0 0 0 5px $fdp;
+        box-shadow: 0 0 0 4px $fdp;
       }
 
       &.gruene {
-        box-shadow: 0 0 0 5px $gruene;
+        box-shadow: 0 0 0 4px $gruene;
       }
 
       &.parteilos {
-        box-shadow: 0 0 0 5px $parteilos;
+        box-shadow: 0 0 0 4px $parteilos;
       }
     }
 
     .selected {
-      box-shadow: 0 0 0 3px $lightgrey, 0 0 0 5px $slategrey;
+      box-shadow: 0 0 0 4px $lightgrey, 0 0 0 6px $slategrey;
     }
 
     &.drop-target .department .icon {
-      box-shadow: 0 0 0 3px $lightgrey, 0 0 0 5px $slategrey;
+      box-shadow: 0 0 0 4px $lightgrey, 0 0 0 6px $slategrey;
     }
   }
 }

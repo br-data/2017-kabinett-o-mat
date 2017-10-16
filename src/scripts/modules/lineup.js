@@ -46,8 +46,12 @@ var lineup = (function () {
 
     for (var i = 0; i < $$positions.length; i++) {
 
-      $$positions[i].addEventListener('click', handleSelect, true);
+      $$positions[i].addEventListener('click', handleSelect, false);
     }
+
+    var $field = $('#field');
+
+    $field.addEventListener('click', handleDeselect, false);
   }
 
   function handleSelect(e) {
@@ -85,10 +89,24 @@ var lineup = (function () {
     common.currentPosition = $position;
   }
 
+  function handleDeselect(e) {
+
+    if (e.target.id == 'field' || e.target.id == 'lineup') {
+
+      common.currentPosition.querySelector('.department .icon')
+        .classList.remove('selected');
+
+      common.currentPosition = null;
+
+      infobox.update();
+    }
+  }
+
   return {
 
     init: init,
     update: update,
-    handleSelect: handleSelect
+    handleSelect: handleSelect,
+    handleDeselect: handleDeselect
   };
 }());

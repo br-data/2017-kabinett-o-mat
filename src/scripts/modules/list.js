@@ -26,10 +26,10 @@ var list = (function () {
     for (var i = 0; i < $currentList.length; i++) {
 
       var $politician = $currentList[i];
-      var politicianId = $politician.getAttribute('[data-politician]');
 
       $politician.addEventListener('click', function (e) {
-        common.currentPosition ? handleChange(e) : infobox.update(politicianId);
+        common.currentPosition ?
+          handleChange(e) : infobox.update(e.target.getAttribute('data-politician'));
       }, false);
     }
   }

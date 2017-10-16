@@ -49,10 +49,10 @@ var app = (function () {
     // Remove query string parameters
     currentUrl =  currentUrl.replace(/(\?.*)#/, '#');
 
-    tracking.send({
-      user: common.getUserId(),
-      hash: common.getHashString()
-    });
+    // tracking.send({
+    //   user: common.getUserId(),
+    //   hash: common.getHashString()
+    // });
 
     sharing.init(currentUrl);
 

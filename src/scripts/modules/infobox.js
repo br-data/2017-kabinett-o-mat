@@ -21,7 +21,7 @@ var infobox = (function () {
       createElement('img', $infobox, ['src', 'images/parties/' +
         common.getClass(politician.party) + '.svg'], ['alt', politician.party]);
       createElement('h3', $infobox, ['textContent', politician.name]);
-      createElement('p', $infobox, ['textContent', politician.position]);
+      createElement('p', $infobox, ['textContent', 'bisher ' + politician.position]);
 
       $infobox.className = common.getClass(politician.party);
     } else {

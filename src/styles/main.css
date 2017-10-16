@@ -97,13 +97,12 @@ button,
   height: 700px;
   max-width: 1200px;
   overflow: hidden;
-  border: 1px solid #3b3b3b;
+  border: 1px solid #2b2b2b;
   margin: 0 auto;
 }
 
 #header,
 #footer {
-  height: 170px;
   max-width: 840px;
   padding: 1em;
   margin: 0 auto;
@@ -117,7 +116,7 @@ button,
 #header em,
 #footer em {
   display: block;
-  color: #0076c2;
+  color: #ee7600;
   font-style: normal;
   font-size: 1rem;
   font-weight: bold;
@@ -162,9 +161,8 @@ button,
 #lineup .position {
   position: relative;
   display: inline-block;
-  min-width: 145px;
+  min-width: 120px;
   height: 120px;
-  cursor: pointer;
   vertical-align: top;
   margin: 10px;
 }
@@ -174,6 +172,7 @@ button,
 }
 #lineup .position .department {
   z-index: 10;
+  cursor: pointer;
 }
 #lineup .position .politician {
   position: absolute;
@@ -181,34 +180,42 @@ button,
   left: 0;
   right: 0;
   z-index: 100;
+  cursor: pointer;
+}
+#lineup .position .politician.changing {
+  z-index: 500;
+  cursor: pointer;
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
 }
 #lineup .position .icon {
   width: 4em;
   height: 4em;
-  margin: 8px 0 4px;
+  margin: 10px 0 5px;
   border-radius: 50%;
   pointer-events: none;
 }
 #lineup .position .icon.cdu {
-  box-shadow: 0 0 0 5px #121212;
+  box-shadow: 0 0 0 4px #747485;
 }
 #lineup .position .icon.csu {
-  box-shadow: 0 0 0 5px #00b2ff;
+  box-shadow: 0 0 0 4px #00b2ff;
 }
 #lineup .position .icon.fdp {
-  box-shadow: 0 0 0 5px #fd0;
+  box-shadow: 0 0 0 4px #fd0;
 }
 #lineup .position .icon.gruene {
-  box-shadow: 0 0 0 5px #309128;
+  box-shadow: 0 0 0 4px #309128;
 }
 #lineup .position .icon.parteilos {
-  box-shadow: 0 0 0 5px #fff;
+  box-shadow: 0 0 0 4px #fff;
 }
 #lineup .position .selected {
-  box-shadow: 0 0 0 3px #ddd, 0 0 0 5px #3b3b3b;
+  box-shadow: 0 0 0 4px #ddd, 0 0 0 6px #2b2b2b;
 }
 #lineup .position.drop-target .department .icon {
-  box-shadow: 0 0 0 3px #ddd, 0 0 0 5px #3b3b3b;
+  box-shadow: 0 0 0 4px #ddd, 0 0 0 6px #2b2b2b;
 }
 
 #sidebar {
@@ -229,7 +236,7 @@ button,
   border: 1px solid #000;
 }
 #sidebar #filter:focus {
-  border: 1px solid #0076c2;
+  border: 1px solid #ee7600;
 }
 #sidebar form {
   background: #fff;
@@ -271,12 +278,12 @@ button,
   pointer-events: none;
 }
 #list li:hover {
-  color: #0076c2;
+  color: #ee7600;
 }
 #list .cdu:before {
   content: "CDU";
   padding-left: 5px;
-  border-left: 3px solid #121212;
+  border-left: 3px solid #747485;
   font-weight: bold;
   line-height: 2.2em;
   vertical-align: top;
@@ -315,7 +322,7 @@ button,
 }
 
 #info {
-  background: #3b3b3b;
+  background: #2b2b2b;
   color: #fff;
   bottom: 0;
   height: 140px;
@@ -326,7 +333,7 @@ button,
   width: 100%;
   z-index: 60;
   overflow: hidden;
-  border-top: 5px solid #0076c2;
+  border-top: 5px solid #ee7600;
 }
 #info h3 {
   font-size: 1em;
@@ -334,15 +341,13 @@ button,
 }
 #info p {
   margin: .2em 0 .5em;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 #info img {
   float: right;
   margin: 2px 0 0 10px;
 }
 #info.cdu {
-  border-color: #121212;
+  border-color: #747485;
 }
 #info.cdu img {
   height: 18px;
@@ -381,7 +386,7 @@ button,
 
 .button:hover {
   color: #fff;
-  background: #0076c2;
+  background: #ee7600;
 }
 
 #credits {

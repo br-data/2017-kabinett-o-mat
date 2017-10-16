@@ -80,7 +80,7 @@ var dragging = (function () {
         parent.removeChild(placeholder);
         parent.insertBefore(target, sibling);
       }
-    });
+    }).styleCursor(false);
 
     //  Target all position elements with the "changeable" class
     interact('.changeable').draggable({
@@ -122,7 +122,7 @@ var dragging = (function () {
 
         event.target.classList.remove('changing');
       }
-    });
+    }).styleCursor(false);
 
     // Enable draggables to be dropped here
     // The dropzone is event.target, the draggable is event.relatedTarget
@@ -152,7 +152,7 @@ var dragging = (function () {
         // Remove active dropzone feedback
         event.target.classList.remove('drop-target');
       }
-    });
+    }).styleCursor(false);
   }
 
   return {
