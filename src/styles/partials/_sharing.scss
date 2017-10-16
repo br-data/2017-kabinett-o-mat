@@ -15,6 +15,7 @@
 
 #credits {
   float: left;
+  display: none;
 }
 
 #share {
@@ -25,14 +26,15 @@
   background: $white;
   display: none;
   position: absolute;
-  left: 1em;
-  right: 1em;
-  top: 5em;
-  bottom: 1em;
+  left: 15px;
+  right: 15px;
+  top: 60px;
+  bottom: 15px;
   overflow: auto;
   border: 1px solid;
   padding: 1em 4em 4em;
   z-index: 500;
+  text-align: left;
 
   p {
     margin: .2em 0 1em;

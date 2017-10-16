@@ -129,7 +129,7 @@ var dragging = (function () {
     interact('.dropzone').dropzone({
 
       // Require a 75% element overlap for a drop to be possible
-      overlap: 0.75,
+      overlap: 0.35,
 
       ondragenter: function (event) {
 
