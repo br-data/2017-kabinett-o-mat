@@ -27,10 +27,7 @@ var list = (function () {
 
       var $politician = $currentList[i];
 
-      $politician.addEventListener('click', function (e) {
-        common.currentPosition ?
-          handleChange(e) : infobox.update(e.target.getAttribute('data-politician'));
-      }, false);
+      $politician.addEventListener('click', handleClick, false);
     }
   }
 
@@ -89,6 +86,17 @@ var list = (function () {
           $politicians[i].style.display = 'none';
         }
       }
+    }
+  }
+
+  function handleClick(e) {
+
+    if (common.currentPosition) {
+
+      handleChange(e);
+    } else {
+
+      infobox.update(e.target.getAttribute('data-politician'));
     }
   }
 

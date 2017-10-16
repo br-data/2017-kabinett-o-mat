@@ -155,7 +155,7 @@ a {
   text-align: center;
   z-index: 10;
   position: relative;
-  overflow: auto;
+  overflow-y: auto;
 }
 
 #lineup {
@@ -219,7 +219,7 @@ a {
   box-shadow: 0 0 0 4px #ddd, 0 0 0 6px #2b2b2b;
 }
 #lineup .position.drop-target .department .icon {
-  box-shadow: 0 0 0 4px #ddd, 0 0 0 6px #2b2b2b;
+  box-shadow: 0 0 0 6px #ee7600;
 }
 
 #sidebar {
@@ -234,10 +234,6 @@ a {
 }
 #sidebar li.dragging {
   width: 160px;
-}
-#sidebar .scrollable {
-  height: 100%;
-  overflow: auto;
 }
 #sidebar #filter {
   border: 1px solid #000;
@@ -261,8 +257,18 @@ a {
   width: 100%;
 }
 
+#list-wrapper {
+  position: absolute;
+  top: 60px;
+  bottom: 140px;
+  left: 0;
+  right: 0;
+  height: calc(100% - 60px - 140px);
+}
+
 #list {
-  padding-top: 4em;
+  overflow-y: auto;
+  height: 100%;
   z-index: 50;
 }
 #list ul {
@@ -270,11 +276,6 @@ a {
   padding: 10px 20px;
   list-style-type: none;
   user-select: none;
-}
-#list ul:last-child:after {
-  content: "\a";
-  white-space: pre;
-  line-height: 12em;
 }
 #list li {
   cursor: pointer;

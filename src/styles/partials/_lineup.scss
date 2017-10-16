@@ -8,7 +8,7 @@
   text-align: center;
   z-index: 10;
   position: relative;
-  overflow: auto;
+  overflow-y: auto;
 }
 
 #lineup {
@@ -83,7 +83,7 @@
     }
 
     &.drop-target .department .icon {
-      box-shadow: 0 0 0 4px $lightgrey, 0 0 0 6px $slategrey;
+      box-shadow: 0 0 0 6px $br-blue;
     }
   }
 }
