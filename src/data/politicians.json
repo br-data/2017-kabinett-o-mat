@@ -3,13 +3,13 @@
     "id": "ab",
     "name": "Wolfgang Schäuble",
     "party": "CDU",
-    "position": "Bundesfinanzminister"
+    "position": "Finanzminister"
   },
   {
     "id": "ac",
     "name": "Ursula von der Leyen",
     "party": "CDU",
-    "position": "Bundesverteidigungsministerin"
+    "position": "Verteidigungsministerin"
   },
   {
     "id": "ad",
@@ -21,13 +21,13 @@
     "id": "ae",
     "name": "Thomas de Maizière",
     "party": "CDU",
-    "position": "Bundesinnenminister"
+    "position": "Innenminister"
   },
   {
     "id": "af",
     "name": "Hermann Gröhe",
     "party": "CDU",
-    "position": "Bundesgesundheitsminister"
+    "position": "Gesundheitsminister"
   },
   {
     "id": "ag",
@@ -39,7 +39,7 @@
     "id": "ah",
     "name": "Johanna Wanka",
     "party": "CDU",
-    "position": "Bundesbildungsministerin"
+    "position": "Bildungsministerin"
   },
   {
     "id": "ai",
@@ -75,13 +75,13 @@
     "id": "an",
     "name": "Jens Spahn",
     "party": "CDU",
-    "position": "Parlamentarischer Staatssekretär Finanzen"
+    "position": "parlamentarischer Staatssekretär Finanzen"
   },
   {
     "id": "ao",
     "name": "Annette Widmann-Mauz",
     "party": "CDU",
-    "position": "Parlamentarische Staatssekretärin Gesundheit"
+    "position": "parlamentarische Staatssekretärin Gesundheit"
   },
   {
     "id": "ap",
@@ -117,7 +117,7 @@
     "id": "au",
     "name": "Joachim Herrmann",
     "party": "CSU",
-    "position": "Innenminister Bayern"
+    "position": "Innenminister in Bayern"
   },
   {
     "id": "av",
@@ -153,13 +153,13 @@
     "id": "ba",
     "name": "Alexander Dobrindt",
     "party": "CSU",
-    "position": "Bundesverkehrsminister"
+    "position": "Verkehrsminister"
   },
   {
     "id": "bb",
     "name": "Christian Schmidt",
     "party": "CSU",
-    "position": "Bundesentwicklungsminister"
+    "position": "Landwirtschaftsminister"
   },
   {
     "id": "bc",
@@ -171,13 +171,13 @@
     "id": "bd",
     "name": "Dorothee Bär",
     "party": "CSU",
-    "position": "Parlamentarische Staatssekretärin Verkehr"
+    "position": "parlamentarische Staatssekretärin Verkehr"
   },
   {
     "id": "be",
     "name": "Gerd Müller",
     "party": "CSU",
-    "position": "Bundesentwicklungsminister"
+    "position": "Entwicklungsminister"
   },
   {
     "id": "bf",
@@ -207,7 +207,7 @@
     "id": "bj",
     "name": "Johannes Vogel",
     "party": "FDP",
-    "position": "Generalsekretär NRW-FDP"
+    "position": "Generalsekretär FDP in NRW"
   },
   {
     "id": "bk",
@@ -231,7 +231,7 @@
     "id": "bn",
     "name": "Volker Wissing",
     "party": "FDP",
-    "position": "Wirtschaftsminister Rheinland-Pfalz"
+    "position": "Wirtschaftsminister in Rheinland-Pfalz"
   },
   {
     "id": "bo",
@@ -249,7 +249,7 @@
     "id": "bq",
     "name": "Marie-Agnes Strack-Zimmermann",
     "party": "FDP",
-    "position": "Stellvertretende FDP-Bundesvorsitzende"
+    "position": "stellvertretende FDP-Bundesvorsitzende"
   },
   {
     "id": "br",
@@ -291,7 +291,7 @@
     "id": "bx",
     "name": "Omid Nouripour",
     "party": "Bündnis 90/Die Grünen",
-    "position": "Außenpolitischer Sprecher der Grünenfraktion"
+    "position": "außenpolitischer Sprecher der Grünenfraktion"
   },
   {
     "id": "by",
