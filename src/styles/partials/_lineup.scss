@@ -24,8 +24,9 @@
     margin: 5px;
 
     p {
-      height: 18px;
+      height: 16px;
       margin: 0;
+      line-height: 1.1;
     }
 
     .department {
@@ -35,7 +36,7 @@
 
     .politician {
       position: absolute;
-      top: 18px;
+      top: 16px;
       left: 0;
       right: 0;
       z-index: 100;
@@ -53,7 +54,7 @@
     .icon {
       width: 4em;
       height: 4em;
-      margin: 10px 0 5px;
+      margin: 8px 0;
       border-radius: 50%;
       pointer-events: none;
 

@@ -46,6 +46,7 @@ module.exports = function (grunt) {
 
         src: [
           'node_modules/interactjs/dist/interact.min.js',
+          'node_modules/classlist-polyfill/src/index.js',
           'dist/scripts/main.min.js'
         ],
 
