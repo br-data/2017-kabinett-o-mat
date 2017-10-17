@@ -3,26 +3,29 @@ var tracking = (function () {
   'use strict';
 
   var request;
+  var isTracked = false;
 
   function send(data) {
 
-    console.log(data);
+    if (!isTracked) {
 
-    if (request) {
+      if (request) { request.abort(); }
 
-      request.abort();
-    }
+      request = new XMLHttpRequest();
 
-    request = new XMLHttpRequest();
+      try {
 
-    try {
+        request.open('POST','http://ddj.br.de/kabinett-o-mat/post', true);
+        request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+        request.send(JSON.stringify(data));
 
-      request.open('POST','http://localhost:3007/post', true);
-      request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-      request.send(JSON.stringify(data));
-    } catch (err) {
+        isTracked = true;
+      } catch (err) {
 
-      console.log('Could not send tracking string: ', err);
+        console.log('Could not send tracking string: ', err);
+
+        isTracked = false;
+      }
     }
   }
 
