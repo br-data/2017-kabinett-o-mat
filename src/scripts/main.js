@@ -31,7 +31,12 @@ var app = (function () {
 
         lineup.init();
         list.init();
-        dragging.init();
+
+        if (Math.max(document.documentElement.clientWidth,
+          window.innerWidth || 0) > 560) {
+
+          dragging.init();
+        }
       });
     });
 

@@ -152,7 +152,7 @@ a {
     #lineup .position p {
       height: 16px;
       margin: 0;
-      line-height: 1.1; }
+      line-height: 1.2; }
     #lineup .position .department {
       z-index: 10;
       cursor: pointer; }
@@ -361,6 +361,9 @@ a {
     margin: .2em 0 1em; }
   .modal h1 {
     margin: 2em 0 .5em; }
+  .modal .br-data {
+    margin: .5em 0 .5em 2px;
+    height: 35px; }
 
 .close {
   position: absolute;
