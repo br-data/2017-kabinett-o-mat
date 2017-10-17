@@ -9,6 +9,7 @@ module.exports = function (grunt) {
     clean: {
 
       dist: {
+
         src: ['dist']
       }
     },
@@ -19,46 +20,51 @@ module.exports = function (grunt) {
 
         files: {
 
-          'dist/js/app.min.js': [
-            'src/js/config.js',
-            'src/js/utils.js',
-            'src/js/common.js',
-            'src/js/tracking.js',
-            'src/js/sharing.js',
-            'src/js/dragging.js',
-            'src/js/list.js',
-            'src/js/lineup.js',
-            'src/js/app.js'
+          'dist/scripts/main.min.js': [
+            'scripts/modules/utils.js',
+            'scripts/modules/common.js',
+            'scripts/modules/sharing.js',
+            'scripts/modules/tracking.js',
+            'scripts/modules/dragging.js',
+            'scripts/modules/infobox.js',
+            'scripts/modules/list.js',
+            'scripts/modules/lineup.js',
+            'scripts/main.js'
           ]
         }
       }
     },
 
-    sass: {
+    concat: {
 
       dist: {
 
         options: {
 
-          style:'compressed'
+          separator: '\n'
         },
 
-        files: {
+        src: [
+          'node_modules/interactjs/dist/interact.min.js',
+          'dist/scripts/main.min.js'
+        ],
 
-          'dist/css/main.min.css' : 'src/scss/main.scss'
-        }
+        dest: 'dist/scripts/main.min.js'
+      }
+    },
+
+    sass: {
+
+      options: {
+
+        sourceMap: true
       },
 
-      dev: {
-
-        options: {
-
-          style:'expanded'
-        },
+      dist: {
 
         files: {
 
-          'src/styles/main.css' : 'src/styles/main.scss'
+          'src/styles/main.css': 'src/styles/main.scss'
         }
       }
     },
@@ -71,24 +77,19 @@ module.exports = function (grunt) {
 
           require('autoprefixer')({
 
-            browsers: ['> 5%', 'last 2 versions', 'IE 7', 'IE 9']
-          })
+            browsers: ['> 5%', 'last 2 versions', 'IE 7', 'IE 8', 'IE 9']
+          }),
+
+          require('cssnano')()
         ],
         map: true
       },
+
       dist: {
 
         files: {
 
-          'dist/css/main.min.css': 'dist/css/main.min.css'
-        }
-      },
-
-      dev: {
-
-        files: {
-
-          'src/css/main.css' : 'src/css/main.css'
+          'dist/styles/main.min.css': 'src/styles/main.css'
         }
       }
     },
@@ -101,24 +102,9 @@ module.exports = function (grunt) {
 
           { expand: true, flatten: true, src: ['src/index.html'], dest: 'dist/', filter: 'isFile' },
           { expand: true, flatten: true, src: ['src/favicon.ico'], dest: 'dist/', filter: 'isFile' },
-          { expand: true, flatten: true, src: ['src/data/*'], dest: 'dist/data/', filter: 'isFile' },
-          { expand: true, flatten: true, src: ['src/font/*'], dest: 'dist/font/', filter: 'isFile' },
-          { expand: true, cwd: 'src/img/', src: ['**/*'], dest: 'dist/img/' },
-          { expand: true,
-            flatten: true,
-            src: ['node_modules/interactjs/dist/interact.min.js'],
-            dest: 'dist/js/lib/',
-            filter: 'isFile'
-          },
-          { expand: true,
-            flatten: true,
-            src: ['node_modules/classlist-polyfill/src/index.js'],
-            dest: 'dist/js/lib/', filter: 'isFile',
-            rename: function (dest, src) {
-
-              return dest + src.replace('index','classList.min');
-            }
-          }
+          { expand: true, cwd: 'src/fonts/', src: ['**/*'], dest: 'dist/fonts/' },
+          { expand: true, cwd: 'src/images/', src: ['**/*'], dest: 'dist/images/' },
+          { expand: true, cwd: 'src/data/', src: ['**/*'], dest: 'dist/data/' }
         ]
       }
     },
@@ -135,25 +121,22 @@ module.exports = function (grunt) {
 
     watch: {
 
-      scripts: {
+      css: {
 
-        options: {
-
-          interrupt: true
-        },
-        files: ['src/styles/**/*.scss'],
-        tasks: ['sass:dev', 'postcss:dev']
+        files: 'src/styles/**/*.scss',
+        tasks: ['sass', 'postcss']
       }
     }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-postcss');
-  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-usemin');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('dist', ['clean', 'useminPrepare', 'uglify:dist', 'sass:dist', 'postcss', 'copy', 'usemin']);
+  grunt.registerTask('dist', ['clean', 'useminPrepare', 'uglify', 'concat', 'sass', 'postcss', 'copy', 'usemin']);
 };
