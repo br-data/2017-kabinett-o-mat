@@ -181,5 +181,9 @@
 
   &.parteilos {
     border-color: $parteilos;
+
+    img {
+      width: 50px;
+    }
   }
 }
