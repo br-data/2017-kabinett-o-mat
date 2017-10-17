@@ -47,6 +47,8 @@ var list = (function () {
       $newPosition = $newPosition.parentNode;
     }
 
+    // lineup.handleSelect({ target: $newPosition.nextElementSibling });
+
     var $oldPolitician = $oldPosition.querySelector('.politician') || $oldPosition;
     var $newPolitician = $newPosition.querySelector('.politician');
 

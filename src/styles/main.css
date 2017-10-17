@@ -107,8 +107,8 @@ a {
 
 #header,
 #footer {
-  max-width: 840px;
-  padding: 1em;
+  max-width: 720px;
+  padding: 2em;
   margin: 0 auto;
 }
 #header h1,
@@ -129,7 +129,6 @@ a {
 #footer p {
   font-size: 1.1em;
   line-height: 1.6;
-  max-width: 90%;
 }
 #header a,
 #footer a {

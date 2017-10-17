@@ -9,6 +9,7 @@ var lineup = (function () {
 
     bind();
     update();
+    handleSelect({ target: $('[data-department]') });
   }
 
   function update() {
