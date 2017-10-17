@@ -92,14 +92,17 @@ var lineup = (function () {
 
   function handleDeselect(e) {
 
-    if (e.target.id == 'field' || e.target.id == 'lineup') {
+    if (common.currentPosition) {
 
-      common.currentPosition.querySelector('.department .icon')
-        .classList.remove('selected');
+      if (e.target.id == 'field' || e.target.id == 'lineup') {
 
-      common.currentPosition = null;
+        common.currentPosition.querySelector('.department .icon')
+          .classList.remove('selected');
 
-      infobox.update();
+        common.currentPosition = undefined;
+
+        infobox.update();
+      }
     }
   }
 
