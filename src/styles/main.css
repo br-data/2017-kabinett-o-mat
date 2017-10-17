@@ -143,6 +143,11 @@ a {
   float: right;
   height: 35px;
 }
+#header .br-data,
+#footer .br-data {
+  margin: .5em 0 .5em 2px;
+  height: 35px;
+}
 
 #field {
   width: calc(100% - 210px);
@@ -164,10 +169,10 @@ a {
 #lineup .position {
   position: relative;
   display: inline-block;
-  min-width: 120px;
-  height: 120px;
+  width: 125px;
+  height: 125px;
   vertical-align: top;
-  margin: 10px;
+  margin: 5px;
 }
 #lineup .position p {
   height: 18px;
@@ -219,6 +224,11 @@ a {
 }
 #lineup .position.drop-target .department .icon {
   box-shadow: 0 0 0 6px #ee7600;
+}
+
+#source {
+  display: none;
+  text-align: left;
 }
 
 #sidebar {
@@ -485,6 +495,9 @@ body.embed #app {
 }
 body.embed #footer {
   display: none;
+}
+body.embed #source {
+  display: block;
 }
 body.embed #credits {
   display: block;

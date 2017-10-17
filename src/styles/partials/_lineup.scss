@@ -18,10 +18,10 @@
   .position {
     position: relative;
     display: inline-block;
-    min-width: 120px;
-    height: 120px;
+    width: 125px;
+    height: 125px;
     vertical-align: top;
-    margin: 10px;
+    margin: 5px;
 
     p {
       height: 18px;
@@ -86,4 +86,9 @@
       box-shadow: 0 0 0 6px $br-blue;
     }
   }
+}
+
+#source {
+  display: none;
+  text-align: left;
 }
