@@ -8,6 +8,7 @@ var common = (function () {
   var departments;
 
   var currentPosition;
+  var currentHint = false;
 
   function getPolitician(id) {
 
@@ -97,6 +98,8 @@ var common = (function () {
         politician = getPolitician(politician);
         departments[index].politician = politician.id;
       });
+
+      common.currentHint = true;
     }
   }
 
@@ -130,6 +133,9 @@ var common = (function () {
   }
 
   return {
+    currentPosition: currentPosition,
+    currentHint: currentHint,
+
     setPoliticians: setPoliticians,
     setDepartments: setDepartments,
     getPoliticians: getPoliticians,
@@ -146,8 +152,6 @@ var common = (function () {
     setHash: setHash,
     getHashString: getHashString,
 
-    getUserId: getUserId,
-
-    currentPosition: currentPosition
+    getUserId: getUserId
   };
 }());

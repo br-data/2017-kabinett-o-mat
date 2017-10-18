@@ -190,6 +190,26 @@ a {
     #lineup .position.drop-target .department .icon {
       box-shadow: 0 0 0 6px #ee7600; }
 
+#hint {
+  display: none;
+  background-image: url("../images/arrow.png");
+  background-color: rgba(0, 0, 0, 0.3);
+  background-position: top right;
+  background-repeat: no-repeat;
+  color: #fff;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1000;
+  cursor: pointer; }
+  #hint p {
+    font-size: 20px;
+    margin: 250px auto 0;
+    max-width: 90%;
+    text-shadow: 0 0 5px black; }
+
 #source {
   display: none;
   text-align: left; }

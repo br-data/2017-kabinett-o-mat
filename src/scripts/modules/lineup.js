@@ -39,6 +39,8 @@ var lineup = (function () {
       $politician.classList.toggle('changeable', department.politician);
       $politician.setAttribute('data-politician', politician.id || '');
     }
+
+    checkDone();
   }
 
   function bind() {
@@ -103,6 +105,35 @@ var lineup = (function () {
 
         infobox.update();
       }
+    }
+  }
+
+  function checkDone() {
+
+    var departments = common.getDepartments();
+
+    var assigned = departments.filter(function (dep) {
+      return dep.politician != null;
+    });
+
+    if (departments.length == assigned.length) {
+      handleDone();
+    }
+  }
+
+  function handleDone() {
+
+    if (!common.currentHint) {
+
+      var $hint = $('#hint');
+
+      $hint.style.display = 'block';
+
+      $hint.addEventListener('click', function () {
+        $hint.style.display = 'none';
+      });
+
+      common.currentHint = true;
     }
   }
 
