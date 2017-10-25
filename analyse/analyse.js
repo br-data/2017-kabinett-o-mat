@@ -22,14 +22,6 @@ results.forEach(function (r) {
   }
 });
 
-// common = count(common);
-// Object.keys(common).forEach(function (c) {
-
-//   if (common[c] > 5) {
-//     console.log(c, common[c]);
-//   }
-// });
-
 console.log('Number of valid tracking strings:', Object.keys(clean).length);
 
 let politicianCount = {};
@@ -48,12 +40,12 @@ Object.keys(clean).forEach(function (c) {
   })
 });
 
-// saveFile('./output/gesamt.csv', toCSV(politicianCount));
+saveFile('./output/gesamt.csv', toCSV(politicianCount));
 
-// Object.keys(departmentCount).forEach(function (dep) {
+Object.keys(departmentCount).forEach(function (dep) {
 
-//   saveFile(`./output/${dep.toLowerCase()}.csv`, toCSV(departmentCount[dep]));
-// });
+  saveFile(`./output/${dep.toLowerCase()}.csv`, toCSV(departmentCount[dep]));
+});
 
 function hasDuplicates(array) {
 
