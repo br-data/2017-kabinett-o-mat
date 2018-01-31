@@ -53,6 +53,8 @@ var common = (function () {
         return 'cdu';
       case 'CSU':
         return 'csu';
+      case 'SPD':
+        return 'spd';
       case 'FDP':
         return 'fdp';
       case 'Bündnis 90/Die Grünen':

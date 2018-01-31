@@ -179,6 +179,8 @@ a {
         box-shadow: 0 0 0 4px #747485; }
       #lineup .position .icon.csu {
         box-shadow: 0 0 0 4px #0099ed; }
+      #lineup .position .icon.spd {
+        box-shadow: 0 0 0 4px #f50028; }
       #lineup .position .icon.fdp {
         box-shadow: 0 0 0 4px #fd0; }
       #lineup .position .icon.gruene {
@@ -282,6 +284,13 @@ a {
     font-weight: bold;
     line-height: 2.2em;
     vertical-align: top; }
+  #list .spd:before {
+    content: "SPD";
+    padding-left: 5px;
+    border-left: 3px solid #f50028;
+    font-weight: bold;
+    line-height: 2.2em;
+    vertical-align: top; }
   #list .fdp:before {
     content: "FDP";
     padding-left: 5px;
@@ -333,6 +342,10 @@ a {
     border-color: #0099ed; }
     #info.csu img {
       height: 18px; }
+  #info.spd {
+    border-color: #f50028; }
+    #info.spd img {
+      width: 50px; }
   #info.fdp {
     border-color: #fd0; }
     #info.fdp img {
