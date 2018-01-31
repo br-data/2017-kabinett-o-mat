@@ -1,15 +1,21 @@
 [
   {
+    "id": "aa",
+    "name": "Angela Merkel",
+    "party": "CDU",
+    "position": "Bundeskanzlerin"
+  },
+  {
     "id": "ab",
     "name": "Wolfgang Schäuble",
     "party": "CDU",
-    "position": "Finanzminister"
+    "position": "Bundestagspräsident"
   },
   {
     "id": "ac",
     "name": "Ursula von der Leyen",
     "party": "CDU",
-    "position": "Verteidigungsministerin"
+    "position": "Bundesverteidigungsministerin"
   },
   {
     "id": "ad",
@@ -21,13 +27,13 @@
     "id": "ae",
     "name": "Thomas de Maizière",
     "party": "CDU",
-    "position": "Innenminister"
+    "position": "Bundesinnenminister"
   },
   {
     "id": "af",
     "name": "Hermann Gröhe",
     "party": "CDU",
-    "position": "Gesundheitsminister"
+    "position": "Bundesgesundheitsminister"
   },
   {
     "id": "ag",
@@ -39,13 +45,13 @@
     "id": "ah",
     "name": "Johanna Wanka",
     "party": "CDU",
-    "position": "Bildungsministerin"
+    "position": "Bundesbildungsministerin"
   },
   {
     "id": "ai",
-    "name": "Ralph Brinkhaus",
+    "name": "Helge Braun",
     "party": "CDU",
-    "position": "Fraktionsvize für Finanzen"
+    "position": "Staatsminister bei der Bundeskanzlerin"
   },
   {
     "id": "aj",
@@ -75,13 +81,13 @@
     "id": "an",
     "name": "Jens Spahn",
     "party": "CDU",
-    "position": "parlamentarischer Staatssekretär Finanzen"
+    "position": "Parlamentarischer Staatssekretär Finanzen"
   },
   {
     "id": "ao",
     "name": "Annette Widmann-Mauz",
     "party": "CDU",
-    "position": "parlamentarische Staatssekretärin Gesundheit"
+    "position": "Parlamentarische Staatssekretärin Gesundheit"
   },
   {
     "id": "ap",
@@ -102,12 +108,6 @@
     "position": "EU-Kommissar für Digitale Gesellschaft und Wirtschaft"
   },
   {
-    "id": "as",
-    "name": "Jens Weidmann",
-    "party": "parteilos",
-    "position": "Bundesbankpräsident"
-  },
-  {
     "id": "at",
     "name": "Karl-Theodor zu Guttenberg",
     "party": "CSU",
@@ -117,7 +117,7 @@
     "id": "au",
     "name": "Joachim Herrmann",
     "party": "CSU",
-    "position": "Innenminister in Bayern"
+    "position": "Innenminister Bayern"
   },
   {
     "id": "av",
@@ -153,13 +153,13 @@
     "id": "ba",
     "name": "Alexander Dobrindt",
     "party": "CSU",
-    "position": "Verkehrsminister"
+    "position": "Bundesverkehrsminister"
   },
   {
     "id": "bb",
     "name": "Christian Schmidt",
     "party": "CSU",
-    "position": "Landwirtschaftsminister"
+    "position": "Bundesentwicklungsminister"
   },
   {
     "id": "bc",
@@ -171,186 +171,108 @@
     "id": "bd",
     "name": "Dorothee Bär",
     "party": "CSU",
-    "position": "parlamentarische Staatssekretärin Verkehr"
+    "position": "Parlamentarische Staatssekretärin Verkehr"
   },
   {
     "id": "be",
     "name": "Gerd Müller",
     "party": "CSU",
-    "position": "Entwicklungsminister"
+    "position": "Bundesentwicklungsminister"
+  },
+  {
+    "id": "as",
+    "name": "Jens Weidmann",
+    "party": "parteilos",
+    "position": "Bundesbankpräsident"
   },
   {
     "id": "bf",
-    "name": "Christian Lindner",
-    "party": "FDP",
-    "position": "FDP-Parteivorsitzender und Spitzenkandidat"
+    "name": "Martin Schulz",
+    "party": "SPD",
+    "position": "SPD-Vorsitzender"
   },
   {
     "id": "bg",
-    "name": "Wolfgang Kubicki",
-    "party": "FDP",
-    "position": "Fraktionsvorsitzender der FDP in Schleswig-Holstein"
+    "name": "Andrea Nahles",
+    "party": "SPD",
+    "position": "SPD-Fraktionsvorsitzende"
   },
   {
     "id": "bh",
-    "name": "Alexander Graf Lambsdorff",
-    "party": "FDP",
-    "position": "Vizepräsident des Europaparlaments"
+    "name": "Anke Rehlinger",
+    "party": "SPD",
+    "position": "stellvertretende Ministerpräsidentin Saarland"
   },
   {
     "id": "bi",
-    "name": "Nicola Beer",
-    "party": "FDP",
-    "position": "FDP-Generalsekretärin"
+    "name": "Carsten Schneider",
+    "party": "SPD",
+    "position": "Parlamentarischer Fraktionsgeschäftsführer"
   },
   {
     "id": "bj",
-    "name": "Johannes Vogel",
-    "party": "FDP",
-    "position": "Generalsekretär FDP in NRW"
+    "name": "Eva Högl",
+    "party": "SPD",
+    "position": "stellvertretende SPD-Fraktionsvorsitzende"
   },
   {
     "id": "bk",
-    "name": "Katja Suding",
-    "party": "FDP",
-    "position": "Fraktionsvorsitzende der FDP in Hamburg"
+    "name": "Heiko Maas",
+    "party": "SPD",
+    "position": "Bundesjustizminister"
   },
   {
     "id": "bl",
-    "name": "Carl-Ludwig Thiele",
-    "party": "FDP",
-    "position": "Vorstandsmitglied Deutsche Bundesbank"
+    "name": "Lars Klingbeil",
+    "party": "SPD",
+    "position": "SPD-Generalsekretär "
   },
   {
     "id": "bm",
-    "name": "Werner Hoyer",
-    "party": "FDP",
-    "position": "Präsident der Europäischen Investitionsbank"
+    "name": "Karl Lauterbach",
+    "party": "SPD",
+    "position": "stellvertretender SPD-Fraktionsvorsitzender"
   },
   {
     "id": "bn",
-    "name": "Volker Wissing",
-    "party": "FDP",
-    "position": "Wirtschaftsminister in Rheinland-Pfalz"
+    "name": "Malu Dreyer",
+    "party": "SPD",
+    "position": "Ministerpräsidentin Rheinland-Pfalz"
   },
   {
     "id": "bo",
-    "name": "Hermann Otto Solms",
-    "party": "FDP",
-    "position": "FDP-Schatzmeister"
+    "name": "Manuela Schwesig",
+    "party": "SPD",
+    "position": "Ministerpräsidentin Mecklenburg-Vorpommern"
   },
   {
     "id": "bp",
-    "name": "Philipp Rösler",
-    "party": "FDP",
-    "position": "Vorstandsmitglied Weltwirtschaftsforum"
+    "name": "Natascha Kohnen",
+    "party": "SPD",
+    "position": "Stellvertretende SPD-Vorsitzende"
   },
   {
     "id": "bq",
-    "name": "Marie-Agnes Strack-Zimmermann",
-    "party": "FDP",
-    "position": "stellvertretende FDP-Bundesvorsitzende"
+    "name": "Olaf Scholz",
+    "party": "SPD",
+    "position": "Erster Bürgermeister Hamburg"
   },
   {
     "id": "br",
-    "name": "Michael Theurer",
-    "party": "FDP",
-    "position": "Abgeordneter im Europaparlament"
+    "name": "Ralf Stegner",
+    "party": "SPD",
+    "position": "Stellvertretender SPD-Vorsitzender"
   },
   {
     "id": "bs",
-    "name": "Gesine Meißner",
-    "party": "FDP",
-    "position": "Abgeordnete im Europaparlament"
+    "name": "Sigmar Gabriel",
+    "party": "SPD",
+    "position": "Bundesaußenminister"
   },
   {
     "id": "bt",
-    "name": "Cem Özdemir",
-    "party": "Bündnis 90/Die Grünen",
-    "position": "Parteivorsitzender"
-  },
-  {
-    "id": "bu",
-    "name": "Katrin Göring-Eckardt",
-    "party": "Bündnis 90/Die Grünen",
-    "position": "Fraktionsvorsitzende im Bundestag"
-  },
-  {
-    "id": "bv",
-    "name": "Anton Hofreiter",
-    "party": "Bündnis 90/Die Grünen",
-    "position": "Fraktionsvorsitzender im Bundestag"
-  },
-  {
-    "id": "bw",
-    "name": "Simone Peter",
-    "party": "Bündnis 90/Die Grünen",
-    "position": "Parteivorsitzende"
-  },
-  {
-    "id": "bx",
-    "name": "Omid Nouripour",
-    "party": "Bündnis 90/Die Grünen",
-    "position": "außenpolitischer Sprecher der Grünenfraktion"
-  },
-  {
-    "id": "by",
-    "name": "Claudia Roth",
-    "party": "Bündnis 90/Die Grünen",
-    "position": "Vizepräsidentin des Bundestags"
-  },
-  {
-    "id": "bz",
-    "name": "Jürgen Trittin",
-    "party": "Bündnis 90/Die Grünen",
-    "position": "Bundestagsabgeordneter"
-  },
-  {
-    "id": "ca",
-    "name": "Konstantin von Notz",
-    "party": "Bündnis 90/Die Grünen",
-    "position": "Bundestagsabgeordneter"
-  },
-  {
-    "id": "cb",
-    "name": "Renate Künast",
-    "party": "Bündnis 90/Die Grünen",
-    "position": "Bundestagsabgeordnete"
-  },
-  {
-    "id": "cc",
-    "name": "Ska Keller",
-    "party": "Bündnis 90/Die Grünen",
-    "position": "Vorsitzende Grünen-Fraktion im EU-Parlament"
-  },
-  {
-    "id": "cd",
-    "name": "Sven Giegold",
-    "party": "Bündnis 90/Die Grünen",
-    "position": "Abgeordneter im Europaparlament"
-  },
-  {
-    "id": "ce",
-    "name": "Rebecca Harms",
-    "party": "Bündnis 90/Die Grünen",
-    "position": "Abgeordnete im Europaparlament"
-  },
-  {
-    "id": "cf",
-    "name": "Winfried Kretschmann",
-    "party": "Bündnis 90/Die Grünen",
-    "position": "Ministerpräsident von Baden-Württemberg"
-  },
-  {
-    "id": "cg",
-    "name": "Boris Palmer",
-    "party": "Bündnis 90/Die Grünen",
-    "position": "Bürgermeister von Tübingen"
-  },
-  {
-    "id": "ch",
-    "name": "Robert Habeck",
-    "party": "Bündnis 90/Die Grünen",
-    "position": "Minister für Energiewende und Umwelt in Schleswig-Holstein"
+    "name": "Stefan Weil",
+    "party": "SPD",
+    "position": "Ministerpräsident Niedersachsen"
   }
 ]
