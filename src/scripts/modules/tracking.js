@@ -9,6 +9,7 @@ var tracking = (function () {
 
     if (!isTracked) {
 
+
       if (request) { request.abort(); }
 
       request = new XMLHttpRequest();
@@ -22,7 +23,7 @@ var tracking = (function () {
         isTracked = true;
       } catch (err) {
 
-        console.log('Could not send tracking string: ', err);
+        console.error(err);
 
         isTracked = false;
       }
