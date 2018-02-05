@@ -147,13 +147,13 @@
     "id": "ba",
     "name": "Alexander Dobrindt",
     "party": "CSU",
-    "position": "Bundesverkehrsminister"
+    "position": "ehemaliger Bundesverkehrsminister"
   },
   {
     "id": "bb",
     "name": "Christian Schmidt",
     "party": "CSU",
-    "position": "Bundesentwicklungsminister"
+    "position": "Bundeslandwirtschaftsminister"
   },
   {
     "id": "bc",
@@ -253,7 +253,7 @@
   },
   {
     "id": "bt",
-    "name": "Stefan Weil",
+    "name": "Stephan Weil",
     "party": "SPD",
     "position": "Ministerpräsident Niedersachsen"
   },
@@ -280,5 +280,11 @@
     "name": "Hubertus Heil",
     "party": "SPD",
     "position": "ehemaliger SPD-Generalsekretär"
+  },
+  {
+    "id": "by",
+    "name": "Barbara Hendricks",
+    "party": "SPD",
+    "position": "Bundesumweltministerin"
   }
 ]
