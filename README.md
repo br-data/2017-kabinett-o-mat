@@ -2,8 +2,8 @@
 
 Die Koalitionsverhandlungen von Union und SPD haben begonnen – und damit auch der Kampf um die Ministerposten. Stellen Sie Ihr persönliches Wunsch-Kabinett auf und teilen Sie es mit Ihren Freunden. Eine interaktive Anwendung zum Aufstellen und Teilen von Kabinetten (oder anderen Arten von „Teams“). 
 
-- **Live (Groko)**: http://web.br.de/interaktiv/kabinett-o-mat-groko/
-- **Live (Jamaika)**: http://web.br.de/interaktiv/kabinett-o-mat/
+- **Live (Groko)**: https://web.br.de/interaktiv/kabinett-o-mat-groko/
+- **Live (Jamaika)**: https://web.br.de/interaktiv/kabinett-o-mat/
 
 Die jeweils veröffentlichten Versionen liegen auf einem eigenen Release-Branch.
 
@@ -55,7 +55,7 @@ Wenn ein Benutzer auf Teilen klickt, wird eine Benutzer-ID erzeugt, die aktuelle
 Der Request selbst ist ein einfacher POST-Request:
 
 ```javascript
-request.open('POST','http://ddj.br.de/kabinett-o-mat/post', true);
+request.open('POST','https://ddj.br.de/kabinett-o-mat/post', true);
 request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
 request.send(JSON.stringify(data));
 ```
